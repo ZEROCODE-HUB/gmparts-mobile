@@ -1,0 +1,51 @@
+# Flutter
+.dart_tool/
+.packages
+build/
+*.log
+*.iml
+.flutter-plugins
+.flutter-plugins-dependencies
+.dart_tool/package_config.json
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+key.properties
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Runner.xcworkspace
+ios/build/
+
+# Web
+web/build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Assets que se generan
+.g.dart
+
+# Firebase
+.firebase/
+firebase.json
+
+# Carpetas de respaldo que no deben subirse
+guardados-en-caso-los-necesite-mobile/

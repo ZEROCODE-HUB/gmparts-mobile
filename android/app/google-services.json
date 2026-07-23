@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "192029790072",
+    "project_id": "g-m-parts-lac7fg",
+    "storage_bucket": "g-m-parts-lac7fg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192029790072:android:6ebac83225f88a0fc6428d",
+        "android_client_info": {
+          "package_name": "com.mycompany.gmparts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBswyhKjfUErWOT0sAFM2CLokEbfzsCxSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192029790072:android:0bea09dbdaa0cfd0c6428d",
+        "android_client_info": {
+          "package_name": "com.mycompany.gmparts2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBswyhKjfUErWOT0sAFM2CLokEbfzsCxSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

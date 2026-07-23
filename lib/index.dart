@@ -1,0 +1,74 @@
+// Export pages
+export '/splash/splash/splash_widget.dart' show SplashWidget;
+export '/iniciar_sesion/iniciar_session/iniciar_session_widget.dart'
+    show IniciarSessionWidget;
+export '/iniciar_sesion/restaurar_contrasena1/restaurar_contrasena1_widget.dart'
+    show RestaurarContrasena1Widget;
+export '/iniciar_sesion/restaurar_contrasena3/restaurar_contrasena3_widget.dart'
+    show RestaurarContrasena3Widget;
+export '/iniciar_sesion/restaurar_contrasena2/restaurar_contrasena2_widget.dart'
+    show RestaurarContrasena2Widget;
+export '/diagnostico/b_nuevarecepcionrapida_f/b_nuevarecepcionrapida_f_widget.dart'
+    show BNuevarecepcionrapidaFWidget;
+export '/diagnostico/c_nueva_recepcion_completa_f/c_nueva_recepcion_completa_f_widget.dart'
+    show CNuevaRecepcionCompletaFWidget;
+export '/diagnostico/g_linkcliente/g_linkcliente_widget.dart'
+    show GLinkclienteWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/h_link_g_m_parts2/h_link_g_m_parts2_widget.dart'
+    show HLinkGMParts2Widget;
+export '/diagnostico/recepcion_asedor_de_servicio/i_nuevarecrapida/i_nuevarecrapida_widget.dart'
+    show INuevarecrapidaWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/f_recepcion_guardada/f_recepcion_guardada_widget.dart'
+    show FRecepcionGuardadaWidget;
+export '/diagnostico/a_recepciones_inicio/a_recepciones_inicio_widget.dart'
+    show ARecepcionesInicioWidget;
+export '/diagnostico/b_dash_board_diagnostico/b_dash_board_diagnostico_widget.dart'
+    show BDashBoardDiagnosticoWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/d_cotizacion/d_cotizacion_widget.dart'
+    show DCotizacionWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/e_diagnostico/e_diagnostico_widget.dart'
+    show EDiagnosticoWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/f_diagnostico/f_diagnostico_widget.dart'
+    show FDiagnosticoWidget;
+export '/diagnostico/controldecalidadtecnico2/controldecalidadtecnico2_widget.dart'
+    show Controldecalidadtecnico2Widget;
+export '/diagnostico/dash_board2_copy_copy/dash_board2_copy_copy_widget.dart'
+    show DashBoard2CopyCopyWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/encuestacliente/encuestacliente_widget.dart'
+    show EncuestaclienteWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/g_linkcliente_cotizacion/g_linkcliente_cotizacion_widget.dart'
+    show GLinkclienteCotizacionWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/h_aprobacionclientecotiz/h_aprobacionclientecotiz_widget.dart'
+    show HAprobacionclientecotizWidget;
+export '/diagnostico/c_dash_board2_finalizar/c_dash_board2_finalizar_widget.dart'
+    show CDashBoard2FinalizarWidget;
+export '/diagnostico/b_detalleestatico/b_detalleestatico_widget.dart'
+    show BDetalleestaticoWidget;
+export '/diagnostico/d_controldecalidadenviarcliente/d_controldecalidadenviarcliente_widget.dart'
+    show DControldecalidadenviarclienteWidget;
+export '/diagnostico/d_finalizado/d_finalizado_widget.dart'
+    show DFinalizadoWidget;
+export '/diagnostico/d_fincliente/d_fincliente_widget.dart'
+    show DFinclienteWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/crear_cotizacion_funcionando/crear_cotizacion_funcionando_widget.dart'
+    show CrearCotizacionFuncionandoWidget;
+export '/diagnostico/recepcion_asedor_de_servicio/encuestaclientev/encuestaclientev_widget.dart'
+    show EncuestaclientevWidget;
+export '/diagnostico/c_dash_board2_finalizado/c_dash_board2_finalizado_widget.dart'
+    show CDashBoard2FinalizadoWidget;
+export '/diagnostico/d_controldecalidadenviarcliente_pre/d_controldecalidadenviarcliente_pre_widget.dart'
+    show DControldecalidadenviarclientePreWidget;
+export '/web/z_nuevacontrasena/z_nuevacontrasena_widget.dart'
+    show ZNuevacontrasenaWidget;
+export '/privacy/privacy_widget.dart' show PrivacyWidget;
+export '/cotizacion_funcionando/cotizacion_funcionando_widget.dart'
+    show CotizacionFuncionandoWidget;
+export '/diagnostico/a_cuenta/a_cuenta_widget.dart' show ACuentaWidget;
+export '/diagnostico/a_confirmar_borrar_cuenta/a_confirmar_borrar_cuenta_widget.dart'
+    show AConfirmarBorrarCuentaWidget;
+export '/diagnostico/detalle_fallas/detalle_fallas_widget.dart'
+    show DetalleFallasWidget;
+export '/diagnostico/g_linkcliente_copy/g_linkcliente_copy_widget.dart'
+    show GLinkclienteCopyWidget;
+export '/diagnostico/crear_cotizacion_funcionando_copy/crear_cotizacion_funcionando_copy_widget.dart'
+    show CrearCotizacionFuncionandoCopyWidget;
