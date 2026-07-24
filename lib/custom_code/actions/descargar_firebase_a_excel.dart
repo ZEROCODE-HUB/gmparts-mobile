@@ -18,7 +18,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:convert';
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html show AnchorElement, Url, Blob;
+// ignore: uri_does_not_exist
+import 'dart:html' as html show AnchorElement, Url, Blob
+    if (dart.library.io) 'dart:io';
 
 Future<void> descargarFirebaseAExcel(String nombreColeccion) async {
   try {
