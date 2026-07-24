@@ -25,8 +25,9 @@ workflows:
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
           xcode-project use-profiles
-          flutter build ipa --release \
-            --export-method app-store
+          flutter build ipa --release
+      - name: Find IPA
+        script: find . -name "*.ipa" 2>/dev/null
     artifacts:
       - build/ios/ipa/*.ipa
       - "**/*.ipa"
