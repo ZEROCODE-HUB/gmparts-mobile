@@ -1,0 +1,39 @@
+name: Android Build & Sign
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Set up Java
+        uses: actions/setup-java@3a4f6e1af504cf6a31855fa899c6aa5355ba6c12
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@fd55f4d75e1e7f66a53f1bc2b44e6c9c99e1a8e1
+        with:
+          flutter-version: 'stable'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Decode Keystore
+        run: |
+          echo ${{ secrets.ANDROID_KEYSTORE_BASE64 }} | base64 -d > android/app/gmparts-keystore.jks
+      - name: Build Android AAB
+        run: |
+          flutter build appbundle --release \
+            --dart-define=ANDROID_STORE_PASSWORD=${{ secrets.ANDROID_STORE_PASSWORD }} \
+            --dart-define=ANDROID_KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }} \
+            --dart-define=ANDROID_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}
+        env:
+          KEYSTORE_PATH: android/app/gmparts-keystore.jks
+          STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+      - name: Upload AAB
+        uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b
+        with:
+          name: gmparts-release
+          path: build/app/outputs/bundle/release/app-release.aab
