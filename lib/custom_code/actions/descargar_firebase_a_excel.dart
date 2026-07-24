@@ -17,10 +17,6 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:convert';
-// ignore: avoid_web_libraries_in_flutter
-// ignore: uri_does_not_exist
-import 'dart:html' as html show AnchorElement, Url, Blob
-    if (dart.library.io) 'dart:io';
 
 Future<void> descargarFirebaseAExcel(String nombreColeccion) async {
   try {
@@ -132,14 +128,8 @@ Future<void> descargarFirebaseAExcel(String nombreColeccion) async {
       // ═══════════════════════════════════════
       // DESCARGA EN WEB (PC/Navegador)
       // ═══════════════════════════════════════
-      final blob = html.Blob([bytes]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
-      final anchor = html.AnchorElement(href: url)
-        ..setAttribute('download', fileName)
-        ..click();
-      html.Url.revokeObjectUrl(url);
-
-      print('Archivo Excel descargado en Web: $fileName');
+      // Web download not supported in mobile build
+      print('Web download not available in mobile build');
     } else {
       // ═══════════════════════════════════════
       // DESCARGA EN MÓVIL (Android/iOS)
