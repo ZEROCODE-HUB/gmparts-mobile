@@ -11,7 +11,6 @@ workflows:
           - GMParts AppStore
         certificates:
           - Apple Distribution Certificate
-      node: 22
     scripts:
       - name: Install Flutter
         script: |
@@ -26,8 +25,7 @@ workflows:
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
           xcode-project use-profiles
-          flutter build ipa --release \
-            --export-options-plist=$CM_EXPORT_OPTIONS_PATH
+          flutter build ipa --release
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
