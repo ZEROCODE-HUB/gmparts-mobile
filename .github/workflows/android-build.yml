@@ -15,6 +15,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.22.0'
           channel: 'stable'
       - name: Install dependencies
         run: flutter pub get
@@ -22,11 +23,7 @@ jobs:
         run: |
           echo ${{ secrets.ANDROID_KEYSTORE_BASE64 }} | base64 -d > android/app/gmparts-keystore.jks
       - name: Build Android AAB
-        run: |
-          flutter build appbundle --release \
-            --dart-define=ANDROID_STORE_PASSWORD=${{ secrets.ANDROID_STORE_PASSWORD }} \
-            --dart-define=ANDROID_KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }} \
-            --dart-define=ANDROID_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: flutter build appbundle --release
         env:
           KEYSTORE_PATH: android/app/gmparts-keystore.jks
           STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
