@@ -25,9 +25,11 @@ workflows:
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
           xcode-project use-profiles
-          flutter build ipa --release
+          flutter build ipa --release \
+            --export-method app-store
     artifacts:
       - build/ios/ipa/*.ipa
+      - "**/*.ipa"
     publishing:
       app_store_connect:
         auth: integration
