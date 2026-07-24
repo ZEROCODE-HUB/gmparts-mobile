@@ -1,0 +1,36 @@
+workflows:
+  ios-workflow:
+    name: iOS Build - GMParts
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic Key2
+    environment:
+      ios_signing:
+        provisioning_profiles:
+          - GMParts AppStore
+        certificates:
+          - Apple Distribution Certificate
+      node: 22
+    scripts:
+      - name: Install Flutter
+        script: |
+          git clone https://github.com/flutter/flutter.git --depth 1 -b stable $HOME/flutter
+          export PATH="$PATH:$HOME/flutter/bin"
+          flutter doctor
+      - name: Install dependencies
+        script: |
+          export PATH="$PATH:$HOME/flutter/bin"
+          flutter pub get
+      - name: Build iOS
+        script: |
+          export PATH="$PATH:$HOME/flutter/bin"
+          xcode-project use-profiles
+          flutter build ipa --release \
+            --export-options-plist=$CM_EXPORT_OPTIONS_PATH
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
