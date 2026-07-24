@@ -27,7 +27,13 @@ workflows:
           xcode-project use-profiles
           flutter build ipa --release
       - name: Find IPA
-        script: find . -name "*.ipa" 2>/dev/null
+        script: |
+          echo "=== build/ios ==="
+          ls -la build/ios/ 2>/dev/null || echo "No build/ios folder"
+          echo "=== find xcarchive ==="
+          find . -name "*.xcarchive" 2>/dev/null
+          echo "=== find ipa ==="
+          find . -name "*.ipa" 2>/dev/null
     artifacts:
       - build/ios/ipa/*.ipa
       - "**/*.ipa"
