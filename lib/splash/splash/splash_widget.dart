@@ -36,10 +36,11 @@ class _SplashWidgetState extends State<SplashWidget> {
           _model.userread = await UsersRecord
               .getDocumentOnce(currentUserReference!)
               .timeout(const Duration(seconds: 5));
-          if ((_model.userread?.userRole == 'Administrador') ||
-              (_model.userread?.userRole == 'Gerente General') ||
-              (_model.userread?.userRole == 'Jefe de Taller') ||
-              (_model.userread?.userRole == 'Asesor Servicio')) {
+          final role = _model.userread?.userRole.trim().toLowerCase();
+          if (role == 'administrador' ||
+              role == 'gerente general' ||
+              role == 'jefe de taller' ||
+              role == 'asesor servicio') {
             context.goNamedAuth(
               ARecepcionesInicioWidget.routeName,
               context.mounted,
@@ -53,7 +54,7 @@ class _SplashWidgetState extends State<SplashWidget> {
             );
 
             return;
-          } else if (_model.userread?.userRole == 'Tecnico Mecanico') {
+          } else if (role == 'tecnico mecanico') {
             if (false) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -114,7 +115,7 @@ class _SplashWidgetState extends State<SplashWidget> {
 
               return;
             }
-          } else if (_model.userread?.userRole == 'Asesor Repuesto') {
+          } else if (role == 'asesor repuesto') {
             context.goNamedAuth(
               ARecepcionesInicioWidget.routeName,
               context.mounted,
