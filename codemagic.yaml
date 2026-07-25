@@ -14,7 +14,7 @@ workflows:
     scripts:
       - name: Install Flutter
         script: |
-          git clone https://github.com/flutter/flutter.git --depth 1 -b 3.32.0 $HOME/flutter
+          git clone https://github.com/flutter/flutter.git --depth 1 -b 3.44.8 $HOME/flutter
           export PATH="$PATH:$HOME/flutter/bin"
           flutter doctor
       - name: Install dependencies
@@ -25,7 +25,7 @@ workflows:
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
           xcode-project use-profiles
-          flutter build ipa --release
+          flutter build ipa --release --build-number=$BUILD_NUMBER
       - name: Export IPA
         script: |
           xcodebuild \
