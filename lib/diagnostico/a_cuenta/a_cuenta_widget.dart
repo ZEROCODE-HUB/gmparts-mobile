@@ -109,18 +109,21 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () => context.safePop(),
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
-                    ),
-                  ),
+                   Align(
+                     alignment: AlignmentDirectional(-1.0, 0.0),
+                     child: InkWell(
+                       splashColor: Colors.transparent,
+                       focusColor: Colors.transparent,
+                       hoverColor: Colors.transparent,
+                       highlightColor: Colors.transparent,
+                       onTap: () => context.safePop(),
+                       child: Icon(
+                         Icons.arrow_back,
+                         color: FlutterFlowTheme.of(context).primaryText,
+                         size: 24.0,
+                       ),
+                     ),
+                   ),
                   SizedBox(height: 24.0),
                   AuthUserStreamWidget(
                     builder: (context) {
