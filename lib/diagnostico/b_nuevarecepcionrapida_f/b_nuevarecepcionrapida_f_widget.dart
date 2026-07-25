@@ -3619,11 +3619,12 @@ class _BNuevarecepcionrapidaFWidgetState
                                                                          ),
                                                                        ),
                                                                      );
-                                                                     return;
-                                                                   }
-                                                                safeSetState(
-                                                                    () {});
-                                                              },
+                                                                      return;
+                                                                    }
+                                                                  }
+                                                                 safeSetState(
+                                                                     () {});
+                                                               },
                                                               child: Container(
                                                                 width: 100.0,
                                                                 height: 100.0,

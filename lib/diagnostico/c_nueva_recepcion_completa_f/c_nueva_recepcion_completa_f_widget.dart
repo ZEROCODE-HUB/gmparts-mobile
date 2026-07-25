@@ -5248,12 +5248,13 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                            );
                                                                            return;
                                                                          }
-                                                                         _model.addToImgautos(
-                                                                             _model
-                                                                                 .uploadedFileUrl_imgautom2);
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    },
+                                                                          _model.addToImgautos(
+                                                                              _model
+                                                                                  .uploadedFileUrl_imgautom2);
+                                                                        }
+                                                                       safeSetState(
+                                                                           () {});
+                                                                     },
                                                                     child:
                                                                         Container(
                                                                       width:
@@ -5404,10 +5405,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                            );
                                                            return;
                                                          }
-                                                         _model.addToImgautos(_model
-                                                             .uploadedFileUrl_imgautomovil1);
-                                                      safeSetState(() {});
-                                                    },
+                                                          _model.addToImgautos(_model
+                                                              .uploadedFileUrl_imgautomovil1);
+                                                        }
+                                                       safeSetState(() {});
+                                                     },
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 45.0,
