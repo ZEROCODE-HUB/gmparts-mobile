@@ -1,3 +1,4 @@
+import '/custom_code/actions/generate_link.dart';
 import '/diagnostico/recepcion_asedor_de_servicio/enviocliente/enviocliente_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -118,29 +119,29 @@ class _FRecepcionGuardadaWidgetState extends State<FRecepcionGuardadaWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        enableDrag: false,
-                        context: context,
-                        builder: (context) {
-                          return GestureDetector(
-                            onTap: () {
-                              FocusScope.of(context).unfocus();
-                              FocusManager.instance.primaryFocus?.unfocus();
-                            },
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: EnvioclienteWidget(
-                                link:
-                                    'https://gmpartsprueba.flutterflow.app/gLinkcliente?id=',
-                                id: widget.id!,
-                              ),
-                            ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
-                    },
+                       final url = await generateLink(widget.id!, 'quote');
+                       if (!context.mounted) return;
+                       await showModalBottomSheet(
+                         isScrollControlled: true,
+                         backgroundColor: Colors.transparent,
+                         enableDrag: false,
+                         context: context,
+                         builder: (context) {
+                           return GestureDetector(
+                             onTap: () {
+                               FocusScope.of(context).unfocus();
+                               FocusManager.instance.primaryFocus?.unfocus();
+                             },
+                             child: Padding(
+                               padding: MediaQuery.viewInsetsOf(context),
+                               child: EnvioclienteWidget(
+                                 link: url,
+                               ),
+                             ),
+                           );
+                         },
+                       ).then((value) => safeSetState(() {}));
+                     },
                     text: 'Enviar detalle al cliente',
                     options: FFButtonOptions(
                       width: MediaQuery.sizeOf(context).width * 1.0,

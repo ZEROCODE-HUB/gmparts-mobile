@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/custom_code/actions/generate_link.dart';
 import '/diagnostico/recepcion_asedor_de_servicio/enviocliente/enviocliente_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -248,31 +249,32 @@ class _BDashBoardDiagnosticoWidgetState
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () {
-                                              FocusScope.of(context).unfocus();
-                                              FocusManager.instance.primaryFocus
-                                                  ?.unfocus();
-                                            },
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: EnvioclienteWidget(
-                                                link:
-                                                    'https://gmpartsprueba.flutterflow.app/gLinkcliente?id=',
-                                                id: widget.datos!.numeroorden,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
-                                    },
+                                       final url = await generateLink(
+                                           widget.datos!.numeroorden, 'quote');
+                                       if (!context.mounted) return;
+                                       await showModalBottomSheet(
+                                         isScrollControlled: true,
+                                         backgroundColor: Colors.transparent,
+                                         enableDrag: false,
+                                         context: context,
+                                         builder: (context) {
+                                           return GestureDetector(
+                                             onTap: () {
+                                               FocusScope.of(context).unfocus();
+                                               FocusManager.instance.primaryFocus
+                                                   ?.unfocus();
+                                             },
+                                             child: Padding(
+                                               padding: MediaQuery.viewInsetsOf(
+                                                   context),
+                                               child: EnvioclienteWidget(
+                                                 link: url,
+                                               ),
+                                             ),
+                                           );
+                                         },
+                                       ).then((value) => safeSetState(() {}));
+                                     },
                                     child: Icon(
                                       Icons.share,
                                       color: FlutterFlowTheme.of(context)

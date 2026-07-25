@@ -1,3 +1,4 @@
+export 'generate_link.dart' show generateLink;
 export 'crearusuarios2.dart' show crearusuarios2;
 export 'downloadcsvkardex.dart' show downloadcsvkardex;
 export 'downloadcsvarticles.dart' show downloadcsvarticles;

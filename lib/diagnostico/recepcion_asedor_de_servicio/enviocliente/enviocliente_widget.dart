@@ -15,11 +15,9 @@ class EnvioclienteWidget extends StatefulWidget {
   const EnvioclienteWidget({
     super.key,
     required this.link,
-    required this.id,
   });
 
-  final String? link;
-  final int? id;
+  final String link;
 
   @override
   State<EnvioclienteWidget> createState() => _EnvioclienteWidgetState();
@@ -247,7 +245,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                                 query: {
                                   'subject': 'Detalles de tu recepción',
                                   'body':
-                                      '${widget.link}${widget.id?.toString()}',
+                                      widget.link,
                                 }
                                     .entries
                                     .map((MapEntry<String, String> e) =>
@@ -310,7 +308,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                       onTap: () async {
                           setState(() => _isCopied = true);
                           await Clipboard.setData(ClipboardData(
-                              text: '${widget.link}${widget.id?.toString()}'));
+                              text: widget.link));
                           if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -358,10 +356,10 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await launchURL(
-                                  '${widget.link}${widget.id?.toString()}');
+                                  widget.link);
                             },
                             child: Text(
-                              '${widget.link}${widget.id?.toString()}',
+                              widget.link,
                               maxLines: 1,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

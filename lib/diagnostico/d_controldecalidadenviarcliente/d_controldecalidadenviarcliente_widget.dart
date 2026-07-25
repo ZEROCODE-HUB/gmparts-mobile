@@ -1,3 +1,4 @@
+import '/custom_code/actions/generate_link.dart';
 import '/diagnostico/recepcion_asedor_de_servicio/enviocliente/enviocliente_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -135,7 +136,9 @@ class _DControldecalidadenviarclienteWidgetState
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await showModalBottomSheet(
+                         final url = await generateLink(widget.id!, 'report');
+                         if (!context.mounted) return;
+                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           enableDrag: false,
@@ -149,10 +152,8 @@ class _DControldecalidadenviarclienteWidgetState
                               child: Padding(
                                 padding: MediaQuery.viewInsetsOf(context),
                                 child: EnvioclienteWidget(
-                                  link:
-                                      'https://gmpartsprueba.flutterflow.app/encuestacliente?id=',
-                                  id: widget.id!,
-                                ),
+                                   link: url,
+                                 ),
                               ),
                             );
                           },
