@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -83,6 +85,18 @@ class _MyAppState extends State<MyApp> {
     Future.delayed(
       Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
+    );
+
+    // Timeout de seguridad: si Firebase Auth no responde en 5s,
+    // muestra la pantalla de login para evitar quedarse pegado.
+    Future.delayed(
+      Duration(seconds: 5),
+      () {
+        if (_appStateNotifier.user == null) {
+          _appStateNotifier.stopShowingSplashImage();
+          _appStateNotifier.update(GMPartsFirebaseUser(null));
+        }
+      },
     );
   }
 

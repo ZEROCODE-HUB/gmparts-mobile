@@ -31,46 +31,125 @@ class _SplashWidgetState extends State<SplashWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (loggedIn) {
-        _model.userread =
-            await UsersRecord.getDocumentOnce(currentUserReference!);
-        if ((_model.userread?.userRole == 'Administrador') ||
-            (_model.userread?.userRole == 'Gerente General') ||
-            (_model.userread?.userRole == 'Jefe de Taller') ||
-            (_model.userread?.userRole == 'Asesor Servicio')) {
-          context.goNamedAuth(
-            ARecepcionesInicioWidget.routeName,
-            context.mounted,
-            extra: <String, dynamic>{
-              '__transition_info__': TransitionInfo(
-                hasTransition: true,
-                transitionType: PageTransitionType.fade,
-                duration: Duration(milliseconds: 0),
-              ),
-            },
-          );
+      try {
+        if (loggedIn) {
+          _model.userread = await UsersRecord
+              .getDocumentOnce(currentUserReference!)
+              .timeout(const Duration(seconds: 5));
+          if ((_model.userread?.userRole == 'Administrador') ||
+              (_model.userread?.userRole == 'Gerente General') ||
+              (_model.userread?.userRole == 'Jefe de Taller') ||
+              (_model.userread?.userRole == 'Asesor Servicio')) {
+            context.goNamedAuth(
+              ARecepcionesInicioWidget.routeName,
+              context.mounted,
+              extra: <String, dynamic>{
+                '__transition_info__': TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 0),
+                ),
+              },
+            );
 
-          return;
-        } else if (_model.userread?.userRole == 'Tecnico Mecanico') {
-          if (false) {
+            return;
+          } else if (_model.userread?.userRole == 'Tecnico Mecanico') {
+            if (false) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Debe loguearse en la app móvil',
+                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                          font: GoogleFonts.montserrat(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .labelLarge
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .labelLarge
+                                .fontStyle,
+                          ),
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelLarge
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelLarge
+                              .fontStyle,
+                        ),
+                  ),
+                  duration: Duration(milliseconds: 4000),
+                  backgroundColor: FlutterFlowTheme.of(context).primary,
+                ),
+              );
+              GoRouter.of(context).prepareAuthEvent();
+              await authManager.signOut();
+              GoRouter.of(context).clearRedirectLocation();
+
+              context.goNamedAuth(
+                IniciarSessionWidget.routeName,
+                context.mounted,
+                extra: <String, dynamic>{
+                  '__transition_info__': TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.fade,
+                    duration: Duration(milliseconds: 0),
+                  ),
+                },
+              );
+
+              return;
+            } else {
+              context.goNamedAuth(
+                ARecepcionesInicioWidget.routeName,
+                context.mounted,
+                extra: <String, dynamic>{
+                  '__transition_info__': TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.fade,
+                    duration: Duration(milliseconds: 0),
+                  ),
+                },
+              );
+
+              return;
+            }
+          } else if (_model.userread?.userRole == 'Asesor Repuesto') {
+            context.goNamedAuth(
+              ARecepcionesInicioWidget.routeName,
+              context.mounted,
+              extra: <String, dynamic>{
+                '__transition_info__': TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 0),
+                ),
+              },
+            );
+
+            return;
+          } else {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  'Debe loguearse en la app móvil',
+                  'Debe loguearse en web Admin',
                   style: FlutterFlowTheme.of(context).labelLarge.override(
                         font: GoogleFonts.montserrat(
                           fontWeight: FlutterFlowTheme.of(context)
                               .labelLarge
                               .fontWeight,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelLarge
+                              .fontStyle,
                         ),
                         color: FlutterFlowTheme.of(context).primaryText,
                         letterSpacing: 0.0,
-                        fontWeight:
-                            FlutterFlowTheme.of(context).labelLarge.fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .labelLarge
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .labelLarge
+                            .fontStyle,
                       ),
                 ),
                 duration: Duration(milliseconds: 4000),
@@ -94,63 +173,8 @@ class _SplashWidgetState extends State<SplashWidget> {
             );
 
             return;
-          } else {
-            context.goNamedAuth(
-              ARecepcionesInicioWidget.routeName,
-              context.mounted,
-              extra: <String, dynamic>{
-                '__transition_info__': TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.fade,
-                  duration: Duration(milliseconds: 0),
-                ),
-              },
-            );
-
-            return;
           }
-        } else if (_model.userread?.userRole == 'Asesor Repuesto') {
-          context.goNamedAuth(
-            ARecepcionesInicioWidget.routeName,
-            context.mounted,
-            extra: <String, dynamic>{
-              '__transition_info__': TransitionInfo(
-                hasTransition: true,
-                transitionType: PageTransitionType.fade,
-                duration: Duration(milliseconds: 0),
-              ),
-            },
-          );
-
-          return;
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Debe loguearse en web Admin',
-                style: FlutterFlowTheme.of(context).labelLarge.override(
-                      font: GoogleFonts.montserrat(
-                        fontWeight:
-                            FlutterFlowTheme.of(context).labelLarge.fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).labelLarge.fontStyle,
-                      ),
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      letterSpacing: 0.0,
-                      fontWeight:
-                          FlutterFlowTheme.of(context).labelLarge.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).labelLarge.fontStyle,
-                    ),
-              ),
-              duration: Duration(milliseconds: 4000),
-              backgroundColor: FlutterFlowTheme.of(context).primary,
-            ),
-          );
-          GoRouter.of(context).prepareAuthEvent();
-          await authManager.signOut();
-          GoRouter.of(context).clearRedirectLocation();
-
           context.goNamedAuth(
             IniciarSessionWidget.routeName,
             context.mounted,
@@ -165,20 +189,23 @@ class _SplashWidgetState extends State<SplashWidget> {
 
           return;
         }
-      } else {
-        context.goNamedAuth(
-          IniciarSessionWidget.routeName,
-          context.mounted,
-          extra: <String, dynamic>{
-            '__transition_info__': TransitionInfo(
-              hasTransition: true,
-              transitionType: PageTransitionType.fade,
-              duration: Duration(milliseconds: 0),
-            ),
-          },
-        );
-
-        return;
+      } catch (_) {
+        if (context.mounted) {
+          GoRouter.of(context).prepareAuthEvent();
+          await authManager.signOut();
+          GoRouter.of(context).clearRedirectLocation();
+          context.goNamedAuth(
+            IniciarSessionWidget.routeName,
+            context.mounted,
+            extra: <String, dynamic>{
+              '__transition_info__': TransitionInfo(
+                hasTransition: true,
+                transitionType: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+              ),
+            },
+          );
+        }
       }
     });
 
