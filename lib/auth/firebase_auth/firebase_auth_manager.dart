@@ -302,13 +302,25 @@ class FirebaseAuthManager extends AuthManager
     String authProvider,
   ) async {
     try {
-      final userCredential = await signInFunc();
+      final userCredential = await signInFunc()
+          .timeout(const Duration(seconds: 15));
       if (userCredential?.user != null) {
-        await maybeCreateUser(userCredential!.user!);
+        await maybeCreateUser(userCredential!.user!)
+            .timeout(const Duration(seconds: 10));
       }
       return userCredential == null
           ? null
           : GMPartsFirebaseUser.fromUserCredential(userCredential);
+    } on TimeoutException {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'La conexión tardó demasiado. Verifica tu red e intenta de nuevo.',
+          ),
+        ),
+      );
+      return null;
     } on FirebaseAuthException catch (e) {
       final errorMsg = switch (e.code) {
         'email-already-in-use' =>
@@ -320,6 +332,16 @@ class FirebaseAuthManager extends AuthManager
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(errorMsg)),
+      );
+      return null;
+    } catch (e) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Error inesperado al iniciar sesión. Intenta de nuevo.',
+          ),
+        ),
       );
       return null;
     }
