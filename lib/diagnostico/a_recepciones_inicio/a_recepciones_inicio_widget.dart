@@ -226,31 +226,41 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                  decoration: BoxDecoration(
                                                    shape: BoxShape.circle,
                                                  ),
-                                                 child: currentUserPhoto.isNotEmpty
-                                                     ? Image.network(
-                                                         currentUserPhoto,
-                                                         fit: BoxFit.cover,
-                                                       )
-                                                     : Image.asset(
-                                                         'assets/images/perfil.png',
-                                                         fit: BoxFit.cover,
-                                                       ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(1.0, 0.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => Text(
-                                              valueOrDefault<String>(
-                                                currentUserDisplayName,
-                                                '-',
-                                              ),
-                                              textAlign: TextAlign.end,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
+                                                  child: Builder(
+                                                    builder: (context) {
+                                                      final photo = currentUserPhoto;
+                                                      if (photo != null && photo.isNotEmpty) {
+                                                        return Image.network(
+                                                          photo,
+                                                          fit: BoxFit.cover,
+                                                          errorBuilder: (_, __, ___) =>
+                                                              Image.asset(
+                                                            'assets/images/perfil.png',
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        );
+                                                      }
+                                                      return Image.asset(
+                                                        'assets/images/perfil.png',
+                                                        fit: BoxFit.cover,
+                                                      );
+                                                    },
+                                                  ),
+                                               ),
+                                             ),
+                                           ),
+                                         ),
+                                         Align(
+                                           alignment:
+                                               AlignmentDirectional(1.0, 0.0),
+                                           child: AuthUserStreamWidget(
+                                             builder: (context) => Text(
+                                               valueOrDefault<String>(
+                                                 currentUserDisplayName,
+                                                 '-',
+                                               ),
+                                               maxLines: 1,
+                                               overflow: TextOverflow.ellipsis,
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall

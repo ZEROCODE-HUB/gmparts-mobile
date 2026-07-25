@@ -38,6 +38,56 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
     super.dispose();
   }
 
+  void _editName(BuildContext context) {
+    final controller = TextEditingController(text: currentUserDisplayName);
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text('Editar nombre'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          decoration: InputDecoration(hintText: 'Ingresa tu nombre'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text('Cancelar'),
+          ),
+          TextButton(
+            onPressed: () async {
+              final newName = controller.text.trim();
+              if (newName.isNotEmpty) {
+                await currentUserDocument?.reference.update({
+                  'display_name': newName,
+                });
+              }
+              if (ctx.mounted) Navigator.pop(ctx);
+            },
+            child: Text('Guardar'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _editDateOfBirth(BuildContext context) {
+    final currentDob = currentUserDocument?.fechaDeNacimiento;
+    showDatePicker(
+      context: context,
+      initialDate: currentDob ?? DateTime(2000, 1, 1),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+      locale: const Locale('es'),
+    ).then((date) {
+      if (date != null) {
+        currentUserDocument?.reference.update({
+          'fecha_de_nacimiento': date,
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -61,9 +111,7 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                     focusColor: Colors.transparent,
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.safePop();
-                    },
+                    onTap: () => context.safePop(),
                     child: Icon(
                       Icons.arrow_back,
                       color: FlutterFlowTheme.of(context).primaryText,
@@ -74,74 +122,96 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                   AuthUserStreamWidget(
                     builder: (context) {
                       final photo = currentUserPhoto;
-                      final hasPhoto = photo != null && photo.isNotEmpty;
                       return Container(
                         width: 100.0,
                         height: 100.0,
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(shape: BoxShape.circle),
-                        child: hasPhoto
+                        child: (photo != null && photo.isNotEmpty)
                             ? Image.network(photo, fit: BoxFit.cover)
-                            : Image.asset(
-                                'assets/images/perfil.png',
-                                fit: BoxFit.cover,
-                              ),
+                            : Image.asset('assets/images/perfil.png',
+                                fit: BoxFit.cover),
                       );
                     },
                   ),
-                  SizedBox(height: 8.0),
-                  AuthUserStreamWidget(
-                    builder: (context) {
-                      final name = currentUserDisplayName;
-                      return Text(
-                        name.isNotEmpty ? name : 'Sin nombre',
-                        style: FlutterFlowTheme.of(context).headlineSmall.override(
-                              font: GoogleFonts.montserrat(),
-                            ),
-                      );
-                    },
+                  SizedBox(height: 24.0),
+                  _buildEditableField(
+                    context,
+                    'Nombre',
+                    currentUserDisplayName.isNotEmpty
+                        ? currentUserDisplayName
+                        : 'Sin nombre',
+                    Icons.person_outline,
+                    onEdit: () => _editName(context),
                   ),
-                  SizedBox(height: 32.0),
-                  AuthUserStreamWidget(
-                    builder: (context) => _buildField(
-                      context,
-                      'Email',
-                      currentUserEmail.isNotEmpty ? currentUserEmail : 'No registrado',
-                      Icons.email_outlined,
+                  SizedBox(height: 12.0),
+                  _buildField(
+                    context,
+                    'Email',
+                    currentUserEmail.isNotEmpty
+                        ? currentUserEmail
+                        : 'No registrado',
+                    Icons.email_outlined,
+                  ),
+                  SizedBox(height: 12.0),
+                  _buildField(
+                    context,
+                    'Teléfono',
+                    currentPhoneNumber.isNotEmpty
+                        ? currentPhoneNumber
+                        : 'No registrado',
+                    Icons.phone_outlined,
+                  ),
+                  SizedBox(height: 12.0),
+                  _buildEditableField(
+                    context,
+                    'Fecha de Nacimiento',
+                    currentUserDocument?.fechaDeNacimiento != null
+                        ? '${currentUserDocument!.fechaDeNacimiento!.day.toString().padLeft(2, '0')}/${currentUserDocument!.fechaDeNacimiento!.month.toString().padLeft(2, '0')}/${currentUserDocument!.fechaDeNacimiento!.year}'
+                        : 'No registrada',
+                    Icons.calendar_today_outlined,
+                    onEdit: () => _editDateOfBirth(context),
+                  ),
+                  SizedBox(height: 40.0),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 45.0,
+                    child: ElevatedButton.icon(
+                      onPressed: () async {
+                        GoRouter.of(context).prepareAuthEvent();
+                        await authManager.signOut();
+                        GoRouter.of(context).clearRedirectLocation();
+                        context.goNamedAuth(
+                            IniciarSessionWidget.routeName, context.mounted);
+                      },
+                      icon: Icon(Icons.logout, size: 20.0),
+                      label: Text('CERRAR SESIÓN'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: FlutterFlowTheme.of(context).primary,
+                        foregroundColor:
+                            FlutterFlowTheme.of(context).primaryText,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                      ),
                     ),
                   ),
                   SizedBox(height: 12.0),
-                  AuthUserStreamWidget(
-                    builder: (context) => _buildField(
-                      context,
-                      'Teléfono',
-                      currentPhoneNumber.isNotEmpty ? currentPhoneNumber : 'No registrado',
-                      Icons.phone_outlined,
+                  SizedBox(
+                    width: double.infinity,
+                    height: 45.0,
+                    child: ElevatedButton.icon(
+                      onPressed: () => context
+                          .pushNamed(AConfirmarBorrarCuentaWidget.routeName),
+                      icon: Icon(Icons.delete_sharp, size: 20.0),
+                      label: Text('BORRAR CUENTA'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: FlutterFlowTheme.of(context).error,
+                        foregroundColor:
+                            FlutterFlowTheme.of(context).primaryText,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 32.0),
-                  _buildButton(
-                    context,
-                    'CERRAR SESIÓN',
-                    Icons.logout,
-                    Colors.red,
-                    () async {
-                      GoRouter.of(context).prepareAuthEvent();
-                      await authManager.signOut();
-                      GoRouter.of(context).clearRedirectLocation();
-                      context.goNamedAuth(
-                          IniciarSessionWidget.routeName, context.mounted);
-                    },
-                  ),
-                  SizedBox(height: 12.0),
-                  _buildButton(
-                    context,
-                    'BORRAR CUENTA',
-                    Icons.delete_sharp,
-                    FlutterFlowTheme.of(context).error,
-                    () async {
-                      context.pushNamed(AConfirmarBorrarCuentaWidget.routeName);
-                    },
                   ),
                   SizedBox(height: 32.0),
                 ],
@@ -153,7 +223,8 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
     );
   }
 
-  Widget _buildField(BuildContext context, String label, String value, IconData icon) {
+  Widget _buildField(
+      BuildContext context, String label, String value, IconData icon) {
     return Container(
       width: double.infinity,
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
@@ -168,18 +239,12 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                label,
-                style: FlutterFlowTheme.of(context).labelSmall.override(
-                      font: GoogleFonts.montserrat(),
-                    ),
-              ),
-              Text(
-                value,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      font: GoogleFonts.montserrat(),
-                    ),
-              ),
+              Text(label,
+                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                      font: GoogleFonts.montserrat())),
+              Text(value,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      font: GoogleFonts.montserrat())),
             ],
           ),
         ],
@@ -187,25 +252,39 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
     );
   }
 
-  Widget _buildButton(
-    BuildContext context,
-    String text,
-    IconData icon,
-    Color color,
-    VoidCallback onTap,
-  ) {
-    return SizedBox(
+  Widget _buildEditableField(BuildContext context, String label, String value,
+      IconData icon, {VoidCallback? onEdit}) {
+    return Container(
       width: double.infinity,
-      height: 45.0,
-      child: ElevatedButton.icon(
-        onPressed: onTap,
-        icon: Icon(icon, size: 20.0),
-        label: Text(text),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          foregroundColor: FlutterFlowTheme.of(context).primaryText,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        ),
+      padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+      decoration: BoxDecoration(
+        color: FlutterFlowTheme.of(context).secondaryBackground,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, size: 20.0, color: FlutterFlowTheme.of(context).primary),
+          SizedBox(width: 12.0),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(label,
+                    style: FlutterFlowTheme.of(context).labelSmall.override(
+                        font: GoogleFonts.montserrat())),
+                Text(value,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.montserrat())),
+              ],
+            ),
+          ),
+          if (onEdit != null)
+            InkWell(
+              onTap: onEdit,
+              child: Icon(Icons.edit, size: 18.0,
+                  color: FlutterFlowTheme.of(context).primary),
+            ),
+        ],
       ),
     );
   }
