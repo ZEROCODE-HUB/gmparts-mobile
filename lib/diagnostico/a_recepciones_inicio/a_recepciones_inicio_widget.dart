@@ -158,11 +158,12 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                                       context)
                                                                   .labelSmall
                                                                   .fontStyle,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                   ),
+                                 ),
+                               ),
+                             ),
+                           SizedBox(height: 60.0),
+                           ],
                                       ),
                                     ),
                                   ),
