@@ -3018,17 +3018,9 @@ class _BNuevarecepcionrapidaFWidgetState
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
-                                  child: FutureBuilder<List<UsersRecord>>(
-                                     future: queryUsersRecordOnce(
-                                       queryBuilder: (usersRecord) => usersRecord
-                                           .whereIn('user_role', [
-                                         'Asesor Servicio',
-                                         'Asesor Repuesto',
-                                         'Tecnico Mecanico',
-                                         'Administrador',
-                                       ]),
-                                     ),
-                                     builder: (context, snapshot) {
+                                   child: FutureBuilder<List<UsersRecord>>(
+                                      future: queryUsersRecordOnce(),
+                                      builder: (context, snapshot) {
                                        if (snapshot.connectionState ==
                                                ConnectionState.waiting) {
                                          return Center(
@@ -3120,7 +3112,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                         margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
-                                         isOverButton: false,
+                                         isOverButton: true,
                                          isSearchable: false,
                                          isMultiSelect: false,
                                        );
