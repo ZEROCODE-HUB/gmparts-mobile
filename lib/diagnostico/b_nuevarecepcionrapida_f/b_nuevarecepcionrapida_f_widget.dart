@@ -53,6 +53,9 @@ class _BNuevarecepcionrapidaFWidgetState
       if (widget.recepcionid != null) {
         _model.recepcionDATOS =
             await RecepcionesRecord.getDocumentOnce(widget.recepcionid!);
+        if (_model.recepcionDATOS!.hasFotos()) {
+          _model.imagenesauto = List.from(_model.recepcionDATOS!.fotos);
+        }
         safeSetState(() {
           _model.motivoTextController?.text =
               _model.recepcionDATOS!.motivoIngreso;
@@ -3584,33 +3587,40 @@ class _BNuevarecepcionrapidaFWidgetState
                                                                     _model.isDataUploading_imgauto24 =
                                                                         false;
                                                                   }
-                                                                  if (selectedUploadedFiles
-                                                                              .length ==
-                                                                          selectedMedia
-                                                                              .length &&
-                                                                      downloadUrls
-                                                                              .length ==
-                                                                          selectedMedia
-                                                                              .length) {
-                                                                    safeSetState(
-                                                                        () {
-                                                                      _model.uploadedLocalFile_imgauto24 =
-                                                                          selectedUploadedFiles
-                                                                              .first;
-                                                                      _model.uploadedFileUrl_imgauto24 =
-                                                                          downloadUrls
-                                                                              .first;
-                                                                    });
-                                                                  } else {
-                                                                    safeSetState(
-                                                                        () {});
-                                                                    return;
-                                                                  }
-                                                                }
-
-                                                                _model.addToImagenesauto(
-                                                                    _model
-                                                                        .uploadedFileUrl_imgauto24);
+                                                                   if (selectedUploadedFiles
+                                                                               .length ==
+                                                                           selectedMedia
+                                                                               .length &&
+                                                                       downloadUrls
+                                                                               .length ==
+                                                                           selectedMedia
+                                                                               .length) {
+                                                                     safeSetState(
+                                                                         () {
+                                                                       _model.uploadedLocalFile_imgauto24 =
+                                                                           selectedUploadedFiles
+                                                                               .first;
+                                                                       _model.uploadedFileUrl_imgauto24 =
+                                                                           downloadUrls
+                                                                               .first;
+                                                                     });
+                                                                     _model.addToImagenesauto(
+                                                                         _model
+                                                                             .uploadedFileUrl_imgauto24);
+                                                                   } else {
+                                                                     safeSetState(
+                                                                         () {});
+                                                                     ScaffoldMessenger.of(
+                                                                             context)
+                                                                         .showSnackBar(
+                                                                       SnackBar(
+                                                                         content: Text(
+                                                                           'Error al subir la foto. Intenta de nuevo.',
+                                                                         ),
+                                                                       ),
+                                                                     );
+                                                                     return;
+                                                                   }
                                                                 safeSetState(
                                                                     () {});
                                                               },
@@ -3736,6 +3746,14 @@ class _BNuevarecepcionrapidaFWidgetState
                                                 });
                                               } else {
                                                 safeSetState(() {});
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Error al subir la foto. Intenta de nuevo.',
+                                                    ),
+                                                  ),
+                                                );
                                                 return;
                                               }
                                             }

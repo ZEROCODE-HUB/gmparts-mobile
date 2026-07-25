@@ -5234,16 +5234,23 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                             _model.uploadedFileUrl_imgautom2 =
                                                                                 downloadUrls.first;
                                                                           });
-                                                                        } else {
-                                                                          safeSetState(
-                                                                              () {});
-                                                                          return;
-                                                                        }
-                                                                      }
-
-                                                                      _model.addToImgautos(
-                                                                          _model
-                                                                              .uploadedFileUrl_imgautom2);
+                                                                         } else {
+                                                                           safeSetState(
+                                                                               () {});
+                                                                           ScaffoldMessenger.of(
+                                                                                   context)
+                                                                               .showSnackBar(
+                                                                             SnackBar(
+                                                                               content: Text(
+                                                                                 'Error al subir la foto. Intenta de nuevo.',
+                                                                               ),
+                                                                             ),
+                                                                           );
+                                                                           return;
+                                                                         }
+                                                                         _model.addToImgautos(
+                                                                             _model
+                                                                                 .uploadedFileUrl_imgautom2);
                                                                       safeSetState(
                                                                           () {});
                                                                     },
@@ -5384,14 +5391,21 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                 downloadUrls
                                                                     .first;
                                                           });
-                                                        } else {
-                                                          safeSetState(() {});
-                                                          return;
-                                                        }
-                                                      }
-
-                                                      _model.addToImgautos(_model
-                                                          .uploadedFileUrl_imgautomovil1);
+                                                         } else {
+                                                           safeSetState(() {});
+                                                           ScaffoldMessenger.of(
+                                                                   context)
+                                                               .showSnackBar(
+                                                             SnackBar(
+                                                               content: Text(
+                                                                 'Error al subir la foto. Intenta de nuevo.',
+                                                               ),
+                                                             ),
+                                                           );
+                                                           return;
+                                                         }
+                                                         _model.addToImgautos(_model
+                                                             .uploadedFileUrl_imgautomovil1);
                                                       safeSetState(() {});
                                                     },
                                                     child: Container(
