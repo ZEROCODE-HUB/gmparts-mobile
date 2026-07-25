@@ -140,7 +140,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       await launchURL(
-                          'https://api.whatsapp.com/send?text=${widget.link}${widget.id?.toString()}');
+                          'https://api.whatsapp.com/send?text=${Uri.encodeComponent(widget.link)}');
                     },
                     child: Container(
                       decoration: BoxDecoration(),
@@ -161,7 +161,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                             ),
                             onPressed: () async {
                               await launchURL(
-                                  'https://api.whatsapp.com/send?text=${widget.link}${widget.id?.toString()}');
+                                  'https://api.whatsapp.com/send?text=${Uri.encodeComponent(widget.link)}');
                             },
                           ),
                           Padding(
@@ -174,7 +174,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 await launchURL(
-                                    'https://api.whatsapp.com/send?text=${widget.link}${widget.id?.toString()}');
+                                    widget.link);
                               },
                               child: Text(
                                 'WhatsApp',
@@ -216,7 +216,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                           query: {
                             'subject': 'GM PARTS',
                             'body':
-                                'https://api.whatsapp.com/send?text=${widget.link}${widget.id?.toString()}',
+                                widget.link,
                           }
                               .entries
                               .map((MapEntry<String, String> e) =>
@@ -356,7 +356,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await launchURL(
-                                  widget.link);
+                                  'https://api.whatsapp.com/send?text=${Uri.encodeComponent(widget.link)}');
                             },
                             child: Text(
                               widget.link,
