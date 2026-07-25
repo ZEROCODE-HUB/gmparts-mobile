@@ -197,20 +197,27 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                       ),
                                      ),
                                    ),
-                                   Padding(
-                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                         0.0, 12.0, 0.0, 0.0),
-                                     child: InkWell(
-                                       onTap: () => context
-                                           .pushNamed(DashboardWidget.routeName),
-                                       child: Icon(
-                                         Icons.home_outlined,
-                                         color:
-                                             FlutterFlowTheme.of(context).primary,
-                                         size: 24.0,
-                                       ),
-                                     ),
-                                   ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 12.0, 0.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context).primary,
+                                        borderRadius: 30.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 32.0,
+                                        icon: Icon(
+                                          Icons.chevron_left_rounded,
+                                          color:
+                                              FlutterFlowTheme.of(context).primary,
+                                          size: 16.0,
+                                        ),
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                              DashboardWidget.routeName);
+                                        },
+                                      ),
+                                    ),
                                    Container(
                                     width: 70.0,
                                     decoration: BoxDecoration(),
@@ -234,9 +241,9 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                  context.pushNamed(
                                                      ACuentaWidget.routeName);
                                                },
-                                                child: Container(
-                                                  width: 40.0,
-                                                  height: 40.0,
+                                                 child: Container(
+                                                   width: 48.0,
+                                                   height: 48.0,
                                                   clipBehavior: Clip.antiAlias,
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -319,10 +326,31 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                             .labelSmall
                                                             .fontStyle,
                                                   ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                             ),
+                                           ),
+                                         ),
+                                         AuthUserStreamWidget(
+                                           builder: (context) => Padding(
+                                             padding: EdgeInsetsDirectional
+                                                 .fromSTEB(0.0, 2.0, 0.0, 0.0),
+                                             child: Text(
+                                               'Ver perfil',
+                                               style: FlutterFlowTheme.of(
+                                                       context)
+                                                   .labelSmall
+                                                   .override(
+                                                     font:
+                                                         GoogleFonts.montserrat(),
+                                                     color:
+                                                         FlutterFlowTheme.of(
+                                                                 context)
+                                                             .primary,
+                                                     fontSize: 11.0,
+                                                   ),
+                                             ),
+                                           ),
+                                         ),
+                                       ],
                                     ),
                                   ),
                                 ],
@@ -816,8 +844,12 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                                           4.0,
                                                                           8.0,
                                                                           4.0),
-                                                              child: Text(
-                                                                'Recepción',
+                                                               child: Text(
+                                                                 valueOrDefault<String>(
+                                                                   listViewRecepcionesRecord
+                                                                       .status,
+                                                                   'Recepción',
+                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium

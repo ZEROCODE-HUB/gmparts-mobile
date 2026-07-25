@@ -4638,11 +4638,13 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                         .dropDownTecnicoValueController ??=
                                                     FormFieldController<String>(
                                                         null),
-                                                options:
-                                                    dropDownTecnicoUsersRecordList
-                                                        .map((e) =>
-                                                            e.displayName)
-                                                        .toList(),
+                                                 options:
+                                                     dropDownTecnicoUsersRecordList
+                                                         .map((e) =>
+                                                             valueOrDefault<String>(
+                                                                 e.displayName,
+                                                                 'nom'))
+                                                         .toList(),
                                                 onChanged: (val) =>
                                                     safeSetState(() => _model
                                                             .dropDownTecnicoValue =

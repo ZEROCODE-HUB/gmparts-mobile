@@ -99,14 +99,42 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       AuthUserStreamWidget(
-                        builder: (context) => Row(
-                          children: [
-                            InkWell(
-                              onTap: () => context.pushNamed(ACuentaWidget.routeName),
-                              child: Container(
+                        builder: (context) => InkWell(
+                          onTap: () => context.pushNamed(ACuentaWidget.routeName),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    currentUserDisplayName.isNotEmpty
+                                        ? currentUserDisplayName
+                                        : 'Usuario',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          font: GoogleFonts.montserrat(
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                  ),
+                                  Text(
+                                    'Ver perfil',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelSmall
+                                        .override(
+                                          font: GoogleFonts.montserrat(),
+                                          color: FlutterFlowTheme.of(context).primary,
+                                          fontSize: 11.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width: 8.0),
+                              Container(
                                 width: 48.0,
                                 height: 48.0,
                                 clipBehavior: Clip.antiAlias,
@@ -118,40 +146,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                             _buildInitialsAvatar())
                                     : _buildInitialsAvatar(),
                               ),
-                            ),
-                            SizedBox(width: 12.0),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Bienvenido,',
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelSmall
-                                      .override(font: GoogleFonts.montserrat()),
-                                ),
-                                Text(
-                                  currentUserDisplayName.isNotEmpty
-                                      ? currentUserDisplayName
-                                      : 'Usuario',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        font: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
-                                      ),
-                                ),
-                                Text(
-                                  'Ver perfil',
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelSmall
-                                      .override(
-                                        font: GoogleFonts.montserrat(),
-                                        color: FlutterFlowTheme.of(context).primary,
-                                        fontSize: 11.0,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
