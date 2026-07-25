@@ -307,9 +307,17 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        await Clipboard.setData(ClipboardData(
-                            text: '${widget.link}${widget.id?.toString()}'));
-                      },
+                         await Clipboard.setData(ClipboardData(
+                             text: '${widget.link}${widget.id?.toString()}'));
+                         if (context.mounted) {
+                           ScaffoldMessenger.of(context).showSnackBar(
+                             SnackBar(
+                               content: Text('Enlace copiado al portapapeles'),
+                               duration: Duration(seconds: 2),
+                             ),
+                           );
+                         }
+                       },
                       child: Icon(
                         Icons.content_copy,
                         color: FlutterFlowTheme.of(context).primaryBackground,

@@ -1459,322 +1459,174 @@ class _CrearfallaNUEVOWidgetState extends State<CrearfallaNUEVOWidget> {
                               0.0, 16.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              if (_model.formKey.currentState == null ||
-                                  !_model.formKey.currentState!.validate()) {
-                                return;
-                              }
-                              if (_model.repuestos.length > 0) {
-                                {
-                                  safeSetState(() => _model
-                                      .isDataUploading_firebasefotos2 = true);
-                                  var selectedUploadedFiles =
-                                      <FFUploadedFile>[];
-                                  var selectedMedia = <SelectedFile>[];
-                                  var downloadUrls = <String>[];
-                                  try {
-                                    selectedUploadedFiles = _model.fotos;
-                                    selectedMedia =
-                                        selectedFilesFromUploadedFiles(
-                                      selectedUploadedFiles,
-                                      isMultiData: true,
-                                    );
-                                    downloadUrls = (await Future.wait(
-                                      selectedMedia.map(
-                                        (m) async => await uploadData(
-                                            m.storagePath, m.bytes),
-                                      ),
-                                    ))
-                                        .where((u) => u != null)
-                                        .map((u) => u!)
-                                        .toList();
-                                  } finally {
-                                    _model.isDataUploading_firebasefotos2 =
-                                        false;
-                                  }
-                                  if (selectedUploadedFiles.length ==
-                                          selectedMedia.length &&
-                                      downloadUrls.length ==
-                                          selectedMedia.length) {
-                                    safeSetState(() {
-                                      _model.uploadedLocalFiles_firebasefotos2 =
-                                          selectedUploadedFiles;
-                                      _model.uploadedFileUrls_firebasefotos2 =
-                                          downloadUrls;
-                                    });
-                                  } else {
-                                    safeSetState(() {});
-                                    return;
-                                  }
-                                }
+                               if (_model.formKey.currentState == null ||
+                                   !_model.formKey.currentState!.validate()) {
+                                 return;
+                               }
+                               if (_model.repuestos.length == 0) {
+                                 ScaffoldMessenger.of(context).showSnackBar(
+                                   SnackBar(
+                                     content: Text(
+                                       'Agrega al menos un repuesto',
+                                       style: TextStyle(
+                                         color: FlutterFlowTheme.of(context)
+                                             .primaryText,
+                                       ),
+                                     ),
+                                     duration: Duration(milliseconds: 4000),
+                                     backgroundColor:
+                                         FlutterFlowTheme.of(context).primary,
+                                   ),
+                                 );
+                               }
+                               {
+                                 safeSetState(() => _model
+                                     .isDataUploading_firebasefotos2 = true);
+                                 var selectedUploadedFiles =
+                                     <FFUploadedFile>[];
+                                 var selectedMedia = <SelectedFile>[];
+                                 var downloadUrls = <String>[];
+                                 try {
+                                   selectedUploadedFiles = _model.fotos;
+                                   selectedMedia =
+                                       selectedFilesFromUploadedFiles(
+                                     selectedUploadedFiles,
+                                     isMultiData: true,
+                                   );
+                                   downloadUrls = (await Future.wait(
+                                     selectedMedia.map(
+                                       (m) async => await uploadData(
+                                           m.storagePath, m.bytes),
+                                     ),
+                                   ))
+                                       .where((u) => u != null)
+                                       .map((u) => u!)
+                                       .toList();
+                                 } finally {
+                                   _model.isDataUploading_firebasefotos2 =
+                                       false;
+                                 }
+                                 if (selectedUploadedFiles.length ==
+                                         selectedMedia.length &&
+                                     downloadUrls.length ==
+                                         selectedMedia.length) {
+                                   safeSetState(() {
+                                     _model.uploadedLocalFiles_firebasefotos2 =
+                                         selectedUploadedFiles;
+                                     _model.uploadedFileUrls_firebasefotos2 =
+                                         downloadUrls;
+                                   });
+                                 } else {
+                                   safeSetState(() {});
+                                   return;
+                                 }
+                               }
 
-                                _model.servicioSeleccionado =
-                                    await queryServiceRecordOnce(
-                                  queryBuilder: (serviceRecord) =>
-                                      serviceRecord.where(
-                                    'Descripcion',
-                                    isEqualTo: _model.ddTipodeServicioValue,
-                                  ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
+                               try {
+                                 final horas = double.tryParse(_model
+                                         .tiempoEstimadoTextController.text) ??
+                                     0.0;
 
-                                var diagnosticosRecordReference =
-                                    DiagnosticosRecord.createDoc(
-                                        widget.recepcionRef!);
-                                await diagnosticosRecordReference.set({
-                                  ...createDiagnosticosRecordData(
-                                    nombreFalla: _model.ddTipodeServicioValue,
-                                    solucion: _model.ddTipodeServicioValue,
-                                    tiempoEstimado: _model
-                                        .tiempoEstimadoTextController.text,
-                                    subtotal: valueOrDefault<double>(
-                                      valueOrDefault<double>(
-                                            functions.sumalist(_model.repuestos
-                                                .map((e) =>
-                                                    valueOrDefault<double>(
-                                                      e.total,
-                                                      0.0,
-                                                    ))
-                                                .toList()),
-                                            0.0,
-                                          ) +
-                                          valueOrDefault<double>(
-                                            double.parse(_model
-                                                    .tiempoEstimadoTextController
-                                                    .text) *
-                                                valueOrDefault<double>(
-                                                  _model.servicioSeleccionado
-                                                      ?.precio,
-                                                  0.0,
-                                                ),
-                                            0.0,
-                                          ),
-                                      0.0,
-                                    ),
-                                    igv: valueOrDefault<double>(
-                                      (valueOrDefault<double>(
-                                            valueOrDefault<double>(
-                                                  functions.sumalist(_model
-                                                      .repuestos
-                                                      .map((e) =>
-                                                          valueOrDefault<
-                                                              double>(
-                                                            e.total,
-                                                            0.0,
-                                                          ))
-                                                      .toList()),
-                                                  0.0,
-                                                ) +
-                                                valueOrDefault<double>(
-                                                  double.parse(_model
-                                                          .tiempoEstimadoTextController
-                                                          .text) *
-                                                      valueOrDefault<double>(
-                                                        _model
-                                                            .servicioSeleccionado
-                                                            ?.precio,
-                                                        0.0,
-                                                      ),
-                                                  0.0,
-                                                ),
-                                            0.0,
-                                          )) *
-                                          0.18,
-                                      0.0,
-                                    ),
-                                    total: valueOrDefault<double>(
-                                      (valueOrDefault<double>(
-                                            valueOrDefault<double>(
-                                                  functions.sumalist(_model
-                                                      .repuestos
-                                                      .map((e) =>
-                                                          valueOrDefault<
-                                                              double>(
-                                                            e.total,
-                                                            0.0,
-                                                          ))
-                                                      .toList()),
-                                                  0.0,
-                                                ) +
-                                                valueOrDefault<double>(
-                                                  double.parse(_model
-                                                          .tiempoEstimadoTextController
-                                                          .text) *
-                                                      valueOrDefault<double>(
-                                                        _model
-                                                            .servicioSeleccionado
-                                                            ?.precio,
-                                                        0.0,
-                                                      ),
-                                                  0.0,
-                                                ),
-                                            0.0,
-                                          )) *
-                                          1.18,
-                                      0.0,
-                                    ),
-                                    fecha: getCurrentTimestamp,
-                                    manoDeObra: valueOrDefault<double>(
-                                      double.parse(_model
-                                              .tiempoEstimadoTextController
-                                              .text) *
-                                          valueOrDefault<double>(
-                                            _model.servicioSeleccionado?.precio,
-                                            0.0,
-                                          ),
-                                      0.0,
-                                    ),
-                                    precioservicio:
-                                        _model.servicioSeleccionado?.precio,
-                                  ),
-                                  ...mapToFirestore(
-                                    {
-                                      'Repuestos':
-                                          getRepuestosListFirestoreData(
-                                        _model.repuestos,
-                                      ),
-                                      'Fotos': _model
-                                          .uploadedFileUrls_firebasefotos2,
-                                    },
-                                  ),
-                                });
-                                _model.diagnostico =
-                                    DiagnosticosRecord.getDocumentFromData({
-                                  ...createDiagnosticosRecordData(
-                                    nombreFalla: _model.ddTipodeServicioValue,
-                                    solucion: _model.ddTipodeServicioValue,
-                                    tiempoEstimado: _model
-                                        .tiempoEstimadoTextController.text,
-                                    subtotal: valueOrDefault<double>(
-                                      valueOrDefault<double>(
-                                            functions.sumalist(_model.repuestos
-                                                .map((e) =>
-                                                    valueOrDefault<double>(
-                                                      e.total,
-                                                      0.0,
-                                                    ))
-                                                .toList()),
-                                            0.0,
-                                          ) +
-                                          valueOrDefault<double>(
-                                            double.parse(_model
-                                                    .tiempoEstimadoTextController
-                                                    .text) *
-                                                valueOrDefault<double>(
-                                                  _model.servicioSeleccionado
-                                                      ?.precio,
-                                                  0.0,
-                                                ),
-                                            0.0,
-                                          ),
-                                      0.0,
-                                    ),
-                                    igv: valueOrDefault<double>(
-                                      (valueOrDefault<double>(
-                                            valueOrDefault<double>(
-                                                  functions.sumalist(_model
-                                                      .repuestos
-                                                      .map((e) =>
-                                                          valueOrDefault<
-                                                              double>(
-                                                            e.total,
-                                                            0.0,
-                                                          ))
-                                                      .toList()),
-                                                  0.0,
-                                                ) +
-                                                valueOrDefault<double>(
-                                                  double.parse(_model
-                                                          .tiempoEstimadoTextController
-                                                          .text) *
-                                                      valueOrDefault<double>(
-                                                        _model
-                                                            .servicioSeleccionado
-                                                            ?.precio,
-                                                        0.0,
-                                                      ),
-                                                  0.0,
-                                                ),
-                                            0.0,
-                                          )) *
-                                          0.18,
-                                      0.0,
-                                    ),
-                                    total: valueOrDefault<double>(
-                                      (valueOrDefault<double>(
-                                            valueOrDefault<double>(
-                                                  functions.sumalist(_model
-                                                      .repuestos
-                                                      .map((e) =>
-                                                          valueOrDefault<
-                                                              double>(
-                                                            e.total,
-                                                            0.0,
-                                                          ))
-                                                      .toList()),
-                                                  0.0,
-                                                ) +
-                                                valueOrDefault<double>(
-                                                  double.parse(_model
-                                                          .tiempoEstimadoTextController
-                                                          .text) *
-                                                      valueOrDefault<double>(
-                                                        _model
-                                                            .servicioSeleccionado
-                                                            ?.precio,
-                                                        0.0,
-                                                      ),
-                                                  0.0,
-                                                ),
-                                            0.0,
-                                          )) *
-                                          1.18,
-                                      0.0,
-                                    ),
-                                    fecha: getCurrentTimestamp,
-                                    manoDeObra: valueOrDefault<double>(
-                                      double.parse(_model
-                                              .tiempoEstimadoTextController
-                                              .text) *
-                                          valueOrDefault<double>(
-                                            _model.servicioSeleccionado?.precio,
-                                            0.0,
-                                          ),
-                                      0.0,
-                                    ),
-                                    precioservicio:
-                                        _model.servicioSeleccionado?.precio,
-                                  ),
-                                  ...mapToFirestore(
-                                    {
-                                      'Repuestos':
-                                          getRepuestosListFirestoreData(
-                                        _model.repuestos,
-                                      ),
-                                      'Fotos': _model
-                                          .uploadedFileUrls_firebasefotos2,
-                                    },
-                                  ),
-                                }, diagnosticosRecordReference);
-                                Navigator.pop(context);
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Elije un repuesto',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                  ),
-                                );
-                              }
+                                 _model.servicioSeleccionado =
+                                     await queryServiceRecordOnce(
+                                   queryBuilder: (serviceRecord) =>
+                                       serviceRecord.where(
+                                     'Descripcion',
+                                     isEqualTo: _model.ddTipodeServicioValue,
+                                   ),
+                                   singleRecord: true,
+                                 ).then((s) => s.firstOrNull);
 
-                              safeSetState(() {});
-                            },
+                                 final servicePrecio =
+                                     _model.servicioSeleccionado?.precio ?? 0.0;
+                                 final repuestosSum = functions.sumalist(
+                                     _model.repuestos
+                                         .map((e) =>
+                                             valueOrDefault<double>(e.total, 0.0))
+                                         .toList());
+                                 final subtotal = repuestosSum +
+                                     (horas * servicePrecio);
+                                 final igv = subtotal * 0.18;
+                                 final total = subtotal * 1.18;
+                                 final manoDeObra = horas * servicePrecio;
+
+                                 var diagnosticosRecordReference =
+                                     DiagnosticosRecord.createDoc(
+                                         widget.recepcionRef!);
+                                 await diagnosticosRecordReference.set({
+                                   ...createDiagnosticosRecordData(
+                                     nombreFalla:
+                                         _model.ddTipodeServicioValue,
+                                     solucion:
+                                         _model.ddTipodeServicioValue,
+                                     tiempoEstimado: _model
+                                         .tiempoEstimadoTextController.text,
+                                     subtotal: subtotal,
+                                     igv: igv,
+                                     total: total,
+                                     fecha: getCurrentTimestamp,
+                                     manoDeObra: manoDeObra,
+                                     precioservicio: servicePrecio,
+                                   ),
+                                   ...mapToFirestore(
+                                     {
+                                       'Repuestos':
+                                           getRepuestosListFirestoreData(
+                                         _model.repuestos,
+                                       ),
+                                       'Fotos': _model
+                                           .uploadedFileUrls_firebasefotos2,
+                                     },
+                                   ),
+                                 });
+                                 _model.diagnostico =
+                                     DiagnosticosRecord.getDocumentFromData({
+                                   ...createDiagnosticosRecordData(
+                                     nombreFalla:
+                                         _model.ddTipodeServicioValue,
+                                     solucion:
+                                         _model.ddTipodeServicioValue,
+                                     tiempoEstimado: _model
+                                         .tiempoEstimadoTextController.text,
+                                     subtotal: subtotal,
+                                     igv: igv,
+                                     total: total,
+                                     fecha: getCurrentTimestamp,
+                                     manoDeObra: manoDeObra,
+                                     precioservicio: servicePrecio,
+                                   ),
+                                   ...mapToFirestore(
+                                     {
+                                       'Repuestos':
+                                           getRepuestosListFirestoreData(
+                                         _model.repuestos,
+                                       ),
+                                       'Fotos': _model
+                                           .uploadedFileUrls_firebasefotos2,
+                                     },
+                                   ),
+                                 }, diagnosticosRecordReference);
+                                 if (context.mounted) {
+                                   ScaffoldMessenger.of(context).showSnackBar(
+                                     SnackBar(
+                                       content: Text('Falla guardada'),
+                                     ),
+                                   );
+                                   Navigator.pop(context);
+                                 }
+                               } catch (e) {
+                                 if (context.mounted) {
+                                   ScaffoldMessenger.of(context).showSnackBar(
+                                     SnackBar(
+                                       content: Text(
+                                           'Error al guardar la falla: ${e.toString()}'),
+                                     ),
+                                   );
+                                 }
+                               }
+
+                               safeSetState(() {});
+                             },
                             text: 'Guarda falla',
                             icon: Icon(
                               Icons.save,

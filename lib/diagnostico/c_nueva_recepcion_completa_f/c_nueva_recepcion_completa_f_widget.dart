@@ -5004,9 +5004,37 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           child: Container(
                                             decoration: BoxDecoration(),
                                             child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                if (_model.imgautos.length > 0)
+                                               mainAxisSize: MainAxisSize.max,
+                                               children: [
+                                                 if (_model.isDataUploading_imgautom2 ||
+                                                     _model.isDataUploading_imgautomovil1)
+                                                   Padding(
+                                                     padding:
+                                                         EdgeInsetsDirectional.fromSTEB(
+                                                             0.0, 8.0, 0.0, 0.0),
+                                                     child: Row(
+                                                       mainAxisSize:
+                                                           MainAxisSize.min,
+                                                       children: [
+                                                         SizedBox(
+                                                           width: 16.0,
+                                                           height: 16.0,
+                                                           child:
+                                                               CircularProgressIndicator(
+                                                             strokeWidth: 2.0,
+                                                           ),
+                                                         ),
+                                                         SizedBox(width: 8.0),
+                                                         Text(
+                                                           'Subiendo foto...',
+                                                           style: FlutterFlowTheme.of(
+                                                                   context)
+                                                               .labelSmall,
+                                                         ),
+                                                       ],
+                                                     ),
+                                                   ),
+                                                 if (_model.imgautos.length > 0)
                                                   Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,

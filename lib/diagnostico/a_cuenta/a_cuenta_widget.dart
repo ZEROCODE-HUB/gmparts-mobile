@@ -1,7 +1,10 @@
+import 'dart:async';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/upload_data.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -122,15 +125,55 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                   AuthUserStreamWidget(
                     builder: (context) {
                       final photo = currentUserPhoto;
-                      return Container(
-                        width: 100.0,
-                        height: 100.0,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(shape: BoxShape.circle),
-                        child: (photo != null && photo.isNotEmpty)
-                            ? Image.network(photo, fit: BoxFit.cover)
-                            : Image.asset('assets/images/perfil.png',
-                                fit: BoxFit.cover),
+                      return InkWell(
+                        onTap: () async {
+                          final selected =
+                              await selectMediaWithSourceBottomSheet(
+                            context: context,
+                            allowPhoto: true,
+                            maxWidth: 1080,
+                            maxHeight: 1080,
+                          );
+                          if (selected != null && selected.isNotEmpty) {
+                            final url = await uploadData(
+                                selected.first.storagePath,
+                                selected.first.bytes);
+                            if (url != null) {
+                              await currentUserDocument?.reference
+                                  .update({'photo_url': url});
+                            }
+                          }
+                        },
+                        child: Stack(
+                          alignment: AlignmentDirectional(1.0, 1.0),
+                          children: [
+                            Container(
+                              width: 100.0,
+                              height: 100.0,
+                              clipBehavior: Clip.antiAlias,
+                              decoration:
+                                  BoxDecoration(shape: BoxShape.circle),
+                              child: (photo != null && photo.isNotEmpty)
+                                  ? Image.network(photo, fit: BoxFit.cover)
+                                  : Image.asset('assets/images/perfil.png',
+                                      fit: BoxFit.cover),
+                            ),
+                            Container(
+                              width: 32.0,
+                              height: 32.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                              child: Icon(
+                                Icons.camera_alt,
+                                size: 16.0,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),

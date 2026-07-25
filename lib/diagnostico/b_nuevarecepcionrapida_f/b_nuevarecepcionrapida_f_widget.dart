@@ -414,8 +414,8 @@ class _BNuevarecepcionrapidaFWidgetState
                               borderRadius: 8.0,
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 4.0, 16.0, 4.0),
-                              hidesUnderline: true,
-                              isOverButton: true,
+                                         hidesUnderline: true,
+                                         isOverButton: false,
                               isSearchable: false,
                               isMultiSelect: false,
                             ),
@@ -3019,33 +3019,50 @@ class _BNuevarecepcionrapidaFWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: FutureBuilder<List<UsersRecord>>(
-                                    future: queryUsersRecordOnce(
-                                      queryBuilder: (usersRecord) => usersRecord
-                                          .whereIn('user_role', [
-                                        'Asesor Servicio',
-                                        'Asesor Repuesto'
-                                      ]),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<UsersRecord>
-                                          dropDownTecnicoUsersRecordList =
-                                          snapshot.data!;
+                                     future: queryUsersRecordOnce(
+                                       queryBuilder: (usersRecord) => usersRecord
+                                           .whereIn('user_role', [
+                                         'Asesor Servicio',
+                                         'Asesor Repuesto',
+                                         'Tecnico Mecanico',
+                                         'Administrador',
+                                       ]),
+                                     ),
+                                     builder: (context, snapshot) {
+                                       if (snapshot.connectionState ==
+                                               ConnectionState.waiting) {
+                                         return Center(
+                                           child: SizedBox(
+                                             width: 30.0,
+                                             height: 30.0,
+                                             child: CircularProgressIndicator(
+                                               valueColor:
+                                                   AlwaysStoppedAnimation<Color>(
+                                                 FlutterFlowTheme.of(context)
+                                                     .primary,
+                                               ),
+                                             ),
+                                           ),
+                                         );
+                                       }
+                                       if (snapshot.hasError) {
+                                         return Text(
+                                           'Error al cargar técnicos',
+                                           style: FlutterFlowTheme.of(context)
+                                               .bodyMedium,
+                                         );
+                                       }
+                                       List<UsersRecord>
+                                           dropDownTecnicoUsersRecordList =
+                                           snapshot.data ?? [];
+                                       if (dropDownTecnicoUsersRecordList
+                                           .isEmpty) {
+                                         return Text(
+                                           'No hay técnicos disponibles',
+                                           style: FlutterFlowTheme.of(context)
+                                               .bodyMedium,
+                                         );
+                                       }
 
                                       return FlutterFlowDropDown<String>(
                                         controller: _model
@@ -3346,12 +3363,37 @@ class _BNuevarecepcionrapidaFWidgetState
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      if (_model.imagenesauto.length > 0)
+                                 Container(
+                                   decoration: BoxDecoration(),
+                                   child: Column(
+                                     mainAxisSize: MainAxisSize.max,
+                                     children: [
+                                       if (_model.isDataUploading_imgauto24 ||
+                                           _model.isDataUploading_imgauto)
+                                         Padding(
+                                           padding: EdgeInsetsDirectional.fromSTEB(
+                                               0.0, 8.0, 0.0, 0.0),
+                                           child: Row(
+                                             mainAxisSize: MainAxisSize.min,
+                                             children: [
+                                               SizedBox(
+                                                 width: 16.0,
+                                                 height: 16.0,
+                                                 child: CircularProgressIndicator(
+                                                   strokeWidth: 2.0,
+                                                 ),
+                                               ),
+                                               SizedBox(width: 8.0),
+                                               Text(
+                                                 'Subiendo foto...',
+                                                 style: FlutterFlowTheme.of(
+                                                         context)
+                                                     .labelSmall,
+                                               ),
+                                             ],
+                                           ),
+                                         ),
+                                       if (_model.imagenesauto.length > 0)
                                         Align(
                                           alignment:
                                               AlignmentDirectional(-1.0, 0.0),

@@ -105,7 +105,7 @@ class _DControldecalidadenviarclientePreWidgetState
                                 ),
                               ),
                               Text(
-                                'Se han completado todas las fallas',
+                                'Verificar calidad del servicio',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .headlineLarge
@@ -125,6 +125,16 @@ class _DControldecalidadenviarclientePreWidgetState
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .fontStyle,
+                                    ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                'Antes de entregar el vehículo, realiza el control de calidad.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.montserrat(),
                                     ),
                               ),
                             ],
