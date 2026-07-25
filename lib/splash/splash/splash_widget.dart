@@ -42,7 +42,7 @@ class _SplashWidgetState extends State<SplashWidget> {
               role == 'jefe de taller' ||
               role == 'asesor servicio') {
             context.goNamedAuth(
-              ARecepcionesInicioWidget.routeName,
+              DashboardWidget.routeName,
               context.mounted,
               extra: <String, dynamic>{
                 '__transition_info__': TransitionInfo(
@@ -102,7 +102,7 @@ class _SplashWidgetState extends State<SplashWidget> {
               return;
             } else {
               context.goNamedAuth(
-                ARecepcionesInicioWidget.routeName,
+                DashboardWidget.routeName,
                 context.mounted,
                 extra: <String, dynamic>{
                   '__transition_info__': TransitionInfo(
@@ -117,7 +117,7 @@ class _SplashWidgetState extends State<SplashWidget> {
             }
           } else if (role == 'asesor repuesto') {
             context.goNamedAuth(
-              ARecepcionesInicioWidget.routeName,
+              DashboardWidget.routeName,
               context.mounted,
               extra: <String, dynamic>{
                 '__transition_info__': TransitionInfo(

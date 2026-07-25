@@ -72,3 +72,5 @@ export '/diagnostico/g_linkcliente_copy/g_linkcliente_copy_widget.dart'
     show GLinkclienteCopyWidget;
 export '/diagnostico/crear_cotizacion_funcionando_copy/crear_cotizacion_funcionando_copy_widget.dart'
     show CrearCotizacionFuncionandoCopyWidget;
+export '/diagnostico/dashboard/dashboard_widget.dart'
+    show DashboardWidget;

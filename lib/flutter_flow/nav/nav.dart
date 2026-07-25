@@ -165,6 +165,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
+          name: DashboardWidget.routeName,
+          path: DashboardWidget.routePath,
+          builder: (context, params) => DashboardWidget(),
+        ),
+        FFRoute(
           name: ARecepcionesInicioWidget.routeName,
           path: ARecepcionesInicioWidget.routePath,
           requireAuth: true,
