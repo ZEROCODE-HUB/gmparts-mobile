@@ -107,13 +107,15 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    currentUserPhoto,
-                                                    '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                                  ),
-                                                  fit: BoxFit.cover,
-                                                ),
+                                                 child: currentUserPhoto.isNotEmpty
+                                                     ? Image.network(
+                                                         currentUserPhoto,
+                                                         fit: BoxFit.cover,
+                                                       )
+                                                     : Image.asset(
+                                                         'assets/images/perfil.png',
+                                                         fit: BoxFit.cover,
+                                                       ),
                                               ),
                                             ),
                                           ),
@@ -122,14 +124,16 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 AlignmentDirectional(1.0, 0.0),
                                             child: AuthUserStreamWidget(
                                               builder: (context) => Text(
-                                                valueOrDefault<String>(
-                                                  currentUserDisplayName,
-                                                  '-',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
+                                                 valueOrDefault<String>(
+                                                   currentUserDisplayName,
+                                                   '-',
+                                                 ),
+                                                 maxLines: 1,
+                                                 overflow: TextOverflow.ellipsis,
+                                                 style:
+                                                     FlutterFlowTheme.of(context)
+                                                         .labelSmall
+                                                         .override(
                                                           font: GoogleFonts
                                                               .montserrat(
                                                             fontWeight:
@@ -212,23 +216,25 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                context.pushNamed(
-                                                    ACuentaWidget.routeName);
-                                              },
-                                              child: Container(
-                                                width: 32.0,
-                                                height: 32.0,
-                                                clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    currentUserPhoto,
-                                                    '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                                  ),
-                                                  fit: BoxFit.cover,
-                                                ),
+                                                 context.pushNamed(
+                                                     ACuentaWidget.routeName);
+                                               },
+                                               child: Container(
+                                                 width: 32.0,
+                                                 height: 32.0,
+                                                 clipBehavior: Clip.antiAlias,
+                                                 decoration: BoxDecoration(
+                                                   shape: BoxShape.circle,
+                                                 ),
+                                                 child: currentUserPhoto.isNotEmpty
+                                                     ? Image.network(
+                                                         currentUserPhoto,
+                                                         fit: BoxFit.cover,
+                                                       )
+                                                     : Image.asset(
+                                                         'assets/images/perfil.png',
+                                                         fit: BoxFit.cover,
+                                                       ),
                                               ),
                                             ),
                                           ),
@@ -243,6 +249,8 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 '-',
                                               ),
                                               textAlign: TextAlign.end,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall

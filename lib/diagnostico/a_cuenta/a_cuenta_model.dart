@@ -4,9 +4,18 @@ import 'a_cuenta_widget.dart' show ACuentaWidget;
 import 'package:flutter/material.dart';
 
 class ACuentaModel extends FlutterFlowModel<ACuentaWidget> {
-  @override
-  void initState(BuildContext context) {}
+  late TextEditingController nameController;
+  late FocusNode nameFocusNode;
 
   @override
-  void dispose() {}
+  void initState(BuildContext context) {
+    nameController = TextEditingController(text: currentUserDisplayName);
+    nameFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    nameFocusNode.dispose();
+  }
 }
