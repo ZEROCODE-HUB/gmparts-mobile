@@ -321,10 +321,11 @@ class _RestaurarContrasena1WidgetState
                           );
                           return;
                         }
-                        await authManager.resetPassword(
+                        final sent = await authManager.resetPassword(
                           email: _model.textController.text,
                           context: context,
                         );
+                        if (!sent) return;
 
                         context.goNamed(RestaurarContrasena3Widget.routeName);
                       },

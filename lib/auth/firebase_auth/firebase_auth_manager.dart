@@ -125,22 +125,50 @@ class FirebaseAuthManager extends AuthManager
   }
 
   @override
-  Future resetPassword({
+  Future<bool> resetPassword({
     required String email,
     required BuildContext context,
   }) async {
     try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: email)
+          .timeout(const Duration(seconds: 15));
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Correo de restablecimiento enviado. Revisa tu bandeja de entrada.',
+          ),
+        ),
+      );
+      return true;
+    } on TimeoutException {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'La conexión tardó demasiado. Verifica tu red e intenta de nuevo.',
+          ),
+        ),
+      );
+      return false;
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: ${e.message!}')),
       );
-      return null;
+      return false;
+    } catch (_) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Error inesperado. Intenta de nuevo.',
+          ),
+        ),
+      );
+      return false;
     }
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Password reset email sent')),
-    );
   }
 
   @override

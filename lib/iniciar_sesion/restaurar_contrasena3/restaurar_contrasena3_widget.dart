@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -78,10 +79,30 @@ class _RestaurarContrasena3WidgetState
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 250.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
+                      child: Text(
+                        'Correo enviado',
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).headlineMedium,
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
+                      child: Text(
+                        'Revisa tu bandeja de entrada y sigue el enlace para restablecer tu contraseña.',
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyLarge,
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.goNamed(
+                            IniciarSessionWidget.routeName,
+                          );
                         },
                         text: 'Continuar',
                         options: FFButtonOptions(
