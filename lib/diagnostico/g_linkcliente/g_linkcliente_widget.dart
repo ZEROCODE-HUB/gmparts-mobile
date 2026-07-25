@@ -1,3 +1,4 @@
+import '/app_constants.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -1768,7 +1769,7 @@ class _GLinkclienteWidgetState extends State<GLinkclienteWidget> {
                                 await gLinkclienteRecepcionesRecord.reference
                                     .update(createRecepcionesRecordData(
                                   aprobacionCliente: true,
-                                  status: FFAppConstants.Diagnostico,
+                                  status: FFAppConstants.Enreparacion,
                                 ));
 
                                 context.goNamed(

@@ -4578,38 +4578,59 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child:
-                                              FutureBuilder<List<UsersRecord>>(
-                                            future: queryUsersRecordOnce(
-                                              queryBuilder: (usersRecord) =>
-                                                  usersRecord.whereIn(
-                                                      'user_role', [
-                                                'Asesor Servicio',
-                                                'Asesor Repuesto'
-                                              ]),
-                                            ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              List<UsersRecord>
-                                                  dropDownTecnicoUsersRecordList =
-                                                  snapshot.data!;
+                                               FutureBuilder<List<UsersRecord>>(
+                                             future: queryUsersRecordOnce(
+                                               queryBuilder: (usersRecord) =>
+                                                   usersRecord.whereIn(
+                                                       'user_role', [
+                                                 'Administrador',
+                                                 'Gerente General',
+                                                 'Jefe de Taller',
+                                                 'Asesor Servicio',
+                                                 'Tecnico Mecanico',
+                                                 'Asesor Repuesto',
+                                               ]),
+                                             ),
+                                             builder: (context, snapshot) {
+                                               if (snapshot.connectionState ==
+                                                   ConnectionState.waiting) {
+                                                 return Center(
+                                                   child: SizedBox(
+                                                     width: 30.0,
+                                                     height: 30.0,
+                                                     child:
+                                                         CircularProgressIndicator(
+                                                       valueColor:
+                                                           AlwaysStoppedAnimation<
+                                                               Color>(
+                                                         FlutterFlowTheme.of(
+                                                                 context)
+                                                             .primary,
+                                                       ),
+                                                     ),
+                                                   ),
+                                                 );
+                                               }
+                                               if (snapshot.hasError) {
+                                                 return Text(
+                                                   'Error al cargar técnicos',
+                                                   style: FlutterFlowTheme.of(
+                                                           context)
+                                                       .bodyMedium,
+                                                 );
+                                               }
+                                               List<UsersRecord>
+                                                   dropDownTecnicoUsersRecordList =
+                                                   snapshot.data ?? [];
+                                               if (dropDownTecnicoUsersRecordList
+                                                   .isEmpty) {
+                                                 return Text(
+                                                   'No hay técnicos disponibles',
+                                                   style: FlutterFlowTheme.of(
+                                                           context)
+                                                       .bodyMedium,
+                                                 );
+                                               }
 
                                               return FlutterFlowDropDown<
                                                   String>(

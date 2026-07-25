@@ -1,3 +1,4 @@
+import '/app_constants.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -21,7 +22,6 @@ class DashboardWidget extends StatefulWidget {
 
 class _DashboardWidgetState extends State<DashboardWidget> {
   late DashboardModel _model;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -38,40 +38,50 @@ class _DashboardWidgetState extends State<DashboardWidget> {
   }
 
   Widget _buildKpiCard(
-      BuildContext context, String title, String value, Color color, IconData icon) {
+      BuildContext context, String title, Future<int> countFuture, Color color, IconData icon) {
     return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Column(
-          children: [
-            Icon(icon, color: color, size: 28.0),
-            SizedBox(height: 8.0),
-            Text(
-              value,
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    font: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
-                    color: color,
-                  ),
+      child: FutureBuilder<int>(
+        future: countFuture,
+        builder: (context, snapshot) {
+          final value = snapshot.hasData ? snapshot.data! : 0;
+          return Container(
+            padding: EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(12.0),
             ),
-            Text(
-              title,
-              style: FlutterFlowTheme.of(context).labelSmall.override(
-                    font: GoogleFonts.montserrat(),
-                  ),
-              textAlign: TextAlign.center,
+            child: Column(
+              children: [
+                Icon(icon, color: Colors.white, size: 28.0),
+                SizedBox(height: 8.0),
+                Text(
+                  value.toString(),
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        font: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                      ),
+                ),
+                Text(
+                  title,
+                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                        font: GoogleFonts.montserrat(),
+                        color: Colors.white70,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final todayStart = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+    final todayEnd = todayStart.add(Duration(days: 1));
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -94,43 +104,20 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       AuthUserStreamWidget(
                         builder: (context) => Row(
                           children: [
-                            Container(
-                              width: 44.0,
-                              height: 44.0,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(shape: BoxShape.circle),
-                              child: (currentUserPhoto.isNotEmpty)
-                                  ? Image.network(currentUserPhoto,
-                                      fit: BoxFit.cover,
-                                      errorBuilder: (_, __, ___) =>
-                                          CircleAvatar(
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context).primary,
-                                            child: Text(
-                                              (currentUserDisplayName.isNotEmpty
-                                                      ? currentUserDisplayName[0]
-                                                      : '?')
-                                                  .toUpperCase(),
-                                              style: TextStyle(
-                                                  color: FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ))
-                                  : CircleAvatar(
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      child: Text(
-                                        (currentUserDisplayName.isNotEmpty
-                                                ? currentUserDisplayName[0]
-                                                : '?')
-                                            .toUpperCase(),
-                                        style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
+                            InkWell(
+                              onTap: () => context.pushNamed(ACuentaWidget.routeName),
+                              child: Container(
+                                width: 48.0,
+                                height: 48.0,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(shape: BoxShape.circle),
+                                child: (currentUserPhoto.isNotEmpty)
+                                    ? Image.network(currentUserPhoto,
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (_, __, ___) =>
+                                            _buildInitialsAvatar())
+                                    : _buildInitialsAvatar(),
+                              ),
                             ),
                             SizedBox(width: 12.0),
                             Column(
@@ -149,19 +136,23 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        font: GoogleFonts.montserrat(
-                                            fontWeight: FontWeight.w600),
+                                        font: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+                                      ),
+                                ),
+                                Text(
+                                  'Ver perfil',
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .override(
+                                        font: GoogleFonts.montserrat(),
+                                        color: FlutterFlowTheme.of(context).primary,
+                                        fontSize: 11.0,
                                       ),
                                 ),
                               ],
                             ),
                           ],
                         ),
-                      ),
-                      InkWell(
-                        onTap: () => context.pushNamed(ACuentaWidget.routeName),
-                        child: Icon(Icons.account_circle_outlined,
-                            color: FlutterFlowTheme.of(context).primary, size: 28.0),
                       ),
                     ],
                   ),
@@ -178,24 +169,33 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       _buildKpiCard(
                         context,
                         'Pendientes',
-                        '0',
-                        FlutterFlowTheme.of(context).error,
+                        queryRecepcionesRecordCount(
+                          queryBuilder: (q) => q.where('status', isEqualTo: 'Recepcion'),
+                        ),
+                        Color(0xFFE53935),
                         Icons.pending_actions,
                       ),
                       SizedBox(width: 12.0),
                       _buildKpiCard(
                         context,
                         'En reparación',
-                        '0',
-                        FlutterFlowTheme.of(context).primary,
+                        queryRecepcionesRecordCount(
+                          queryBuilder: (q) => q.where('status', isEqualTo: FFAppConstants.Enreparacion),
+                        ),
+                        Color(0xFF1E88E5),
                         Icons.build_outlined,
                       ),
                       SizedBox(width: 12.0),
                       _buildKpiCard(
                         context,
-                        'Hoy',
-                        '0',
-                        Colors.green,
+                        'Completadas hoy',
+                        queryRecepcionesRecordCount(
+                          queryBuilder: (q) => q
+                              .where('status', isEqualTo: 'Finalizado')
+                              .where('fecha_creacion', isGreaterThanOrEqualTo: todayStart)
+                              .where('fecha_creacion', isLessThan: todayEnd),
+                        ),
+                        Color(0xFF43A047),
                         Icons.check_circle_outline,
                       ),
                     ],
@@ -224,8 +224,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                           context,
                           'Recepción\ncompleta',
                           Icons.assignment,
-                          () => context
-                              .pushNamed(CNuevaRecepcionCompletaFWidget.routeName),
+                          () => context.pushNamed(CNuevaRecepcionCompletaFWidget.routeName),
                         ),
                       ),
                       SizedBox(width: 12.0),
@@ -234,8 +233,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                           context,
                           'Ver\nrecepciones',
                           Icons.list_alt,
-                          () =>
-                              context.pushNamed(ARecepcionesInicioWidget.routeName),
+                          () => context.pushNamed(ARecepcionesInicioWidget.routeName),
                         ),
                       ),
                     ],
@@ -247,8 +245,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       Text(
                         'Últimas recepciones',
                         style: FlutterFlowTheme.of(context).headlineSmall.override(
-                              font: GoogleFonts.montserrat(
-                                  fontWeight: FontWeight.w600),
+                              font: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
                             ),
                       ),
                     ],
@@ -289,6 +286,18 @@ class _DashboardWidgetState extends State<DashboardWidget> {
     );
   }
 
+  Widget _buildInitialsAvatar() {
+    return CircleAvatar(
+      backgroundColor: FlutterFlowTheme.of(context).primary,
+      child: Text(
+        (currentUserDisplayName.isNotEmpty ? currentUserDisplayName[0] : '?')
+            .toUpperCase(),
+        style: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0),
+      ),
+    );
+  }
+
   Widget _buildQuickAction(
       BuildContext context, String title, IconData icon, VoidCallback onTap) {
     return InkWell(
@@ -308,8 +317,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
         ),
         child: Column(
           children: [
-            Icon(icon,
-                color: FlutterFlowTheme.of(context).primary, size: 32.0),
+            Icon(icon, color: FlutterFlowTheme.of(context).primary, size: 32.0),
             SizedBox(height: 8.0),
             Text(
               title,
@@ -406,15 +414,15 @@ class _DashboardWidgetState extends State<DashboardWidget> {
   Color _statusColor(String? status) {
     switch (status) {
       case 'Recepcion':
-        return FlutterFlowTheme.of(context).error;
+        return Color(0xFFE53935);
       case 'Diagnostico':
         return Colors.orange;
       case 'Cotizacion':
-        return FlutterFlowTheme.of(context).primary;
-      case 'Reparacion':
+        return Color(0xFF1E88E5);
+      case 'Reparación':
         return Colors.deepPurple;
       case 'Finalizado':
-        return Colors.green;
+        return Color(0xFF43A047);
       default:
         return Colors.grey;
     }

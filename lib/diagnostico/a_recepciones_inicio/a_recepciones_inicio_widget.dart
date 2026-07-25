@@ -101,8 +101,8 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                     0.0, 0.0, 0.0, 5.0),
                                             child: AuthUserStreamWidget(
                                                builder: (context) => Container(
-                                                 width: 40.0,
-                                                 height: 40.0,
+                                                 width: 48.0,
+                                                 height: 48.0,
                                                 clipBehavior: Clip.antiAlias,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
@@ -194,9 +194,23 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                    ),
-                                  ),
-                                  Container(
+                                     ),
+                                   ),
+                                   Padding(
+                                     padding: EdgeInsetsDirectional.fromSTEB(
+                                         0.0, 12.0, 0.0, 0.0),
+                                     child: InkWell(
+                                       onTap: () => context
+                                           .pushNamed(DashboardWidget.routeName),
+                                       child: Icon(
+                                         Icons.home_outlined,
+                                         color:
+                                             FlutterFlowTheme.of(context).primary,
+                                         size: 24.0,
+                                       ),
+                                     ),
+                                   ),
+                                   Container(
                                     width: 70.0,
                                     decoration: BoxDecoration(),
                                     child: Column(
@@ -556,11 +570,41 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                           ),
                                         );
                                       }
-                                      List<RecepcionesRecord>
-                                          listViewRecepcionesRecordList =
-                                          snapshot.data!;
-                                      if (listViewRecepcionesRecordList
-                                          .isEmpty) {
+                                       List<RecepcionesRecord>
+                                           listViewRecepcionesRecordList =
+                                           snapshot.data!;
+                                       final searchQuery = _model
+                                           .textController.text
+                                           .trim()
+                                           .toLowerCase();
+                                       if (searchQuery.isNotEmpty) {
+                                         final searchNum =
+                                             int.tryParse(searchQuery);
+                                         listViewRecepcionesRecordList =
+                                             listViewRecepcionesRecordList
+                                                 .where((r) =>
+                                                     (searchNum != null &&
+                                                         r.numeroorden ==
+                                                             searchNum) ||
+                                                     (r.nombreCliente
+                                                             ?.toLowerCase()
+                                                             .contains(
+                                                                 searchQuery) ??
+                                                         false) ||
+                                                     (r.placa
+                                                             ?.toLowerCase()
+                                                             .contains(
+                                                                 searchQuery) ??
+                                                         false) ||
+                                                     (r.marca
+                                                             ?.toLowerCase()
+                                                             .contains(
+                                                                 searchQuery) ??
+                                                         false))
+                                                 .toList();
+                                       }
+                                       if (listViewRecepcionesRecordList
+                                           .isEmpty) {
                                         return Center(
                                           child: Container(
                                             width: 200.0,
