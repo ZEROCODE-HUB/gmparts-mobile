@@ -3019,7 +3019,17 @@ class _BNuevarecepcionrapidaFWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                    child: FutureBuilder<List<UsersRecord>>(
-                                      future: queryUsersRecordOnce(),
+                                      future: queryUsersRecordOnce(
+                                        queryBuilder: (usersRecord) =>
+                                            usersRecord.whereIn('user_role', [
+                                          'Administrador',
+                                          'Gerente General',
+                                          'Jefe de Taller',
+                                          'Asesor Servicio',
+                                          'Tecnico Mecanico',
+                                          'Asesor Repuesto',
+                                        ]),
+                                      ),
                                       builder: (context, snapshot) {
                                        if (snapshot.connectionState ==
                                                ConnectionState.waiting) {
