@@ -64,19 +64,7 @@ class _RestaurarContrasena3WidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      width: double.infinity,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: Image.asset(
-                            'assets/images/Frame_14658.png',
-                          ).image,
-                        ),
-                      ),
-                    ),
+                    SizedBox(height: 80.0),
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
