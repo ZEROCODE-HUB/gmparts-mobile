@@ -27,6 +27,7 @@ class EnvioclienteWidget extends StatefulWidget {
 
 class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
   late EnvioclienteModel _model;
+  bool _isCopied = false;
 
   @override
   void setState(VoidCallback callback) {
@@ -307,22 +308,31 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                         await Clipboard.setData(ClipboardData(
-                             text: '${widget.link}${widget.id?.toString()}'));
-                         if (context.mounted) {
-                           ScaffoldMessenger.of(context).showSnackBar(
-                             SnackBar(
-                               content: Text('Enlace copiado al portapapeles'),
-                               duration: Duration(seconds: 2),
-                             ),
-                           );
-                         }
-                       },
-                      child: Icon(
-                        Icons.content_copy,
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        size: 20.0,
-                      ),
+                          setState(() => _isCopied = true);
+                          await Clipboard.setData(ClipboardData(
+                              text: '${widget.link}${widget.id?.toString()}'));
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Enlace copiado al portapapeles'),
+                                duration: Duration(seconds: 2),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
+                          await Future.delayed(Duration(milliseconds: 1200));
+                          if (mounted) setState(() => _isCopied = false);
+                        },
+                       child: AnimatedSwitcher(
+                         duration: Duration(milliseconds: 200),
+                         child: _isCopied
+                             ? Icon(Icons.check, key: ValueKey('check'),
+                                 color: FlutterFlowTheme.of(context).primaryBackground,
+                                 size: 20.0)
+                             : Icon(Icons.content_copy, key: ValueKey('copy'),
+                                 color: FlutterFlowTheme.of(context).primaryBackground,
+                                 size: 20.0),
+                       ),
                     ),
                   ),
                   Expanded(

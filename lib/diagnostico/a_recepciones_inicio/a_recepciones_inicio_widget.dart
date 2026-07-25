@@ -100,9 +100,9 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 5.0),
                                             child: AuthUserStreamWidget(
-                                              builder: (context) => Container(
-                                                width: 32.0,
-                                                height: 32.0,
+                                               builder: (context) => Container(
+                                                 width: 40.0,
+                                                 height: 40.0,
                                                 clipBehavior: Clip.antiAlias,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
@@ -219,31 +219,45 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                  context.pushNamed(
                                                      ACuentaWidget.routeName);
                                                },
-                                               child: Container(
-                                                 width: 32.0,
-                                                 height: 32.0,
-                                                 clipBehavior: Clip.antiAlias,
-                                                 decoration: BoxDecoration(
-                                                   shape: BoxShape.circle,
-                                                 ),
-                                                  child: Builder(
-                                                    builder: (context) {
-                                                      final photo = currentUserPhoto;
-                                                      if (photo != null && photo.isNotEmpty) {
-                                                        return Image.network(
-                                                          photo,
-                                                          fit: BoxFit.cover,
-                                                          errorBuilder: (_, __, ___) =>
-                                                              Image.asset(
-                                                            'assets/images/perfil.png',
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        );
-                                                      }
-                                                      return Image.asset(
-                                                        'assets/images/perfil.png',
-                                                        fit: BoxFit.cover,
-                                                      );
+                                                child: Container(
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  clipBehavior: Clip.antiAlias,
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                  ),
+                                                   child: Builder(
+                                                     builder: (context) {
+                                                       final photo = currentUserPhoto;
+                                                        if (photo != null && photo.isNotEmpty) {
+                                                          return Image.network(
+                                                            photo,
+                                                           fit: BoxFit.cover,
+                                                           errorBuilder: (_, __, ___) =>
+                                                               CircleAvatar(
+                                                             backgroundColor: FlutterFlowTheme.of(context).primary,
+                                                             child: Text(
+                                                               (currentUserDisplayName.isNotEmpty ? currentUserDisplayName[0] : '?').toUpperCase(),
+                                                               style: TextStyle(
+                                                                 color: FlutterFlowTheme.of(context).primaryText,
+                                                                 fontWeight: FontWeight.bold,
+                                                                 fontSize: 16.0,
+                                                               ),
+                                                             ),
+                                                           ),
+                                                         );
+                                                       }
+                                                       return CircleAvatar(
+                                                         backgroundColor: FlutterFlowTheme.of(context).primary,
+                                                         child: Text(
+                                                           (currentUserDisplayName.isNotEmpty ? currentUserDisplayName[0] : '?').toUpperCase(),
+                                                           style: TextStyle(
+                                                             color: FlutterFlowTheme.of(context).primaryText,
+                                                             fontWeight: FontWeight.bold,
+                                                             fontSize: 16.0,
+                                                           ),
+                                                         ),
+                                                       );
                                                     },
                                                   ),
                                                ),

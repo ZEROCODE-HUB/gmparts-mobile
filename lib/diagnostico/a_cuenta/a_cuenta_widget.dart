@@ -150,16 +150,30 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                         child: Stack(
                           alignment: AlignmentDirectional(1.0, 1.0),
                           children: [
-                            Container(
-                              width: 100.0,
-                              height: 100.0,
+                           Container(
+                               width: 120.0,
+                               height: 120.0,
                               clipBehavior: Clip.antiAlias,
                               decoration:
                                   BoxDecoration(shape: BoxShape.circle),
-                              child: (photo != null && photo.isNotEmpty)
-                                  ? Image.network(photo, fit: BoxFit.cover)
-                                  : Image.asset('assets/images/perfil.png',
-                                      fit: BoxFit.cover),
+                               child: (photo != null && photo.isNotEmpty)
+                                   ? Image.network(photo, fit: BoxFit.cover)
+                                   : CircleAvatar(
+                                       backgroundColor:
+                                           FlutterFlowTheme.of(context).primary,
+                                       child: Text(
+                                         (currentUserDisplayName.isNotEmpty
+                                                 ? currentUserDisplayName[0]
+                                                 : '?')
+                                             .toUpperCase(),
+                                         style: TextStyle(
+                                           color: FlutterFlowTheme.of(context)
+                                               .primaryText,
+                                           fontWeight: FontWeight.bold,
+                                           fontSize: 40.0,
+                                         ),
+                                       ),
+                                     ),
                             ),
                             Container(
                               width: 32.0,
@@ -181,16 +195,25 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                     },
                   ),
                   SizedBox(height: 24.0),
-                  _buildEditableField(
-                    context,
-                    'Nombre',
-                    currentUserDisplayName.isNotEmpty
-                        ? currentUserDisplayName
-                        : 'Sin nombre',
-                    Icons.person_outline,
-                    onEdit: () => _editName(context),
-                  ),
-                  SizedBox(height: 12.0),
+                   _buildEditableField(
+                     context,
+                     'Nombre',
+                     currentUserDisplayName.isNotEmpty
+                         ? currentUserDisplayName
+                         : 'Sin nombre',
+                     Icons.person_outline,
+                     onEdit: () => _editName(context),
+                   ),
+                   Padding(
+                     padding: EdgeInsetsDirectional.fromSTEB(36.0, 4.0, 0.0, 0.0),
+                     child: Text(
+                       'Gestiona tu perfil',
+                       style: FlutterFlowTheme.of(context).labelSmall.override(
+                             font: GoogleFonts.montserrat(),
+                           ),
+                     ),
+                   ),
+                   SizedBox(height: 16.0),
                   _buildField(
                     context,
                     'Email',
