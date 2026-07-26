@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/components/tipo_recepcion_widget.dart';
 import '/components/vacio_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -61,21 +62,15 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: SafeArea(
             top: true,
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      child: SingleChildScrollView(
-                        primary: false,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(
+                      20.0, 20.0, 20.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
@@ -85,6 +80,27 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 12.0, 0.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      borderRadius: 30.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 32.0,
+                                      icon: Icon(
+                                        Icons.chevron_left_rounded,
+                                        color:
+                                            FlutterFlowTheme.of(context).primary,
+                                        size: 16.0,
+                                      ),
+                                      onPressed: () async {
+                                        context.pushNamed(
+                                            DashboardWidget.routeName);
+                                      },
+                                    ),
+                                  ),
                                   Container(
                                     width: 70.0,
                                     decoration: BoxDecoration(),
@@ -490,12 +506,17 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                 isMultiSelect: false,
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 25.0, 0.0, 0.0),
-                                child: StreamBuilder<List<RecepcionesRecord>>(
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 25.0, 0.0, 0.0),
+                            child: StreamBuilder<List<RecepcionesRecord>>(
                                     stream: queryRecepcionesRecord(
                                       queryBuilder: (recepcionesRecord) =>
                                           recepcionesRecord
@@ -538,10 +559,9 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                       }
 
                                       return ListView.separated(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        physics:
-                                            NeverScrollableScrollPhysics(),
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 100.0),
+                                        shrinkWrap: false,
                                         scrollDirection: Axis.vertical,
                                         itemCount: listViewRecepcionesRecordList
                                             .length,
@@ -925,13 +945,8 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                   ),
                                 ),
                               ),
-                            SizedBox(height: 300.0),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
+                            ),
+                            Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                     child: InkWell(
@@ -1027,12 +1042,12 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                       ),
                     ),
                   ),
+                  ),
                 ],
               ),
             ),
           ),
         ),
-      ),
     );
   }
 }
