@@ -2607,6 +2607,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                               ?.text =
                                                           _model.readVehicle!
                                                               .modelo;
+                                                      _model.vehiculoModelo =
+                                                          _model
+                                                              .readVehicle!
+                                                              .modelo;
                                                     });
                                                     safeSetState(() {
                                                       _model.textFieldVINTextController
@@ -2618,6 +2622,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                       _model.textFieldMarcaTextController
                                                               ?.text =
                                                           _model.readVehicle!
+                                                              .marca;
+                                                      _model.vehiculoMarca =
+                                                          _model
+                                                              .readVehicle!
                                                               .marca;
                                                     });
 
@@ -3037,142 +3045,160 @@ class _CNuevaRecepcionCompletaFWidgetState
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
-                                      child: TextFormField(
-                                        controller:
-                                            _model.textFieldMarcaTextController,
-                                        focusNode:
-                                            _model.textFieldMarcaFocusNode,
-                                        autofocus: false,
-                                        readOnly: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText:
-                                              'Ingrese nombre de la marca',
-                                          labelStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleMedium
-                                              .override(
-                                                font: GoogleFonts.montserrat(
-                                                  fontWeight:
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: StreamBuilder<List<
+                                                VehicleMarcaBrandRecord>>(
+                                              stream:
+                                                  queryVehicleMarcaBrandRecord(),
+                                              builder: (context, snapshot) {
+                                                final marcas =
+                                                    snapshot.data ?? [];
+                                                return FlutterFlowDropDown<
+                                                    String>(
+                                                  controller: _model
+                                                          .marcaValueController ??=
+                                                      FormFieldController<
+                                                              String>(
+                                                          null),
+                                                  options: marcas
+                                                      .map((m) => m.name)
+                                                      .toList(),
+                                                  onChanged: (val) =>
+                                                      safeSetState(() {
+                                                    _model.vehiculoMarca = val;
+                                                    _model
+                                                        .textFieldMarcaTextController
+                                                        ?.text = val ?? '';
+                                                  }),
+                                                  width: double.infinity,
+                                                  height: 50.0,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .montserrat(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .accent1,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                  hintText:
+                                                      'Seleccionar marca',
+                                                  fillColor:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .titleMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMedium
-                                                          .fontStyle,
-                                                ),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontStyle,
+                                                          .accent2,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 2.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(16.0,
+                                                          4.0, 16.0, 4.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: true,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 0.0, 0.0),
+                                            child: FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons.add_circle_outline,
+                                                color: FlutterFlowTheme.of(
+                                                        context)
+                                                    .primary,
+                                                size: 24.0,
                                               ),
-                                          hintStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .labelMedium
-                                              .override(
-                                                font: GoogleFonts.montserrat(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0x00000000),
-                                              width: 1.0,
+                                              onPressed: () async {
+                                                final controller =
+                                                    TextEditingController();
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (ctx) =>
+                                                      AlertDialog(
+                                                    title: const Text(
+                                                        'Nueva marca'),
+                                                    content: TextField(
+                                                      controller: controller,
+                                                      decoration:
+                                                          const InputDecoration(
+                                                        hintText:
+                                                            'Nombre de la marca',
+                                                      ),
+                                                    ),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                ctx),
+                                                        child: const Text(
+                                                            'Cancelar'),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () async {
+                                                          if (controller
+                                                              .text
+                                                              .isNotEmpty) {
+                                                            await FirebaseFirestore
+                                                                .instance
+                                                                .collection(
+                                                                    'vehicle_marca_brand')
+                                                                .add({
+                                                              'name':
+                                                                  controller
+                                                                      .text,
+                                                            });
+                                                            Navigator.pop(
+                                                                ctx);
+                                                          }
+                                                        },
+                                                        child: const Text(
+                                                            'Guardar'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                                controller.dispose();
+                                              },
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
                                           ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          errorBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .accent2,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                        validator: _model
-                                            .textFieldMarcaTextControllerValidator
-                                            .asValidator(context),
+                                        ],
                                       ),
                                     ),
                                     Row(
@@ -3218,141 +3244,180 @@ class _CNuevaRecepcionCompletaFWidgetState
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
-                                      child: TextFormField(
-                                        controller: _model
-                                            .textFieldModeloTextController,
-                                        focusNode:
-                                            _model.textFieldModeloFocusNode,
-                                        autofocus: false,
-                                        readOnly: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: 'Ingrese el modelo',
-                                          labelStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleMedium
-                                              .override(
-                                                font: GoogleFonts.montserrat(
-                                                  fontWeight:
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: StreamBuilder<List<
+                                                VehicleModelModeloRecord>>(
+                                              stream:
+                                                  queryVehicleModelModeloRecord(),
+                                              builder: (context, snapshot) {
+                                                final modelos =
+                                                    snapshot.data ?? [];
+                                                final filtered = _model
+                                                        .vehiculoMarca
+                                                        ?.isNotEmpty ==
+                                                    true
+                                                    ? modelos
+                                                        .where((m) =>
+                                                            m.brandname ==
+                                                            _model
+                                                                .vehiculoMarca)
+                                                        .toList()
+                                                    : modelos;
+                                                return FlutterFlowDropDown<
+                                                    String>(
+                                                  controller: _model
+                                                          .modeloValueController ??=
+                                                      FormFieldController<
+                                                              String>(
+                                                          null),
+                                                  options: filtered
+                                                      .map((m) => m.name)
+                                                      .toList(),
+                                                  onChanged: (val) =>
+                                                      safeSetState(() {
+                                                    _model.vehiculoModelo = val;
+                                                    _model
+                                                        .textFieldModeloTextController
+                                                        ?.text = val ?? '';
+                                                  }),
+                                                  width: double.infinity,
+                                                  height: 50.0,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .montserrat(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .accent1,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                  hintText:
+                                                      'Seleccionar modelo',
+                                                  fillColor:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .titleMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMedium
-                                                          .fontStyle,
-                                                ),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontStyle,
+                                                          .accent2,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 2.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(16.0,
+                                                          4.0, 16.0, 4.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: true,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 0.0, 0.0),
+                                            child: FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons.add_circle_outline,
+                                                color: FlutterFlowTheme.of(
+                                                        context)
+                                                    .primary,
+                                                size: 24.0,
                                               ),
-                                          hintStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .labelMedium
-                                              .override(
-                                                font: GoogleFonts.montserrat(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0x00000000),
-                                              width: 1.0,
+                                              onPressed: () async {
+                                                if (_model.vehiculoMarca ==
+                                                        null ||
+                                                    _model.vehiculoMarca!
+                                                        .isEmpty) {
+                                                  return;
+                                                }
+                                                final controller =
+                                                    TextEditingController();
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (ctx) =>
+                                                      AlertDialog(
+                                                    title: const Text(
+                                                        'Nuevo modelo'),
+                                                    content: TextField(
+                                                      controller: controller,
+                                                      decoration:
+                                                          const InputDecoration(
+                                                        hintText:
+                                                            'Nombre del modelo',
+                                                      ),
+                                                    ),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                ctx),
+                                                        child: const Text(
+                                                            'Cancelar'),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () async {
+                                                          if (controller
+                                                              .text
+                                                              .isNotEmpty) {
+                                                            await FirebaseFirestore
+                                                                .instance
+                                                                .collection(
+                                                                    'vehicle_model_modelo')
+                                                                .add({
+                                                              'name':
+                                                                  controller
+                                                                      .text,
+                                                              'brandname':
+                                                                  _model
+                                                                      .vehiculoMarca,
+                                                            });
+                                                            Navigator.pop(
+                                                                ctx);
+                                                          }
+                                                        },
+                                                        child: const Text(
+                                                            'Guardar'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                                controller.dispose();
+                                              },
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
                                           ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          errorBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .accent2,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                        validator: _model
-                                            .textFieldModeloTextControllerValidator
-                                            .asValidator(context),
+                                        ],
                                       ),
                                     ),
                                     Row(
@@ -4578,8 +4643,8 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child:
-                                               FutureBuilder<List<UsersRecord>>(
-                                              future: queryUsersRecordOnce(),
+                                                StreamBuilder<List<UsersRecord>>(
+                                               stream: queryUsersRecord(),
                                               builder: (context, snapshot) {
                                                if (snapshot.connectionState ==
                                                    ConnectionState.waiting) {

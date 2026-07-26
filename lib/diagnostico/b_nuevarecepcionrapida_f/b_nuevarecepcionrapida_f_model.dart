@@ -127,6 +127,10 @@ class BNuevarecepcionrapidaFModel
     return null;
   }
 
+  // State field(s) for Marca dropdown.
+  FormFieldController<String>? marcaValueController;
+  // State field(s) for Modelo dropdown.
+  FormFieldController<String>? modeloValueController;
   // State field(s) for DropDownTecnico widget.
   String? dropDownTecnicoValue;
   FormFieldController<String>? dropDownTecnicoValueController;
