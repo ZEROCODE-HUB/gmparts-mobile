@@ -122,47 +122,63 @@ class _BDashBoardDiagnosticoWidgetState
                                     ),
                               ),
                             ),
-                            Container(
-                              width: 70.0,
-                              decoration: BoxDecoration(),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 5.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => Container(
-                                        width: 32.0,
-                                        height: 32.0,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.network(
-                                          valueOrDefault<String>(
-                                            currentUserPhoto,
-                                            '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
+                            InkWell(
+                              onTap: () async {
+                                context.pushNamed(
+                                  ACuentaWidget.routeName,
+                                );
+                              },
+                              child: Container(
+                                width: 70.0,
+                                decoration: BoxDecoration(),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 5.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => Container(
+                                          width: 32.0,
+                                          height: 32.0,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
                                           ),
-                                          fit: BoxFit.cover,
+                                          child: Image.network(
+                                            valueOrDefault<String>(
+                                              currentUserPhoto,
+                                              '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
+                                            ),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(1.0, 0.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => Text(
-                                        valueOrDefault<String>(
-                                          currentUserDisplayName,
-                                          '-',
-                                        ),
-                                        textAlign: TextAlign.end,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelSmall
-                                            .override(
-                                              font: GoogleFonts.montserrat(
+                                    Align(
+                                      alignment: AlignmentDirectional(1.0, 0.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => Text(
+                                          valueOrDefault<String>(
+                                            currentUserDisplayName,
+                                            '-',
+                                          ),
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelSmall
+                                              .override(
+                                                font: GoogleFonts.montserrat(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(context)
+                                                          .labelSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(context)
+                                                          .labelSmall
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmall
@@ -172,20 +188,29 @@ class _BDashBoardDiagnosticoWidgetState
                                                         .labelSmall
                                                         .fontStyle,
                                               ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmall
-                                                      .fontStyle,
-                                            ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Align(
+                                      alignment: AlignmentDirectional(1.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 2.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Ver perfil',
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelSmall
+                                              .override(
+                                                font: GoogleFonts.montserrat(
+                                                  fontSize: 10.0,
+                                                ),
+                                                fontSize: 10.0,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

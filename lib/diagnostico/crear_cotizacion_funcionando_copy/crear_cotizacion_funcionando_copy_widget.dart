@@ -111,7 +111,13 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                               ),
                         ),
                       ),
-                      Container(
+                      InkWell(
+  onTap: () async {
+    context.pushNamed(
+      ACuentaWidget.routeName,
+    );
+  },
+  child: Container(
                         width: 70.0,
                         decoration: BoxDecoration(),
                         child: Column(
@@ -172,9 +178,24 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                                 ),
                               ),
                             ),
-                          ],
+                          
+                                      Align(
+                                        alignment: AlignmentDirectional(1.0, 0.0),
+                                        child: Padding(
+                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Ver perfil',
+                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                              font: GoogleFonts.montserrat(fontSize: 10.0),
+                                              fontSize: 10.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+],
                         ),
-                      ),
+                      )
+),
                     ],
                   ),
                   Padding(

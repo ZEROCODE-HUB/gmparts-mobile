@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -145,7 +146,13 @@ class _INuevarecrapidaWidgetState extends State<INuevarecrapidaWidget> {
                                 ),
                           ),
                         ),
-                        Container(
+                        InkWell(
+  onTap: () async {
+    context.pushNamed(
+      ACuentaWidget.routeName,
+    );
+  },
+  child: Container(
                           width: 70.0,
                           decoration: BoxDecoration(),
                           child: Column(
@@ -208,9 +215,24 @@ class _INuevarecrapidaWidgetState extends State<INuevarecrapidaWidget> {
                                   ),
                                 ),
                               ),
-                            ],
+                            
+                                      Align(
+                                        alignment: AlignmentDirectional(1.0, 0.0),
+                                        child: Padding(
+                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Ver perfil',
+                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                              font: GoogleFonts.montserrat(fontSize: 10.0),
+                                              fontSize: 10.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+],
                           ),
-                        ),
+                        )
+),
                       ],
                     ),
                   ),
