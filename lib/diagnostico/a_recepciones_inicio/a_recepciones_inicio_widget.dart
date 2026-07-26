@@ -1042,7 +1042,6 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                       ),
                     ),
                   ),
-                  ),
                 ],
               ),
             ),
