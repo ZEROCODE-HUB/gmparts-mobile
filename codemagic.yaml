@@ -21,6 +21,10 @@ workflows:
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
           flutter pub get
+      - name: Generate launcher icons
+        script: |
+          export PATH="$PATH:$HOME/flutter/bin"
+          flutter pub run flutter_launcher_icons
       - name: Build iOS
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
