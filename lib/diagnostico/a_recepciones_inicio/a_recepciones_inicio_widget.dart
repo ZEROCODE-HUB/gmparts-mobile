@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/components/tipo_recepcion_widget.dart';
 import '/components/vacio_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -101,22 +100,20 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 5.0),
                                             child: AuthUserStreamWidget(
-                                               builder: (context) => Container(
-                                                 width: 48.0,
-                                                 height: 48.0,
+                                              builder: (context) => Container(
+                                                width: 32.0,
+                                                height: 32.0,
                                                 clipBehavior: Clip.antiAlias,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
-                                                 child: currentUserPhoto.isNotEmpty
-                                                     ? Image.network(
-                                                         currentUserPhoto,
-                                                         fit: BoxFit.cover,
-                                                       )
-                                                     : Image.asset(
-                                                         'assets/images/perfil.png',
-                                                         fit: BoxFit.cover,
-                                                       ),
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
+                                                    currentUserPhoto,
+                                                    '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
+                                                  ),
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -125,16 +122,14 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 AlignmentDirectional(1.0, 0.0),
                                             child: AuthUserStreamWidget(
                                               builder: (context) => Text(
-                                                 valueOrDefault<String>(
-                                                   currentUserDisplayName,
-                                                   '-',
-                                                 ),
-                                                 maxLines: 1,
-                                                 overflow: TextOverflow.ellipsis,
-                                                 style:
-                                                     FlutterFlowTheme.of(context)
-                                                         .labelSmall
-                                                         .override(
+                                                valueOrDefault<String>(
+                                                  currentUserDisplayName,
+                                                  '-',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall
+                                                        .override(
                                                           font: GoogleFonts
                                                               .montserrat(
                                                             fontWeight:
@@ -159,12 +154,11 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                                       context)
                                                                   .labelSmall
                                                                   .fontStyle,
-                                   ),
-                                 ),
-                               ),
-                             ),
-                           SizedBox(height: 120.0),
-                           ],
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -196,30 +190,9 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                     ),
-                                   ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 0.0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context).primary,
-                                        borderRadius: 30.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 32.0,
-                                        icon: Icon(
-                                          Icons.chevron_left_rounded,
-                                          color:
-                                              FlutterFlowTheme.of(context).primary,
-                                          size: 16.0,
-                                        ),
-                                        onPressed: () async {
-                                          context.pushNamed(
-                                              DashboardWidget.routeName);
-                                        },
-                                      ),
                                     ),
-                                   Container(
+                                  ),
+                                  Container(
                                     width: 70.0,
                                     decoration: BoxDecoration(),
                                     child: Column(
@@ -239,65 +212,37 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                 context.pushNamed(
-                                                     ACuentaWidget.routeName);
-                                               },
-                                                 child: Container(
-                                                   width: 48.0,
-                                                   height: 48.0,
-                                                  clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
+                                                context.pushNamed(
+                                                    ACuentaWidget.routeName);
+                                              },
+                                              child: Container(
+                                                width: 32.0,
+                                                height: 32.0,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Image.network(
+                                                  valueOrDefault<String>(
+                                                    currentUserPhoto,
+                                                    '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
                                                   ),
-                                                   child: Builder(
-                                                     builder: (context) {
-                                                       final photo = currentUserPhoto;
-                                                        if (photo != null && photo.isNotEmpty) {
-                                                          return Image.network(
-                                                            photo,
-                                                           fit: BoxFit.cover,
-                                                           errorBuilder: (_, __, ___) =>
-                                                               CircleAvatar(
-                                                             backgroundColor: FlutterFlowTheme.of(context).primary,
-                                                             child: Text(
-                                                               (currentUserDisplayName.isNotEmpty ? currentUserDisplayName[0] : '?').toUpperCase(),
-                                                               style: TextStyle(
-                                                                 color: FlutterFlowTheme.of(context).primaryText,
-                                                                 fontWeight: FontWeight.bold,
-                                                                 fontSize: 16.0,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                         );
-                                                       }
-                                                       return CircleAvatar(
-                                                         backgroundColor: FlutterFlowTheme.of(context).primary,
-                                                         child: Text(
-                                                           (currentUserDisplayName.isNotEmpty ? currentUserDisplayName[0] : '?').toUpperCase(),
-                                                           style: TextStyle(
-                                                             color: FlutterFlowTheme.of(context).primaryText,
-                                                             fontWeight: FontWeight.bold,
-                                                             fontSize: 16.0,
-                                                           ),
-                                                         ),
-                                                       );
-                                                    },
-                                                  ),
-                                               ),
-                                             ),
-                                           ),
-                                         ),
-                                         Align(
-                                           alignment:
-                                               AlignmentDirectional(1.0, 0.0),
-                                           child: AuthUserStreamWidget(
-                                             builder: (context) => Text(
-                                               valueOrDefault<String>(
-                                                 currentUserDisplayName,
-                                                 '-',
-                                               ),
-                                               maxLines: 1,
-                                               overflow: TextOverflow.ellipsis,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(1.0, 0.0),
+                                          child: AuthUserStreamWidget(
+                                            builder: (context) => Text(
+                                              valueOrDefault<String>(
+                                                currentUserDisplayName,
+                                                '-',
+                                              ),
+                                              textAlign: TextAlign.end,
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .labelSmall
@@ -327,31 +272,10 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                             .labelSmall
                                                             .fontStyle,
                                                   ),
-                                             ),
-                                           ),
-                                         ),
-                                         AuthUserStreamWidget(
-                                           builder: (context) => Padding(
-                                             padding: EdgeInsetsDirectional
-                                                 .fromSTEB(0.0, 2.0, 0.0, 0.0),
-                                             child: Text(
-                                               'Ver perfil',
-                                               style: FlutterFlowTheme.of(
-                                                       context)
-                                                   .labelSmall
-                                                   .override(
-                                                     font:
-                                                         GoogleFonts.montserrat(),
-                                                     color:
-                                                         FlutterFlowTheme.of(
-                                                                 context)
-                                                             .primary,
-                                                     fontSize: 11.0,
-                                                   ),
-                                             ),
-                                           ),
-                                         ),
-                                       ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
@@ -600,41 +524,11 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                           ),
                                         );
                                       }
-                                       List<RecepcionesRecord>
-                                           listViewRecepcionesRecordList =
-                                           snapshot.data!;
-                                       final searchQuery = _model
-                                           .textController.text
-                                           .trim()
-                                           .toLowerCase();
-                                       if (searchQuery.isNotEmpty) {
-                                         final searchNum =
-                                             int.tryParse(searchQuery);
-                                         listViewRecepcionesRecordList =
-                                             listViewRecepcionesRecordList
-                                                 .where((r) =>
-                                                     (searchNum != null &&
-                                                         r.numeroorden ==
-                                                             searchNum) ||
-                                                     (r.nombreCliente
-                                                             ?.toLowerCase()
-                                                             .contains(
-                                                                 searchQuery) ??
-                                                         false) ||
-                                                     (r.placa
-                                                             ?.toLowerCase()
-                                                             .contains(
-                                                                 searchQuery) ??
-                                                         false) ||
-                                                     (r.marca
-                                                             ?.toLowerCase()
-                                                             .contains(
-                                                                 searchQuery) ??
-                                                         false))
-                                                 .toList();
-                                       }
-                                       if (listViewRecepcionesRecordList
-                                           .isEmpty) {
+                                      List<RecepcionesRecord>
+                                          listViewRecepcionesRecordList =
+                                          snapshot.data!;
+                                      if (listViewRecepcionesRecordList
+                                          .isEmpty) {
                                         return Center(
                                           child: Container(
                                             width: 200.0,
@@ -846,12 +740,8 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                                           4.0,
                                                                           8.0,
                                                                           4.0),
-                                                               child: Text(
-                                                                 valueOrDefault<String>(
-                                                                   listViewRecepcionesRecord
-                                                                       .status,
-                                                                   'Recepción',
-                                                                 ),
+                                                              child: Text(
+                                                                'Recepción',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1034,9 +924,8 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                     },
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                            SizedBox(height: 200.0),
                           ],
                         ),
                       ),
