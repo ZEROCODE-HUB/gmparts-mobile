@@ -4643,28 +4643,27 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child:
-                                                StreamBuilder<List<UsersRecord>>(
-                                               stream: queryUsersRecord(),
+                                                FutureBuilder<List<UsersRecord>>(
+                                              future: queryUsersRecordOnce(),
                                               builder: (context, snapshot) {
-                                               if (snapshot.connectionState ==
-                                                   ConnectionState.waiting) {
-                                                 return Center(
-                                                   child: SizedBox(
-                                                     width: 30.0,
-                                                     height: 30.0,
-                                                     child:
-                                                         CircularProgressIndicator(
-                                                       valueColor:
-                                                           AlwaysStoppedAnimation<
-                                                               Color>(
-                                                         FlutterFlowTheme.of(
-                                                                 context)
-                                                             .primary,
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 );
-                                               }
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 30.0,
+                                                      height: 30.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
                                                if (snapshot.hasError) {
                                                  return Text(
                                                    'Error al cargar técnicos',
