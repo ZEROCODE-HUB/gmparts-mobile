@@ -165,7 +165,7 @@ class _FRecepcionGuardadaWidgetState extends State<FRecepcionGuardadaWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                       final url = await generateLink(widget.id!, 'quote');
+                       final url = await generateLink(widget.id!, 'reception');
                        if (!context.mounted) return;
                        await showModalBottomSheet(
                          isScrollControlled: true,
