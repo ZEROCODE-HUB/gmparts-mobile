@@ -2722,8 +2722,13 @@ class _BNuevarecepcionrapidaFWidgetState
                                                     true
                                                 ? modelos
                                                     .where((m) =>
-                                                        m.brandname ==
-                                                        _model.vehiculoMarca)
+                                                        m.brandname
+                                                            .trim()
+                                                            .toLowerCase() ==
+                                                        _model
+                                                            .vehiculoMarca!
+                                                            .trim()
+                                                            .toLowerCase())
                                                     .toList()
                                                 : modelos;
                                             return FlutterFlowDropDown<String>(

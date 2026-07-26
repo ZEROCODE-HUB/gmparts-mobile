@@ -3261,9 +3261,13 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     true
                                                     ? modelos
                                                         .where((m) =>
-                                                            m.brandname ==
+                                                            m.brandname
+                                                                .trim()
+                                                                .toLowerCase() ==
                                                             _model
-                                                                .vehiculoMarca)
+                                                                .vehiculoMarca!
+                                                                .trim()
+                                                                .toLowerCase())
                                                         .toList()
                                                     : modelos;
                                                 return FlutterFlowDropDown<

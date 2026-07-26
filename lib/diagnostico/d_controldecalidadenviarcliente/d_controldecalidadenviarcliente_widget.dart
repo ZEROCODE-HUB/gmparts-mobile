@@ -1,8 +1,10 @@
 import '/custom_code/actions/generate_link.dart';
 import '/diagnostico/recepcion_asedor_de_servicio/enviocliente/enviocliente_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'd_controldecalidadenviarcliente_model.dart';
@@ -68,13 +70,53 @@ class _DControldecalidadenviarclienteWidgetState
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 230.0, 0.0, 0.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          0.0, 12.0, 0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            borderWidth: 0.0,
+                            buttonSize: 44.0,
+                            icon: Icon(
+                              Icons.chevron_left_rounded,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 30.0,
+                            ),
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                          ),
+                          FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            borderWidth: 0.0,
+                            buttonSize: 44.0,
+                            icon: Icon(
+                              Icons.home_rounded,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 28.0,
+                            ),
+                            onPressed: () async {
+                              context.goNamed(
+                                ARecepcionesInicioWidget.routeName,
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 230.0, 0.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
                           width: double.infinity,

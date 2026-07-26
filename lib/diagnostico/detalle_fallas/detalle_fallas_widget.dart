@@ -936,9 +936,165 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                             },
                           ),
                         ),
+                        if (detalleFallasRecepcionesRecord != null &&
+                            (detalleFallasRecepcionesRecord!
+                                    .hasClientecontrolcalidad1() ||
+                                detalleFallasRecepcionesRecord!
+                                    .hasClientecontrolcalidad2() ||
+                                detalleFallasRecepcionesRecord!
+                                    .hasClientecontrolcalidad3() ||
+                                detalleFallasRecepcionesRecord!
+                                    .hasClientecontrolcalidad4()))
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 16.0, 0.0, 0.0),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).accent2,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 16.0, 20.0, 16.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Feedback del cliente',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            font: GoogleFonts.montserrat(
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                    ),
+                                    if (detalleFallasRecepcionesRecord!
+                                        .hasClientecontrolcalidad1())
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 8.0, 0.0, 0.0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Experiencia general: ',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium,
+                                            ),
+                                            Text(
+                                              detalleFallasRecepcionesRecord!
+                                                  .clientecontrolcalidad1,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    if (detalleFallasRecepcionesRecord!
+                                        .hasClientecontrolcalidad2())
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 4.0, 0.0, 0.0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Facilidad de uso: ',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium,
+                                            ),
+                                            Text(
+                                              detalleFallasRecepcionesRecord!
+                                                  .clientecontrolcalidad2,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    if (detalleFallasRecepcionesRecord!
+                                        .hasClientecontrolcalidad3())
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 4.0, 0.0, 0.0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Notificaciones: ',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium,
+                                            ),
+                                            Text(
+                                              detalleFallasRecepcionesRecord!
+                                                  .clientecontrolcalidad3,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    if (detalleFallasRecepcionesRecord!
+                                            .clientecontrolcalidad4
+                                            .isNotEmpty)
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 4.0, 0.0, 0.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Comentario adicional:',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium,
+                                            ),
+                                            Text(
+                                              detalleFallasRecepcionesRecord!
+                                                  .clientecontrolcalidad4,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontStyle:
+                                                        FontStyle.italic,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 40.0),
+                              0.0, 16.0, 0.0, 40.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               context.pushNamed(

@@ -1,3 +1,4 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -70,13 +71,53 @@ class _DControldecalidadenviarclientePreWidgetState
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 230.0, 0.0, 0.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          0.0, 12.0, 0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            borderWidth: 0.0,
+                            buttonSize: 44.0,
+                            icon: Icon(
+                              Icons.chevron_left_rounded,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 30.0,
+                            ),
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                          ),
+                          FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            borderWidth: 0.0,
+                            buttonSize: 44.0,
+                            icon: Icon(
+                              Icons.home_rounded,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 28.0,
+                            ),
+                            onPressed: () async {
+                              context.goNamed(
+                                ARecepcionesInicioWidget.routeName,
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 230.0, 0.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
                           width: double.infinity,
