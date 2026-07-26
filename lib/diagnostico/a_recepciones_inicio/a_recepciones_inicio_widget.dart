@@ -288,13 +288,36 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                             .labelSmall
                                                             .fontStyle,
                                                   ),
-                                            ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment:
+                                                    AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 2.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Ver perfil',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .montserrat(
+                                                            fontSize: 10.0,
+                                                          ),
+                                                          fontSize: 10.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                             Padding(
