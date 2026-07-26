@@ -490,13 +490,12 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                 isMultiSelect: false,
                               ),
                             ),
-                            Flexible(
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 25.0, 0.0, 0.0),
-                                  child: StreamBuilder<List<RecepcionesRecord>>(
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 25.0, 0.0, 0.0),
+                                child: StreamBuilder<List<RecepcionesRecord>>(
                                     stream: queryRecepcionesRecord(
                                       queryBuilder: (recepcionesRecord) =>
                                           recepcionesRecord
@@ -541,6 +540,8 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                       return ListView.separated(
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
+                                        physics:
+                                            NeverScrollableScrollPhysics(),
                                         scrollDirection: Axis.vertical,
                                         itemCount: listViewRecepcionesRecordList
                                             .length,
