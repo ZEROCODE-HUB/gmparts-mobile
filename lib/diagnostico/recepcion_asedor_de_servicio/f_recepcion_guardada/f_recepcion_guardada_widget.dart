@@ -158,11 +158,14 @@ class _FRecepcionGuardadaWidgetState extends State<FRecepcionGuardadaWidget> {
                           ],
                         ),
                       ),
+                      ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                        final url = await generateLink(widget.id!, 'reception');
