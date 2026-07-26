@@ -93,7 +93,9 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                                 size: 30.0,
                               ),
                               onPressed: () async {
-                                context.safePop();
+                                context.goNamed(
+                                  ARecepcionesInicioWidget.routeName,
+                                );
                               },
                             ),
                             FlutterFlowIconButton(
@@ -189,64 +191,6 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                         0.0, 0.0, 0.0, 50.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final recepciones = await queryRecepcionesRecordOnce(
-                          queryBuilder: (r) => r.where(
-                            'numeroorden',
-                            isEqualTo: widget.id,
-                          ),
-                        );
-                        if (recepciones.isEmpty) return;
-                        final recepcion = recepciones.first;
-
-                        final logoUrl = Platform.isAndroid
-                            ? 'https://firebasestorage.googleapis.com/v0/b/g-m-parts-lac7fg.appspot.com/o/logo.png?alt=media'
-                            : 'https://gmpartsprueba.flutterflow.app/logo.png';
-
-                        if (context.mounted) {
-                          await generarCotizacionPDF(
-                            recepcion.reference,
-                            recepcion.razonSocial.isNotEmpty
-                                ? recepcion.razonSocial
-                                : recepcion.nombreCliente,
-                            recepcion.rUCempresa.isNotEmpty
-                                ? recepcion.rUCempresa
-                                : recepcion.dni,
-                            recepcion.nombreCliente,
-                            recepcion.telefono,
-                            recepcion.nombreEncargado.isNotEmpty
-                                ? recepcion.nombreEncargado
-                                : recepcion.nombreCliente,
-                            recepcion.telefono,
-                            recepcion.correoElectronico,
-                            recepcion.placa,
-                            recepcion.marca,
-                            recepcion.modelo,
-                            '',
-                            '',
-                            recepcion.kmIngreso,
-                            recepcion.anoFabricacion,
-                            recepcion.condpago,
-                            recepcion.moneda,
-                            '',
-                            recepcion.diaentrega,
-                            recepcion.validoferta,
-                            recepcion.fechaCreacion != null
-                                ? '${recepcion.fechaCreacion!.day}/${recepcion.fechaCreacion!.month}/${recepcion.fechaCreacion!.year}'
-                                : '',
-                            recepcion.tipoServicio,
-                            recepcion.motivoIngreso,
-                            'COT-${recepcion.numeroorden}',
-                            '',
-                            recepcion.subtotal,
-                            recepcion.igv,
-                            recepcion.total,
-                            logoUrl,
-                            'S/ ${recepcion.total.toStringAsFixed(2)}',
-                            recepcion.numeroorden.toString(),
-                            recepcion.tipoPersona.toLowerCase() == 'natural',
-                          );
-                        }
-
                         final url =
                             await generateLink(widget.id!, 'quote');
                         if (!context.mounted) return;

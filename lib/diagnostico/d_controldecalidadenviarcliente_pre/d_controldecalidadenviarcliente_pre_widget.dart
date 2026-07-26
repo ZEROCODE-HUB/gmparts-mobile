@@ -90,7 +90,9 @@ class _DControldecalidadenviarclientePreWidgetState
                               size: 30.0,
                             ),
                             onPressed: () async {
-                              context.safePop();
+                              context.goNamed(
+                                ARecepcionesInicioWidget.routeName,
+                              );
                             },
                           ),
                           FlutterFlowIconButton(

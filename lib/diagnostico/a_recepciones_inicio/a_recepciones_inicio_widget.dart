@@ -310,6 +310,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                   controller: _model.textController,
                                   focusNode: _model.textFieldFocusNode,
                                   autofocus: false,
+                                  onChanged: (_) => safeSetState(() {}),
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Buscar Recepciones',
@@ -547,6 +548,31 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                       List<RecepcionesRecord>
                                           listViewRecepcionesRecordList =
                                           snapshot.data!;
+                                      final query = _model
+                                          .textController.text
+                                          .trim()
+                                          .toLowerCase();
+                                      if (query.isNotEmpty) {
+                                        listViewRecepcionesRecordList =
+                                            listViewRecepcionesRecordList
+                                                .where((r) =>
+                                                    r.numeroorden
+                                                        .toString()
+                                                        .contains(query) ||
+                                                    r.nombreCliente
+                                                        .toLowerCase()
+                                                        .contains(query) ||
+                                                    r.placa
+                                                        .toLowerCase()
+                                                        .contains(query) ||
+                                                    r.marca
+                                                        .toLowerCase()
+                                                        .contains(query) ||
+                                                    r.modelo
+                                                        .toLowerCase()
+                                                        .contains(query))
+                                                .toList();
+                                      }
                                       if (listViewRecepcionesRecordList
                                           .isEmpty) {
                                         return Center(

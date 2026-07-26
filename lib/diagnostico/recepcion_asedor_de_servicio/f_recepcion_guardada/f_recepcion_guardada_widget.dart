@@ -86,7 +86,9 @@ class _FRecepcionGuardadaWidgetState extends State<FRecepcionGuardadaWidget> {
                                   size: 30.0,
                                 ),
                                 onPressed: () async {
-                                  context.safePop();
+                                  context.goNamed(
+                                    ARecepcionesInicioWidget.routeName,
+                                  );
                                 },
                               ),
                               FlutterFlowIconButton(

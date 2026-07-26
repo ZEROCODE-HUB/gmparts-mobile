@@ -87,7 +87,9 @@ class _DFinalizadoWidgetState extends State<DFinalizadoWidget> {
                               size: 30.0,
                             ),
                             onPressed: () async {
-                              context.safePop();
+                              context.goNamed(
+                                ARecepcionesInicioWidget.routeName,
+                              );
                             },
                           ),
                           FlutterFlowIconButton(
