@@ -225,6 +225,7 @@ class _INuevarecrapidaWidgetState extends State<INuevarecrapidaWidget> {
                                             style: FlutterFlowTheme.of(context).labelSmall.override(
                                               font: GoogleFonts.montserrat(fontSize: 10.0),
                                               fontSize: 10.0,
+                                              color: FlutterFlowTheme.of(context).primary,
                                             ),
                                           ),
                                         ),

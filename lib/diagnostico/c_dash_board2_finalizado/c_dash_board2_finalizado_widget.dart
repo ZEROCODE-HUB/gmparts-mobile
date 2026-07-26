@@ -242,6 +242,7 @@ class _CDashBoard2FinalizadoWidgetState
                                                     font: GoogleFonts.montserrat(
                                                       fontSize: 10.0,
                                                     ),
+                                                    color: FlutterFlowTheme.of(context).primary,
                                                     fontSize: 10.0,
                                                   ),
                                             ),

@@ -310,6 +310,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                             fontSize: 10.0,
                                                           ),
                                                           fontSize: 10.0,
+                                                          color: FlutterFlowTheme.of(context).primary,
                                                         ),
                                                   ),
                                                 ),
