@@ -3019,17 +3019,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                    child: FutureBuilder<List<UsersRecord>>(
-                                      future: queryUsersRecordOnce(
-                                        queryBuilder: (usersRecord) =>
-                                            usersRecord.whereIn('user_role', [
-                                          'Administrador',
-                                          'Gerente General',
-                                          'Jefe de Taller',
-                                          'Asesor Servicio',
-                                          'Tecnico Mecanico',
-                                          'Asesor Repuesto',
-                                        ]),
-                                      ),
+                                      future: queryUsersRecordOnce(),
                                       builder: (context, snapshot) {
                                        if (snapshot.connectionState ==
                                                ConnectionState.waiting) {
@@ -3057,6 +3047,11 @@ class _BNuevarecepcionrapidaFWidgetState
                                        List<UsersRecord>
                                            dropDownTecnicoUsersRecordList =
                                            snapshot.data ?? [];
+                                       dropDownTecnicoUsersRecordList =
+                                           dropDownTecnicoUsersRecordList
+                                               .where((u) =>
+                                                   u.userRole != 'Cliente')
+                                               .toList();
                                        if (dropDownTecnicoUsersRecordList
                                            .isEmpty) {
                                          return Text(

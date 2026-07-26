@@ -163,7 +163,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                  ),
                                ),
                              ),
-                           SizedBox(height: 60.0),
+                           SizedBox(height: 120.0),
                            ],
                                       ),
                                     ),
