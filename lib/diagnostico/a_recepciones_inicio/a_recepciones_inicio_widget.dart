@@ -644,8 +644,9 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                         );
                                       }
 
-                                      return ListView.separated(
-                                        padding: EdgeInsets.zero,
+                                       return ListView.separated(
+                                         padding: EdgeInsetsDirectional.fromSTEB(
+                                             0.0, 0.0, 0.0, 200.0),
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         itemCount: listViewRecepcionesRecordList
