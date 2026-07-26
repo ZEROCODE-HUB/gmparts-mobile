@@ -21,22 +21,3 @@ exports.onAprobacionClienteUpdate = functions.firestore
 
     return null;
   });
-
-exports.generateLink = functions.https.onCall((data, context) => {
-  const { receptionId, purpose } = data;
-
-  const baseUrl = 'https://gmpartsprueba.flutterflow.app';
-  let path;
-  switch (purpose) {
-    case 'quote':
-      path = `/gLinkclienteCotizacion?id=${receptionId}`;
-      break;
-    case 'report':
-      path = `/encuestacliente?id=${receptionId}`;
-      break;
-    default:
-      path = `/gLinkcliente?id=${receptionId}`;
-  }
-
-  return { url: `${baseUrl}${path}` };
-});
