@@ -56,10 +56,10 @@ exports.approveReport = functions.https.onCall(async (data) => {
     }
     const doc = snapshot.docs[0];
     await doc.ref.update({
-        clientecontrolcalidad1: rating1.toString(),
-        clientecontrolcalidad2: rating2.toString(),
-        clientecontrolcalidad3: rating3.toString(),
-        clientecontrolcalidad4: comment || '',
+        'Clientecontrolcalidad1': rating1.toString(),
+        'Clientecontrolcalidad2': rating2.toString(),
+        'Clientecontrolcalidad3': rating3.toString(),
+        'Clientecontrolcalidad4': comment || '',
         status: 'Finalizado',
         report_access_key: admin.firestore.FieldValue.delete(),
     });

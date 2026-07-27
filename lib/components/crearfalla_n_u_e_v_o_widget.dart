@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/editar_repuestos_nuevo_widget.dart';
-import '/components/gestion_servicio_nuevo_crear_widget.dart';
 import '/elegir_insumos_repuestos/elegir_insumos_copy/elegir_insumos_copy_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -295,97 +294,31 @@ class _CrearfallaNUEVOWidgetState extends State<CrearfallaNUEVOWidget> {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Servicio o solución',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.montserrat(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Builder(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (dialogContext) {
-                                            return Dialog(
-                                              elevation: 0,
-                                              insetPadding: EdgeInsets.zero,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              alignment:
-                                                  AlignmentDirectional(0.0, 0.0)
-                                                      .resolve(
-                                                          Directionality.of(
-                                                              context)),
-                                              child:
-                                                  GestionServicioNuevoCrearWidget(),
-                                            );
-                                          },
-                                        );
-                                      },
-                                      child: Text(
-                                        'Agregar Servicios',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                            ),
+                              Text(
+                                'Servicio o solución',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight:
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .fontWeight,
+                                        fontStyle:
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .fontStyle,
                                       ),
+                                      letterSpacing: 0.0,
+                                      fontWeight:
+                                          FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .fontWeight,
+                                      fontStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .fontStyle,
                                     ),
-                                  ),
-                                ],
                               ),
                               StreamBuilder<List<ServiceRecord>>(
                                 stream: queryServiceRecord(),
