@@ -1,8 +1,10 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,11 +45,7 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
     _model.textFieldPlacaTextController ??= TextEditingController();
     _model.textFieldPlacaFocusNode ??= FocusNode();
 
-    _model.marcaTextController ??= TextEditingController();
-    _model.marcaFocusNode ??= FocusNode();
 
-    _model.modeloTextController ??= TextEditingController();
-    _model.modeloFocusNode ??= FocusNode();
 
     _model.vinTextController ??= TextEditingController();
     _model.vinFocusNode ??= FocusNode();
@@ -290,100 +288,155 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                      child: TextFormField(
-                        controller: _model.marcaTextController,
-                        focusNode: _model.marcaFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Marca',
-                          labelStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontStyle,
-                                  ),
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1.0,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: StreamBuilder<
+                                List<VehicleMarcaBrandRecord>>(
+                              stream:
+                                  queryVehicleMarcaBrandRecord(),
+                              builder: (context, snapshot) {
+                                final marcas =
+                                    snapshot.data ?? [];
+                                return FlutterFlowDropDown<String>(
+                                  controller: _model
+                                          .marcaValueController ??=
+                                      FormFieldController<String>(
+                                          null),
+                                  options: marcas
+                                      .map((m) => m.name)
+                                      .toList(),
+                                  onChanged: (val) =>
+                                      safeSetState(() {
+                                    _model.vehiculoMarca = val;
+                                  }),
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  textStyle: FlutterFlowTheme.of(
+                                          context)
+                                      .titleSmall
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(
+                                                context)
+                                            .accent1,
+                                        letterSpacing: 0.0,
+                                        fontWeight:
+                                            FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .fontWeight,
+                                        fontStyle:
+                                            FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .fontStyle,
+                                      ),
+                                  hintText:
+                                      'Seleccionar marca',
+                                  fillColor:
+                                      FlutterFlowTheme.of(
+                                              context)
+                                          .accent2,
+                                  elevation: 2.0,
+                                  borderColor:
+                                      Colors.transparent,
+                                  borderWidth: 2.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional
+                                      .fromSTEB(
+                                          16.0,
+                                          4.0,
+                                          16.0,
+                                          4.0),
+                                  hidesUnderline: true,
+                                  isOverButton: true,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
+                                );
+                              },
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          filled: true,
-                          fillColor: FlutterFlowTheme.of(context).accent2,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 0.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              borderWidth: 1.0,
+                              buttonSize: 40.0,
+                              icon: Icon(
+                                Icons.add_circle_outline,
+                                color: FlutterFlowTheme.of(
+                                        context)
+                                    .primary,
+                                size: 24.0,
                               ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
+                              onPressed: () async {
+                                final controller =
+                                    TextEditingController();
+                                await showDialog(
+                                  context: context,
+                                  builder: (ctx) => AlertDialog(
+                                    title: const Text(
+                                        'Nueva marca'),
+                                    content: TextField(
+                                      controller:
+                                          controller,
+                                      decoration: const InputDecoration(
+                                        hintText:
+                                            'Nombre de la marca',
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(
+                                                ctx),
+                                        child: const Text(
+                                            'Cancelar'),
+                                      ),
+                                      TextButton(
+                                        onPressed:
+                                            () async {
+                                          if (controller
+                                              .text
+                                              .isNotEmpty) {
+                                            await FirebaseFirestore
+                                                .instance
+                                                .collection(
+                                                    'vehicle_marca_brand')
+                                                .add({
+                                              'name': controller
+                                                  .text,
+                                            });
+                                            Navigator.pop(
+                                                ctx);
+                                          }
+                                        },
+                                        child: const Text(
+                                            'Guardar'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                                controller.dispose();
+                              },
                             ),
-                        validator: _model.marcaTextControllerValidator
-                            .asValidator(context),
+                          ),
+                        ],
                       ),
                     ),
                     Row(
@@ -420,100 +473,180 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                      child: TextFormField(
-                        controller: _model.modeloTextController,
-                        focusNode: _model.modeloFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Modelo',
-                          labelStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontStyle,
-                                  ),
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1.0,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: StreamBuilder<
+                                List<VehicleModelModeloRecord>>(
+                              stream:
+                                  queryVehicleModelModeloRecord(),
+                              builder: (context, snapshot) {
+                                final modelos =
+                                    snapshot.data ?? [];
+                                final filtered = _model
+                                        .vehiculoMarca
+                                        ?.isNotEmpty ==
+                                    true
+                                    ? modelos
+                                        .where((m) =>
+                                            m.brandname
+                                                .trim()
+                                                .toLowerCase() ==
+                                            _model
+                                                .vehiculoMarca!
+                                                .trim()
+                                                .toLowerCase())
+                                        .toList()
+                                    : modelos;
+                                return FlutterFlowDropDown<
+                                    String>(
+                                  controller: _model
+                                          .modeloValueController ??=
+                                      FormFieldController<
+                                              String>(
+                                          null),
+                                  options: filtered
+                                      .map((m) => m.name)
+                                      .toList(),
+                                  onChanged: (val) =>
+                                      safeSetState(() {
+                                    _model.vehiculoModelo =
+                                        val;
+                                  }),
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  textStyle: FlutterFlowTheme.of(
+                                          context)
+                                      .titleSmall
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(
+                                                context)
+                                            .accent1,
+                                        letterSpacing: 0.0,
+                                        fontWeight:
+                                            FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .fontWeight,
+                                        fontStyle:
+                                            FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .fontStyle,
+                                      ),
+                                  hintText:
+                                      'Seleccionar modelo',
+                                  fillColor:
+                                      FlutterFlowTheme.of(
+                                              context)
+                                          .accent2,
+                                  elevation: 2.0,
+                                  borderColor:
+                                      Colors.transparent,
+                                  borderWidth: 2.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional
+                                      .fromSTEB(
+                                          16.0,
+                                          4.0,
+                                          16.0,
+                                          4.0),
+                                  hidesUnderline: true,
+                                  isOverButton: true,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
+                                );
+                              },
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          filled: true,
-                          fillColor: FlutterFlowTheme.of(context).accent2,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 0.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              borderWidth: 1.0,
+                              buttonSize: 40.0,
+                              icon: Icon(
+                                Icons.add_circle_outline,
+                                color: FlutterFlowTheme.of(
+                                        context)
+                                    .primary,
+                                size: 24.0,
                               ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
+                              onPressed: () async {
+                                if (_model.vehiculoMarca ==
+                                    null) {
+                                  return;
+                                }
+                                final controller =
+                                    TextEditingController();
+                                await showDialog(
+                                  context: context,
+                                  builder: (ctx) => AlertDialog(
+                                    title: const Text(
+                                        'Nuevo modelo'),
+                                    content: TextField(
+                                      controller:
+                                          controller,
+                                      decoration: const InputDecoration(
+                                        hintText:
+                                            'Nombre del modelo',
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(
+                                                ctx),
+                                        child: const Text(
+                                            'Cancelar'),
+                                      ),
+                                      TextButton(
+                                        onPressed:
+                                            () async {
+                                          if (controller
+                                              .text
+                                              .isNotEmpty) {
+                                            await FirebaseFirestore
+                                                .instance
+                                                .collection(
+                                                    'vehicle_model_modelo')
+                                                .add({
+                                              'name': controller
+                                                  .text,
+                                              'brandname':
+                                                  _model
+                                                      .vehiculoMarca,
+                                            });
+                                            Navigator.pop(
+                                                ctx);
+                                          }
+                                        },
+                                        child: const Text(
+                                            'Guardar'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                                controller.dispose();
+                              },
                             ),
-                        validator: _model.modeloTextControllerValidator
-                            .asValidator(context),
+                          ),
+                        ],
                       ),
                     ),
                     Row(
@@ -841,8 +974,8 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                   placa:
                                       _model.textFieldPlacaTextController.text,
                                   propietario: widget.idUser,
-                                  marca: _model.marcaTextController.text,
-                                  modelo: _model.modeloTextController.text,
+                                  marca: _model.vehiculoMarca ?? '',
+                                  modelo: _model.vehiculoModelo ?? '',
                                   vINSerie: _model.vinTextController.text,
                                   anioDeFabricion:
                                       _model.anioFabricacionTextController.text,
@@ -856,9 +989,9 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                               .text,
                                           propietario: widget.idUser,
                                           marca:
-                                              _model.marcaTextController.text,
+                                              _model.vehiculoMarca ?? '',
                                           modelo:
-                                              _model.modeloTextController.text,
+                                              _model.vehiculoModelo ?? '',
                                           vINSerie:
                                               _model.vinTextController.text,
                                           anioDeFabricion: _model
@@ -868,18 +1001,6 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                               _model.username?.displayName,
                                         ),
                                         vehiculosRecordReference);
-
-                                await VehicleMarcaBrandRecord.collection
-                                    .doc()
-                                    .set(createVehicleMarcaBrandRecordData(
-                                      name: _model.marcaTextController.text,
-                                    ));
-
-                                await VehicleModelModeloRecord.collection
-                                    .doc()
-                                    .set(createVehicleModelModeloRecordData(
-                                      name: _model.modeloTextController.text,
-                                    ));
                                 await Future.delayed(
                                   Duration(
                                     milliseconds: 500,

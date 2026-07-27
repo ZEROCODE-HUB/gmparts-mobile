@@ -14,21 +14,12 @@ class AgregarVehiculoModel extends FlutterFlowModel<AgregarVehiculoWidget> {
   TextEditingController? textFieldPlacaTextController;
   String? Function(BuildContext, String?)?
       textFieldPlacaTextControllerValidator;
-  // State field(s) for marca widget.
-  FocusNode? marcaFocusNode;
-  TextEditingController? marcaTextController;
-  String? Function(BuildContext, String?)? marcaTextControllerValidator;
-  // State field(s) for modelo widget.
-  FocusNode? modeloFocusNode;
-  TextEditingController? modeloTextController;
-  String? Function(BuildContext, String?)? modeloTextControllerValidator;
-  String? _modeloTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'El modelo es obligatorio';
-    }
-
-    return null;
-  }
+  // State field(s) for marca dropdown.
+  String? vehiculoMarca;
+  FormFieldController<String>? marcaValueController;
+  // State field(s) for modelo dropdown.
+  String? vehiculoModelo;
+  FormFieldController<String>? modeloValueController;
 
   // State field(s) for vin widget.
   FocusNode? vinFocusNode;
@@ -61,7 +52,6 @@ class AgregarVehiculoModel extends FlutterFlowModel<AgregarVehiculoWidget> {
 
   @override
   void initState(BuildContext context) {
-    modeloTextControllerValidator = _modeloTextControllerValidator;
     vinTextControllerValidator = _vinTextControllerValidator;
     anioFabricacionTextControllerValidator =
         _anioFabricacionTextControllerValidator;
@@ -72,11 +62,7 @@ class AgregarVehiculoModel extends FlutterFlowModel<AgregarVehiculoWidget> {
     textFieldPlacaFocusNode?.dispose();
     textFieldPlacaTextController?.dispose();
 
-    marcaFocusNode?.dispose();
-    marcaTextController?.dispose();
 
-    modeloFocusNode?.dispose();
-    modeloTextController?.dispose();
 
     vinFocusNode?.dispose();
     vinTextController?.dispose();
