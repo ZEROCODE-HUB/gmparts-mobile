@@ -41,8 +41,8 @@ exports.validateKey = functions.https.onCall(async (data) => {
     if (!key || !purpose) {
         throw new functions.https.HttpsError('invalid-argument', 'Se requieren key y purpose');
     }
-    if (purpose !== 'quote' && purpose !== 'report') {
-        throw new functions.https.HttpsError('invalid-argument', 'purpose debe ser "quote" o "report"');
+    if (purpose !== 'quote' && purpose !== 'report' && purpose !== 'reception') {
+        throw new functions.https.HttpsError('invalid-argument', 'purpose debe ser "quote", "report" o "reception"');
     }
     const db = admin.firestore();
     const fieldName = `${purpose}_access_key`;

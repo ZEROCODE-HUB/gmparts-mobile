@@ -54,10 +54,10 @@ export const validateKey = functions.https.onCall(async (data) => {
     )
   }
 
-  if (purpose !== 'quote' && purpose !== 'report') {
+  if (purpose !== 'quote' && purpose !== 'report' && purpose !== 'reception') {
     throw new functions.https.HttpsError(
       'invalid-argument',
-      'purpose debe ser "quote" o "report"'
+      'purpose debe ser "quote", "report" o "reception"'
     )
   }
 
