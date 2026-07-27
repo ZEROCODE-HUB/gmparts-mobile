@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb, debugPrint;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../auth_manager.dart';
@@ -362,12 +362,14 @@ class FirebaseAuthManager extends AuthManager
         SnackBar(content: Text(errorMsg)),
       );
       return null;
-    } catch (e) {
+    } catch (e, stackTrace) {
+      debugPrint('Error inesperado: $e');
+      debugPrint('Stack trace: $stackTrace');
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Error inesperado al iniciar sesión. Intenta de nuevo.',
+            'Error inesperado: ${e.toString()}',
           ),
         ),
       );
