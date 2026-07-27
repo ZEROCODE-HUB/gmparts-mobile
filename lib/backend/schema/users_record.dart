@@ -130,12 +130,18 @@ class UsersRecord extends FirestoreRecord {
   String get ruc => _ruc ?? '';
   bool hasRuc() => _ruc != null;
 
+  DateTime? _toDateTime(dynamic value) {
+    if (value is DateTime) return value;
+    if (value is String) return DateTime.tryParse(value);
+    return null;
+  }
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
     _photoUrl = snapshotData['photo_url'] as String?;
     _uid = snapshotData['uid'] as String?;
-    _createdTime = snapshotData['created_time'] as DateTime?;
+    _createdTime = _toDateTime(snapshotData['created_time']);
     _phoneNumber = snapshotData['phone_number'] as String?;
     _tipoDePersona = snapshotData['tipo_de_persona'] as String?;
     _userRole = snapshotData['user_role'] as String?;
@@ -144,7 +150,7 @@ class UsersRecord extends FirestoreRecord {
     _distrito = snapshotData['distrito'] as String?;
     _provincia = snapshotData['provincia'] as String?;
     _codigo = snapshotData['codigo'] as String?;
-    _fechaDeNacimiento = snapshotData['fecha_de_nacimiento'] as DateTime?;
+    _fechaDeNacimiento = _toDateTime(snapshotData['fecha_de_nacimiento']);
     _sexo = snapshotData['sexo'] as String?;
     _tipoDeDocumento = snapshotData['tipo_de_documento'] as String?;
     _edad = snapshotData['edad'] as String?;
