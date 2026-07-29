@@ -23,6 +23,8 @@ class EDiagnosticoWidget extends StatefulWidget {
 }
 
 class _EDiagnosticoWidgetState extends State<EDiagnosticoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late EDiagnosticoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

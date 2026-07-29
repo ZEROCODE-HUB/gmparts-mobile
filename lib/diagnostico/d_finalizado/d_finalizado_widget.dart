@@ -26,6 +26,8 @@ class DFinalizadoWidget extends StatefulWidget {
 }
 
 class _DFinalizadoWidgetState extends State<DFinalizadoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late DFinalizadoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -27,6 +27,8 @@ class ARecepcionesInicioWidget extends StatefulWidget {
 }
 
 class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ARecepcionesInicioModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -20,6 +20,8 @@ class SplashWidget extends StatefulWidget {
 }
 
 class _SplashWidgetState extends State<SplashWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late SplashModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -25,6 +25,8 @@ class AgregarVehiculoWidget extends StatefulWidget {
 }
 
 class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late AgregarVehiculoModel _model;
 
   @override

@@ -27,6 +27,8 @@ class ElegirRepArregladoWidget extends StatefulWidget {
 }
 
 class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ElegirRepArregladoModel _model;
 
   @override

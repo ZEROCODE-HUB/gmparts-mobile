@@ -28,6 +28,8 @@ class DControldecalidadenviarclienteWidget extends StatefulWidget {
 
 class _DControldecalidadenviarclienteWidgetState
     extends State<DControldecalidadenviarclienteWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late DControldecalidadenviarclienteModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

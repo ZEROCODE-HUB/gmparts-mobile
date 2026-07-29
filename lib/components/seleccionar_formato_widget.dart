@@ -16,6 +16,8 @@ class SeleccionarFormatoWidget extends StatefulWidget {
 }
 
 class _SeleccionarFormatoWidgetState extends State<SeleccionarFormatoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late SeleccionarFormatoModel _model;
 
   @override

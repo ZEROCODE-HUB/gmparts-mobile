@@ -34,6 +34,8 @@ class EditarArticuloModalCopyWidget extends StatefulWidget {
 
 class _EditarArticuloModalCopyWidgetState
     extends State<EditarArticuloModalCopyWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late EditarArticuloModalCopyModel _model;
 
   @override

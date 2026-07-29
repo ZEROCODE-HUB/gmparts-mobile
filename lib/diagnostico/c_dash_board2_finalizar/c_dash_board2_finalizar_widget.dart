@@ -31,6 +31,8 @@ class CDashBoard2FinalizarWidget extends StatefulWidget {
 
 class _CDashBoard2FinalizarWidgetState
     extends State<CDashBoard2FinalizarWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CDashBoard2FinalizarModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

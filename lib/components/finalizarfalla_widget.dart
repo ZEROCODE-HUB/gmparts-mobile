@@ -25,6 +25,8 @@ class FinalizarfallaWidget extends StatefulWidget {
 }
 
 class _FinalizarfallaWidgetState extends State<FinalizarfallaWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late FinalizarfallaModel _model;
 
   @override

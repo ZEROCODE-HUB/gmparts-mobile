@@ -24,6 +24,8 @@ class HAprobacionclientecotizWidget extends StatefulWidget {
 
 class _HAprobacionclientecotizWidgetState
     extends State<HAprobacionclientecotizWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late HAprobacionclientecotizModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

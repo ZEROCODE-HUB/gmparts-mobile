@@ -20,6 +20,8 @@ class IniciarSessionWidget extends StatefulWidget {
 }
 
 class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late IniciarSessionModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

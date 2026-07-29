@@ -25,6 +25,8 @@ class GLinkclienteWidget extends StatefulWidget {
 }
 
 class _GLinkclienteWidgetState extends State<GLinkclienteWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late GLinkclienteModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

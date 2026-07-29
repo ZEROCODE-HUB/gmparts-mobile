@@ -29,6 +29,8 @@ class DCotizacionWidget extends StatefulWidget {
 }
 
 class _DCotizacionWidgetState extends State<DCotizacionWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late DCotizacionModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

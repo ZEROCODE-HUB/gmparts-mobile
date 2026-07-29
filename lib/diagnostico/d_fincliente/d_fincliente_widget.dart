@@ -16,6 +16,8 @@ class DFinclienteWidget extends StatefulWidget {
 }
 
 class _DFinclienteWidgetState extends State<DFinclienteWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late DFinclienteModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

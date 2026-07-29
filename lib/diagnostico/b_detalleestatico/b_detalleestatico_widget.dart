@@ -26,6 +26,8 @@ class BDetalleestaticoWidget extends StatefulWidget {
 }
 
 class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late BDetalleestaticoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

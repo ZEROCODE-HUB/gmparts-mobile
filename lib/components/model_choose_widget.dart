@@ -13,6 +13,8 @@ class ModelChooseWidget extends StatefulWidget {
 }
 
 class _ModelChooseWidgetState extends State<ModelChooseWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ModelChooseModel _model;
 
   @override

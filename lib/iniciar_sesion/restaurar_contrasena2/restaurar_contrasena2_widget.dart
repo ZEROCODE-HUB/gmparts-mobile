@@ -20,6 +20,8 @@ class RestaurarContrasena2Widget extends StatefulWidget {
 
 class _RestaurarContrasena2WidgetState
     extends State<RestaurarContrasena2Widget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late RestaurarContrasena2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -26,6 +26,8 @@ class ElegirRepuestoCotizacionFacturaWidget extends StatefulWidget {
 
 class _ElegirRepuestoCotizacionFacturaWidgetState
     extends State<ElegirRepuestoCotizacionFacturaWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ElegirRepuestoCotizacionFacturaModel _model;
 
   @override

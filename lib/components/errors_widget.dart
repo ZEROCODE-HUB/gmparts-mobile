@@ -21,6 +21,8 @@ class ErrorsWidget extends StatefulWidget {
 }
 
 class _ErrorsWidgetState extends State<ErrorsWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ErrorsModel _model;
 
   @override

@@ -17,6 +17,8 @@ class FDiagnosticoWidget extends StatefulWidget {
 }
 
 class _FDiagnosticoWidgetState extends State<FDiagnosticoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late FDiagnosticoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

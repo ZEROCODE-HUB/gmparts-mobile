@@ -16,6 +16,8 @@ class PrivacyWidget extends StatefulWidget {
 }
 
 class _PrivacyWidgetState extends State<PrivacyWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late PrivacyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

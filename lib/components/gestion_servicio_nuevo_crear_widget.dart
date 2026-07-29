@@ -26,6 +26,8 @@ class GestionServicioNuevoCrearWidget extends StatefulWidget {
 
 class _GestionServicioNuevoCrearWidgetState
     extends State<GestionServicioNuevoCrearWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late GestionServicioNuevoCrearModel _model;
 
   @override

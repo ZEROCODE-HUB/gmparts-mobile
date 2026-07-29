@@ -18,6 +18,8 @@ class BuscarcotizacionWidget extends StatefulWidget {
 }
 
 class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late BuscarcotizacionModel _model;
 
   @override

@@ -30,6 +30,8 @@ class FallacomponentWidget extends StatefulWidget {
 }
 
 class _FallacomponentWidgetState extends State<FallacomponentWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late FallacomponentModel _model;
 
   @override

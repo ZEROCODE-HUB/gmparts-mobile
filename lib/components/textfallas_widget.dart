@@ -13,6 +13,8 @@ class TextfallasWidget extends StatefulWidget {
 }
 
 class _TextfallasWidgetState extends State<TextfallasWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late TextfallasModel _model;
 
   @override

@@ -31,6 +31,8 @@ class CrearCotizacionFuncionandoWidget extends StatefulWidget {
 
 class _CrearCotizacionFuncionandoWidgetState
     extends State<CrearCotizacionFuncionandoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CrearCotizacionFuncionandoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -32,6 +32,8 @@ class CotizacionFuncionandoWidget extends StatefulWidget {
 
 class _CotizacionFuncionandoWidgetState
     extends State<CotizacionFuncionandoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CotizacionFuncionandoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -12,6 +12,8 @@ class VacioWidget extends StatefulWidget {
 }
 
 class _VacioWidgetState extends State<VacioWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late VacioModel _model;
 
   @override

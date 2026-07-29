@@ -20,6 +20,8 @@ class GuardarWidget extends StatefulWidget {
 }
 
 class _GuardarWidgetState extends State<GuardarWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late GuardarModel _model;
 
   @override

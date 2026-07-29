@@ -17,6 +17,8 @@ class ZNuevacontrasenaWidget extends StatefulWidget {
 }
 
 class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ZNuevacontrasenaModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

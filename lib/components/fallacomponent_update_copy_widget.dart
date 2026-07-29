@@ -43,6 +43,8 @@ class FallacomponentUpdateCopyWidget extends StatefulWidget {
 
 class _FallacomponentUpdateCopyWidgetState
     extends State<FallacomponentUpdateCopyWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late FallacomponentUpdateCopyModel _model;
 
   @override

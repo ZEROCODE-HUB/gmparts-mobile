@@ -18,6 +18,8 @@ class AddMeasurmentUnitWidget extends StatefulWidget {
 }
 
 class _AddMeasurmentUnitWidgetState extends State<AddMeasurmentUnitWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late AddMeasurmentUnitModel _model;
 
   @override

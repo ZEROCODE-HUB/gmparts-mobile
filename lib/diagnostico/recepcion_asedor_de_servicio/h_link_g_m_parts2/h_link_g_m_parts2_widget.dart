@@ -17,6 +17,8 @@ class HLinkGMParts2Widget extends StatefulWidget {
 }
 
 class _HLinkGMParts2WidgetState extends State<HLinkGMParts2Widget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late HLinkGMParts2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

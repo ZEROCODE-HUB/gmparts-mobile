@@ -20,6 +20,8 @@ class AConfirmarBorrarCuentaWidget extends StatefulWidget {
 
 class _AConfirmarBorrarCuentaWidgetState
     extends State<AConfirmarBorrarCuentaWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late AConfirmarBorrarCuentaModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

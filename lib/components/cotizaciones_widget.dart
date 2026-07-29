@@ -22,6 +22,8 @@ class CotizacionesWidget extends StatefulWidget {
 }
 
 class _CotizacionesWidgetState extends State<CotizacionesWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CotizacionesModel _model;
 
   @override

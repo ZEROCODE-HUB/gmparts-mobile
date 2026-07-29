@@ -24,6 +24,8 @@ class GLinkclienteCopyWidget extends StatefulWidget {
 }
 
 class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late GLinkclienteCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

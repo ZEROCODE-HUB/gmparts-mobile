@@ -23,6 +23,8 @@ class INuevarecrapidaWidget extends StatefulWidget {
 }
 
 class _INuevarecrapidaWidgetState extends State<INuevarecrapidaWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late INuevarecrapidaModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -38,6 +38,8 @@ class CNuevaRecepcionCompletaFWidget extends StatefulWidget {
 
 class _CNuevaRecepcionCompletaFWidgetState
     extends State<CNuevaRecepcionCompletaFWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CNuevaRecepcionCompletaFModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

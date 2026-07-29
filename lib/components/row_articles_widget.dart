@@ -36,6 +36,8 @@ class RowArticlesWidget extends StatefulWidget {
 }
 
 class _RowArticlesWidgetState extends State<RowArticlesWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late RowArticlesModel _model;
 
   @override

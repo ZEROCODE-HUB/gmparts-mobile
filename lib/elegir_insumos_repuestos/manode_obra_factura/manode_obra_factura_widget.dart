@@ -18,6 +18,8 @@ class ManodeObraFacturaWidget extends StatefulWidget {
 }
 
 class _ManodeObraFacturaWidgetState extends State<ManodeObraFacturaWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ManodeObraFacturaModel _model;
 
   @override

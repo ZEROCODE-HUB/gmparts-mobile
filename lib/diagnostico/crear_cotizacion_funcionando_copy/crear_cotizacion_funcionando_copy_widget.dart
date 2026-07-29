@@ -29,6 +29,8 @@ class CrearCotizacionFuncionandoCopyWidget extends StatefulWidget {
 
 class _CrearCotizacionFuncionandoCopyWidgetState
     extends State<CrearCotizacionFuncionandoCopyWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CrearCotizacionFuncionandoCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

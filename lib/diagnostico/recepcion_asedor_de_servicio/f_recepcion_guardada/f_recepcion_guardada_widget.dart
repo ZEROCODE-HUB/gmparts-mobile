@@ -27,6 +27,8 @@ class FRecepcionGuardadaWidget extends StatefulWidget {
 }
 
 class _FRecepcionGuardadaWidgetState extends State<FRecepcionGuardadaWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late FRecepcionGuardadaModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

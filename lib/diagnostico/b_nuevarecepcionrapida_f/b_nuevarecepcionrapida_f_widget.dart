@@ -40,6 +40,8 @@ class BNuevarecepcionrapidaFWidget extends StatefulWidget {
 
 class _BNuevarecepcionrapidaFWidgetState
     extends State<BNuevarecepcionrapidaFWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late BNuevarecepcionrapidaFModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

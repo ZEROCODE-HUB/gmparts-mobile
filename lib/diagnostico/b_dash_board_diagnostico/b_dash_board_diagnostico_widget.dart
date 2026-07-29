@@ -31,6 +31,8 @@ class BDashBoardDiagnosticoWidget extends StatefulWidget {
 
 class _BDashBoardDiagnosticoWidgetState
     extends State<BDashBoardDiagnosticoWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late BDashBoardDiagnosticoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

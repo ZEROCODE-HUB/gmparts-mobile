@@ -33,6 +33,8 @@ class Controldecalidadtecnico2Widget extends StatefulWidget {
 
 class _Controldecalidadtecnico2WidgetState
     extends State<Controldecalidadtecnico2Widget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late Controldecalidadtecnico2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

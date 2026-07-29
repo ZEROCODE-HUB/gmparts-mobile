@@ -31,6 +31,8 @@ class CrearfallaNUEVOeditarWidget extends StatefulWidget {
 
 class _CrearfallaNUEVOeditarWidgetState
     extends State<CrearfallaNUEVOeditarWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CrearfallaNUEVOeditarModel _model;
 
   @override

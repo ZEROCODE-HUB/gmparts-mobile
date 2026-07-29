@@ -21,6 +21,8 @@ class ModificarHorasCotizacionWidget extends StatefulWidget {
 
 class _ModificarHorasCotizacionWidgetState
     extends State<ModificarHorasCotizacionWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ModificarHorasCotizacionModel _model;
 
   @override

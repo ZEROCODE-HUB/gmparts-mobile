@@ -20,6 +20,8 @@ class TextcomponentWidget extends StatefulWidget {
 }
 
 class _TextcomponentWidgetState extends State<TextcomponentWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late TextcomponentModel _model;
 
   @override

@@ -24,6 +24,8 @@ class TexttselectWidget extends StatefulWidget {
 }
 
 class _TexttselectWidgetState extends State<TexttselectWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late TexttselectModel _model;
 
   @override

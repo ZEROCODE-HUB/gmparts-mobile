@@ -32,6 +32,8 @@ class AddarticlesWidget extends StatefulWidget {
 }
 
 class _AddarticlesWidgetState extends State<AddarticlesWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late AddarticlesModel _model;
 
   @override

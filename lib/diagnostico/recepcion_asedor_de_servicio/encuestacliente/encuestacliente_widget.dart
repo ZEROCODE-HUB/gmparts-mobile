@@ -23,6 +23,8 @@ class EncuestaclienteWidget extends StatefulWidget {
 }
 
 class _EncuestaclienteWidgetState extends State<EncuestaclienteWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late EncuestaclienteModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

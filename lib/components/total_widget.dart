@@ -36,6 +36,8 @@ class TotalWidget extends StatefulWidget {
 }
 
 class _TotalWidgetState extends State<TotalWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late TotalModel _model;
 
   @override

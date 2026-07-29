@@ -28,6 +28,8 @@ class GLinkclienteCotizacionWidget extends StatefulWidget {
 
 class _GLinkclienteCotizacionWidgetState
     extends State<GLinkclienteCotizacionWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late GLinkclienteCotizacionModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

@@ -26,6 +26,8 @@ class DetalleFallasWidget extends StatefulWidget {
 }
 
 class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late DetalleFallasModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

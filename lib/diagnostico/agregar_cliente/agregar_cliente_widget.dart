@@ -26,6 +26,8 @@ class AgregarClienteWidget extends StatefulWidget {
 }
 
 class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late AgregarClienteModel _model;
 
   @override

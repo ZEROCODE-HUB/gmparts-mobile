@@ -24,6 +24,8 @@ class ElegirInsumosCopyWidget extends StatefulWidget {
 }
 
 class _ElegirInsumosCopyWidgetState extends State<ElegirInsumosCopyWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ElegirInsumosCopyModel _model;
 
   @override

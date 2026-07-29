@@ -28,6 +28,8 @@ class CrearfallaNUEVOWidget extends StatefulWidget {
 }
 
 class _CrearfallaNUEVOWidgetState extends State<CrearfallaNUEVOWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CrearfallaNUEVOModel _model;
 
   @override

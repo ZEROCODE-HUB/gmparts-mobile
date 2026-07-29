@@ -24,6 +24,8 @@ class ElegirRepuestosWidget extends StatefulWidget {
 }
 
 class _ElegirRepuestosWidgetState extends State<ElegirRepuestosWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late ElegirRepuestosModel _model;
 
   @override

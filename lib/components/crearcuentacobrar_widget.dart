@@ -33,6 +33,8 @@ class CrearcuentacobrarWidget extends StatefulWidget {
 }
 
 class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late CrearcuentacobrarModel _model;
 
   @override

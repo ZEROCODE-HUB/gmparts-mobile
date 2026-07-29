@@ -22,6 +22,8 @@ class AddSubgroupWidget extends StatefulWidget {
 }
 
 class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late AddSubgroupModel _model;
 
   @override

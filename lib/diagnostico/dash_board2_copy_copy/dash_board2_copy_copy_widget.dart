@@ -21,6 +21,8 @@ class DashBoard2CopyCopyWidget extends StatefulWidget {
 }
 
 class _DashBoard2CopyCopyWidgetState extends State<DashBoard2CopyCopyWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late DashBoard2CopyCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();

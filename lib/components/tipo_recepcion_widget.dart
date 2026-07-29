@@ -15,6 +15,8 @@ class TipoRecepcionWidget extends StatefulWidget {
 }
 
 class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late TipoRecepcionModel _model;
 
   @override

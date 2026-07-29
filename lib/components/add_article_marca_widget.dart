@@ -17,6 +17,8 @@ class AddArticleMarcaWidget extends StatefulWidget {
 }
 
 class _AddArticleMarcaWidgetState extends State<AddArticleMarcaWidget> {
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   late AddArticleMarcaModel _model;
 
   @override
