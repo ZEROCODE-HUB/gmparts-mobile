@@ -1254,7 +1254,7 @@ class _CrearCotizacionFuncionandoWidgetState
                       },
                       text: 'Crear cotización',
                       options: FFButtonOptions(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        width: double.infinity,
                         height: 40.0,
                         padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
@@ -1264,21 +1264,11 @@ class _CrearCotizacionFuncionandoWidgetState
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
                                   ),
                                   color: Colors.white,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
                                 ),
                         elevation: 0.0,
                         borderRadius: BorderRadius.circular(8.0),
