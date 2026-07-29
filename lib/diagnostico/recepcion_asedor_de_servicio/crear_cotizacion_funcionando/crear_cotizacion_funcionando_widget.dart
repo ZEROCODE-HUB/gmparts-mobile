@@ -52,7 +52,7 @@ class _CrearCotizacionFuncionandoWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final _theme = _theme;
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
