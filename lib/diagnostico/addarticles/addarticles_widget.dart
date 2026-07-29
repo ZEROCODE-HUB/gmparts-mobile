@@ -99,11 +99,12 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Container(
       width: 800.0,
       height: MediaQuery.sizeOf(context).height * 1.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).accent2,
+        color: _theme.accent2,
         borderRadius: BorderRadius.circular(25.0),
       ),
       child: Container(
@@ -127,19 +128,19 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                         alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Text(
                           'Nuevo Artículo',
-                          style: FlutterFlowTheme.of(context)
+                          style: _theme
                               .displayMedium
                               .override(
                                 font: GoogleFonts.montserrat(
                                   fontWeight: FontWeight.w500,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .displayMedium
                                       .fontStyle,
                                 ),
                                 fontSize: 30.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .displayMedium
                                     .fontStyle,
                               ),
@@ -176,7 +177,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Código',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -193,11 +194,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -318,14 +319,14 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -373,7 +374,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Producto',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -390,11 +391,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -430,11 +431,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -456,11 +457,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -481,15 +482,15 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryText,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -497,12 +498,12 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                           searchHintText: 'Buscar departamento',
                                           icon: Icon(
                                             Icons.arrow_circle_down,
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             size: 24.0,
                                           ),
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primaryBackground,
                                           elevation: 0.0,
                                           borderColor: Colors.transparent,
@@ -536,26 +537,26 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                     children: [
                                       Text(
                                         'OEM',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -631,7 +632,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryBackground,
                                                 width: 1.0,
                                               ),
@@ -641,7 +642,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 width: 1.0,
                                               ),
@@ -651,7 +652,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 1.0,
                                               ),
@@ -662,7 +663,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 1.0,
                                               ),
@@ -671,13 +672,13 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             ),
                                             filled: true,
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primaryBackground,
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -694,11 +695,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -723,7 +724,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Código proveedor',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -740,11 +741,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -866,14 +867,14 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -926,26 +927,26 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                     children: [
                                       Text(
                                         'Nombre',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -1022,7 +1023,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryBackground,
                                                 width: 1.0,
                                               ),
@@ -1032,7 +1033,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 width: 1.0,
                                               ),
@@ -1042,7 +1043,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 1.0,
                                               ),
@@ -1053,7 +1054,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 1.0,
                                               ),
@@ -1062,13 +1063,13 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             ),
                                             filled: true,
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primaryBackground,
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -1085,11 +1086,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -1242,7 +1243,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             width: 300.0,
                                             height: 50.0,
                                             searchHintTextStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .override(
                                                       font: GoogleFonts
@@ -1335,12 +1336,12 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             icon: Icon(
                                               Icons.arrow_circle_down,
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               size: 24.0,
                                             ),
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primaryBackground,
                                             elevation: 0.0,
                                             borderColor: Colors.transparent,
@@ -1397,7 +1398,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               width: 300.0,
                                               height: 50.0,
                                               searchHintTextStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .override(
                                                         font: GoogleFonts
@@ -1492,12 +1493,12 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 24.0,
                                               ),
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               elevation: 0.0,
                                               borderColor: Colors.transparent,
@@ -1536,7 +1537,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                         children: [
                                           Text(
                                             'Unidad de medida',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -1658,7 +1659,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                   valueColor:
                                                       AlwaysStoppedAnimation<
                                                           Color>(
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                   ),
                                                 ),
@@ -1685,7 +1686,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             width: 300.0,
                                             height: 50.0,
                                             searchHintTextStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .override(
                                                       font: GoogleFonts
@@ -1778,12 +1779,12 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             icon: Icon(
                                               Icons.arrow_circle_down,
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               size: 24.0,
                                             ),
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primaryBackground,
                                             elevation: 0.0,
                                             borderColor: Colors.transparent,
@@ -1962,7 +1963,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               width: 300.0,
                                               height: 50.0,
                                               searchHintTextStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .override(
                                                         font: GoogleFonts
@@ -2057,12 +2058,12 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 24.0,
                                               ),
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               elevation: 0.0,
                                               borderColor: Colors.transparent,
@@ -2101,7 +2102,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                         children: [
                                           Text(
                                             'Subgrupo',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -2270,7 +2271,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                   valueColor:
                                                       AlwaysStoppedAnimation<
                                                           Color>(
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                   ),
                                                 ),
@@ -2295,7 +2296,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             width: 300.0,
                                             height: 50.0,
                                             searchHintTextStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .override(
                                                       font: GoogleFonts
@@ -2388,12 +2389,12 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             icon: Icon(
                                               Icons.arrow_circle_down,
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               size: 24.0,
                                             ),
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primaryBackground,
                                             elevation: 0.0,
                                             borderColor: Colors.transparent,
@@ -2423,7 +2424,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Garantía',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -2440,11 +2441,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -2482,11 +2483,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -2508,11 +2509,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -2533,15 +2534,15 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryText,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -2549,12 +2550,12 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                           searchHintText: 'Buscar departamento',
                                           icon: Icon(
                                             Icons.arrow_circle_down,
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             size: 24.0,
                                           ),
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primaryBackground,
                                           elevation: 0.0,
                                           borderColor: Colors.transparent,
@@ -2588,26 +2589,26 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                     children: [
                                       Text(
                                         'No serie',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -2630,21 +2631,21 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -2654,47 +2655,47 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -2702,11 +2703,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                         searchHintText: 'Buscar departamento',
                                         icon: Icon(
                                           Icons.arrow_circle_down,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 24.0,
                                         ),
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .primaryBackground,
                                         elevation: 0.0,
                                         borderColor: Colors.transparent,
@@ -2733,7 +2734,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Stock mínimo',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -2750,11 +2751,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -2876,14 +2877,14 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -2936,26 +2937,26 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                     children: [
                                       Text(
                                         'Moneda',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -2975,21 +2976,21 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -2999,47 +3000,47 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -3047,11 +3048,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                         searchHintText: 'Buscar departamento',
                                         icon: Icon(
                                           Icons.arrow_circle_down,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 24.0,
                                         ),
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .primaryBackground,
                                         elevation: 0.0,
                                         borderColor: Colors.transparent,
@@ -3078,7 +3079,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Precio Compra (Sin IGV)',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -3095,11 +3096,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -3221,14 +3222,14 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -3282,7 +3283,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Utilidad %',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -3299,11 +3300,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -3424,14 +3425,14 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -3479,7 +3480,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Precio Venta (Sin IGV)',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -3496,11 +3497,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -3509,7 +3510,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                           width: 300.0,
                                           height: 50.0,
                                           decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryBackground,
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
@@ -3545,7 +3546,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                       )
                                                     : '0',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -3595,7 +3596,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Precio Venta (Con IGV)',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -3612,11 +3613,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -3625,7 +3626,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                           width: 300.0,
                                           height: 50.0,
                                           decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryBackground,
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
@@ -3662,7 +3663,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                       )
                                                     : '0',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -3706,7 +3707,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Código de barras',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -3723,11 +3724,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -3849,14 +3850,14 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -3910,7 +3911,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Imagen',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -3927,11 +3928,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -4027,9 +4028,9 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             iconColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primaryText,
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             textStyle: FlutterFlowTheme.of(
                                                     context)
@@ -4100,7 +4101,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Ubicación',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -4117,11 +4118,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -4243,14 +4244,14 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -4298,7 +4299,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                       children: [
                                         Text(
                                           'Comentario',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -4315,11 +4316,11 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -4441,14 +4442,14 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -4501,26 +4502,26 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                     children: [
                                       Text(
                                         'Precio Fábrica',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -4543,7 +4544,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 isDense: false,
                                                 labelText: 'P1',
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4574,7 +4575,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4651,7 +4652,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryBackground,
                                                 contentPadding:
                                                     EdgeInsetsDirectional
@@ -4708,7 +4709,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 isDense: false,
                                                 labelText: 'P2',
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4739,7 +4740,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4816,7 +4817,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryBackground,
                                                 contentPadding:
                                                     EdgeInsetsDirectional
@@ -4873,7 +4874,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 isDense: false,
                                                 labelText: 'P3',
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4904,7 +4905,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4981,7 +4982,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryBackground,
                                                 contentPadding:
                                                     EdgeInsetsDirectional
@@ -5039,7 +5040,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 isDense: false,
                                                 labelText: 'P. Vta Mayor',
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -5070,7 +5071,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -5147,7 +5148,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryBackground,
                                                 contentPadding:
                                                     EdgeInsetsDirectional
@@ -5258,33 +5259,33 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: Color(0x00FF1D25),
-                                      textStyle: FlutterFlowTheme.of(context)
+                                      textStyle: _theme
                                           .titleSmall
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleSmall
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleSmall
                                                       .fontStyle,
                                             ),
                                             color: Colors.white,
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleSmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleSmall
                                                     .fontStyle,
                                           ),
                                       elevation: 3.0,
                                       borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primary,
                                         width: 1.0,
                                       ),
@@ -5436,29 +5437,29 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                         iconPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primary,
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .titleSmall
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
                                               color: Colors.white,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleSmall
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleSmall
                                                       .fontStyle,
                                             ),

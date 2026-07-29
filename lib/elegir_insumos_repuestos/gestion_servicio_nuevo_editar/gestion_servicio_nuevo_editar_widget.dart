@@ -58,6 +58,7 @@ class _GestionServicioNuevoEditarWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: StreamBuilder<ServiceRecord>(
@@ -71,7 +72,7 @@ class _GestionServicioNuevoEditarWidgetState
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    _theme.primary,
                   ),
                 ),
               ),
@@ -84,7 +85,7 @@ class _GestionServicioNuevoEditarWidgetState
             width: 800.0,
             height: 700.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).accent2,
+              color: _theme.accent2,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Padding(
@@ -106,22 +107,22 @@ class _GestionServicioNuevoEditarWidgetState
                             children: [
                               Text(
                                 'Editar servicio',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleLarge
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
@@ -146,26 +147,26 @@ class _GestionServicioNuevoEditarWidgetState
                                 children: [
                                   Text(
                                     'Código',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -204,11 +205,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -230,11 +231,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -249,7 +250,7 @@ class _GestionServicioNuevoEditarWidgetState
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 2.0,
                                             ),
@@ -259,7 +260,7 @@ class _GestionServicioNuevoEditarWidgetState
                                           errorBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 2.0,
                                             ),
@@ -270,7 +271,7 @@ class _GestionServicioNuevoEditarWidgetState
                                               OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 2.0,
                                             ),
@@ -279,32 +280,32 @@ class _GestionServicioNuevoEditarWidgetState
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primaryBackground,
                                           contentPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -323,26 +324,26 @@ class _GestionServicioNuevoEditarWidgetState
                                 children: [
                                   Text(
                                     'Precio',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -382,11 +383,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -408,11 +409,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -427,7 +428,7 @@ class _GestionServicioNuevoEditarWidgetState
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 2.0,
                                             ),
@@ -437,7 +438,7 @@ class _GestionServicioNuevoEditarWidgetState
                                           errorBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 2.0,
                                             ),
@@ -448,7 +449,7 @@ class _GestionServicioNuevoEditarWidgetState
                                               OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 2.0,
                                             ),
@@ -457,32 +458,32 @@ class _GestionServicioNuevoEditarWidgetState
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primaryBackground,
                                           contentPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -511,26 +512,26 @@ class _GestionServicioNuevoEditarWidgetState
                                   children: [
                                     Text(
                                       'Descripción',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -622,7 +623,7 @@ class _GestionServicioNuevoEditarWidgetState
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 width: 2.0,
                                               ),
@@ -632,7 +633,7 @@ class _GestionServicioNuevoEditarWidgetState
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 2.0,
                                               ),
@@ -643,7 +644,7 @@ class _GestionServicioNuevoEditarWidgetState
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 2.0,
                                               ),
@@ -652,13 +653,13 @@ class _GestionServicioNuevoEditarWidgetState
                                             ),
                                             filled: true,
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primaryBackground,
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -675,11 +676,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -708,26 +709,26 @@ class _GestionServicioNuevoEditarWidgetState
                                 children: [
                                   Text(
                                     'Alerta en días',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -758,21 +759,21 @@ class _GestionServicioNuevoEditarWidgetState
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
@@ -782,46 +783,46 @@ class _GestionServicioNuevoEditarWidgetState
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                      textStyle: FlutterFlowTheme.of(context)
+                                      textStyle: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -829,11 +830,11 @@ class _GestionServicioNuevoEditarWidgetState
                                       searchHintText: 'Selecciona',
                                       icon: Icon(
                                         Icons.arrow_circle_down,
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primary,
                                         size: 24.0,
                                       ),
-                                      fillColor: FlutterFlowTheme.of(context)
+                                      fillColor: _theme
                                           .primaryBackground,
                                       elevation: 0.0,
                                       borderColor: Colors.transparent,
@@ -855,26 +856,26 @@ class _GestionServicioNuevoEditarWidgetState
                                 children: [
                                   Text(
                                     'Moneda',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -900,21 +901,21 @@ class _GestionServicioNuevoEditarWidgetState
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
@@ -924,46 +925,46 @@ class _GestionServicioNuevoEditarWidgetState
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                      textStyle: FlutterFlowTheme.of(context)
+                                      textStyle: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -971,11 +972,11 @@ class _GestionServicioNuevoEditarWidgetState
                                       searchHintText: 'Buscar departamento',
                                       icon: Icon(
                                         Icons.arrow_circle_down,
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primary,
                                         size: 24.0,
                                       ),
-                                      fillColor: FlutterFlowTheme.of(context)
+                                      fillColor: _theme
                                           .primaryBackground,
                                       elevation: 0.0,
                                       borderColor: Colors.transparent,
@@ -1015,7 +1016,7 @@ class _GestionServicioNuevoEditarWidgetState
                                         children: [
                                           Text(
                                             'Sistema',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -1074,21 +1075,21 @@ class _GestionServicioNuevoEditarWidgetState
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -1098,47 +1099,47 @@ class _GestionServicioNuevoEditarWidgetState
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -1146,11 +1147,11 @@ class _GestionServicioNuevoEditarWidgetState
                                         searchHintText: 'Buscar departamento',
                                         icon: Icon(
                                           Icons.arrow_circle_down,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 24.0,
                                         ),
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .primaryBackground,
                                         elevation: 0.0,
                                         borderColor: Colors.transparent,
@@ -1244,11 +1245,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -1270,11 +1271,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -1295,15 +1296,15 @@ class _GestionServicioNuevoEditarWidgetState
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryText,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -1311,12 +1312,12 @@ class _GestionServicioNuevoEditarWidgetState
                                           searchHintText: 'Buscar departamento',
                                           icon: Icon(
                                             Icons.arrow_circle_down,
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             size: 24.0,
                                           ),
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primaryBackground,
                                           elevation: 0.0,
                                           borderColor: Colors.transparent,
@@ -1340,26 +1341,26 @@ class _GestionServicioNuevoEditarWidgetState
                                     children: [
                                       Text(
                                         'Categoría MTC',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -1406,11 +1407,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -1432,11 +1433,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -1457,15 +1458,15 @@ class _GestionServicioNuevoEditarWidgetState
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryText,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -1473,12 +1474,12 @@ class _GestionServicioNuevoEditarWidgetState
                                           searchHintText: 'Selecciona año',
                                           icon: Icon(
                                             Icons.arrow_circle_down,
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             size: 24.0,
                                           ),
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primaryBackground,
                                           elevation: 0.0,
                                           borderColor: Colors.transparent,
@@ -1515,7 +1516,7 @@ class _GestionServicioNuevoEditarWidgetState
                                         children: [
                                           Text(
                                             'Tipo de vehículo',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -1569,21 +1570,21 @@ class _GestionServicioNuevoEditarWidgetState
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -1593,47 +1594,47 @@ class _GestionServicioNuevoEditarWidgetState
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -1641,11 +1642,11 @@ class _GestionServicioNuevoEditarWidgetState
                                         searchHintText: 'Buscar departamento',
                                         icon: Icon(
                                           Icons.arrow_circle_down,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 24.0,
                                         ),
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .primaryBackground,
                                         elevation: 0.0,
                                         borderColor: Colors.transparent,
@@ -1743,11 +1744,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -1769,11 +1770,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -1794,15 +1795,15 @@ class _GestionServicioNuevoEditarWidgetState
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryText,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -1810,12 +1811,12 @@ class _GestionServicioNuevoEditarWidgetState
                                           searchHintText: 'Buscar departamento',
                                           icon: Icon(
                                             Icons.arrow_circle_down,
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             size: 24.0,
                                           ),
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primaryBackground,
                                           elevation: 0.0,
                                           borderColor: Colors.transparent,
@@ -1850,26 +1851,26 @@ class _GestionServicioNuevoEditarWidgetState
                                   children: [
                                     Text(
                                       'Notas',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -1959,7 +1960,7 @@ class _GestionServicioNuevoEditarWidgetState
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 width: 2.0,
                                               ),
@@ -1969,7 +1970,7 @@ class _GestionServicioNuevoEditarWidgetState
                                             errorBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 2.0,
                                               ),
@@ -1980,7 +1981,7 @@ class _GestionServicioNuevoEditarWidgetState
                                                 OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 2.0,
                                               ),
@@ -1989,13 +1990,13 @@ class _GestionServicioNuevoEditarWidgetState
                                             ),
                                             filled: true,
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primaryBackground,
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -2012,11 +2013,11 @@ class _GestionServicioNuevoEditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -2090,7 +2091,7 @@ class _GestionServicioNuevoEditarWidgetState
                                             iconPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             textStyle: FlutterFlowTheme.of(
                                                     context)
@@ -2150,7 +2151,7 @@ class _GestionServicioNuevoEditarWidgetState
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .accent2,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
@@ -2172,17 +2173,17 @@ class _GestionServicioNuevoEditarWidgetState
                                                 fontSize: 18.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
                                           elevation: 3.0,
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             width: 1.0,
                                           ),

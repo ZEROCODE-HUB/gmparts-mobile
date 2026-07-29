@@ -47,6 +47,7 @@ class _DFinalizadoWidgetState extends State<DFinalizadoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -54,14 +55,14 @@ class _DFinalizadoWidgetState extends State<DFinalizadoWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Container(
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
+              color: _theme.secondaryBackground,
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -83,7 +84,7 @@ class _DFinalizadoWidgetState extends State<DFinalizadoWidget> {
                             buttonSize: 44.0,
                             icon: Icon(
                               Icons.chevron_left_rounded,
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               size: 30.0,
                             ),
                             onPressed: () async {
@@ -99,7 +100,7 @@ class _DFinalizadoWidgetState extends State<DFinalizadoWidget> {
                             buttonSize: 44.0,
                             icon: Icon(
                               Icons.home_rounded,
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               size: 28.0,
                             ),
                             onPressed: () async {
@@ -144,19 +145,19 @@ class _DFinalizadoWidgetState extends State<DFinalizadoWidget> {
                               Text(
                                 'Agradecemos sinceramente tu tiempo y tus comentarios. ¡Tu opinión es esencial para hacer nuestro servicio aún mejor!',
                                 textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .headlineLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .headlineLarge
                                             .fontStyle,
                                       ),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .headlineLarge
                                           .fontStyle,
                                     ),
@@ -194,22 +195,22 @@ class _DFinalizadoWidgetState extends State<DFinalizadoWidget> {
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: _theme.primary,
                         textStyle:
-                            FlutterFlowTheme.of(context).titleLarge.override(
+                            _theme.titleLarge.override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleLarge
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),

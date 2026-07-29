@@ -98,6 +98,7 @@ class _CNuevaRecepcionCompletaFWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -107,7 +108,7 @@ class _CNuevaRecepcionCompletaFWidgetState
         canPop: false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: _theme.primaryBackground,
           body: SafeArea(
             top: true,
             child: SingleChildScrollView(
@@ -148,7 +149,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     0.0, 10.0, 38.0, 0.0),
                                             child: FlutterFlowIconButton(
                                               borderColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               borderRadius: 30.0,
                                               borderWidth: 1.0,
@@ -156,7 +157,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               icon: Icon(
                                                 Icons.chevron_left_rounded,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 16.0,
                                               ),
@@ -282,10 +283,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                                           child: Text(
                                             'Ver perfil',
-                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                            style: _theme.labelSmall.override(
                                               font: GoogleFonts.montserrat(fontSize: 10.0),
                                               fontSize: 10.0,
-                                              color: FlutterFlowTheme.of(context).primary,
+                                              color: _theme.primary,
                                             ),
                                           ),
                                         ),
@@ -311,7 +312,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               height: 8.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 borderRadius:
                                                     BorderRadius.circular(4.0),
@@ -324,7 +325,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               height: 8.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent2,
                                                 borderRadius:
                                                     BorderRadius.circular(4.0),
@@ -337,7 +338,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               height: 8.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent2,
                                                 borderRadius:
                                                     BorderRadius.circular(4.0),
@@ -355,7 +356,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                         children: [
                                           Text(
                                             'Datos personales',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleLarge
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -395,7 +396,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Tipo de persona',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -441,40 +442,40 @@ class _CNuevaRecepcionCompletaFWidgetState
                                             _model.tipoPersonaValue = val),
                                         width: double.infinity,
                                         height: 50.0,
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .titleSmall
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleSmall
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleSmall
                                                       .fontStyle,
                                             ),
                                         hintText: 'Seleccione',
                                         icon: Icon(
                                           Icons.arrow_drop_down_circle_outlined,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 24.0,
                                         ),
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                         elevation: 2.0,
                                         borderColor: Colors.transparent,
@@ -500,7 +501,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     'Juridica'
                                                 ? 'Razon social'
                                                 : 'Nombre del cliente',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -850,7 +851,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               child: Icon(
                                                 Icons.add,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 24.0,
                                               ),
@@ -1049,7 +1050,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .accent2,
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -1174,10 +1175,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                     .override(
                                                                       font: GoogleFonts
                                                                           .montserrat(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .titleSmall
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .titleSmall
                                                                             .fontStyle,
                                                                       ),
@@ -1256,10 +1257,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                     .override(
                                                                       font: GoogleFonts
                                                                           .montserrat(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .titleMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .titleMedium
                                                                             .fontStyle,
                                                                       ),
@@ -1283,10 +1284,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                     .override(
                                                                       font: GoogleFonts
                                                                           .montserrat(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .labelMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
@@ -1585,7 +1586,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .accent2,
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -2085,7 +2086,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .accent2,
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -2175,7 +2176,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 duration: Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                               ),
                                             );
@@ -2201,7 +2202,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
@@ -2221,11 +2222,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
@@ -2275,7 +2276,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     0.0, 10.0, 38.0, 0.0),
                                             child: FlutterFlowIconButton(
                                               borderColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               borderRadius: 30.0,
                                               borderWidth: 1.0,
@@ -2283,7 +2284,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               icon: Icon(
                                                 Icons.chevron_left_rounded,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 16.0,
                                               ),
@@ -2425,7 +2426,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                 fontSize: 10.0,
                                                               ),
                                                               fontSize: 10.0,
-                                                              color: FlutterFlowTheme.of(context).primary,
+                                                              color: _theme.primary,
                                                             ),
                                                       ),
                                                     ),
@@ -2451,7 +2452,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               height: 8.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 borderRadius:
                                                     BorderRadius.circular(4.0),
@@ -2464,7 +2465,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               height: 8.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 borderRadius:
                                                     BorderRadius.circular(4.0),
@@ -2477,7 +2478,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               height: 8.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent2,
                                                 borderRadius:
                                                     BorderRadius.circular(4.0),
@@ -2495,7 +2496,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                         children: [
                                           Text(
                                             'Datos del vehículo',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .headlineSmall
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -2534,7 +2535,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                         children: [
                                           Text(
                                             'Número de placa',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -2870,7 +2871,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               child: Icon(
                                                 Icons.add,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 24.0,
                                               ),
@@ -2888,7 +2889,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Número de VIN',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -2948,15 +2949,15 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent1,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
@@ -2978,11 +2979,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -2997,7 +2998,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 1.0,
                                             ),
@@ -3007,7 +3008,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -3018,7 +3019,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -3027,29 +3028,29 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -3067,7 +3068,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Marca',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -3266,7 +3267,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Modelo',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -3489,7 +3490,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Año de fabricación',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -3551,15 +3552,15 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent1,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
@@ -3581,11 +3582,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -3600,7 +3601,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 1.0,
                                             ),
@@ -3610,7 +3611,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -3621,7 +3622,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -3630,29 +3631,29 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -3670,7 +3671,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Kilometraje de ingreso',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -3728,15 +3729,15 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent1,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
@@ -3758,11 +3759,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -3777,7 +3778,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 1.0,
                                             ),
@@ -3787,7 +3788,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -3798,7 +3799,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -3807,29 +3808,29 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -3847,7 +3848,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Nivel de combustible en %',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -3906,15 +3907,15 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent1,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
@@ -3936,11 +3937,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -3955,7 +3956,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 1.0,
                                             ),
@@ -3965,7 +3966,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -3976,7 +3977,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -3985,29 +3986,29 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -4025,7 +4026,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Inventario del vehículo',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -4111,40 +4112,40 @@ class _CNuevaRecepcionCompletaFWidgetState
                                         ],
                                         width: double.infinity,
                                         height: 50.0,
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .titleSmall
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleSmall
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleSmall
                                                       .fontStyle,
                                             ),
                                         hintText: 'Seleccione',
                                         icon: Icon(
                                           Icons.arrow_drop_down_circle_outlined,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 24.0,
                                         ),
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                         elevation: 2.0,
                                         borderColor: Colors.transparent,
@@ -4170,7 +4171,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Observaciones adicionales',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -4228,15 +4229,15 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent1,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
@@ -4259,11 +4260,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -4278,7 +4279,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 1.0,
                                             ),
@@ -4288,7 +4289,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -4299,7 +4300,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -4308,29 +4309,29 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -4394,7 +4395,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 duration: Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                               ),
                                             );
@@ -4420,7 +4421,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
@@ -4440,11 +4441,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
@@ -4496,7 +4497,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                             children: [
                                               FlutterFlowIconButton(
                                                 borderColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 borderRadius: 30.0,
                                                 borderWidth: 1.0,
@@ -4516,7 +4517,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               Text(
                                                 'Recepción Completa',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .headlineSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -4624,7 +4625,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               Text(
                                                 'Problema técnico',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .headlineSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -4666,7 +4667,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               child: Text(
                                                 'Técnico de servicio',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4770,7 +4771,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 width: double.infinity,
                                                 height: 50.0,
                                                 textStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -4811,7 +4812,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   size: 24.0,
                                                 ),
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent2,
                                                 elevation: 2.0,
                                                 borderColor: Colors.transparent,
@@ -4838,7 +4839,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               child: Text(
                                                 'Tipo de servicio',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4925,12 +4926,12 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               Icons
                                                   .arrow_drop_down_circle_outlined,
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               size: 24.0,
                                             ),
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .accent2,
                                             elevation: 2.0,
                                             borderColor: Colors.transparent,
@@ -4955,7 +4956,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               child: Text(
                                                 'Motivo de ingreso',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -5104,10 +5105,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent2,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -5305,14 +5306,14 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                                     width: 20.0,
                                                                                     height: 20.0,
                                                                                     decoration: BoxDecoration(
-                                                                                      color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                      color: _theme.primaryBackground,
                                                                                       borderRadius: BorderRadius.circular(4.0),
                                                                                     ),
                                                                                     child: Align(
                                                                                       alignment: AlignmentDirectional(0.0, 0.0),
                                                                                       child: Icon(
                                                                                         Icons.clear,
-                                                                                        color: FlutterFlowTheme.of(context).primary,
+                                                                                        color: _theme.primary,
                                                                                         size: 12.0,
                                                                                       ),
                                                                                     ),
@@ -5437,7 +5438,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                         border:
                                                                             Border.all(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primary,
+                                                                              _theme.primary,
                                                                           width:
                                                                               3.0,
                                                                         ),
@@ -5446,7 +5447,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                           Icon(
                                                                         Icons
                                                                             .camera_alt_rounded,
-                                                                        color: FlutterFlowTheme.of(context)
+                                                                        color: _theme
                                                                             .primary,
                                                                         size:
                                                                             28.0,
@@ -5725,7 +5726,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 duration: Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                               ),
                                             );
@@ -5775,7 +5776,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 duration: Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                               ),
                                             );
@@ -5980,7 +5981,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
@@ -6000,11 +6001,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
@@ -6029,7 +6030,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: MediaQuery.sizeOf(context).height * 1.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
+                            color: _theme
                                 .secondaryBackground,
                           ),
                         );

@@ -60,27 +60,27 @@ class _SplashWidgetState extends State<SplashWidget> {
                 SnackBar(
                   content: Text(
                     'Debe loguearse en la app móvil',
-                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                    style: _theme.labelLarge.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .labelLarge
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .labelLarge
                                 .fontStyle,
                           ),
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color: _theme.primaryText,
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .labelLarge
                               .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
+                          fontStyle: _theme
                               .labelLarge
                               .fontStyle,
                         ),
                   ),
                   duration: Duration(milliseconds: 4000),
-                  backgroundColor: FlutterFlowTheme.of(context).primary,
+                  backgroundColor: _theme.primary,
                 ),
               );
               GoRouter.of(context).prepareAuthEvent();
@@ -134,27 +134,27 @@ class _SplashWidgetState extends State<SplashWidget> {
               SnackBar(
                 content: Text(
                   'Debe loguearse en web Admin',
-                  style: FlutterFlowTheme.of(context).labelLarge.override(
+                  style: _theme.labelLarge.override(
                         font: GoogleFonts.montserrat(
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .labelLarge
                               .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
+                          fontStyle: _theme
                               .labelLarge
                               .fontStyle,
                         ),
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: _theme.primaryText,
                         letterSpacing: 0.0,
-                        fontWeight: FlutterFlowTheme.of(context)
+                        fontWeight: _theme
                             .labelLarge
                             .fontWeight,
-                        fontStyle: FlutterFlowTheme.of(context)
+                        fontStyle: _theme
                             .labelLarge
                             .fontStyle,
                       ),
                 ),
                 duration: Duration(milliseconds: 4000),
-                backgroundColor: FlutterFlowTheme.of(context).primary,
+                backgroundColor: _theme.primary,
               ),
             );
             GoRouter.of(context).prepareAuthEvent();
@@ -222,6 +222,7 @@ class _SplashWidgetState extends State<SplashWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -229,7 +230,7 @@ class _SplashWidgetState extends State<SplashWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Container(

@@ -41,10 +41,11 @@ class _ModelChooseWidgetState extends State<ModelChooseWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Container(
       width: 300.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
+        color: _theme.secondaryBackground,
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
@@ -59,75 +60,75 @@ class _ModelChooseWidgetState extends State<ModelChooseWidget> {
               obscureText: false,
               decoration: InputDecoration(
                 labelText: 'Buscar o agregar',
-                labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                labelStyle: _theme.labelMedium.override(
                       font: GoogleFonts.montserrat(
                         fontWeight:
-                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                            _theme.labelMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                            _theme.labelMedium.fontStyle,
                       ),
                       letterSpacing: 0.0,
                       fontWeight:
-                          FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                          _theme.labelMedium.fontWeight,
                       fontStyle:
-                          FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                          _theme.labelMedium.fontStyle,
                     ),
-                hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                hintStyle: _theme.labelMedium.override(
                       font: GoogleFonts.montserrat(
                         fontWeight:
-                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                            _theme.labelMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                            _theme.labelMedium.fontStyle,
                       ),
                       letterSpacing: 0.0,
                       fontWeight:
-                          FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                          _theme.labelMedium.fontWeight,
                       fontStyle:
-                          FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                          _theme.labelMedium.fontStyle,
                     ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: FlutterFlowTheme.of(context).alternate,
+                    color: _theme.alternate,
                     width: 2.0,
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: _theme.primary,
                     width: 2.0,
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: FlutterFlowTheme.of(context).error,
+                    color: _theme.error,
                     width: 2.0,
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: FlutterFlowTheme.of(context).error,
+                    color: _theme.error,
                     width: 2.0,
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 filled: true,
-                fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                fillColor: _theme.primaryBackground,
               ),
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
+              style: _theme.bodyMedium.override(
                     font: GoogleFonts.montserrat(
                       fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                          _theme.bodyMedium.fontWeight,
                       fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                          _theme.bodyMedium.fontStyle,
                     ),
                     letterSpacing: 0.0,
                     fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        _theme.bodyMedium.fontWeight,
                     fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        _theme.bodyMedium.fontStyle,
                   ),
               validator: _model.textControllerValidator.asValidator(context),
             ),
@@ -154,17 +155,17 @@ class _ModelChooseWidgetState extends State<ModelChooseWidget> {
                         child: Text(
                           'Hello World',
                           style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              _theme.bodyMedium.override(
                                     font: GoogleFonts.montserrat(
                                       fontWeight: FontWeight.normal,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),

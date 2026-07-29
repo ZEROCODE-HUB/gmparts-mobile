@@ -50,6 +50,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return StreamBuilder<List<RecepcionesRecord>>(
       stream: queryRecepcionesRecord(
         queryBuilder: (recepcionesRecord) => recepcionesRecord.where(
@@ -62,14 +63,14 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: _theme.primaryBackground,
             body: Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    _theme.primary,
                   ),
                 ),
               ),
@@ -90,7 +91,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: _theme.primaryBackground,
             body: SafeArea(
               top: true,
               child: SingleChildScrollView(
@@ -116,13 +117,13 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                   children: [
                                     Text(
                                       '1. ¿Cómo calificarías tu experiencia general utilizando nuestro servicio de monitoreo de revisión técnica?',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -130,7 +131,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -143,7 +144,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                             0.0, 16.0, 0.0, 0.0),
                                         child: Text(
                                           '(Marca 1 Muy insatisfecho y  5 Muy satisfecho)',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -160,11 +161,11 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -182,26 +183,26 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                 .radioButtonValueController1 ??=
                                             FormFieldController<String>(null),
                                         optionHeight: 32.0,
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .labelMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -212,10 +213,10 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                             RadioButtonPosition.right,
                                         direction: Axis.horizontal,
                                         radioButtonColor:
-                                            FlutterFlowTheme.of(context)
+                                            _theme
                                                 .primary,
                                         inactiveRadioButtonColor:
-                                            FlutterFlowTheme.of(context)
+                                            _theme
                                                 .secondaryText,
                                         toggleable: false,
                                         horizontalAlignment:
@@ -237,7 +238,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                             AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           '2. ¿Cómo evalúas la facilidad de uso y la claridad de la interfaz de la aplicación?',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -252,7 +253,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -267,7 +268,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
                                             '(Marca 1 Muy insatisfecho y  5 Muy satisfecho)',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -327,11 +328,11 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -342,10 +343,10 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                               RadioButtonPosition.right,
                                           direction: Axis.horizontal,
                                           radioButtonColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primary,
                                           inactiveRadioButtonColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .secondaryText,
                                           toggleable: false,
                                           horizontalAlignment:
@@ -368,7 +369,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                             AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           '3. ¿Las notificaciones y recordatorios de la revisión técnica fueron útiles y oportunas?',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -383,7 +384,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -398,7 +399,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
                                             '(Marca 1 Muy insatisfecho y  5 Muy satisfecho)',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -458,11 +459,11 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -473,10 +474,10 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                               RadioButtonPosition.right,
                                           direction: Axis.horizontal,
                                           radioButtonColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primary,
                                           inactiveRadioButtonColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .secondaryText,
                                           toggleable: true,
                                           horizontalAlignment:
@@ -499,7 +500,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                             AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           '¿Hay algo más que te gustaría expresar sobre tu experiencia con la aplicación? (opcional)',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -514,7 +515,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -525,7 +526,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                             0.0, 10.0, 0.0, 0.0),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .accent2,
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
@@ -543,7 +544,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                               decoration: InputDecoration(
                                                 labelText: 'Descripción',
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -573,7 +574,7 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                                                         ),
                                                 alignLabelWithHint: true,
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -691,23 +692,23 @@ class _EncuestaclientevWidgetState extends State<EncuestaclientevWidget> {
                               24.0, 0.0, 24.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: _theme.primary,
                           textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
+                              _theme.titleSmall.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
                                     color: Colors.white,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleSmall
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleSmall
                                         .fontStyle,
                                   ),

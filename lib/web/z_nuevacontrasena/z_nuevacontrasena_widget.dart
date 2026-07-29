@@ -44,6 +44,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -51,7 +52,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).accent2,
+        backgroundColor: _theme.accent2,
         body: SafeArea(
           top: true,
           child: Align(
@@ -59,7 +60,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
             child: Container(
               width: MediaQuery.sizeOf(context).width * 0.4,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: _theme.secondaryBackground,
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Padding(
@@ -96,26 +97,26 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Text(
                                       'Restaurar contraseña',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .headlineLarge
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .headlineLarge
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .headlineLarge
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .headlineLarge
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .headlineLarge
                                                     .fontStyle,
                                           ),
@@ -131,26 +132,26 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                   children: [
                                     Text(
                                       'Contraseña',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -189,15 +190,15 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent1,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -219,11 +220,11 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -238,7 +239,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 1.0,
                                             ),
@@ -248,7 +249,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -259,7 +260,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                               UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -268,29 +269,29 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -310,26 +311,26 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                   children: [
                                     Text(
                                       'Repetir Contraseña',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -368,15 +369,15 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                                           .fontStyle,
                                                 ),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent1,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -398,11 +399,11 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -417,7 +418,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 1.0,
                                             ),
@@ -427,7 +428,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -438,7 +439,7 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                               UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 1.0,
                                             ),
@@ -447,29 +448,29 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -490,26 +491,26 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                   children: [
                                     Text(
                                       'Repetir Contraseña',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -543,23 +544,23 @@ class _ZNuevacontrasenaWidgetState extends State<ZNuevacontrasenaWidget> {
                                     24.0, 0.0, 24.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
+                                color: _theme.primary,
+                                textStyle: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleLarge
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),

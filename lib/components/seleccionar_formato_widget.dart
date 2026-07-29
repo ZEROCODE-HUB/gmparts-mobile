@@ -41,6 +41,7 @@ class _SeleccionarFormatoWidgetState extends State<SeleccionarFormatoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return FlutterFlowDropDown<String>(
       controller: _model.dropDownValueController ??=
           FormFieldController<String>(null),
@@ -48,22 +49,22 @@ class _SeleccionarFormatoWidgetState extends State<SeleccionarFormatoWidget> {
       onChanged: (val) => safeSetState(() => _model.dropDownValue = val),
       width: 200.0,
       height: 43.0,
-      textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+      textStyle: _theme.bodyMedium.override(
             font: GoogleFonts.montserrat(
               fontWeight: FontWeight.w500,
-              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+              fontStyle: _theme.bodyMedium.fontStyle,
             ),
             letterSpacing: 0.0,
             fontWeight: FontWeight.w500,
-            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+            fontStyle: _theme.bodyMedium.fontStyle,
           ),
       hintText: 'Seleccionar Formato',
       icon: Icon(
         Icons.expand_circle_down_outlined,
-        color: FlutterFlowTheme.of(context).primary,
+        color: _theme.primary,
         size: 24.0,
       ),
-      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+      fillColor: _theme.primaryBackground,
       elevation: 2.0,
       borderColor: Colors.transparent,
       borderWidth: 0.0,

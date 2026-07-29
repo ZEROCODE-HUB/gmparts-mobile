@@ -127,6 +127,7 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -134,36 +135,36 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
         Expanded(
           child: Text(
             widget.codigo!,
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
+            style: _theme.bodyMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        _theme.bodyMedium.fontWeight,
                     fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        _theme.bodyMedium.fontStyle,
                   ),
-                  color: FlutterFlowTheme.of(context).primaryText,
+                  color: _theme.primaryText,
                   letterSpacing: 0.0,
                   fontWeight:
-                      FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      _theme.bodyMedium.fontWeight,
+                  fontStyle: _theme.bodyMedium.fontStyle,
                 ),
           ),
         ),
         Expanded(
           child: Text(
             widget.descripcion!,
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
+            style: _theme.bodyMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        _theme.bodyMedium.fontWeight,
                     fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        _theme.bodyMedium.fontStyle,
                   ),
-                  color: FlutterFlowTheme.of(context).primaryText,
+                  color: _theme.primaryText,
                   letterSpacing: 0.0,
                   fontWeight:
-                      FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      _theme.bodyMedium.fontWeight,
+                  fontStyle: _theme.bodyMedium.fontStyle,
                 ),
           ),
         ),
@@ -202,39 +203,39 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
                     decoration: InputDecoration(
                       isDense: true,
                       labelStyle:
-                          FlutterFlowTheme.of(context).labelMedium.override(
+                          _theme.labelMedium.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .labelMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .labelMedium
                                       .fontStyle,
                                 ),
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .labelMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .labelMedium
                                     .fontStyle,
                               ),
                       hintText: 'Ingrese cantidad',
                       hintStyle:
-                          FlutterFlowTheme.of(context).labelMedium.override(
+                          _theme.labelMedium.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .labelMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .labelMedium
                                       .fontStyle,
                                 ),
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .labelMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .labelMedium
                                     .fontStyle,
                               ),
@@ -254,39 +255,39 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
+                          color: _theme.error,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
+                          color: _theme.error,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       filled: true,
                       fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
+                          _theme.secondaryBackground,
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: _theme.bodyMedium.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .bodyMedium
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
-                    cursorColor: FlutterFlowTheme.of(context).primaryText,
+                    cursorColor: _theme.primaryText,
                     validator: _model.cantidadInputTextControllerValidator
                         .asValidator(context),
                   ),
@@ -298,20 +299,20 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
                   widget.cantidad! > widget.item!.stock
                       ? 'No tienes stock disponible'
                       : '',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  style: _theme.bodyMedium.override(
                         font: GoogleFonts.montserrat(
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .bodyMedium
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
                         color: Color(0xFFF61414),
                         letterSpacing: 0.0,
                         fontWeight:
-                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                            _theme.bodyMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                            _theme.bodyMedium.fontStyle,
                       ),
                 ),
             ],
@@ -321,7 +322,7 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
           width: 180.0,
           height: 40.0,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+            color: _theme.secondaryBackground,
             borderRadius: BorderRadius.circular(6.0),
           ),
           child: Align(
@@ -337,18 +338,18 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
                   ),
                   '0',
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                style: _theme.bodyMedium.override(
                       font: GoogleFonts.montserrat(
                         fontWeight:
-                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                            _theme.bodyMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                            _theme.bodyMedium.fontStyle,
                       ),
                       letterSpacing: 0.0,
                       fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                          _theme.bodyMedium.fontWeight,
                       fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                          _theme.bodyMedium.fontStyle,
                     ),
               ),
             ),
@@ -383,36 +384,36 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   isDense: true,
-                  labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                  labelStyle: _theme.labelMedium.override(
                         font: GoogleFonts.montserrat(
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .labelMedium
                               .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
+                          fontStyle: _theme
                               .labelMedium
                               .fontStyle,
                         ),
                         letterSpacing: 0.0,
                         fontWeight:
-                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                            _theme.labelMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                            _theme.labelMedium.fontStyle,
                       ),
                   hintText: 'Ingrese cantidad',
-                  hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                  hintStyle: _theme.labelMedium.override(
                         font: GoogleFonts.montserrat(
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .labelMedium
                               .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
+                          fontStyle: _theme
                               .labelMedium
                               .fontStyle,
                         ),
                         letterSpacing: 0.0,
                         fontWeight:
-                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                            _theme.labelMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                            _theme.labelMedium.fontStyle,
                       ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -430,35 +431,35 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
                   ),
                   errorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).error,
+                      color: _theme.error,
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).error,
+                      color: _theme.error,
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   filled: true,
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  fillColor: _theme.secondaryBackground,
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                style: _theme.bodyMedium.override(
                       font: GoogleFonts.montserrat(
                         fontWeight:
-                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                            _theme.bodyMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                            _theme.bodyMedium.fontStyle,
                       ),
                       letterSpacing: 0.0,
                       fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                          _theme.bodyMedium.fontWeight,
                       fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                          _theme.bodyMedium.fontStyle,
                     ),
-                cursorColor: FlutterFlowTheme.of(context).primaryText,
+                cursorColor: _theme.primaryText,
                 validator: _model.precioCompraInputTextControllerValidator
                     .asValidator(context),
               ),
@@ -497,36 +498,36 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   isDense: true,
-                  labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                  labelStyle: _theme.labelMedium.override(
                         font: GoogleFonts.montserrat(
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .labelMedium
                               .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
+                          fontStyle: _theme
                               .labelMedium
                               .fontStyle,
                         ),
                         letterSpacing: 0.0,
                         fontWeight:
-                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                            _theme.labelMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                            _theme.labelMedium.fontStyle,
                       ),
                   hintText: 'Ingrese cantidad',
-                  hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                  hintStyle: _theme.labelMedium.override(
                         font: GoogleFonts.montserrat(
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .labelMedium
                               .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
+                          fontStyle: _theme
                               .labelMedium
                               .fontStyle,
                         ),
                         letterSpacing: 0.0,
                         fontWeight:
-                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                            _theme.labelMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                            _theme.labelMedium.fontStyle,
                       ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -544,35 +545,35 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
                   ),
                   errorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).error,
+                      color: _theme.error,
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).error,
+                      color: _theme.error,
                       width: 1.0,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   filled: true,
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  fillColor: _theme.secondaryBackground,
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                style: _theme.bodyMedium.override(
                       font: GoogleFonts.montserrat(
                         fontWeight:
-                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                            _theme.bodyMedium.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                            _theme.bodyMedium.fontStyle,
                       ),
                       letterSpacing: 0.0,
                       fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                          _theme.bodyMedium.fontWeight,
                       fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                          _theme.bodyMedium.fontStyle,
                     ),
-                cursorColor: FlutterFlowTheme.of(context).primaryText,
+                cursorColor: _theme.primaryText,
                 validator: _model.utilidadInputTextControllerValidator
                     .asValidator(context),
               ),
@@ -589,18 +590,18 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
               ),
               '0',
             ),
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
+            style: _theme.bodyMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        _theme.bodyMedium.fontWeight,
                     fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        _theme.bodyMedium.fontStyle,
                   ),
-                  color: FlutterFlowTheme.of(context).primaryText,
+                  color: _theme.primaryText,
                   letterSpacing: 0.0,
                   fontWeight:
-                      FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      _theme.bodyMedium.fontWeight,
+                  fontStyle: _theme.bodyMedium.fontStyle,
                 ),
           ),
         ),
@@ -618,7 +619,7 @@ class _RowArticlesWidgetState extends State<RowArticlesWidget> {
               },
               child: Icon(
                 Icons.delete,
-                color: FlutterFlowTheme.of(context).error,
+                color: _theme.error,
                 size: 20.0,
               ),
             ),

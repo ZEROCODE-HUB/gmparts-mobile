@@ -40,13 +40,14 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return
         // pendiente a respuesta
         Container(
       width: double.infinity,
       height: 400.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).primaryBackground,
+        color: _theme.primaryBackground,
         boxShadow: [
           BoxShadow(
             blurRadius: 5.0,
@@ -76,16 +77,16 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Tipo de recepción',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                      style: _theme.titleLarge.override(
                             font: GoogleFonts.montserrat(
                               fontWeight: FontWeight.w500,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .titleLarge
                                   .fontStyle,
                             ),
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .titleLarge
                                 .fontStyle,
                           ),
@@ -93,13 +94,13 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
                   ),
                 ),
                 FlutterFlowIconButton(
-                  borderColor: FlutterFlowTheme.of(context).primary,
+                  borderColor: _theme.primary,
                   borderRadius: 8.0,
                   borderWidth: 1.0,
                   buttonSize: 30.0,
                   icon: Icon(
                     Icons.close_outlined,
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: _theme.primary,
                     size: 15.0,
                   ),
                   onPressed: () async {
@@ -134,7 +135,7 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 45.0,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent2,
+                        color: _theme.accent2,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Row(
@@ -149,19 +150,19 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
                               child: Text(
                                 'Crear recepción rápida',
                                 textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -173,7 +174,7 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
                                 0.0, 0.0, 15.0, 0.0),
                             child: Icon(
                               Icons.chevron_right,
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               size: 24.0,
                             ),
                           ),
@@ -202,7 +203,7 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 45.0,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent2,
+                        color: _theme.accent2,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Row(
@@ -217,19 +218,19 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
                               child: Text(
                                 'Crear recepción completa',
                                 textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -241,7 +242,7 @@ class _TipoRecepcionWidgetState extends State<TipoRecepcionWidget> {
                                 0.0, 0.0, 15.0, 0.0),
                             child: Icon(
                               Icons.chevron_right,
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               size: 24.0,
                             ),
                           ),

@@ -47,6 +47,7 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return StreamBuilder<DiagnosticosRecord>(
       stream: DiagnosticosRecord.getDocument(widget.fallaref!),
       builder: (context, snapshot) {
@@ -58,7 +59,7 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
               height: 50.0,
               child: CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  FlutterFlowTheme.of(context).primary,
+                  _theme.primary,
                 ),
               ),
             ),
@@ -69,7 +70,7 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
 
         return Container(
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+            color: _theme.secondaryBackground,
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Padding(
@@ -91,25 +92,25 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                           children: [
                             Text(
                               'Nueva Falla ${((widget.indexx!) + 1).toString()}',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
+                                    color: _theme
                                         .secondaryText,
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
@@ -119,18 +120,18 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                                   0.0, 10.0, 0.0, 0.0),
                               child: Text(
                                 containerDiagnosticosRecord.nombreFalla,
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.normal,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -151,25 +152,25 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                           children: [
                             Text(
                               'Solución',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
+                                    color: _theme
                                         .secondaryText,
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
@@ -179,18 +180,18 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                                   0.0, 10.0, 0.0, 0.0),
                               child: Text(
                                 containerDiagnosticosRecord.solucion,
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.normal,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -212,25 +213,25 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                             children: [
                               Text(
                                 'Tiempo',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .bodyMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondaryText,
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -244,19 +245,19 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                                         .toString(),
                                     ' 0',
                                   ),
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.normal,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -277,25 +278,25 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                           children: [
                             Text(
                               'Comentarios u observaciones',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
+                                    color: _theme
                                         .secondaryText,
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
@@ -306,18 +307,18 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                               child: Text(
                                 containerDiagnosticosRecord
                                     .comentariosFinalizado,
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.normal,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -416,23 +417,23 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).accent2,
+                      color: _theme.accent2,
                       textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
+                          _theme.titleSmall.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleSmall
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleSmall
                                       .fontStyle,
                                 ),
                                 color: Colors.white,
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .titleSmall
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .titleSmall
                                     .fontStyle,
                               ),

@@ -45,13 +45,14 @@ class _GuardarWidgetState extends State<GuardarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 743.0,
         height: 476.0,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+          color: _theme.secondaryBackground,
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Padding(
@@ -64,14 +65,14 @@ class _GuardarWidgetState extends State<GuardarWidget> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   FlutterFlowIconButton(
-                    borderColor: FlutterFlowTheme.of(context).primary,
+                    borderColor: _theme.primary,
                     borderRadius: 5.0,
                     borderWidth: 1.0,
                     buttonSize: 24.0,
-                    fillColor: FlutterFlowTheme.of(context).primary,
+                    fillColor: _theme.primary,
                     icon: Icon(
                       Icons.close,
-                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      color: _theme.primaryBackground,
                       size: 8.0,
                     ),
                     onPressed: () async {
@@ -87,23 +88,23 @@ class _GuardarWidgetState extends State<GuardarWidget> {
                   children: [
                     Icon(
                       Icons.check_circle_outline_rounded,
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: _theme.primary,
                       size: 92.0,
                     ),
                     Text(
                       'Los cambios se \nhan guardado correctamente',
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: _theme.bodyMedium.override(
                             font: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
                             fontSize: 24.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -121,23 +122,23 @@ class _GuardarWidgetState extends State<GuardarWidget> {
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: _theme.primary,
                         textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
+                            _theme.titleSmall.override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleSmall
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleSmall
                                         .fontStyle,
                                   ),
                                   color: Colors.white,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleSmall
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleSmall
                                       .fontStyle,
                                 ),

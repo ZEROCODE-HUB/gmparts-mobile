@@ -38,6 +38,7 @@ class _FDiagnosticoWidgetState extends State<FDiagnosticoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -45,14 +46,14 @@ class _FDiagnosticoWidgetState extends State<FDiagnosticoWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryText,
+        backgroundColor: _theme.primaryText,
         body: SafeArea(
           top: true,
           child: Container(
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryText,
+              color: _theme.primaryText,
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -88,20 +89,20 @@ class _FDiagnosticoWidgetState extends State<FDiagnosticoWidget> {
                             children: [
                               Text(
                                 'Servicio #40456',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryBackground,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
@@ -116,26 +117,26 @@ class _FDiagnosticoWidgetState extends State<FDiagnosticoWidget> {
                                       15.0, 0.0, 15.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
+                                  color: _theme.primary,
+                                  textStyle: _theme
                                       .titleMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleMedium
                                                   .fontStyle,
                                         ),
                                         fontSize: 10.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleMedium
                                             .fontStyle,
                                       ),

@@ -43,6 +43,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
@@ -50,7 +51,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+            color: _theme.secondaryBackground,
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: Padding(
@@ -66,27 +67,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                     Text(
                       'Lista de Cotización de: GRANDEZ AGUILAR JOSE TITO...',
                       style:
-                          FlutterFlowTheme.of(context).headlineSmall.override(
+                          _theme.headlineSmall.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .headlineSmall
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .headlineSmall
                                       .fontStyle,
                                 ),
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .headlineSmall
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .headlineSmall
                                     .fontStyle,
                               ),
                     ),
                     Icon(
                       Icons.close,
-                      color: FlutterFlowTheme.of(context).secondaryText,
+                      color: _theme.secondaryText,
                       size: 24.0,
                     ),
                   ],
@@ -96,7 +97,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: _theme.secondaryBackground,
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(16.0),
@@ -111,27 +112,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 60.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Item',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -142,27 +143,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Serie/Número',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -173,27 +174,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 100.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Fecha',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -204,27 +205,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 80.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Placa',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -235,27 +236,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Total Global',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -266,27 +267,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Total Repuesto',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -297,27 +298,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Total Servicio',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -328,27 +329,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 100.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Usuario',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -359,27 +360,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Agregar Global',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -390,27 +391,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Agregar Repuesto',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -421,27 +422,27 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: _theme.accent3,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'Agregar Servicio',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -458,7 +459,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 60.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Padding(
@@ -466,26 +467,26 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     '1',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -496,7 +497,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Padding(
@@ -504,26 +505,26 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     '001-0005321',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -534,7 +535,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 100.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Padding(
@@ -542,26 +543,26 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     '15/04/2025',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -572,7 +573,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 80.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Padding(
@@ -580,26 +581,26 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'BPY252',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -610,7 +611,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Padding(
@@ -618,26 +619,26 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'S/ 1050.00',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -648,7 +649,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Padding(
@@ -656,26 +657,26 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'S/ 750.00 (Facturado)',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -686,7 +687,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Padding(
@@ -694,26 +695,26 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'S/ 300.00 (No Facturado)',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -724,7 +725,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 100.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Padding(
@@ -732,26 +733,26 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Text(
                                     'RICHAR',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodySmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodySmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodySmall
                                                   .fontStyle,
                                         ),
@@ -762,7 +763,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Align(
@@ -771,13 +772,13 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                     width: 30.0,
                                     height: 30.0,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondary,
                                       shape: BoxShape.circle,
                                     ),
                                     child: Icon(
                                       Icons.add,
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondaryBackground,
                                       size: 20.0,
                                     ),
@@ -788,7 +789,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Align(
@@ -797,13 +798,13 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                     width: 30.0,
                                     height: 30.0,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondary,
                                       shape: BoxShape.circle,
                                     ),
                                     child: Icon(
                                       Icons.add,
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondaryBackground,
                                       size: 20.0,
                                     ),
@@ -814,7 +815,7 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                 width: 120.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                 ),
                                 child: Align(
@@ -823,13 +824,13 @@ class _BuscarcotizacionWidgetState extends State<BuscarcotizacionWidget> {
                                     width: 30.0,
                                     height: 30.0,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondary,
                                       shape: BoxShape.circle,
                                     ),
                                     child: Icon(
                                       Icons.add,
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondaryBackground,
                                       size: 20.0,
                                     ),

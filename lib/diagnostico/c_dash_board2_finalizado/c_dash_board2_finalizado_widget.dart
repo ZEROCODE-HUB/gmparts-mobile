@@ -50,6 +50,7 @@ class _CDashBoard2FinalizadoWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return StreamBuilder<List<DiagnosticosRecord>>(
       stream: queryDiagnosticosRecord(
         parent: widget.recepcion?.reference,
@@ -64,14 +65,14 @@ class _CDashBoard2FinalizadoWidgetState
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: _theme.primaryBackground,
             body: Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    _theme.primary,
                   ),
                 ),
               ),
@@ -88,7 +89,7 @@ class _CDashBoard2FinalizadoWidgetState
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: _theme.primaryBackground,
             body: SafeArea(
               top: true,
               child: Padding(
@@ -114,14 +115,14 @@ class _CDashBoard2FinalizadoWidgetState
                                       0.0, 10.0, 38.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                        _theme.primary,
                                     borderRadius: 30.0,
                                     borderWidth: 1.0,
                                     buttonSize: 32.0,
                                     icon: Icon(
                                       Icons.chevron_left_rounded,
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
+                                          _theme.primary,
                                       size: 16.0,
                                     ),
                                     onPressed: () async {
@@ -134,22 +135,22 @@ class _CDashBoard2FinalizadoWidgetState
                                       0.0, 15.0, 0.0, 0.0),
                                   child: Text(
                                     'Detalle',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .titleLarge
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primaryText,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
@@ -193,7 +194,7 @@ class _CDashBoard2FinalizadoWidgetState
                                                 '-',
                                               ),
                                               textAlign: TextAlign.end,
-                                              style: FlutterFlowTheme.of(context)
+                                              style: _theme
                                                   .labelSmall
                                                   .override(
                                                     font: GoogleFonts.montserrat(
@@ -231,13 +232,13 @@ class _CDashBoard2FinalizadoWidgetState
                                                 0.0, 2.0, 0.0, 0.0),
                                             child: Text(
                                               'Ver perfil',
-                                              style: FlutterFlowTheme.of(context)
+                                              style: _theme
                                                   .labelSmall
                                                   .override(
                                                     font: GoogleFonts.montserrat(
                                                       fontSize: 10.0,
                                                     ),
-                                                    color: FlutterFlowTheme.of(context).primary,
+                                                    color: _theme.primary,
                                                     fontSize: 10.0,
                                                   ),
                                             ),
@@ -281,7 +282,7 @@ class _CDashBoard2FinalizadoWidgetState
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .accent2,
                                           borderRadius:
                                               BorderRadius.circular(10.0),

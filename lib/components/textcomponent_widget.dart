@@ -45,22 +45,23 @@ class _TextcomponentWidgetState extends State<TextcomponentWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Text(
       widget.nombre,
-      style: FlutterFlowTheme.of(context).titleMedium.override(
+      style: _theme.titleMedium.override(
             font: GoogleFonts.montserrat(
-              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+              fontWeight: _theme.titleMedium.fontWeight,
+              fontStyle: _theme.titleMedium.fontStyle,
             ),
             color: valueOrDefault<Color>(
               _model.pagselect == widget.nombre
-                  ? FlutterFlowTheme.of(context).primaryText
-                  : FlutterFlowTheme.of(context).accent1,
-              FlutterFlowTheme.of(context).accent1,
+                  ? _theme.primaryText
+                  : _theme.accent1,
+              _theme.accent1,
             ),
             letterSpacing: 0.0,
-            fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-            fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+            fontWeight: _theme.titleMedium.fontWeight,
+            fontStyle: _theme.titleMedium.fontStyle,
           ),
     );
   }

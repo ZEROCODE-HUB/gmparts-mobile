@@ -44,6 +44,7 @@ class _EncuestaclienteWidgetState extends State<EncuestaclienteWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -51,7 +52,7 @@ class _EncuestaclienteWidgetState extends State<EncuestaclienteWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Column(
@@ -62,7 +63,7 @@ class _EncuestaclienteWidgetState extends State<EncuestaclienteWidget> {
                 opacity: 0.0,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    color: _theme.secondaryBackground,
                   ),
                 ),
               ),
@@ -92,20 +93,20 @@ class _EncuestaclienteWidgetState extends State<EncuestaclienteWidget> {
                         'Valoramos tu opinión. Comparte tus comentarios en nuestra encuesta de satisfacción para mejorar tu experiencia con nosotros. ¡Gracias!',
                         textAlign: TextAlign.center,
                         style:
-                            FlutterFlowTheme.of(context).labelMedium.override(
+                            _theme.labelMedium.override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .labelMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .labelMedium
                                       .fontStyle,
                                 ),
@@ -143,23 +144,23 @@ class _EncuestaclienteWidgetState extends State<EncuestaclienteWidget> {
                         EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                    color: _theme.primary,
+                    textStyle: _theme.titleSmall.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .titleSmall
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .titleSmall
                                 .fontStyle,
                           ),
                           color: Colors.white,
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .titleSmall
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                              _theme.titleSmall.fontStyle,
                         ),
                     elevation: 3.0,
                     borderSide: BorderSide(

@@ -56,14 +56,14 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                 SizedBox(height: 8.0),
                 Text(
                   value.toString(),
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  style: _theme.headlineMedium.override(
                         font: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
                         color: Colors.white,
                       ),
                 ),
                 Text(
                   title,
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                  style: _theme.labelSmall.override(
                         font: GoogleFonts.montserrat(),
                         color: Colors.white70,
                       ),
@@ -79,6 +79,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     final todayStart = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
     final todayEnd = todayStart.add(Duration(days: 1));
 
@@ -89,7 +90,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
@@ -114,7 +115,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                     currentUserDisplayName.isNotEmpty
                                         ? currentUserDisplayName
                                         : 'Usuario',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .titleSmall
                                         .override(
                                           font: GoogleFonts.montserrat(
@@ -123,11 +124,11 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                   ),
                                   Text(
                                     'Ver perfil',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .labelSmall
                                         .override(
                                           font: GoogleFonts.montserrat(),
-                                          color: FlutterFlowTheme.of(context).primary,
+                                          color: _theme.primary,
                                           fontSize: 11.0,
                                         ),
                                   ),
@@ -155,7 +156,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   SizedBox(height: 24.0),
                   Text(
                     'Resumen',
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                    style: _theme.headlineSmall.override(
                           font: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
                         ),
                   ),
@@ -199,7 +200,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   SizedBox(height: 28.0),
                   Text(
                     'Acciones rápidas',
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                    style: _theme.headlineSmall.override(
                           font: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
                         ),
                   ),
@@ -240,7 +241,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                     children: [
                       Text(
                         'Últimas recepciones',
-                        style: FlutterFlowTheme.of(context).headlineSmall.override(
+                        style: _theme.headlineSmall.override(
                               font: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
                             ),
                       ),
@@ -284,7 +285,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
 
   Widget _buildInitialsAvatar() {
     return CircleAvatar(
-      backgroundColor: FlutterFlowTheme.of(context).primary,
+      backgroundColor: _theme.primary,
       child: Text(
         (currentUserDisplayName.isNotEmpty ? currentUserDisplayName[0] : '?')
             .toUpperCase(),
@@ -301,7 +302,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+          color: _theme.secondaryBackground,
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
@@ -313,12 +314,12 @@ class _DashboardWidgetState extends State<DashboardWidget> {
         ),
         child: Column(
           children: [
-            Icon(icon, color: FlutterFlowTheme.of(context).primary, size: 32.0),
+            Icon(icon, color: _theme.primary, size: 32.0),
             SizedBox(height: 8.0),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).labelMedium.override(
+              style: _theme.labelMedium.override(
                     font: GoogleFonts.montserrat(),
                   ),
             ),
@@ -351,9 +352,9 @@ class _DashboardWidgetState extends State<DashboardWidget> {
         child: Container(
           padding: EdgeInsets.all(12.0),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+            color: _theme.secondaryBackground,
             borderRadius: BorderRadius.circular(10.0),
-            border: Border.all(color: FlutterFlowTheme.of(context).alternate),
+            border: Border.all(color: _theme.alternate),
           ),
           child: Row(
             children: [
@@ -372,14 +373,14 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   children: [
                     Text(
                       '#${r.numeroorden ?? '---'}',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: _theme.bodyMedium.override(
                             font: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
                           ),
                     ),
                     SizedBox(height: 2.0),
                     Text(
                       r.nombreCliente ?? 'Sin cliente',
-                      style: FlutterFlowTheme.of(context).labelSmall.override(
+                      style: _theme.labelSmall.override(
                             font: GoogleFonts.montserrat(),
                           ),
                     ),
@@ -394,7 +395,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                 ),
                 child: Text(
                   r.status ?? '',
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                  style: _theme.labelSmall.override(
                         font: GoogleFonts.montserrat(),
                         color: _statusColor(r.status),
                       ),
@@ -431,11 +432,11 @@ class _DashboardWidgetState extends State<DashboardWidget> {
       child: Column(
         children: [
           Icon(Icons.inbox_outlined,
-              size: 80.0, color: FlutterFlowTheme.of(context).alternate),
+              size: 80.0, color: _theme.alternate),
           SizedBox(height: 16.0),
           Text(
             '¡Bienvenido!',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
+            style: _theme.headlineMedium.override(
                   font: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
                 ),
           ),
@@ -443,7 +444,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           Text(
             'Aún no hay recepciones registradas.\nComienza creando una nueva recepción.',
             textAlign: TextAlign.center,
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
+            style: _theme.bodyMedium.override(
                   font: GoogleFonts.montserrat(),
                 ),
           ),
@@ -455,8 +456,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
             options: FFButtonOptions(
               height: 45.0,
               padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-              color: FlutterFlowTheme.of(context).primary,
-              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+              color: _theme.primary,
+              textStyle: _theme.titleSmall.override(
                     font: GoogleFonts.montserrat(),
                     color: Colors.white,
                   ),

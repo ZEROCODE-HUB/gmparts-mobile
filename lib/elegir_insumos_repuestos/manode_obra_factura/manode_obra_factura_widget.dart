@@ -46,6 +46,7 @@ class _ManodeObraFacturaWidgetState extends State<ManodeObraFacturaWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     context.watch<FFAppState>();
 
     return Align(
@@ -53,7 +54,7 @@ class _ManodeObraFacturaWidgetState extends State<ManodeObraFacturaWidget> {
       child: Container(
         width: 350.0,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).primaryBackground,
+          color: _theme.primaryBackground,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
@@ -74,7 +75,7 @@ class _ManodeObraFacturaWidgetState extends State<ManodeObraFacturaWidget> {
                     },
                     child: Icon(
                       Icons.close,
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: _theme.primary,
                       size: 30.0,
                     ),
                   ),
@@ -83,10 +84,10 @@ class _ManodeObraFacturaWidgetState extends State<ManodeObraFacturaWidget> {
                   alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Text(
                     'Elige la cantidad de horas',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: _theme.bodyMedium.override(
                           font: GoogleFonts.montserrat(
                             fontWeight: FontWeight.normal,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -94,7 +95,7 @@ class _ManodeObraFacturaWidgetState extends State<ManodeObraFacturaWidget> {
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
                   ),
                 ),
@@ -117,85 +118,85 @@ class _ManodeObraFacturaWidgetState extends State<ManodeObraFacturaWidget> {
                     decoration: InputDecoration(
                       labelText: 'Ingresa las horas de trabajo',
                       labelStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.override(
+                          _theme.bodyMedium.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .bodyMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .bodyMedium
                                       .fontStyle,
                                 ),
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .bodyMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .bodyMedium
                                     .fontStyle,
                               ),
                       hintStyle:
-                          FlutterFlowTheme.of(context).labelMedium.override(
+                          _theme.labelMedium.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .labelMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .labelMedium
                                       .fontStyle,
                                 ),
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .labelMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .labelMedium
                                     .fontStyle,
                               ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).alternate,
+                          color: _theme.alternate,
                           width: 2.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: _theme.primary,
                           width: 2.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
+                          color: _theme.error,
                           width: 2.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
+                          color: _theme.error,
                           width: 2.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: _theme.bodyMedium.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .bodyMedium
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
                     keyboardType: TextInputType.number,
                     validator:
@@ -222,23 +223,23 @@ class _ManodeObraFacturaWidgetState extends State<ManodeObraFacturaWidget> {
                           EdgeInsetsDirectional.fromSTEB(32.0, 0.0, 32.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: _theme.primary,
                       textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
+                          _theme.titleSmall.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleSmall
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleSmall
                                       .fontStyle,
                                 ),
                                 color: Colors.white,
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .titleSmall
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .titleSmall
                                     .fontStyle,
                               ),

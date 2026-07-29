@@ -50,13 +50,14 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return
         // pendiente a respuesta
         Container(
       width: double.infinity,
       height: 350.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).primaryBackground,
+        color: _theme.primaryBackground,
         boxShadow: [
           BoxShadow(
             blurRadius: 5.0,
@@ -88,20 +89,20 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 60.0, 0.0),
                     child: Text(
                       'Enviar detalle al cliente',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                      style: _theme.titleLarge.override(
                             font: GoogleFonts.montserrat(
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .titleLarge
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .titleLarge
                                   .fontStyle,
                             ),
                             letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .titleLarge
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .titleLarge
                                 .fontStyle,
                           ),
@@ -110,13 +111,13 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                   Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: FlutterFlowIconButton(
-                      borderColor: FlutterFlowTheme.of(context).primary,
+                      borderColor: _theme.primary,
                       borderRadius: 8.0,
                       borderWidth: 2.0,
                       buttonSize: 30.0,
                       icon: Icon(
                         Icons.close_rounded,
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: _theme.primary,
                         size: 15.0,
                       ),
                       onPressed: () async {
@@ -149,13 +150,13 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FlutterFlowIconButton(
-                            borderColor: FlutterFlowTheme.of(context).primary,
+                            borderColor: _theme.primary,
                             borderRadius: 20.0,
                             buttonSize: 40.0,
-                            fillColor: FlutterFlowTheme.of(context).primary,
+                            fillColor: _theme.primary,
                             icon: FaIcon(
                               FontAwesomeIcons.whatsapp,
-                              color: FlutterFlowTheme.of(context)
+                              color: _theme
                                   .secondaryBackground,
                               size: 24.0,
                             ),
@@ -178,22 +179,22 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                               },
                               child: Text(
                                 'WhatsApp',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleSmall
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleSmall
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
@@ -228,13 +229,13 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         FlutterFlowIconButton(
-                          borderColor: FlutterFlowTheme.of(context).primary,
+                          borderColor: _theme.primary,
                           borderRadius: 20.0,
                           buttonSize: 40.0,
-                          fillColor: FlutterFlowTheme.of(context).primary,
+                          fillColor: _theme.primary,
                           icon: Icon(
                             Icons.email_outlined,
-                            color: FlutterFlowTheme.of(context)
+                            color: _theme
                                 .secondaryBackground,
                             size: 24.0,
                           ),
@@ -258,22 +259,22 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                               0.0, 6.0, 0.0, 0.0),
                           child: Text(
                             'Correo',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleSmall
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleSmall
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleSmall
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleSmall
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleSmall
                                       .fontStyle,
                                 ),
@@ -294,7 +295,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                     width: 40.0,
                     height: 40.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: _theme.primary,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10.0),
                         bottomLeft: Radius.circular(10.0),
@@ -325,10 +326,10 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                          duration: Duration(milliseconds: 200),
                          child: _isCopied
                              ? Icon(Icons.check, key: ValueKey('check'),
-                                 color: FlutterFlowTheme.of(context).primaryBackground,
+                                 color: _theme.primaryBackground,
                                  size: 20.0)
                              : Icon(Icons.content_copy, key: ValueKey('copy'),
-                                 color: FlutterFlowTheme.of(context).primaryBackground,
+                                 color: _theme.primaryBackground,
                                  size: 20.0),
                        ),
                     ),
@@ -338,7 +339,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                       width: 40.0,
                       height: 40.0,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent2,
+                        color: _theme.accent2,
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(10.0),
                           bottomRight: Radius.circular(10.0),
@@ -361,22 +362,22 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                             child: Text(
                               widget.link,
                               maxLines: 1,
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
@@ -417,23 +418,23 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                         EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                    color: _theme.primary,
+                    textStyle: _theme.titleSmall.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .titleSmall
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .titleSmall
                                 .fontStyle,
                           ),
                           color: Colors.white,
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .titleSmall
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                              _theme.titleSmall.fontStyle,
                         ),
                     elevation: 3.0,
                     borderSide: BorderSide(

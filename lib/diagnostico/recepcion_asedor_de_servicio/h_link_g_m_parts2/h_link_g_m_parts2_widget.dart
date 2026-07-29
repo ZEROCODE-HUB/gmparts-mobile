@@ -38,6 +38,7 @@ class _HLinkGMParts2WidgetState extends State<HLinkGMParts2Widget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -45,7 +46,7 @@ class _HLinkGMParts2WidgetState extends State<HLinkGMParts2Widget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryText,
+        backgroundColor: _theme.primaryText,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -60,7 +61,7 @@ class _HLinkGMParts2WidgetState extends State<HLinkGMParts2Widget> {
                       width: 108.0,
                       height: 55.0,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: _theme.primaryText,
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
@@ -83,18 +84,18 @@ class _HLinkGMParts2WidgetState extends State<HLinkGMParts2Widget> {
                         Text(
                           'Servicio #40456',
                           style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
+                              _theme.titleLarge.override(
                                     font: GoogleFonts.montserrat(
                                       fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
+                                    color: _theme
                                         .primaryBackground,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
@@ -109,24 +110,24 @@ class _HLinkGMParts2WidgetState extends State<HLinkGMParts2Widget> {
                                 15.0, 0.0, 15.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
+                            color: _theme.primary,
+                            textStyle: _theme
                                 .titleMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                                   fontSize: 10.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleMedium
                                       .fontStyle,
                                 ),

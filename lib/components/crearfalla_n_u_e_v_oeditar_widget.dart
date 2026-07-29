@@ -67,6 +67,7 @@ class _CrearfallaNUEVOeditarWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
@@ -83,7 +84,7 @@ class _CrearfallaNUEVOeditarWidgetState
                   height: 50.0,
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      FlutterFlowTheme.of(context).primary,
+                      _theme.primary,
                     ),
                   ),
                 ),
@@ -97,7 +98,7 @@ class _CrearfallaNUEVOeditarWidgetState
                 maxWidth: 540.0,
               ),
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).accent2,
+                color: _theme.accent2,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
                   topRight: Radius.circular(20.0),
@@ -117,22 +118,22 @@ class _CrearfallaNUEVOeditarWidgetState
                         children: [
                           Text(
                             'Editar Falla ',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleLarge
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleLarge
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),
@@ -147,7 +148,7 @@ class _CrearfallaNUEVOeditarWidgetState
                             },
                             child: Icon(
                               Icons.close,
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: _theme.primaryText,
                               size: 24.0,
                             ),
                           ),
@@ -175,7 +176,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                         children: [
                                           Text(
                                             'Nombre de falla',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -222,50 +223,50 @@ class _CrearfallaNUEVOeditarWidgetState
                                     autofocus: false,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelStyle: FlutterFlowTheme.of(context)
+                                      labelStyle: _theme
                                           .labelMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
                                       hintText: 'Escribe aquí',
-                                      hintStyle: FlutterFlowTheme.of(context)
+                                      hintStyle: _theme
                                           .labelMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
@@ -279,7 +280,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           width: 2.0,
                                         ),
@@ -288,7 +289,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                       ),
                                       errorBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .error,
                                           width: 2.0,
                                         ),
@@ -297,7 +298,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .error,
                                           width: 2.0,
                                         ),
@@ -305,32 +306,32 @@ class _CrearfallaNUEVOeditarWidgetState
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
+                                      fillColor: _theme
                                           .primaryBackground,
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               10.0, 0.0, 0.0, 0.0),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -350,26 +351,26 @@ class _CrearfallaNUEVOeditarWidgetState
                                 children: [
                                   Text(
                                     'Servicio o solución',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -386,7 +387,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                             child: CircularProgressIndicator(
                                               valueColor:
                                                   AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primary,
                                               ),
                                             ),
@@ -421,21 +422,21 @@ class _CrearfallaNUEVOeditarWidgetState
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -445,47 +446,47 @@ class _CrearfallaNUEVOeditarWidgetState
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        textStyle: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -493,11 +494,11 @@ class _CrearfallaNUEVOeditarWidgetState
                                         searchHintText: 'Buscar departamento',
                                         icon: Icon(
                                           Icons.arrow_circle_down,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 24.0,
                                         ),
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .primaryBackground,
                                         elevation: 0.0,
                                         borderColor: Colors.transparent,
@@ -526,26 +527,26 @@ class _CrearfallaNUEVOeditarWidgetState
                                   children: [
                                     Text(
                                       'Tiempo estimado',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -583,11 +584,11 @@ class _CrearfallaNUEVOeditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -610,11 +611,11 @@ class _CrearfallaNUEVOeditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
@@ -629,7 +630,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               width: 2.0,
                                             ),
@@ -639,7 +640,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                           errorBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 2.0,
                                             ),
@@ -650,7 +651,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                               OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .error,
                                               width: 2.0,
                                             ),
@@ -659,32 +660,32 @@ class _CrearfallaNUEVOeditarWidgetState
                                           ),
                                           filled: true,
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primaryBackground,
                                           contentPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
@@ -698,7 +699,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primaryBackground,
                                           borderRadius:
                                               BorderRadius.circular(10.0),
@@ -718,26 +719,26 @@ class _CrearfallaNUEVOeditarWidgetState
                                 children: [
                                   Text(
                                     'Repuestos',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -787,7 +788,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                                   1.0,
                                           height: 40.0,
                                           decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryBackground,
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
@@ -878,7 +879,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                             return Container(
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .secondaryBackground,
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -919,19 +920,19 @@ class _CrearfallaNUEVOeditarWidgetState
                                                                       .override(
                                                                         font: GoogleFonts
                                                                             .montserrat(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                          fontWeight: _theme
                                                                               .bodyMedium
                                                                               .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .bodyMedium
                                                                               .fontStyle,
                                                                         ),
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .bodyMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
@@ -946,19 +947,19 @@ class _CrearfallaNUEVOeditarWidgetState
                                                                       .override(
                                                                         font: GoogleFonts
                                                                             .montserrat(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                          fontWeight: _theme
                                                                               .bodyMedium
                                                                               .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .bodyMedium
                                                                               .fontStyle,
                                                                         ),
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .bodyMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
@@ -999,19 +1000,19 @@ class _CrearfallaNUEVOeditarWidgetState
                                                                       .override(
                                                                         font: GoogleFonts
                                                                             .montserrat(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                          fontWeight: _theme
                                                                               .bodyMedium
                                                                               .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .bodyMedium
                                                                               .fontStyle,
                                                                         ),
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .bodyMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
@@ -1040,19 +1041,19 @@ class _CrearfallaNUEVOeditarWidgetState
                                                                       .override(
                                                                         font: GoogleFonts
                                                                             .montserrat(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                          fontWeight: _theme
                                                                               .bodyMedium
                                                                               .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .bodyMedium
                                                                               .fontStyle,
                                                                         ),
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .bodyMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
@@ -1279,7 +1280,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                     borderRadius: BorderRadius.circular(10.0),
                                     border: Border.all(
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
+                                          _theme.primary,
                                       width: 2.0,
                                     ),
                                   ),
@@ -1294,7 +1295,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Tomar foto de la falla',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .headlineSmall
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -1311,11 +1312,11 @@ class _CrearfallaNUEVOeditarWidgetState
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .headlineSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .headlineSmall
                                                         .fontStyle,
                                               ),
@@ -1332,7 +1333,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                             child: Icon(
                                               Icons.camera_alt,
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               size: 24.0,
                                             ),
@@ -1362,7 +1363,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                                   0.0, 25.0, 0.0, 0.0),
                                           child: Text(
                                             'Fotos',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -1507,7 +1508,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                                                           Icon(
                                                                         Icons
                                                                             .clear,
-                                                                        color: FlutterFlowTheme.of(context)
+                                                                        color: _theme
                                                                             .primary,
                                                                         size:
                                                                             12.0,
@@ -1670,13 +1671,13 @@ class _CrearfallaNUEVOeditarWidgetState
                                         content: Text(
                                           '',
                                           style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                           ),
                                         ),
                                         duration: Duration(milliseconds: 4000),
                                         backgroundColor:
-                                            FlutterFlowTheme.of(context)
+                                            _theme
                                                 .primary,
                                       ),
                                     );
@@ -1697,27 +1698,27 @@ class _CrearfallaNUEVOeditarWidgetState
                                   iconAlignment: IconAlignment.end,
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
+                                  color: _theme.primary,
+                                  textStyle: _theme
                                       .titleSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
                                         color: Colors.white,
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleSmall
                                             .fontStyle,
                                       ),
@@ -1748,27 +1749,27 @@ class _CrearfallaNUEVOeditarWidgetState
                                   iconAlignment: IconAlignment.end,
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
+                                  color: _theme.primary,
+                                  textStyle: _theme
                                       .titleSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
                                         color: Colors.white,
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleSmall
                                             .fontStyle,
                                       ),

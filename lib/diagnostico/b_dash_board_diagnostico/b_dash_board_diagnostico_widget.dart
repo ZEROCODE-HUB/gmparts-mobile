@@ -52,6 +52,7 @@ class _BDashBoardDiagnosticoWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -59,7 +60,7 @@ class _BDashBoardDiagnosticoWidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -85,13 +86,13 @@ class _BDashBoardDiagnosticoWidgetState
                                   0.0, 10.0, 38.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor:
-                                    FlutterFlowTheme.of(context).primary,
+                                    _theme.primary,
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 32.0,
                                 icon: Icon(
                                   Icons.chevron_left_rounded,
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: _theme.primary,
                                   size: 16.0,
                                 ),
                                 onPressed: () async {
@@ -104,20 +105,20 @@ class _BDashBoardDiagnosticoWidgetState
                                   0.0, 15.0, 0.0, 0.0),
                               child: Text(
                                 'Detalle',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
@@ -160,26 +161,26 @@ class _BDashBoardDiagnosticoWidgetState
                                             '-',
                                           ),
                                           textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .labelSmall
                                               .override(
                                                 font: GoogleFonts.montserrat(
                                                   fontWeight:
-                                                      FlutterFlowTheme.of(context)
+                                                      _theme
                                                           .labelSmall
                                                           .fontWeight,
                                                   fontStyle:
-                                                      FlutterFlowTheme.of(context)
+                                                      _theme
                                                           .labelSmall
                                                           .fontStyle,
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .fontStyle,
                                               ),
@@ -193,14 +194,14 @@ class _BDashBoardDiagnosticoWidgetState
                                             0.0, 2.0, 0.0, 0.0),
                                         child: Text(
                                           'Ver perfil',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .labelSmall
                                               .override(
                                                 font: GoogleFonts.montserrat(
                                                   fontSize: 10.0,
                                                 ),
                                                 fontSize: 10.0,
-                                                color: FlutterFlowTheme.of(context).primary,
+                                                color: _theme.primary,
                                               ),
                                         ),
                                       ),
@@ -220,20 +221,20 @@ class _BDashBoardDiagnosticoWidgetState
                             children: [
                               Text(
                                 'Servicio #${widget.datos?.numeroorden.toString()}',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
@@ -259,7 +260,7 @@ class _BDashBoardDiagnosticoWidgetState
                                     },
                                     child: Icon(
                                       Icons.edit,
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       size: 24.0,
                                     ),
@@ -298,7 +299,7 @@ class _BDashBoardDiagnosticoWidgetState
                                      },
                                     child: Icon(
                                       Icons.share,
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       size: 24.0,
                                     ),
@@ -314,7 +315,7 @@ class _BDashBoardDiagnosticoWidgetState
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent2,
+                              color: _theme.accent2,
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Padding(
@@ -326,22 +327,22 @@ class _BDashBoardDiagnosticoWidgetState
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       'Datos del cliente',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -368,7 +369,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Cliente:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -448,7 +449,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Fecha:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -544,7 +545,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Celular:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -624,7 +625,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Correo electrónico:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -710,7 +711,7 @@ class _BDashBoardDiagnosticoWidgetState
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent2,
+                              color: _theme.accent2,
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Padding(
@@ -722,22 +723,22 @@ class _BDashBoardDiagnosticoWidgetState
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       'Datos del vehículo',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -764,7 +765,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Número de placa:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -844,7 +845,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Marca:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -939,7 +940,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Modelo:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1019,7 +1020,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Año:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1114,7 +1115,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Nivel de combustible:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1195,7 +1196,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Inventario:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1314,7 +1315,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Observaciones adicionales:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1400,7 +1401,7 @@ class _BDashBoardDiagnosticoWidgetState
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent2,
+                              color: _theme.accent2,
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Padding(
@@ -1412,22 +1413,22 @@ class _BDashBoardDiagnosticoWidgetState
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       'Problema técnico',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -1454,7 +1455,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Tecnico de servicio',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1535,7 +1536,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Tipo de servicio:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1630,7 +1631,7 @@ class _BDashBoardDiagnosticoWidgetState
                                               Text(
                                                 'Motivo de ingreso',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1867,22 +1868,22 @@ class _BDashBoardDiagnosticoWidgetState
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: _theme.primary,
                         textStyle:
-                            FlutterFlowTheme.of(context).titleLarge.override(
+                            _theme.titleLarge.override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleLarge
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),

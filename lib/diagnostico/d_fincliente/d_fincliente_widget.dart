@@ -37,6 +37,7 @@ class _DFinclienteWidgetState extends State<DFinclienteWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -46,14 +47,14 @@ class _DFinclienteWidgetState extends State<DFinclienteWidget> {
         canPop: false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: _theme.primaryBackground,
           body: SafeArea(
             top: true,
             child: Container(
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: _theme.secondaryBackground,
               ),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -70,7 +71,7 @@ class _DFinclienteWidgetState extends State<DFinclienteWidget> {
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
+                              color: _theme
                                   .secondaryBackground,
                             ),
                             child: Column(
@@ -97,24 +98,24 @@ class _DFinclienteWidgetState extends State<DFinclienteWidget> {
                                 Text(
                                   'Agradecemos sinceramente tu tiempo y tus comentarios.  ¡Tu opinión es escencial para hacer nuestro servicio aún mejor!\n\nYa puedes acercarte a recoger tu vehículo.',
                                   textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .labelMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .labelMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .labelMedium
                                             .fontStyle,
                                       ),

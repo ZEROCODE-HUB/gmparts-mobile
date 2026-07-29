@@ -93,6 +93,7 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -100,7 +101,7 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -119,7 +120,7 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                        onTap: () => context.safePop(),
                        child: Icon(
                          Icons.arrow_back,
-                         color: FlutterFlowTheme.of(context).primaryText,
+                         color: _theme.primaryText,
                          size: 24.0,
                        ),
                      ),
@@ -160,14 +161,14 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                                    ? Image.network(photo, fit: BoxFit.cover)
                                    : CircleAvatar(
                                        backgroundColor:
-                                           FlutterFlowTheme.of(context).primary,
+                                           _theme.primary,
                                        child: Text(
                                          (currentUserDisplayName.isNotEmpty
                                                  ? currentUserDisplayName[0]
                                                  : '?')
                                              .toUpperCase(),
                                          style: TextStyle(
-                                           color: FlutterFlowTheme.of(context)
+                                           color: _theme
                                                .primaryText,
                                            fontWeight: FontWeight.bold,
                                            fontSize: 40.0,
@@ -180,13 +181,13 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                               height: 32.0,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                               ),
                               child: Icon(
                                 Icons.camera_alt,
                                 size: 16.0,
                                 color:
-                                    FlutterFlowTheme.of(context).primaryText,
+                                    _theme.primaryText,
                               ),
                             ),
                           ],
@@ -208,7 +209,7 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                      padding: EdgeInsetsDirectional.fromSTEB(36.0, 4.0, 0.0, 0.0),
                      child: Text(
                        'Gestiona tu perfil',
-                       style: FlutterFlowTheme.of(context).labelSmall.override(
+                       style: _theme.labelSmall.override(
                              font: GoogleFonts.montserrat(),
                            ),
                      ),
@@ -256,9 +257,9 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                       icon: Icon(Icons.logout, size: 20.0),
                       label: Text('CERRAR SESIÓN'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: FlutterFlowTheme.of(context).primary,
+                        backgroundColor: _theme.primary,
                         foregroundColor:
-                            FlutterFlowTheme.of(context).primaryText,
+                            _theme.primaryText,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
                       ),
@@ -274,9 +275,9 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
                       icon: Icon(Icons.delete_sharp, size: 20.0),
                       label: Text('BORRAR CUENTA'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: FlutterFlowTheme.of(context).error,
+                        backgroundColor: _theme.error,
                         foregroundColor:
-                            FlutterFlowTheme.of(context).primaryText,
+                            _theme.primaryText,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
                       ),
@@ -298,21 +299,21 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
       width: double.infinity,
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
+        color: _theme.secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Row(
         children: [
-          Icon(icon, size: 20.0, color: FlutterFlowTheme.of(context).primary),
+          Icon(icon, size: 20.0, color: _theme.primary),
           SizedBox(width: 12.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(label,
-                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                  style: _theme.labelSmall.override(
                       font: GoogleFonts.montserrat())),
               Text(value,
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  style: _theme.bodyMedium.override(
                       font: GoogleFonts.montserrat())),
             ],
           ),
@@ -327,22 +328,22 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
       width: double.infinity,
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
+        color: _theme.secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Row(
         children: [
-          Icon(icon, size: 20.0, color: FlutterFlowTheme.of(context).primary),
+          Icon(icon, size: 20.0, color: _theme.primary),
           SizedBox(width: 12.0),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(label,
-                    style: FlutterFlowTheme.of(context).labelSmall.override(
+                    style: _theme.labelSmall.override(
                         font: GoogleFonts.montserrat())),
                 Text(value,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: _theme.bodyMedium.override(
                         font: GoogleFonts.montserrat())),
               ],
             ),
@@ -351,7 +352,7 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
             InkWell(
               onTap: onEdit,
               child: Icon(Icons.edit, size: 18.0,
-                  color: FlutterFlowTheme.of(context).primary),
+                  color: _theme.primary),
             ),
         ],
       ),

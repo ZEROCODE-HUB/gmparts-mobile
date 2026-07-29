@@ -46,6 +46,7 @@ class _RestaurarContrasena1WidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -53,14 +54,14 @@ class _RestaurarContrasena1WidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: _theme.secondaryBackground,
         body: SafeArea(
           top: true,
           child: Container(
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
+              color: _theme.secondaryBackground,
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
@@ -74,13 +75,13 @@ class _RestaurarContrasena1WidgetState
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         FlutterFlowIconButton(
-                          borderColor: FlutterFlowTheme.of(context).primary,
+                          borderColor: _theme.primary,
                           borderRadius: 30.0,
                           borderWidth: 1.0,
                           buttonSize: 32.0,
                           icon: Icon(
                             Icons.chevron_left_rounded,
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: _theme.primary,
                             size: 16.0,
                           ),
                           onPressed: () async {
@@ -98,22 +99,22 @@ class _RestaurarContrasena1WidgetState
                       children: [
                         Text(
                           'Restaurar Contraseña',
-                          style: FlutterFlowTheme.of(context)
+                          style: _theme
                               .headlineLarge
                               .override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .headlineLarge
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .headlineLarge
                                       .fontStyle,
                                 ),
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .headlineLarge
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .headlineLarge
                                     .fontStyle,
                               ),
@@ -132,23 +133,23 @@ class _RestaurarContrasena1WidgetState
                             child: Text(
                               'Entroduce el correo registrado. Te enviaremos un código para restaurar contraseña.\n',
                               textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .titleSmall
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context).accent1,
+                                    color: _theme.accent1,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleSmall
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleSmall
                                         .fontStyle,
                                   ),
@@ -166,20 +167,20 @@ class _RestaurarContrasena1WidgetState
                         Text(
                           'Correo electrónico',
                           style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
+                              _theme.titleSmall.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleSmall
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleSmall
                                         .fontStyle,
                                   ),
@@ -198,42 +199,42 @@ class _RestaurarContrasena1WidgetState
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Correo electrónico',
-                            labelStyle: FlutterFlowTheme.of(context)
+                            labelStyle: _theme
                                 .labelMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context).accent1,
+                                  color: _theme.accent1,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .labelMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .labelMedium
                                       .fontStyle,
                                 ),
-                            hintStyle: FlutterFlowTheme.of(context)
+                            hintStyle: _theme
                                 .labelMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .labelMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .labelMedium
                                       .fontStyle,
                                 ),
@@ -246,43 +247,43 @@ class _RestaurarContrasena1WidgetState
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             errorBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
+                                color: _theme.error,
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedErrorBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
+                                color: _theme.error,
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             filled: true,
-                            fillColor: FlutterFlowTheme.of(context).accent2,
+                            fillColor: _theme.accent2,
                           ),
                           style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              _theme.bodyMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
@@ -323,22 +324,22 @@ class _RestaurarContrasena1WidgetState
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: _theme.primary,
                         textStyle:
-                            FlutterFlowTheme.of(context).titleLarge.override(
+                            _theme.titleLarge.override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleLarge
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),

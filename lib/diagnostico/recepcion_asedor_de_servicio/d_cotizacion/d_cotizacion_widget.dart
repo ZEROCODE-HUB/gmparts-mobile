@@ -50,6 +50,7 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -57,14 +58,14 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Container(
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
+              color: _theme.secondaryBackground,
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -89,7 +90,7 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                               buttonSize: 44.0,
                               icon: Icon(
                                 Icons.chevron_left_rounded,
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 size: 30.0,
                               ),
                               onPressed: () async {
@@ -105,7 +106,7 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                               buttonSize: 44.0,
                               icon: Icon(
                                 Icons.home_rounded,
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 size: 28.0,
                               ),
                               onPressed: () async {
@@ -128,7 +129,7 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                               width: double.infinity,
                               height: 200.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
+                                color: _theme
                                     .secondaryBackground,
                               ),
                               child: Column(
@@ -154,26 +155,26 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                                   Text(
                                     'Tu cotización se ha guardado correctamente',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .headlineLarge
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .headlineLarge
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .headlineLarge
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineLarge
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineLarge
                                                   .fontStyle,
                                         ),
@@ -223,23 +224,23 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle: FlutterFlowTheme.of(context)
+                        color: _theme.primary,
+                        textStyle: _theme
                             .titleLarge
                             .override(
                               font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .titleLarge
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .titleLarge
                                     .fontStyle,
                               ),
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .titleLarge
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .titleLarge
                                   .fontStyle,
                             ),

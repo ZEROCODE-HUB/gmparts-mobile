@@ -53,6 +53,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -60,7 +61,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).accent2,
+        backgroundColor: _theme.accent2,
         body: SafeArea(
           top: true,
           child: Column(
@@ -82,7 +83,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                         maxWidth: 570.0,
                       ),
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: _theme.secondaryBackground,
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -108,7 +109,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                         AutoSizeText(
                                           'Iniciar Sesión ',
                                           minFontSize: 12.0,
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .headlineLarge
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -125,11 +126,11 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .headlineLarge
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .headlineLarge
                                                         .fontStyle,
                                               ),
@@ -145,7 +146,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                       children: [
                                         Text(
                                           'Correo electrónico',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .titleSmall
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -163,11 +164,11 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
@@ -258,7 +259,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 width: 1.0,
                                               ),
@@ -268,7 +269,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                             errorBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 1.0,
                                               ),
@@ -279,7 +280,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                 UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .error,
                                                 width: 1.0,
                                               ),
@@ -288,10 +289,10 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                             ),
                                             filled: true,
                                             fillColor:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .accent2,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -308,11 +309,11 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -331,7 +332,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                       children: [
                                         Text(
                                           'Contraseña',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .titleMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -348,11 +349,11 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
@@ -482,7 +483,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent2,
                                               suffixIcon: InkWell(
                                                 onTap: () async {
@@ -506,7 +507,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                 ),
                                               ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -650,27 +651,27 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
+                                          _theme.primary,
+                                      textStyle: _theme
                                           .titleLarge
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontStyle,
                                           ),
@@ -706,7 +707,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                         maxWidth: 570.0,
                       ),
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: _theme.secondaryBackground,
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Padding(
@@ -742,7 +743,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                   0.0, 20.0, 0.0, 0.0),
                                           child: Text(
                                             'Iniciar  Sesión',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .headlineLarge
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -781,7 +782,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                         children: [
                                           Text(
                                             'Correo electrónico',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleSmall
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -929,10 +930,10 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent2,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -974,7 +975,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                         children: [
                                           Text(
                                             'Contraseña',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -1024,7 +1025,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                               decoration: InputDecoration(
                                                 labelText: 'Ingrese Contraseña',
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -1056,7 +1057,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -1132,7 +1133,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent2,
                                                 suffixIcon: InkWell(
                                                   onTap: () async {
@@ -1203,7 +1204,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                         children: [
                                           Text(
                                             '¿Olvidaste tu contraseña?',
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .titleSmall
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -1293,7 +1294,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                             iconPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             textStyle: FlutterFlowTheme.of(
                                                     context)
@@ -1346,26 +1347,26 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                               ))
                                 Text(
                                   'Crear cuenta',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .titleSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primary,
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleSmall
                                             .fontStyle,
                                       ),
@@ -1379,22 +1380,22 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                               ))
                                 Text(
                                   'v3',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .titleSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w100,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primaryText,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w100,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleSmall
                                             .fontStyle,
                                       ),

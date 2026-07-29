@@ -78,6 +78,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
@@ -95,7 +96,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                   height: 50.0,
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      FlutterFlowTheme.of(context).primary,
+                      _theme.primary,
                     ),
                   ),
                 ),
@@ -111,7 +112,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                 maxWidth: 470.0,
               ),
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: _theme.secondaryBackground,
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Padding(
@@ -133,32 +134,32 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                             Text(
                               'Nuevo cliente',
                               textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
                                       fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     fontSize: 24.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                             ),
                             FlutterFlowIconButton(
-                              borderColor: FlutterFlowTheme.of(context).primary,
+                              borderColor: _theme.primary,
                               borderRadius: 5.0,
                               borderWidth: 1.0,
                               buttonSize: 24.0,
-                              fillColor: FlutterFlowTheme.of(context).primary,
+                              fillColor: _theme.primary,
                               icon: Icon(
                                 Icons.close,
-                                color: FlutterFlowTheme.of(context)
+                                color: _theme
                                     .primaryBackground,
                                 size: 8.0,
                               ),
@@ -187,26 +188,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'Nombre del cliente',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -222,52 +223,52 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Ingrese su nombre',
-                                        labelStyle: FlutterFlowTheme.of(context)
+                                        labelStyle: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
+                                        hintStyle: _theme
                                             .labelMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -281,7 +282,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             width: 1.0,
                                           ),
@@ -290,7 +291,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -300,7 +301,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -308,29 +309,29 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -344,26 +345,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'DNI',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -379,52 +380,52 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Ingrese DNI',
-                                        labelStyle: FlutterFlowTheme.of(context)
+                                        labelStyle: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
+                                        hintStyle: _theme
                                             .labelMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -438,7 +439,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             width: 1.0,
                                           ),
@@ -447,7 +448,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -457,7 +458,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -465,29 +466,29 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -501,26 +502,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'Telefono',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -562,23 +563,23 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
                                           hintText: '+51',
                                           icon: Icon(
                                             Icons.expand_circle_down_outlined,
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             size: 24.0,
                                           ),
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                           elevation: 2.0,
                                           borderColor: Colors.transparent,
@@ -711,10 +712,10 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent2,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -754,26 +755,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'Correo electronico',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -801,52 +802,52 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                       decoration: InputDecoration(
                                         labelText:
                                             'Ingrese dirección de correo',
-                                        labelStyle: FlutterFlowTheme.of(context)
+                                        labelStyle: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
+                                        hintStyle: _theme
                                             .labelMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -860,7 +861,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             width: 1.0,
                                           ),
@@ -869,7 +870,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -879,7 +880,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -887,29 +888,29 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -974,7 +975,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               elevation: 3.0,
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 width: 1.0,
                                               ),
@@ -1121,10 +1122,10 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 textStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1190,26 +1191,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'RUC de la empresa',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -1225,52 +1226,52 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Ingrese RUC',
-                                        labelStyle: FlutterFlowTheme.of(context)
+                                        labelStyle: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
+                                        hintStyle: _theme
                                             .labelMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -1284,7 +1285,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             width: 1.0,
                                           ),
@@ -1293,7 +1294,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -1303,7 +1304,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -1311,29 +1312,29 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -1348,26 +1349,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'Razón social',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -1384,52 +1385,52 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Ejemplo: Empresa SAC',
-                                        labelStyle: FlutterFlowTheme.of(context)
+                                        labelStyle: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
+                                        hintStyle: _theme
                                             .labelMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -1443,7 +1444,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             width: 1.0,
                                           ),
@@ -1452,7 +1453,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -1462,7 +1463,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -1470,29 +1471,29 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -1506,26 +1507,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'Nombre del encargado',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -1542,52 +1543,52 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Ingrese nombre',
-                                        labelStyle: FlutterFlowTheme.of(context)
+                                        labelStyle: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
+                                        hintStyle: _theme
                                             .labelMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -1601,7 +1602,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             width: 1.0,
                                           ),
@@ -1610,7 +1611,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -1620,7 +1621,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -1628,29 +1629,29 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -1664,26 +1665,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'Telefono',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -1725,23 +1726,23 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
                                           hintText: '+51',
                                           icon: Icon(
                                             Icons.expand_circle_down_outlined,
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             size: 24.0,
                                           ),
                                           fillColor:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .accent2,
                                           elevation: 2.0,
                                           borderColor: Colors.transparent,
@@ -1874,10 +1875,10 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               ),
                                               filled: true,
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent2,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: _theme
                                                 .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.montserrat(
@@ -1917,26 +1918,26 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'Correo electronico',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -1964,52 +1965,52 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                       decoration: InputDecoration(
                                         labelText:
                                             'Ingrese dirección de correo',
-                                        labelStyle: FlutterFlowTheme.of(context)
+                                        labelStyle: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .accent1,
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
+                                        hintStyle: _theme
                                             .labelMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
@@ -2023,7 +2024,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             width: 1.0,
                                           ),
@@ -2032,7 +2033,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -2042,7 +2043,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .error,
                                             width: 1.0,
                                           ),
@@ -2050,29 +2051,29 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
+                                        fillColor: _theme
                                             .accent2,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -2137,7 +2138,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                               elevation: 3.0,
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 width: 1.0,
                                               ),
@@ -2245,10 +2246,10 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 textStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleSmall
                                                         .override(
                                                           font: GoogleFonts

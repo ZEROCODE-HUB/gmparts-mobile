@@ -66,6 +66,7 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
@@ -73,7 +74,7 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
           maxWidth: 470.0,
         ),
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+          color: _theme.secondaryBackground,
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Padding(
@@ -88,10 +89,10 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                   Text(
                     'Nuevo vehiculo',
                     textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: _theme.bodyMedium.override(
                           font: GoogleFonts.montserrat(
                             fontWeight: FontWeight.bold,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -99,18 +100,18 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
                   ),
                   FlutterFlowIconButton(
-                    borderColor: FlutterFlowTheme.of(context).primary,
+                    borderColor: _theme.primary,
                     borderRadius: 5.0,
                     borderWidth: 1.0,
                     buttonSize: 24.0,
-                    fillColor: FlutterFlowTheme.of(context).primary,
+                    fillColor: _theme.primary,
                     icon: Icon(
                       Icons.close,
-                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      color: _theme.primaryBackground,
                       size: 10.0,
                     ),
                     onPressed: () async {
@@ -133,22 +134,22 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                               0.0, 25.0, 0.0, 0.0),
                           child: Text(
                             'Número de placa',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleMedium
                                       .fontStyle,
                                 ),
@@ -167,39 +168,39 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                         decoration: InputDecoration(
                           labelText: 'Ingrese numero de placa',
                           labelStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
+                              _theme.titleMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleMedium
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context).accent1,
+                                    color: _theme.accent1,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                           hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                              _theme.labelMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .labelMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
@@ -212,42 +213,42 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           errorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
+                              color: _theme.error,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedErrorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
+                              color: _theme.error,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           filled: true,
-                          fillColor: FlutterFlowTheme.of(context).accent2,
+                          fillColor: _theme.accent2,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        style: _theme.bodyMedium.override(
                               font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .bodyMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .bodyMedium
                                     .fontStyle,
                               ),
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
@@ -263,22 +264,22 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                               0.0, 25.0, 0.0, 0.0),
                           child: Text(
                             'Marca',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleMedium
                                       .fontStyle,
                                 ),
@@ -448,22 +449,22 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                               0.0, 25.0, 0.0, 0.0),
                           child: Text(
                             'Modelo',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleMedium
                                       .fontStyle,
                                 ),
@@ -658,22 +659,22 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                               0.0, 25.0, 0.0, 0.0),
                           child: Text(
                             'Número de VIN',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleMedium
                                       .fontStyle,
                                 ),
@@ -692,39 +693,39 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                         decoration: InputDecoration(
                           labelText: 'Ingrese el numero del VIN',
                           labelStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
+                              _theme.titleMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleMedium
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context).accent1,
+                                    color: _theme.accent1,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                           hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                              _theme.labelMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .labelMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
@@ -737,42 +738,42 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           errorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
+                              color: _theme.error,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedErrorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
+                              color: _theme.error,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           filled: true,
-                          fillColor: FlutterFlowTheme.of(context).accent2,
+                          fillColor: _theme.accent2,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        style: _theme.bodyMedium.override(
                               font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .bodyMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .bodyMedium
                                     .fontStyle,
                               ),
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
@@ -788,22 +789,22 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                               0.0, 25.0, 0.0, 0.0),
                           child: Text(
                             'Año de fabricación',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleMedium
                                       .fontStyle,
                                 ),
@@ -822,39 +823,39 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                         decoration: InputDecoration(
                           labelText: 'Ingrese año de fabricación',
                           labelStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
+                              _theme.titleMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleMedium
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context).accent1,
+                                    color: _theme.accent1,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleMedium
                                         .fontStyle,
                                   ),
                           hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                              _theme.labelMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .labelMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
@@ -867,42 +868,42 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           errorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
+                              color: _theme.error,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedErrorBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
+                              color: _theme.error,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           filled: true,
-                          fillColor: FlutterFlowTheme.of(context).accent2,
+                          fillColor: _theme.accent2,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        style: _theme.bodyMedium.override(
                               font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .bodyMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .bodyMedium
                                     .fontStyle,
                               ),
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
@@ -931,29 +932,29 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: Color(0x00FF1D25),
-                                textStyle: FlutterFlowTheme.of(context)
+                                textStyle: _theme
                                     .titleSmall
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleSmall
                                             .fontStyle,
                                       ),
                                       color: Colors.white,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: _theme.primary,
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
@@ -1021,24 +1022,24 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                     24.0, 0.0, 24.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
+                                color: _theme.primary,
+                                textStyle: _theme
                                     .titleSmall
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleSmall
                                             .fontStyle,
                                       ),
                                       color: Colors.white,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),

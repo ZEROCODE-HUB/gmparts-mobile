@@ -50,6 +50,7 @@ class _CrearCotizacionFuncionandoCopyWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -57,7 +58,7 @@ class _CrearCotizacionFuncionandoCopyWidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -75,13 +76,13 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 38.0, 0.0),
                         child: FlutterFlowIconButton(
-                          borderColor: FlutterFlowTheme.of(context).primary,
+                          borderColor: _theme.primary,
                           borderRadius: 30.0,
                           borderWidth: 1.0,
                           buttonSize: 32.0,
                           icon: Icon(
                             Icons.chevron_left_rounded,
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: _theme.primary,
                             size: 16.0,
                           ),
                           onPressed: () async {
@@ -94,19 +95,19 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                             EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                         child: Text(
                           'Detalle',
-                          style: FlutterFlowTheme.of(context)
+                          style: _theme
                               .titleLarge
                               .override(
                                 font: GoogleFonts.montserrat(
                                   fontWeight: FontWeight.w500,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),
-                                color: FlutterFlowTheme.of(context).primaryText,
+                                color: _theme.primaryText,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .titleLarge
                                     .fontStyle,
                               ),
@@ -149,24 +150,24 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                                     '-',
                                   ),
                                   textAlign: TextAlign.end,
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .labelSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelSmall
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .labelSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .labelSmall
                                             .fontStyle,
                                       ),
@@ -180,10 +181,10 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                                           child: Text(
                                             'Ver perfil',
-                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                            style: _theme.labelSmall.override(
                                               font: GoogleFonts.montserrat(fontSize: 10.0),
                                               fontSize: 10.0,
-                                              color: FlutterFlowTheme.of(context).primary,
+                                              color: _theme.primary,
                                             ),
                                           ),
                                         ),
@@ -200,7 +201,7 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent2,
+                        color: _theme.accent2,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: InkWell(
@@ -238,26 +239,26 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                                   children: [
                                     Text(
                                       'Detalles de recepción',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleLarge
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontStyle,
                                           ),
@@ -265,7 +266,7 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                                     Icon(
                                       Icons.arrow_circle_right_outlined,
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
+                                          _theme.primary,
                                       size: 30.0,
                                     ),
                                   ],
@@ -295,7 +296,7 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                               height: 50.0,
                               child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
+                                  _theme.primary,
                                 ),
                               ),
                             ),
@@ -370,7 +371,7 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             border: Border.all(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               width: 2.0,
                             ),
                           ),
@@ -383,24 +384,24 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Agregar nueva falla',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .headlineSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .headlineSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .headlineSmall
                                             .fontStyle,
                                       ),
@@ -414,7 +415,7 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                                         0.0, 0.0, 10.0, 0.0),
                                     child: Icon(
                                       Icons.add_to_photos_sharp,
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       size: 24.0,
                                     ),
@@ -460,10 +461,10 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                           width: double.infinity,
                           height: 45.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: _theme.primary,
                             borderRadius: BorderRadius.circular(10.0),
                             border: Border.all(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               width: 2.0,
                             ),
                           ),
@@ -475,24 +476,24 @@ class _CrearCotizacionFuncionandoCopyWidgetState
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Crear cotización',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .headlineSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .headlineSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .headlineSmall
                                             .fontStyle,
                                       ),

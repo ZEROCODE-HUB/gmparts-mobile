@@ -41,6 +41,7 @@ class _TextfallasWidgetState extends State<TextfallasWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return TextFormField(
       controller: _model.textController,
       focusNode: _model.textFieldFocusNode,
@@ -48,14 +49,14 @@ class _TextfallasWidgetState extends State<TextfallasWidget> {
       obscureText: false,
       decoration: InputDecoration(
         hintText: 'Escribe aquí',
-        hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+        hintStyle: _theme.labelMedium.override(
               font: GoogleFonts.montserrat(
-                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
-                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                fontWeight: _theme.labelMedium.fontWeight,
+                fontStyle: _theme.labelMedium.fontStyle,
               ),
               letterSpacing: 0.0,
-              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
-              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+              fontWeight: _theme.labelMedium.fontWeight,
+              fontStyle: _theme.labelMedium.fontStyle,
             ),
         enabledBorder: InputBorder.none,
         focusedBorder: InputBorder.none,
@@ -63,14 +64,14 @@ class _TextfallasWidgetState extends State<TextfallasWidget> {
         focusedErrorBorder: InputBorder.none,
         contentPadding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
       ),
-      style: FlutterFlowTheme.of(context).bodyMedium.override(
+      style: _theme.bodyMedium.override(
             font: GoogleFonts.montserrat(
-              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+              fontWeight: _theme.bodyMedium.fontWeight,
+              fontStyle: _theme.bodyMedium.fontStyle,
             ),
             letterSpacing: 0.0,
-            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+            fontWeight: _theme.bodyMedium.fontWeight,
+            fontStyle: _theme.bodyMedium.fontStyle,
           ),
       validator: _model.textControllerValidator.asValidator(context),
     );

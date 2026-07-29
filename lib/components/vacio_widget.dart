@@ -37,11 +37,12 @@ class _VacioWidgetState extends State<VacioWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Container(
       width: 250.0,
       height: 250.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).primaryBackground,
+        color: _theme.primaryBackground,
         image: DecorationImage(
           fit: BoxFit.contain,
           image: Image.asset(

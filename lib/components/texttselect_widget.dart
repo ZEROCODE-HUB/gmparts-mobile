@@ -49,6 +49,7 @@ class _TexttselectWidgetState extends State<TexttselectWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 10.0),
       child: Row(
@@ -60,7 +61,7 @@ class _TexttselectWidgetState extends State<TexttselectWidget> {
             children: [
               FaIcon(
                 FontAwesomeIcons.users,
-                color: FlutterFlowTheme.of(context).primaryBackground,
+                color: _theme.primaryBackground,
                 size: 24.0,
               ),
               wrapWithModel(

@@ -89,11 +89,12 @@ class _FallacomponentUpdateCopyWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     context.watch<FFAppState>();
 
     return Container(
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).accent2,
+        color: _theme.accent2,
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
@@ -123,22 +124,22 @@ class _FallacomponentUpdateCopyWidgetState
                         children: [
                           Text(
                             'Nueva Falla ${((widget.indexx!) + 1).toString()}',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleLarge
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleLarge
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),
@@ -157,7 +158,7 @@ class _FallacomponentUpdateCopyWidgetState
                                   },
                                   child: Icon(
                                     Icons.arrow_circle_up,
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: _theme.primary,
                                     size: 30.0,
                                   ),
                                 );
@@ -173,7 +174,7 @@ class _FallacomponentUpdateCopyWidgetState
                                   },
                                   child: Icon(
                                     Icons.arrow_circle_down_sharp,
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: _theme.primary,
                                     size: 30.0,
                                   ),
                                 );
@@ -202,22 +203,22 @@ class _FallacomponentUpdateCopyWidgetState
                             children: [
                               Text(
                                 'Nombre de falla',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .bodyMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -237,39 +238,39 @@ class _FallacomponentUpdateCopyWidgetState
                         obscureText: false,
                         decoration: InputDecoration(
                           labelStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                              _theme.labelMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .labelMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
                           hintText: 'Escribe aquí',
                           hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                              _theme.labelMedium.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .labelMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
@@ -282,45 +283,45 @@ class _FallacomponentUpdateCopyWidgetState
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           errorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
+                              color: _theme.error,
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
+                              color: _theme.error,
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           filled: true,
                           fillColor:
-                              FlutterFlowTheme.of(context).primaryBackground,
+                              _theme.primaryBackground,
                           contentPadding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        style: _theme.bodyMedium.override(
                               font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .bodyMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .bodyMedium
                                     .fontStyle,
                               ),
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
@@ -337,22 +338,22 @@ class _FallacomponentUpdateCopyWidgetState
                         children: [
                           Text(
                             'Servicio o solución',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .bodyMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .bodyMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .bodyMedium
                                       .fontStyle,
                                 ),
@@ -366,42 +367,42 @@ class _FallacomponentUpdateCopyWidgetState
                               autofocus: false,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelStyle: FlutterFlowTheme.of(context)
+                                labelStyle: _theme
                                     .labelMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .labelMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .labelMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .labelMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
                                 hintText: 'Escribe aquí',
-                                hintStyle: FlutterFlowTheme.of(context)
+                                hintStyle: _theme
                                     .labelMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .labelMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .labelMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .labelMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
@@ -414,47 +415,47 @@ class _FallacomponentUpdateCopyWidgetState
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: _theme.primary,
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
+                                    color: _theme.error,
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
+                                    color: _theme.error,
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 filled: true,
-                                fillColor: FlutterFlowTheme.of(context)
+                                fillColor: _theme
                                     .primaryBackground,
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                               ),
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
@@ -468,7 +469,7 @@ class _FallacomponentUpdateCopyWidgetState
                                 0.0, 10.0, 0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
+                                color: _theme
                                     .primaryBackground,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
@@ -488,22 +489,22 @@ class _FallacomponentUpdateCopyWidgetState
                           children: [
                             Text(
                               'Tiempo estimado',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
@@ -517,46 +518,46 @@ class _FallacomponentUpdateCopyWidgetState
                                 autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelStyle: FlutterFlowTheme.of(context)
+                                  labelStyle: _theme
                                       .labelMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .labelMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .labelMedium
                                             .fontStyle,
                                       ),
                                   hintText: 'Escribe aquí',
-                                  hintStyle: FlutterFlowTheme.of(context)
+                                  hintStyle: _theme
                                       .labelMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .labelMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .labelMedium
                                             .fontStyle,
                                       ),
@@ -570,48 +571,48 @@ class _FallacomponentUpdateCopyWidgetState
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
+                                          _theme.primary,
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
+                                      color: _theme.error,
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
+                                      color: _theme.error,
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   filled: true,
-                                  fillColor: FlutterFlowTheme.of(context)
+                                  fillColor: _theme
                                       .primaryBackground,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
                                 ),
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .bodyMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -625,7 +626,7 @@ class _FallacomponentUpdateCopyWidgetState
                                   0.0, 10.0, 0.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
@@ -644,22 +645,22 @@ class _FallacomponentUpdateCopyWidgetState
                         children: [
                           Text(
                             'Repuestos',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .bodyMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .bodyMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .bodyMedium
                                       .fontStyle,
                                 ),
@@ -702,7 +703,7 @@ class _FallacomponentUpdateCopyWidgetState
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   height: 40.0,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
+                                    color: _theme
                                         .primaryBackground,
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
@@ -712,26 +713,26 @@ class _FallacomponentUpdateCopyWidgetState
                                         15.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Elige los repuestos',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .labelMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
@@ -776,7 +777,7 @@ class _FallacomponentUpdateCopyWidgetState
                                         repuestos[repuestosIndex];
                                     return Container(
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primary,
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -846,22 +847,22 @@ class _FallacomponentUpdateCopyWidgetState
                         children: [
                           Text(
                             'Insumos',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .bodyMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .bodyMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .bodyMedium
                                       .fontStyle,
                                 ),
@@ -879,7 +880,7 @@ class _FallacomponentUpdateCopyWidgetState
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
+                                  color: _theme
                                       .primaryBackground,
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
@@ -889,26 +890,26 @@ class _FallacomponentUpdateCopyWidgetState
                                       15.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Elige los insumos',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .labelMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
@@ -947,7 +948,7 @@ class _FallacomponentUpdateCopyWidgetState
                                 final dtinsumosItem = dtinsumos[dtinsumosIndex];
                                 return Container(
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: _theme.primary,
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Row(
@@ -961,7 +962,7 @@ class _FallacomponentUpdateCopyWidgetState
                                             10.0, 10.0, 10.0, 10.0),
                                         child: Text(
                                           dtinsumosItem.nombre,
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .bodyMedium
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -979,11 +980,11 @@ class _FallacomponentUpdateCopyWidgetState
                                                 fontSize: 10.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
@@ -1072,7 +1073,7 @@ class _FallacomponentUpdateCopyWidgetState
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               border: Border.all(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 width: 2.0,
                               ),
                             ),
@@ -1085,26 +1086,26 @@ class _FallacomponentUpdateCopyWidgetState
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Tomar foto de la falla',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .headlineSmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .headlineSmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .headlineSmall
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontStyle,
                                         ),
@@ -1118,7 +1119,7 @@ class _FallacomponentUpdateCopyWidgetState
                                           0.0, 0.0, 10.0, 0.0),
                                       child: Icon(
                                         Icons.camera_alt,
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primary,
                                         size: 24.0,
                                       ),
@@ -1147,26 +1148,26 @@ class _FallacomponentUpdateCopyWidgetState
                                         0.0, 25.0, 0.0, 0.0),
                                     child: Text(
                                       'Fotos',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -1437,12 +1438,12 @@ class _FallacomponentUpdateCopyWidgetState
                                 'Guardado!',
                                 style: TextStyle(
                                   color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                      _theme.primaryText,
                                 ),
                               ),
                               duration: Duration(milliseconds: 4000),
                               backgroundColor:
-                                  FlutterFlowTheme.of(context).secondary,
+                                  _theme.secondary,
                             ),
                           );
                           _model.expandir = false;
@@ -1452,7 +1453,7 @@ class _FallacomponentUpdateCopyWidgetState
                           width: double.infinity,
                           height: 45.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: _theme.primary,
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Row(
@@ -1464,24 +1465,24 @@ class _FallacomponentUpdateCopyWidgetState
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Guardar falla',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .headlineSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .headlineSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .headlineSmall
                                             .fontStyle,
                                       ),
@@ -1495,7 +1496,7 @@ class _FallacomponentUpdateCopyWidgetState
                                         0.0, 0.0, 10.0, 0.0),
                                     child: Icon(
                                       Icons.save,
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       size: 24.0,
                                     ),
@@ -1524,7 +1525,7 @@ class _FallacomponentUpdateCopyWidgetState
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             border: Border.all(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               width: 2.0,
                             ),
                           ),
@@ -1537,24 +1538,24 @@ class _FallacomponentUpdateCopyWidgetState
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Eliminar Falla',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .headlineSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .headlineSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .headlineSmall
                                             .fontStyle,
                                       ),
@@ -1569,7 +1570,7 @@ class _FallacomponentUpdateCopyWidgetState
                                     child: Icon(
                                       Icons.delete,
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
+                                          _theme.primary,
                                       size: 24.0,
                                     ),
                                   ),

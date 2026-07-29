@@ -46,13 +46,14 @@ class _ErrorsWidgetState extends State<ErrorsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 470.0,
         height: 200.0,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).accent2,
+          color: _theme.accent2,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
@@ -77,19 +78,19 @@ class _ErrorsWidgetState extends State<ErrorsWidget> {
                               'Error',
                             ),
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .titleLarge
                                 .override(
                                   font: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
                                   fontSize: 24.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),
@@ -110,21 +111,21 @@ class _ErrorsWidgetState extends State<ErrorsWidget> {
                           widget.texto,
                           'a',
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        style: _theme.bodyMedium.override(
                               font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .bodyMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .bodyMedium
                                     .fontStyle,
                               ),
                               fontSize: 18.0,
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
@@ -161,24 +162,24 @@ class _ErrorsWidgetState extends State<ErrorsWidget> {
                               24.0, 0.0, 24.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: _theme.primary,
                           textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
+                              _theme.titleSmall.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
                                     color: Colors.white,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleSmall
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleSmall
                                         .fontStyle,
                                   ),

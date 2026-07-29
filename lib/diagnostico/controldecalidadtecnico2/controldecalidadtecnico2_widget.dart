@@ -54,6 +54,7 @@ class _Controldecalidadtecnico2WidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -61,7 +62,7 @@ class _Controldecalidadtecnico2WidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Column(
@@ -88,13 +89,13 @@ class _Controldecalidadtecnico2WidgetState
                                   0.0, 10.0, 0.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor:
-                                    FlutterFlowTheme.of(context).primary,
+                                    _theme.primary,
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 32.0,
                                 icon: Icon(
                                   Icons.chevron_left_rounded,
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: _theme.primary,
                                   size: 16.0,
                                 ),
                                 onPressed: () async {
@@ -139,26 +140,26 @@ class _Controldecalidadtecnico2WidgetState
                                           '-',
                                         ),
                                         textAlign: TextAlign.end,
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .labelSmall
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelSmall
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelSmall
                                                       .fontStyle,
                                             ),
@@ -172,10 +173,10 @@ class _Controldecalidadtecnico2WidgetState
                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                                           child: Text(
                                             'Ver perfil',
-                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                            style: _theme.labelSmall.override(
                                               font: GoogleFonts.montserrat(fontSize: 10.0),
                                               fontSize: 10.0,
-                                              color: FlutterFlowTheme.of(context).primary,
+                                              color: _theme.primary,
                                             ),
                                           ),
                                         ),
@@ -200,19 +201,19 @@ class _Controldecalidadtecnico2WidgetState
                         children: [
                           Text(
                             'Control de calidad',
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .bodyMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                                   fontSize: 18.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .bodyMedium
                                       .fontStyle,
                                 ),
@@ -227,13 +228,13 @@ class _Controldecalidadtecnico2WidgetState
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Text(
                                     '1. ¿Se completó la prueba de ruta de manera satisfactoria?',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -241,7 +242,7 @@ class _Controldecalidadtecnico2WidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -257,26 +258,26 @@ class _Controldecalidadtecnico2WidgetState
                                         _model.radioButtonValueController1 ??=
                                             FormFieldController<String>(null),
                                     optionHeight: 32.0,
-                                    textStyle: FlutterFlowTheme.of(context)
+                                    textStyle: _theme
                                         .labelMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
@@ -285,9 +286,9 @@ class _Controldecalidadtecnico2WidgetState
                                     buttonPosition: RadioButtonPosition.right,
                                     direction: Axis.horizontal,
                                     radioButtonColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                        _theme.primary,
                                     inactiveRadioButtonColor:
-                                        FlutterFlowTheme.of(context)
+                                        _theme
                                             .secondaryText,
                                     toggleable: false,
                                     horizontalAlignment: WrapAlignment.center,
@@ -307,13 +308,13 @@ class _Controldecalidadtecnico2WidgetState
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Text(
                                     '2. ¿El vehículo está listo para entregar?',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -321,7 +322,7 @@ class _Controldecalidadtecnico2WidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -337,26 +338,26 @@ class _Controldecalidadtecnico2WidgetState
                                         _model.radioButtonValueController2 ??=
                                             FormFieldController<String>(null),
                                     optionHeight: 32.0,
-                                    textStyle: FlutterFlowTheme.of(context)
+                                    textStyle: _theme
                                         .labelMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
@@ -365,9 +366,9 @@ class _Controldecalidadtecnico2WidgetState
                                     buttonPosition: RadioButtonPosition.right,
                                     direction: Axis.horizontal,
                                     radioButtonColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                        _theme.primary,
                                     inactiveRadioButtonColor:
-                                        FlutterFlowTheme.of(context)
+                                        _theme
                                             .secondaryText,
                                     toggleable: false,
                                     horizontalAlignment: WrapAlignment.center,
@@ -387,13 +388,13 @@ class _Controldecalidadtecnico2WidgetState
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Text(
                                     '3. ¿Las fallas se resolvieron?',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .bodyMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -401,7 +402,7 @@ class _Controldecalidadtecnico2WidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
@@ -417,26 +418,26 @@ class _Controldecalidadtecnico2WidgetState
                                         _model.radioButtonValueController3 ??=
                                             FormFieldController<String>(null),
                                     optionHeight: 32.0,
-                                    textStyle: FlutterFlowTheme.of(context)
+                                    textStyle: _theme
                                         .labelMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
@@ -445,9 +446,9 @@ class _Controldecalidadtecnico2WidgetState
                                     buttonPosition: RadioButtonPosition.right,
                                     direction: Axis.horizontal,
                                     radioButtonColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                        _theme.primary,
                                     inactiveRadioButtonColor:
-                                        FlutterFlowTheme.of(context)
+                                        _theme
                                             .secondaryText,
                                     toggleable: false,
                                     horizontalAlignment: WrapAlignment.center,
@@ -491,23 +492,23 @@ class _Controldecalidadtecnico2WidgetState
                         EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                    color: _theme.primary,
+                    textStyle: _theme.titleSmall.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .titleSmall
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .titleSmall
                                 .fontStyle,
                           ),
                           color: Colors.white,
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .titleSmall
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                              _theme.titleSmall.fontStyle,
                         ),
                     elevation: 3.0,
                     borderSide: BorderSide(

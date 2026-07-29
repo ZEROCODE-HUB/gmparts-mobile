@@ -87,6 +87,7 @@ class _EditarArticuloModalCopyWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
@@ -96,7 +97,7 @@ class _EditarArticuloModalCopyWidgetState
             maxWidth: 570.0,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).accent2,
+            color: _theme.accent2,
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Padding(
@@ -114,17 +115,17 @@ class _EditarArticuloModalCopyWidgetState
                       child: Text(
                         'Editar Artículo',
                         style:
-                            FlutterFlowTheme.of(context).displayMedium.override(
+                            _theme.displayMedium.override(
                                   font: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .displayMedium
                                         .fontStyle,
                                   ),
                                   fontSize: 30.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .displayMedium
                                       .fontStyle,
                                 ),
@@ -140,7 +141,7 @@ class _EditarArticuloModalCopyWidgetState
                       },
                       child: Icon(
                         Icons.close,
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: _theme.primaryText,
                         size: 24.0,
                       ),
                     ),
@@ -158,7 +159,7 @@ class _EditarArticuloModalCopyWidgetState
                             height: 50.0,
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                                _theme.primary,
                               ),
                             ),
                           ),
@@ -369,7 +370,7 @@ class _EditarArticuloModalCopyWidgetState
                                                               0.0, 0.0),
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -468,7 +469,7 @@ class _EditarArticuloModalCopyWidgetState
                                               width: 300.0,
                                               height: 50.0,
                                               searchHintTextStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .override(
                                                         font: GoogleFonts
@@ -563,12 +564,12 @@ class _EditarArticuloModalCopyWidgetState
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 24.0,
                                               ),
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               elevation: 0.0,
                                               borderColor: Colors.transparent,
@@ -774,7 +775,7 @@ class _EditarArticuloModalCopyWidgetState
                                                               0.0, 0.0),
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -996,7 +997,7 @@ class _EditarArticuloModalCopyWidgetState
                                                               0.0, 0.0),
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -1224,7 +1225,7 @@ class _EditarArticuloModalCopyWidgetState
                                                               0.0, 0.0),
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -2573,7 +2574,7 @@ class _EditarArticuloModalCopyWidgetState
                                               width: 300.0,
                                               height: 50.0,
                                               searchHintTextStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .override(
                                                         font: GoogleFonts
@@ -2668,12 +2669,12 @@ class _EditarArticuloModalCopyWidgetState
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 24.0,
                                               ),
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               elevation: 0.0,
                                               borderColor: Colors.transparent,
@@ -2756,7 +2757,7 @@ class _EditarArticuloModalCopyWidgetState
                                               width: 300.0,
                                               height: 50.0,
                                               searchHintTextStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .override(
                                                         font: GoogleFonts
@@ -2851,12 +2852,12 @@ class _EditarArticuloModalCopyWidgetState
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 24.0,
                                               ),
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               elevation: 0.0,
                                               borderColor: Colors.transparent,
@@ -3058,7 +3059,7 @@ class _EditarArticuloModalCopyWidgetState
                                                               0.0, 0.0),
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -3159,7 +3160,7 @@ class _EditarArticuloModalCopyWidgetState
                                               width: 300.0,
                                               height: 50.0,
                                               searchHintTextStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelMedium
                                                       .override(
                                                         font: GoogleFonts
@@ -3254,12 +3255,12 @@ class _EditarArticuloModalCopyWidgetState
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 size: 24.0,
                                               ),
                                               fillColor:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               elevation: 0.0,
                                               borderColor: Colors.transparent,
@@ -3479,7 +3480,7 @@ class _EditarArticuloModalCopyWidgetState
                                                               0.0, 0.0),
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -3726,7 +3727,7 @@ class _EditarArticuloModalCopyWidgetState
                                                               0.0, 0.0),
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -3811,7 +3812,7 @@ class _EditarArticuloModalCopyWidgetState
                                               height: 50.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryBackground,
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -3939,7 +3940,7 @@ class _EditarArticuloModalCopyWidgetState
                                               height: 50.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryBackground,
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -4185,7 +4186,7 @@ class _EditarArticuloModalCopyWidgetState
                                                               0.0, 0.0),
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4248,7 +4249,7 @@ class _EditarArticuloModalCopyWidgetState
                                               Text(
                                                 'Imagen',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4450,7 +4451,7 @@ class _EditarArticuloModalCopyWidgetState
                                               Text(
                                                 'Ubicación',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -4674,7 +4675,7 @@ class _EditarArticuloModalCopyWidgetState
                                               Text(
                                                 'Comentario',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -5765,7 +5766,7 @@ class _EditarArticuloModalCopyWidgetState
                                               elevation: 3.0,
                                               borderSide: BorderSide(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primary,
                                                 width: 1.0,
                                               ),
@@ -5889,7 +5890,7 @@ class _EditarArticuloModalCopyWidgetState
                                             iconPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primary,
                                             textStyle: FlutterFlowTheme.of(
                                                     context)

@@ -47,6 +47,7 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: StreamBuilder<GroupRecord>(
@@ -60,7 +61,7 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    _theme.primary,
                   ),
                 ),
               ),
@@ -73,7 +74,7 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
             width: 350.0,
             height: 330.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).accent2,
+              color: _theme.accent2,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Padding(
@@ -104,24 +105,24 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
                               children: [
                                 Text(
                                   'Nuevo subgrupo',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .titleLarge
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleLarge
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleLarge
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
@@ -142,22 +143,22 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
                                 0.0, 10.0, 0.0, 0.0),
                             child: Text(
                               'Grupo ${containerGroupRecord.name}',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
@@ -173,22 +174,22 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
                             children: [
                               Text(
                                 'Nombre del sub- grupo',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .bodyMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -198,7 +199,7 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
+                                    color: _theme
                                         .primaryBackground,
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
@@ -268,25 +269,25 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
                                     24.0, 0.0, 24.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
+                                color: _theme.primary,
+                                textStyle: _theme
                                     .titleSmall
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .titleSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleSmall
                                             .fontStyle,
                                       ),
                                       color: Colors.white,
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
@@ -315,31 +316,31 @@ class _AddSubgroupWidgetState extends State<AddSubgroupWidget> {
                                   24.0, 0.0, 24.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).accent2,
-                              textStyle: FlutterFlowTheme.of(context)
+                              color: _theme.accent2,
+                              textStyle: _theme
                                   .titleSmall
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleSmall
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
                                     color: Colors.white,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleSmall
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleSmall
                                         .fontStyle,
                                   ),
                               elevation: 3.0,
                               borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),

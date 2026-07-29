@@ -41,6 +41,7 @@ class _AConfirmarBorrarCuentaWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -48,7 +49,7 @@ class _AConfirmarBorrarCuentaWidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -70,7 +71,7 @@ class _AConfirmarBorrarCuentaWidgetState
                     },
                     child: Icon(
                       Icons.arrow_back,
-                      color: FlutterFlowTheme.of(context).primaryText,
+                      color: _theme.primaryText,
                       size: 24.0,
                     ),
                   ),
@@ -81,18 +82,18 @@ class _AConfirmarBorrarCuentaWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                       child: Text(
                         '¿Esta seguro que quiere eliminar su cuenta?',
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                        style: _theme.titleLarge.override(
                               font: GoogleFonts.montserrat(
                                 fontWeight: FontWeight.w500,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .titleLarge
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).alternate,
+                              color: _theme.alternate,
                               fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .titleLarge
                                   .fontStyle,
                             ),
@@ -103,21 +104,21 @@ class _AConfirmarBorrarCuentaWidgetState
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Estás a punto de iniciar un proceso irreversible: la eliminación total de tu cuenta y todos los datos personales asociados a ella.\n\n- Tu nombre, dirección de correo electrónico y cualquier otra información de identificación proporcionada durante el uso de nuestros servicios que esté vinculada directamente a tu identidad, una vez que confirmes esta acción, toda esta información será eliminada de forma permanente de nuestros sistemas. No podrás recuperar tu cuenta ni los datos personales asociados en el futuro. Esta medida se toma en conformidad con nuestras políticas de privacidad y protección de datos.\nEs importante que tengas en cuenta que esta acción es definitiva e irreversible. Si en algún momento decides volver a utilizar nuestros servicios, deberás crear una nueva cuenta desde cero y proporcionar nuevamente tus datos personales.\n\nPor razones de seguridad y para proteger tu privacidad, te pedimos que confirmes esta decisión solo si estás completamente seguro/a.\n\n¿Deseas continuar con la eliminación permanente de tu cuenta y tus datos personales?',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: _theme.bodyMedium.override(
                             font: GoogleFonts.montserrat(
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
                             fontSize: 18.0,
                             letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -148,7 +149,7 @@ class _AConfirmarBorrarCuentaWidgetState
                           child: Container(
                             height: 48.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Align(
@@ -165,26 +166,26 @@ class _AConfirmarBorrarCuentaWidgetState
                                           0.0, 0.0, 4.0, 0.0),
                                       child: Text(
                                         'ELIMINAR CUENTA',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .titleLarge
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontStyle,
                                             ),
@@ -195,7 +196,7 @@ class _AConfirmarBorrarCuentaWidgetState
                                           20.0, 0.0, 0.0, 0.0),
                                       child: Icon(
                                         Icons.delete_sharp,
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primaryText,
                                         size: 24.0,
                                       ),

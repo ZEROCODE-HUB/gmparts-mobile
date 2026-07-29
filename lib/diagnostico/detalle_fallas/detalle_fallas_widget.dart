@@ -47,6 +47,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return StreamBuilder<List<RecepcionesRecord>>(
       stream: queryRecepcionesRecord(
         queryBuilder: (recepcionesRecord) => recepcionesRecord.where(
@@ -59,14 +60,14 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: _theme.primaryBackground,
             body: Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    _theme.primary,
                   ),
                 ),
               ),
@@ -91,7 +92,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: _theme.primaryBackground,
             body: SafeArea(
               top: true,
               child: Container(
@@ -114,13 +115,13 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                   0.0, 10.0, 38.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor:
-                                    FlutterFlowTheme.of(context).primary,
+                                    _theme.primary,
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 32.0,
                                 icon: Icon(
                                   Icons.chevron_left_rounded,
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: _theme.primary,
                                   size: 16.0,
                                 ),
                                 onPressed: () async {
@@ -133,20 +134,20 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                   0.0, 15.0, 0.0, 0.0),
                               child: Text(
                                 'Detalle de fallas',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
@@ -168,26 +169,26 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                           '-',
                                         ),
                                         textAlign: TextAlign.end,
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .labelSmall
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelSmall
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelSmall
                                                       .fontStyle,
                                             ),
@@ -208,20 +209,20 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                             children: [
                               Text(
                                 'Servicio #${((widget.nroOrdden!) + 1).toString()}',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
@@ -257,7 +258,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).accent2,
+                                color: _theme.accent2,
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
@@ -274,7 +275,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                       children: [
                                         Text(
                                           'Detalles de recepción',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .titleLarge
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -291,18 +292,18 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
                                         ),
                                         Icon(
                                           Icons.arrow_circle_right_outlined,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 30.0,
                                         ),
@@ -342,7 +343,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).accent2,
+                                color: _theme.accent2,
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
@@ -359,7 +360,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                       children: [
                                         Text(
                                           'Detalles de cotización',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: _theme
                                               .titleLarge
                                               .override(
                                                 font: GoogleFonts.montserrat(
@@ -376,18 +377,18 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
                                         ),
                                         Icon(
                                           Icons.arrow_circle_right_outlined,
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .primary,
                                           size: 30.0,
                                         ),
@@ -418,7 +419,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                     height: 50.0,
                                     child: CircularProgressIndicator(
                                       valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                                        _theme.primary,
                                       ),
                                     ),
                                   ),
@@ -497,7 +498,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                           .montserrat(
                                                                         fontWeight:
                                                                             FontWeight.w500,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .titleMedium
                                                                             .fontStyle,
                                                                       ),
@@ -545,10 +546,10 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                     .override(
                                                                       font: GoogleFonts
                                                                           .montserrat(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .labelSmall
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .labelSmall
                                                                             .fontStyle,
                                                                       ),
@@ -583,11 +584,11 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                             .montserrat(
                                                                           fontWeight:
                                                                               FontWeight.w500,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .labelSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
+                                                                        color: _theme
                                                                             .primaryText,
                                                                         fontSize:
                                                                             14.0,
@@ -595,7 +596,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .labelSmall
                                                                             .fontStyle,
                                                                       ),
@@ -632,10 +633,10 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                     .override(
                                                                       font: GoogleFonts
                                                                           .montserrat(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .labelSmall
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .labelSmall
                                                                             .fontStyle,
                                                                       ),
@@ -670,11 +671,11 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                             .montserrat(
                                                                           fontWeight:
                                                                               FontWeight.w500,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .labelSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
+                                                                        color: _theme
                                                                             .primaryText,
                                                                         fontSize:
                                                                             14.0,
@@ -682,7 +683,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .labelSmall
                                                                             .fontStyle,
                                                                       ),
@@ -719,10 +720,10 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                     .override(
                                                                       font: GoogleFonts
                                                                           .montserrat(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .labelSmall
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .labelSmall
                                                                             .fontStyle,
                                                                       ),
@@ -757,11 +758,11 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                             .montserrat(
                                                                           fontWeight:
                                                                               FontWeight.w500,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .labelSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
+                                                                        color: _theme
                                                                             .primaryText,
                                                                         fontSize:
                                                                             14.0,
@@ -769,7 +770,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .labelSmall
                                                                             .fontStyle,
                                                                       ),
@@ -818,18 +819,18 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                           font:
                                                                               GoogleFonts.montserrat(
                                                                             fontWeight:
-                                                                                FlutterFlowTheme.of(context).labelSmall.fontWeight,
+                                                                                _theme.labelSmall.fontWeight,
                                                                             fontStyle:
-                                                                                FlutterFlowTheme.of(context).labelSmall.fontStyle,
+                                                                                _theme.labelSmall.fontStyle,
                                                                           ),
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).accent1,
+                                                                              _theme.accent1,
                                                                           letterSpacing:
                                                                               0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                          fontWeight: _theme
                                                                               .labelSmall
                                                                               .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .labelSmall
                                                                               .fontStyle,
                                                                         ),
@@ -850,11 +851,11 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                             .montserrat(
                                                                           fontWeight:
                                                                               FontWeight.w500,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .labelSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
+                                                                        color: _theme
                                                                             .primaryText,
                                                                         fontSize:
                                                                             14.0,
@@ -862,7 +863,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .labelSmall
                                                                             .fontStyle,
                                                                       ),
@@ -951,7 +952,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).accent2,
+                                color: _theme.accent2,
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
@@ -964,7 +965,7 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                   children: [
                                     Text(
                                       'Feedback del cliente',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
@@ -1115,20 +1116,20 @@ class _DetalleFallasWidgetState extends State<DetalleFallasWidget> {
                                   16.0, 0.0, 16.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
+                              color: _theme.primary,
+                              textStyle: _theme
                                   .titleSmall
                                   .override(
                                     font: GoogleFonts.montserrat(
                                       fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleSmall
                                           .fontStyle,
                                     ),
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleSmall
                                         .fontStyle,
                                   ),

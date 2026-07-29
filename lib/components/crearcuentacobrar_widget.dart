@@ -61,6 +61,7 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
@@ -68,7 +69,7 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
           maxWidth: 570.0,
         ),
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+          color: _theme.secondaryBackground,
           boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
@@ -93,10 +94,10 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                 child: FlutterFlowIconButton(
                   borderRadius: 8.0,
                   buttonSize: 40.0,
-                  fillColor: FlutterFlowTheme.of(context).primary,
+                  fillColor: _theme.primary,
                   icon: Icon(
                     Icons.close,
-                    color: FlutterFlowTheme.of(context).info,
+                    color: _theme.info,
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -112,20 +113,20 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                     child: Text(
                       'Fecha',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: _theme.bodyMedium.override(
                             font: GoogleFonts.montserrat(
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
                             letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -171,10 +172,10 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                       width: double.infinity,
                       height: 50.0,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: _theme.secondaryBackground,
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
-                          color: FlutterFlowTheme.of(context).alternate,
+                          color: _theme.alternate,
                           width: 1.0,
                         ),
                       ),
@@ -195,29 +196,29 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                                 ),
                                 'Seleccionar fecha',
                               ),
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                             ),
                             Icon(
                               Icons.calendar_today,
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: _theme.primaryText,
                               size: 20.0,
                             ),
                           ],
@@ -235,20 +236,20 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                     child: Text(
                       'Usuario',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: _theme.bodyMedium.override(
                             font: GoogleFonts.montserrat(
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
                             letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -265,7 +266,7 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                             height: 50.0,
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                                _theme.primary,
                               ),
                             ),
                           ),
@@ -289,33 +290,33 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: 50.0,
                         textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                            _theme.bodyMedium.override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .bodyMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .bodyMedium
                                       .fontStyle,
                                 ),
                         hintText: 'Seleccionar',
                         icon: Icon(
                           Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
+                          color: _theme.secondaryText,
                           size: 24.0,
                         ),
                         fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
+                            _theme.secondaryBackground,
                         elevation: 2.0,
-                        borderColor: FlutterFlowTheme.of(context).alternate,
+                        borderColor: _theme.alternate,
                         borderWidth: 1.0,
                         borderRadius: 8.0,
                         margin: EdgeInsetsDirectional.fromSTEB(
@@ -337,20 +338,20 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                     child: Text(
                       'Tipo de documento',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: _theme.bodyMedium.override(
                             font: GoogleFonts.montserrat(
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
                             letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -364,31 +365,31 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                         safeSetState(() => _model.tipodocumentoValue = val),
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: 50.0,
-                    textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                    textStyle: _theme.bodyMedium.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .bodyMedium
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
                     hintText: 'Seleccionar',
                     icon: Icon(
                       Icons.keyboard_arrow_down_rounded,
-                      color: FlutterFlowTheme.of(context).secondaryText,
+                      color: _theme.secondaryText,
                       size: 24.0,
                     ),
-                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    fillColor: _theme.secondaryBackground,
                     elevation: 2.0,
-                    borderColor: FlutterFlowTheme.of(context).alternate,
+                    borderColor: _theme.alternate,
                     borderWidth: 1.0,
                     borderRadius: 8.0,
                     margin:
@@ -408,20 +409,20 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                     child: Text(
                       'Monto por Cobrar',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: _theme.bodyMedium.override(
                             font: GoogleFonts.montserrat(
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
                             letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -436,26 +437,26 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                     obscureText: false,
                     decoration: InputDecoration(
                       hintStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.override(
+                          _theme.bodyMedium.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .bodyMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .bodyMedium
                                       .fontStyle,
                                 ),
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .bodyMedium
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .bodyMedium
                                     .fontStyle,
                               ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).alternate,
+                          color: _theme.alternate,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
@@ -483,23 +484,23 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                       ),
                       filled: true,
                       fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
+                          _theme.secondaryBackground,
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: _theme.bodyMedium.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .bodyMedium
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
                     minLines: 1,
                     keyboardType: TextInputType.number,
@@ -526,20 +527,20 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                     child: Text(
                       'Estado',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: _theme.bodyMedium.override(
                             font: GoogleFonts.montserrat(
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .bodyMedium
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .bodyMedium
                                   .fontStyle,
                             ),
                             letterSpacing: 0.0,
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
@@ -553,31 +554,31 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                         safeSetState(() => _model.estadoValue = val),
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: 50.0,
-                    textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                    textStyle: _theme.bodyMedium.override(
                           font: GoogleFonts.montserrat(
-                            fontWeight: FlutterFlowTheme.of(context)
+                            fontWeight: _theme
                                 .bodyMedium
                                 .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
+                            fontStyle: _theme
                                 .bodyMedium
                                 .fontStyle,
                           ),
                           letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .bodyMedium
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
                     hintText: 'Seleccionar',
                     icon: Icon(
                       Icons.keyboard_arrow_down_rounded,
-                      color: FlutterFlowTheme.of(context).secondaryText,
+                      color: _theme.secondaryText,
                       size: 24.0,
                     ),
-                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    fillColor: _theme.secondaryBackground,
                     elevation: 2.0,
-                    borderColor: FlutterFlowTheme.of(context).alternate,
+                    borderColor: _theme.alternate,
                     borderWidth: 1.0,
                     borderRadius: 8.0,
                     margin:
@@ -632,22 +633,22 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                   padding: EdgeInsets.all(8.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  iconColor: FlutterFlowTheme.of(context).info,
-                  color: FlutterFlowTheme.of(context).primary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                  iconColor: _theme.info,
+                  color: _theme.primary,
+                  textStyle: _theme.titleSmall.override(
                         font: GoogleFonts.montserrat(
-                          fontWeight: FlutterFlowTheme.of(context)
+                          fontWeight: _theme
                               .titleSmall
                               .fontWeight,
                           fontStyle:
-                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                              _theme.titleSmall.fontStyle,
                         ),
-                        color: FlutterFlowTheme.of(context).info,
+                        color: _theme.info,
                         letterSpacing: 0.0,
                         fontWeight:
-                            FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                            _theme.titleSmall.fontWeight,
                         fontStyle:
-                            FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                            _theme.titleSmall.fontStyle,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(

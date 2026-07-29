@@ -61,10 +61,11 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Container(
       width: MediaQuery.sizeOf(context).width * 0.8,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).primaryBackground,
+        color: _theme.primaryBackground,
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
@@ -88,7 +89,7 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
                   },
                   child: Icon(
                     Icons.check,
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: _theme.primary,
                     size: 30.0,
                   ),
                 ),
@@ -97,17 +98,17 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
                 alignment: AlignmentDirectional(-1.0, 0.0),
                 child: Text(
                   'Elige los repuestos',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  style: _theme.bodyMedium.override(
                         font: GoogleFonts.montserrat(
                           fontWeight: FontWeight.normal,
                           fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                              _theme.bodyMedium.fontStyle,
                         ),
                         fontSize: 16.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
                         fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                            _theme.bodyMedium.fontStyle,
                       ),
                 ),
               ),
@@ -136,7 +137,7 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
                           final insumosssItem = insumosss[insumosssIndex];
                           return Container(
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Row(
@@ -153,27 +154,27 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
                                         insumosssItem.nombre,
                                         'Sin nombre',
                                       ),
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             fontSize: 10.0,
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -192,7 +193,7 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
                                   },
                                   child: Icon(
                                     Icons.delete,
-                                    color: FlutterFlowTheme.of(context)
+                                    color: _theme
                                         .primaryBackground,
                                     size: 20.0,
                                   ),
@@ -226,7 +227,7 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
                         height: 50.0,
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primary,
+                            _theme.primary,
                           ),
                         ),
                       ),
@@ -258,93 +259,93 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Search',
-                              labelStyle: FlutterFlowTheme.of(context)
+                              labelStyle: _theme
                                   .bodyMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                              hintStyle: FlutterFlowTheme.of(context)
+                              hintStyle: _theme
                                   .labelMedium
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .labelMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .labelMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .labelMedium
                                         .fontStyle,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: _theme.primary,
                                   width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
+                                  color: _theme.error,
                                   width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
+                                  color: _theme.error,
                                   width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               suffixIcon: Icon(
                                 Icons.search_sharp,
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context)
+                            style: _theme
                                 .bodyMedium
                                 .override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .bodyMedium
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .bodyMedium
                                       .fontStyle,
                                 ),
@@ -394,7 +395,7 @@ class _ElegirRepArregladoWidgetState extends State<ElegirRepArregladoWidget> {
                                             width: 100.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primary,
                                               borderRadius:
                                                   BorderRadius.circular(10.0),

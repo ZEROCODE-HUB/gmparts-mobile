@@ -48,6 +48,7 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 1.0),
       child: StreamBuilder<DiagnosticosRecord>(
@@ -61,7 +62,7 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    _theme.primary,
                   ),
                 ),
               ),
@@ -72,7 +73,7 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
 
           return Container(
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
+              color: _theme.secondaryBackground,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20.0),
                 topRight: Radius.circular(20.0),
@@ -98,22 +99,22 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                           children: [
                             Text(
                               'Nueva Falla ${((widget.indexx!) + 1).toString()}',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .titleLarge
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
@@ -142,7 +143,7 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                               },
                               child: Icon(
                                 Icons.edit,
-                                color: FlutterFlowTheme.of(context).primaryText,
+                                color: _theme.primaryText,
                                 size: 24.0,
                               ),
                             ),
@@ -165,25 +166,25 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                             children: [
                               Text(
                                 'Nombre de falla',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .bodyMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondaryText,
                                       fontSize: 10.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -193,19 +194,19 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Text(
                                   containerDiagnosticosRecord.nombreFalla,
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.normal,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -226,25 +227,25 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                             children: [
                               Text(
                                 'Solución',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .bodyMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .secondaryText,
                                       fontSize: 10.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
@@ -254,19 +255,19 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Text(
                                   containerDiagnosticosRecord.solucion,
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.normal,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -372,7 +373,7 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                             final repItem = rep[repIndex];
                             return Container(
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
+                                color: _theme
                                     .primaryBackground,
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
@@ -577,7 +578,7 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent2,
+                        color: _theme.accent2,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Row(
@@ -593,26 +594,26 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                                   Flexible(
                                     child: Text(
                                       'Mano de obra',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .bodyMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
@@ -639,27 +640,27 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                                     ),
                                     'S/0',
                                   ),
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .bodyMedium
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .bodyMedium
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .bodyMedium
                                         .fontStyle,
                                     shadows: [
                                       Shadow(
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .secondaryText,
                                         offset: Offset(2.0, 2.0),
                                         blurRadius: 2.0,
@@ -686,22 +687,22 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                           children: [
                             Text(
                               'Subtotal',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .titleLarge
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
@@ -724,22 +725,22 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                                 ),
                                 'S/0',
                               ),
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .titleLarge
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
@@ -756,22 +757,22 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                           children: [
                             Text(
                               'IGV',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .titleLarge
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
@@ -804,22 +805,22 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                                 ),
                                 'S/0',
                               ),
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .titleLarge
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
@@ -836,22 +837,22 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                           children: [
                             Text(
                               'Total',
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .titleLarge
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
@@ -879,22 +880,22 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                                 ),
                                 'S/0',
                               ),
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .titleLarge
                                   .override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                      fontWeight: _theme
                                           .titleLarge
                                           .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .titleLarge
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .titleLarge
                                         .fontStyle,
                                   ),
@@ -906,7 +907,7 @@ class _CotizacionNUEVOWidgetState extends State<CotizacionNUEVOWidget> {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).accent2,
+                      color: _theme.accent2,
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),

@@ -68,6 +68,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -77,7 +78,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
         canPop: false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: _theme.primaryBackground,
           body: SafeArea(
             top: true,
             child: Column(
@@ -103,14 +104,14 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FlutterFlowIconButton(
                                       borderColor:
-                                          FlutterFlowTheme.of(context).primary,
+                                          _theme.primary,
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 32.0,
                                       icon: Icon(
                                         Icons.chevron_left_rounded,
                                         color:
-                                            FlutterFlowTheme.of(context).primary,
+                                            _theme.primary,
                                         size: 16.0,
                                       ),
                                       onPressed: () async {
@@ -152,7 +153,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                   '-',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -194,23 +195,23 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                           0.0, 15.0, 0.0, 0.0),
                                       child: Text(
                                         'Recepciones v1',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .titleLarge
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.w500,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontStyle,
                                             ),
@@ -302,7 +303,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                             fontSize: 10.0,
                                                           ),
                                                           fontSize: 10.0,
-                                                          color: FlutterFlowTheme.of(context).primary,
+                                                          color: _theme.primary,
                                                         ),
                                                   ),
                                                 ),
@@ -319,7 +320,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).accent2,
+                                  color: _theme.accent2,
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 child: TextFormField(
@@ -330,51 +331,51 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Buscar Recepciones',
-                                    labelStyle: FlutterFlowTheme.of(context)
+                                    labelStyle: _theme
                                         .titleSmall
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleSmall
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleSmall
                                                     .fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
+                                          color: _theme
                                               .accent1,
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
-                                    hintStyle: FlutterFlowTheme.of(context)
+                                    hintStyle: _theme
                                         .labelMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
@@ -387,7 +388,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primary,
                                         width: 1.0,
                                       ),
@@ -396,7 +397,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                     errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color:
-                                            FlutterFlowTheme.of(context).error,
+                                            _theme.error,
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(10.0),
@@ -404,7 +405,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                     focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color:
-                                            FlutterFlowTheme.of(context).error,
+                                            _theme.error,
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(10.0),
@@ -414,28 +415,28 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                     suffixIcon: Icon(
                                       Icons.search_sharp,
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
+                                          _theme.primary,
                                       size: 24.0,
                                     ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .bodyMedium
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -451,21 +452,21 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                     0.0, 25.0, 0.0, 0.0),
                                 child: Text(
                                   'Filtrar por',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .titleLarge
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
@@ -489,28 +490,28 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                 ],
                                 onChanged: (val) => safeSetState(
                                     () => _model.dropDownValue = val),
-                                textStyle: FlutterFlowTheme.of(context)
+                                textStyle: _theme
                                     .labelMedium
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .labelMedium
                                             .fontStyle,
                                       ),
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .labelMedium
                                           .fontStyle,
                                     ),
                                 hintText: 'Recepción',
                                 icon: Icon(
                                   Icons.expand_circle_down_outlined,
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: _theme.primary,
                                   size: 28.0,
                                 ),
-                                fillColor: FlutterFlowTheme.of(context).accent2,
+                                fillColor: _theme.accent2,
                                 elevation: 2.0,
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
@@ -554,7 +555,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                             child: CircularProgressIndicator(
                                               valueColor:
                                                   AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .primary,
                                               ),
                                             ),
@@ -756,7 +757,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                               height: 100.0,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .accent2,
                                                 borderRadius:
                                                     BorderRadius.circular(10.0),
@@ -808,10 +809,10 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                                     .override(
                                                                       font: GoogleFonts
                                                                           .montserrat(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .bodyMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
@@ -891,21 +892,21 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                                       .override(
                                                                         font: GoogleFonts
                                                                             .montserrat(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                          fontWeight: _theme
                                                                               .bodyMedium
                                                                               .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .bodyMedium
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
+                                                                        color: _theme
                                                                             .secondaryText,
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .bodyMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
@@ -925,21 +926,21 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                                       .override(
                                                                         font: GoogleFonts
                                                                             .montserrat(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                          fontWeight: _theme
                                                                               .bodyMedium
                                                                               .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                          fontStyle: _theme
                                                                               .bodyMedium
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
+                                                                        color: _theme
                                                                             .secondaryText,
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                        fontWeight: _theme
                                                                             .bodyMedium
                                                                             .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                        fontStyle: _theme
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
@@ -1025,7 +1026,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                           width: MediaQuery.sizeOf(context).width * 0.85,
                           height: 45.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: _theme.primary,
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Padding(
@@ -1040,26 +1041,26 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                       0.0, 0.0, 4.0, 0.0),
                                   child: Text(
                                     'Crear nueva recepción',
-                                    style: FlutterFlowTheme.of(context)
+                                    style: _theme
                                         .titleLarge
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleLarge
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
@@ -1070,7 +1071,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                       20.0, 0.0, 0.0, 0.0),
                                   child: FaIcon(
                                     FontAwesomeIcons.fileUpload,
-                                    color: FlutterFlowTheme.of(context)
+                                    color: _theme
                                         .primaryText,
                                     size: 24.0,
                                   ),

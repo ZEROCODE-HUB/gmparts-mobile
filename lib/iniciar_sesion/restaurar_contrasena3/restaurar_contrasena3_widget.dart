@@ -42,6 +42,7 @@ class _RestaurarContrasena3WidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -49,14 +50,14 @@ class _RestaurarContrasena3WidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: _theme.secondaryBackground,
         body: SafeArea(
           top: true,
           child: Container(
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
+              color: _theme.secondaryBackground,
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
@@ -77,7 +78,7 @@ class _RestaurarContrasena3WidgetState
                             child: Text(
                               'Correo enviado',
                               textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .headlineMedium,
                             ),
                           ),
@@ -87,7 +88,7 @@ class _RestaurarContrasena3WidgetState
                             child: Text(
                               'El correo de reinicio de contraseña fue enviado exitosamente a su bandeja.',
                               textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
+                              style: _theme
                                   .bodyLarge,
                             ),
                           ),
@@ -110,22 +111,22 @@ class _RestaurarContrasena3WidgetState
                           24.0, 0.0, 24.0, 0.0),
                       iconPadding: EdgeInsetsDirectional.fromSTEB(
                           0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: _theme.primary,
                       textStyle:
-                          FlutterFlowTheme.of(context).titleLarge.override(
+                          _theme.titleLarge.override(
                                 font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .titleLarge
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .titleLarge
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .titleLarge
                                     .fontStyle,
                               ),

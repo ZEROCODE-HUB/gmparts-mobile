@@ -45,6 +45,7 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return StreamBuilder<List<RecepcionesRecord>>(
       stream: queryRecepcionesRecord(
         queryBuilder: (recepcionesRecord) => recepcionesRecord.where(
@@ -58,14 +59,14 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryText,
+            backgroundColor: _theme.primaryText,
             body: Center(
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    _theme.primary,
                   ),
                 ),
               ),
@@ -86,7 +87,7 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryText,
+            backgroundColor: _theme.primaryText,
             body: SafeArea(
               top: true,
               child: SingleChildScrollView(
@@ -107,13 +108,13 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                                   0.0, 10.0, 38.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor:
-                                    FlutterFlowTheme.of(context).primary,
+                                    _theme.primary,
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 32.0,
                                 icon: Icon(
                                   Icons.chevron_left_rounded,
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: _theme.primary,
                                   size: 16.0,
                                 ),
                                 onPressed: () async {
@@ -144,21 +145,21 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                               children: [
                                 Text(
                                   'Servicio #${gLinkclienteCopyRecepcionesRecord?.numeroorden.toString()}',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .titleLarge
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.bold,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
+                                        color: _theme
                                             .primaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
@@ -173,28 +174,28 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                                         15.0, 0.0, 15.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
+                                    color: _theme.primary,
+                                    textStyle: _theme
                                         .titleMedium
                                         .override(
                                           font: GoogleFonts.montserrat(
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
                                           fontSize: 10.0,
                                           letterSpacing: 0.0,
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleMedium
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .titleMedium
                                                   .fontStyle,
                                         ),
@@ -212,7 +213,7 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color:
-                                    FlutterFlowTheme.of(context).customColor1,
+                                    _theme.customColor1,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
@@ -225,23 +226,23 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                                           AlignmentDirectional(-1.0, 0.0),
                                       child: Text(
                                         'Datos del cliente',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.bold,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
@@ -631,7 +632,7 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color:
-                                    FlutterFlowTheme.of(context).customColor1,
+                                    _theme.customColor1,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
@@ -644,23 +645,23 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                                           AlignmentDirectional(-1.0, 0.0),
                                       child: Text(
                                         'Datos del vehículo',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.w500,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
@@ -1334,7 +1335,7 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color:
-                                    FlutterFlowTheme.of(context).customColor1,
+                                    _theme.customColor1,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
@@ -1347,23 +1348,23 @@ class _GLinkclienteCopyWidgetState extends State<GLinkclienteCopyWidget> {
                                           AlignmentDirectional(-1.0, 0.0),
                                       child: Text(
                                         'Problema técnico',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .titleMedium
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight: FontWeight.bold,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .primaryBackground,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),

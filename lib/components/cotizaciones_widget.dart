@@ -47,6 +47,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
@@ -54,7 +55,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+            color: _theme.secondaryBackground,
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
@@ -72,20 +73,20 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                       Text(
                         'Lista de Cotización de: ${widget.cliente}',
                         style:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
+                            _theme.headlineSmall.override(
                                   font: GoogleFonts.montserrat(
-                                    fontWeight: FlutterFlowTheme.of(context)
+                                    fontWeight: _theme
                                         .headlineSmall
                                         .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                                    fontStyle: _theme
                                         .headlineSmall
                                         .fontStyle,
                                   ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
+                                  fontWeight: _theme
                                       .headlineSmall
                                       .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .headlineSmall
                                       .fontStyle,
                                 ),
@@ -100,7 +101,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                         },
                         child: Icon(
                           Icons.close,
-                          color: FlutterFlowTheme.of(context).secondaryText,
+                          color: _theme.secondaryText,
                           size: 24.0,
                         ),
                       ),
@@ -111,7 +112,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 0.0, 0.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: _theme.secondaryBackground,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -126,9 +127,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 60.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -137,19 +138,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Item',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -160,9 +161,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 130.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -171,19 +172,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Serie/Número',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -194,9 +195,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 100.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -205,19 +206,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Fecha',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -228,9 +229,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 120.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -239,19 +240,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Placa',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -262,9 +263,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 120.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -273,19 +274,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Total Global',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -296,9 +297,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 140.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -307,19 +308,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Total Repuesto',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -330,9 +331,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 150.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -341,19 +342,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Total Servicio',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -364,9 +365,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 150.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -375,19 +376,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Usuario',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -398,9 +399,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 150.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -409,19 +410,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Agregar Global',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -432,9 +433,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 150.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -443,19 +444,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Agregar Repuesto',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -466,9 +467,9 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                               width: 150.0,
                               height: 40.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: _theme.primary,
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: _theme.alternate,
                                   width: 1.0,
                                 ),
                               ),
@@ -477,19 +478,19 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Text(
                                   'Agregar Servicio',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .bodyMedium
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight: FontWeight.w500,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .bodyMedium
                                             .fontStyle,
                                       ),
@@ -520,7 +521,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                   height: 50.0,
                                   child: CircularProgressIndicator(
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
+                                      _theme.primary,
                                     ),
                                   ),
                                 ),
@@ -552,7 +553,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                           child: CircularProgressIndicator(
                                             valueColor:
                                                 AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .primary,
                                             ),
                                           ),
@@ -575,11 +576,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -594,7 +595,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                                   '0',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -630,11 +631,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -649,7 +650,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                                   '0',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -685,11 +686,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -710,7 +711,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                                   'Sin fecha',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -746,11 +747,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -765,7 +766,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                                   'Sin placa',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -801,11 +802,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -827,7 +828,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                                   'S/ 0',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -863,11 +864,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -922,7 +923,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                                   'S/ 0',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -961,11 +962,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -999,7 +1000,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                                   'S/ 0',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -1038,11 +1039,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -1057,7 +1058,7 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                                   'Usuario',
                                                 ),
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -1093,11 +1094,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -1379,11 +1380,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),
@@ -1610,11 +1611,11 @@ class _CotizacionesWidgetState extends State<CotizacionesWidget> {
                                             height: 40.0,
                                             decoration: BoxDecoration(
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .secondaryBackground,
                                               border: Border.all(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .alternate,
                                                 width: 1.0,
                                               ),

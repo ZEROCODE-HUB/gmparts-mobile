@@ -47,6 +47,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = FlutterFlowTheme.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -54,7 +55,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -80,13 +81,13 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                   0.0, 10.0, 38.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor:
-                                    FlutterFlowTheme.of(context).primary,
+                                    _theme.primary,
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 32.0,
                                 icon: Icon(
                                   Icons.chevron_left_rounded,
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: _theme.primary,
                                   size: 16.0,
                                 ),
                                 onPressed: () async {
@@ -99,20 +100,20 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                   0.0, 15.0, 0.0, 0.0),
                               child: Text(
                                 'Detalle',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
@@ -155,26 +156,26 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                           '-',
                                         ),
                                         textAlign: TextAlign.end,
-                                        style: FlutterFlowTheme.of(context)
+                                        style: _theme
                                             .labelSmall
                                             .override(
                                               font: GoogleFonts.montserrat(
                                                 fontWeight:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .fontWeight,
                                                 fontStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelSmall
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .labelSmall
                                                       .fontStyle,
                                             ),
@@ -188,10 +189,10 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                                           child: Text(
                                             'Ver perfil',
-                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                            style: _theme.labelSmall.override(
                                               font: GoogleFonts.montserrat(fontSize: 10.0),
                                               fontSize: 10.0,
-                                              color: FlutterFlowTheme.of(context).primary,
+                                              color: _theme.primary,
                                             ),
                                           ),
                                         ),
@@ -211,20 +212,20 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                             children: [
                               Text(
                                 'Servicio #${widget.datos?.numeroorden.toString()}',
-                                style: FlutterFlowTheme.of(context)
+                                style: _theme
                                     .titleLarge
                                     .override(
                                       font: GoogleFonts.montserrat(
                                         fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .titleLarge
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
+                                      fontStyle: _theme
                                           .titleLarge
                                           .fontStyle,
                                     ),
@@ -238,7 +239,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent2,
+                              color: _theme.accent2,
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Padding(
@@ -250,22 +251,22 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       'Datos del cliente',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -292,7 +293,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Cliente:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -372,7 +373,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Fecha:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -468,7 +469,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Celular:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -548,7 +549,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Correo electrónico:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -634,7 +635,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent2,
+                              color: _theme.accent2,
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Padding(
@@ -646,22 +647,22 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       'Datos del vehículo',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -688,7 +689,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Número de placa:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -768,7 +769,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Marca:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -863,7 +864,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Modelo:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -943,7 +944,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Año:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1038,7 +1039,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Nivel de combustible:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1119,7 +1120,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Inventario:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1238,7 +1239,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Observaciones adicionales:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1324,7 +1325,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent2,
+                              color: _theme.accent2,
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Padding(
@@ -1336,22 +1337,22 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       'Problema técnico',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
+                                            color: _theme
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
@@ -1378,7 +1379,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Tecnico de servicio',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1459,7 +1460,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Tipo de servicio:',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1554,7 +1555,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Motivo de ingreso',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
@@ -1649,7 +1650,7 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                               Text(
                                                 'Fotos',
                                                 style:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .labelSmall
                                                         .override(
                                                           font: GoogleFonts
