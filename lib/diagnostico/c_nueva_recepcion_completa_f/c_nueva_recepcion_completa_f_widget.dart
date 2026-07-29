@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/user_avatar_widget.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/diagnostico/agregar_cliente/agregar_cliente_widget.dart';
@@ -229,13 +230,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
-                                                      child: Image.network(
-                                                        valueOrDefault<String>(
-                                                          currentUserPhoto,
-                                                          '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                                        ),
-                                                        fit: BoxFit.cover,
-                                                      ),
+                                                      child: UserAvatarWidget(size: 32.0),
                                                     ),
                                                   ),
                                                 ),
@@ -2363,13 +2358,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                         ),
-                                                        child: Image.network(
-                                                          valueOrDefault<String>(
-                                                            currentUserPhoto,
-                                                            '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                                          ),
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                                         child: UserAvatarWidget(size: 32.0),
                                                       ),
                                                     ),
                                                   ),
@@ -2683,6 +2672,17 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           _model
                                                               .readVehicle!
                                                               .marca;
+                                                      _model.marcaValueController
+                                                          ?.value =
+                                                          _model.readVehicle!
+                                                              .marca;
+                                                    });
+                                                    safeSetState(() {
+                                                      _model
+                                                          .modeloValueController
+                                                          ?.value =
+                                                          _model.readVehicle!
+                                                              .modelo;
                                                     });
 
                                                     safeSetState(() {});
@@ -3118,7 +3118,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .marcaValueController ??=
                                                       FormFieldController<
                                                               String>(
-                                                          null),
+                                                          _model.vehiculoMarca ?? ''),
                                                   options: marcas
                                                       .map((m) => m.name)
                                                       .toList(),
@@ -3332,7 +3332,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .modeloValueController ??=
                                                       FormFieldController<
                                                               String>(
-                                                          null),
+                                                          _model.vehiculoModelo ?? ''),
                                                   options: filtered
                                                       .map((m) => m.name)
                                                       .toList(),

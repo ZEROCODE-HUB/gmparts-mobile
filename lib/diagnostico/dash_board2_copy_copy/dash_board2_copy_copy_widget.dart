@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/user_avatar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -136,13 +137,7 @@ class _DashBoard2CopyCopyWidgetState extends State<DashBoard2CopyCopyWidget> {
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Image.network(
-                                          valueOrDefault<String>(
-                                            currentUserPhoto,
-                                            '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                          ),
-                                          fit: BoxFit.cover,
-                                        ),
+                                        child: UserAvatarWidget(size: 32.0),
                                       ),
                                     ),
                                   ),

@@ -258,7 +258,7 @@ class _ElegirRepuestosWidgetState extends State<ElegirRepuestosWidget> {
                           focusNode: _model.textFieldFocusNode,
                           onChanged: (_) => EasyDebounce.debounce(
                             '_model.textController',
-                            Duration(milliseconds: 2000),
+                            Duration(milliseconds: 300),
                             () async {
                               safeSetState(() {
                                 _model.simpleSearchResults = TextSearch(
@@ -274,7 +274,6 @@ class _ElegirRepuestosWidgetState extends State<ElegirRepuestosWidget> {
                                 )
                                     .search(_model.textController.text)
                                     .map((r) => r.object)
-                                    .take(4)
                                     .toList();
                                 ;
                               });
@@ -392,7 +391,7 @@ class _ElegirRepuestosWidgetState extends State<ElegirRepuestosWidget> {
                                       final articles =
                                           containerArticlesRecordList
                                               .toList()
-                                              .take(5)
+                                              .take(20)
                                               .toList();
 
                                       return ListView.separated(
@@ -509,10 +508,8 @@ class _ElegirRepuestosWidgetState extends State<ElegirRepuestosWidget> {
                                     builder: (context) {
                                       final insumos = _model.simpleSearchResults
                                           .map((e) => e)
-                                          .toList()
-                                          .take(5)
                                           .toList();
-
+ 
                                       return ListView.separated(
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,

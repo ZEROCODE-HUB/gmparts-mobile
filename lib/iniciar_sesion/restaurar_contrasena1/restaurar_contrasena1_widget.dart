@@ -195,7 +195,7 @@ class _RestaurarContrasena1WidgetState
                           controller: _model.textController,
                           focusNode: _model.textFieldFocusNode,
                           autofocus: true,
-                          obscureText: !_model.passwordVisibility,
+                          obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Correo electrónico',
                             labelStyle: FlutterFlowTheme.of(context)
@@ -267,20 +267,6 @@ class _RestaurarContrasena1WidgetState
                             ),
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context).accent2,
-                            suffixIcon: InkWell(
-                              onTap: () async {
-                                safeSetState(() => _model.passwordVisibility =
-                                    !_model.passwordVisibility);
-                              },
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                _model.passwordVisibility
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 24.0,
-                              ),
-                            ),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(

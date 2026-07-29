@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/user_avatar_widget.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/diagnostico/agregar_cliente/agregar_cliente_widget.dart';
@@ -244,13 +245,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Image.network(
-                                    valueOrDefault<String>(
-                                      currentUserPhoto,
-                                      '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                    ),
-                                    fit: BoxFit.cover,
-                                  ),
+                                  child: UserAvatarWidget(size: 32.0),
                                 ),
                               ),
                             ),
@@ -2306,6 +2301,9 @@ class _BNuevarecepcionrapidaFWidgetState
                                                       _model.readVehicle!.marca;
                                                   _model.vehiculoMarca =
                                                       _model.readVehicle!.marca;
+                                                  _model.marcaValueController
+                                                      ?.value =
+                                                      _model.readVehicle!.marca;
                                                 });
                                                 safeSetState(() {
                                                   _model.modeloTextController
@@ -2313,6 +2311,10 @@ class _BNuevarecepcionrapidaFWidgetState
                                                       _model
                                                           .readVehicle!.modelo;
                                                   _model.vehiculoModelo =
+                                                      _model
+                                                          .readVehicle!.modelo;
+                                                  _model.modeloValueController
+                                                      ?.value =
                                                       _model
                                                           .readVehicle!.modelo;
                                                 });
@@ -2558,7 +2560,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                               controller: _model
                                                       .marcaValueController ??=
                                                   FormFieldController<String>(
-                                                      null),
+                                                      _model.vehiculoMarca ?? ''),
                                               options: marcas
                                                   .map((m) => m.name)
                                                   .toList(),
@@ -2757,7 +2759,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                               controller: _model
                                                       .modeloValueController ??=
                                                   FormFieldController<String>(
-                                                      null),
+                                                      _model.vehiculoModelo ?? ''),
                                               options: filtered
                                                   .map((m) => m.name)
                                                   .toList(),

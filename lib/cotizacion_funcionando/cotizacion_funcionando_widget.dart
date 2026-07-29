@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/user_avatar_widget.dart';
 import '/backend/backend.dart';
 import '/components/cotizacion_n_u_e_v_o_widget.dart';
 import '/components/total_widget.dart';
@@ -177,13 +178,7 @@ class _CotizacionFuncionandoWidgetState
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
-                                            child: Image.network(
-                                              valueOrDefault<String>(
-                                                currentUserPhoto,
-                                                '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                              ),
-                                              fit: BoxFit.cover,
-                                            ),
+                                            child: UserAvatarWidget(size: 32.0),
                                           ),
                                         ),
                                       ),

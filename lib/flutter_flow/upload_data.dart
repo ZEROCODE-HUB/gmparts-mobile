@@ -51,7 +51,7 @@ Future<List<SelectedFile>?> selectMediaWithSourceBottomSheet({
   String? storageFolderPath,
   double? maxWidth,
   double? maxHeight,
-  int? imageQuality,
+  int? imageQuality = 70,
   required bool allowPhoto,
   bool allowVideo = false,
   String pickerFontFamily = 'Roboto',

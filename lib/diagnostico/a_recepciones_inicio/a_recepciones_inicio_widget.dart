@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/user_avatar_widget.dart';
 import '/backend/backend.dart';
 import '/components/tipo_recepcion_widget.dart';
 import '/components/vacio_widget.dart';
@@ -46,6 +47,23 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
     _model.dispose();
 
     super.dispose();
+  }
+
+  Color _statusColor(String? status) {
+    switch (status) {
+      case 'Recepción':
+        return Color(0xFFE53935);
+      case 'Diagnóstico':
+        return Colors.orange;
+      case 'Cotización':
+        return Color(0xFF1E88E5);
+      case 'Reparación':
+        return Colors.deepPurple;
+      case 'Finalizado':
+        return Color(0xFF43A047);
+      default:
+        return Colors.grey;
+    }
   }
 
   @override
@@ -123,16 +141,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    currentUserPhoto,
-                                                    '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                                  ),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
+                                                child: UserAvatarWidget(size: 32.0),),),),
                                           Align(
                                             alignment:
                                                 AlignmentDirectional(1.0, 0.0),
@@ -231,67 +240,50 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 context.pushNamed(
                                                     ACuentaWidget.routeName);
                                               },
-                                              child: Container(
-                                                width: 32.0,
-                                                height: 32.0,
-                                                clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    currentUserPhoto,
-                                                    '//s3.amazonaws.com/appforest_uf/f1670628978226x255266780810126100/user_avatar.jpg',
-                                                  ),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(1.0, 0.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => Text(
-                                              valueOrDefault<String>(
-                                                currentUserDisplayName,
-                                                '-',
-                                              ),
-                                              textAlign: TextAlign.end,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .labelSmall
-                                                  .override(
-                                                    font:
-                                                        GoogleFonts.montserrat(
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelSmall
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelSmall
-                                                              .fontStyle,
-                                                    ),
-                                                    letterSpacing: 0.0,
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelSmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelSmall
-                                                            .fontStyle,
-                                                  ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Align(
+                                                child: UserAvatarWidget(size: 32.0),),),),),
+                                         Align(
+                                           alignment:
+                                               AlignmentDirectional(1.0, 0.0),
+                                           child: AuthUserStreamWidget(
+                                             builder: (context) => Text(
+                                               valueOrDefault<String>(
+                                                 currentUserDisplayName,
+                                                 '-',
+                                               ),
+                                               textAlign: TextAlign.end,
+                                               style: FlutterFlowTheme.of(
+                                                       context)
+                                                   .labelSmall
+                                                   .override(
+                                                     font:
+                                                         GoogleFonts.montserrat(
+                                                       fontWeight:
+                                                           FlutterFlowTheme.of(
+                                                                   context)
+                                                               .labelSmall
+                                                               .fontWeight,
+                                                       fontStyle:
+                                                           FlutterFlowTheme.of(
+                                                                   context)
+                                                               .labelSmall
+                                                               .fontStyle,
+                                                     ),
+                                                     letterSpacing: 0.0,
+                                                     fontWeight:
+                                                         FlutterFlowTheme.of(
+                                                                 context)
+                                                             .labelSmall
+                                                             .fontWeight,
+                                                     fontStyle:
+                                                         FlutterFlowTheme.of(
+                                                                 context)
+                                                             .labelSmall
+                                                             .fontStyle,
+                                                   ),
+                                                   ),
+                                                 ),
+                                               ),
+                                               Align(
                                                 alignment:
                                                     AlignmentDirectional(
                                                         1.0, 0.0),
@@ -794,9 +786,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                           Container(
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
+                                                              color: _statusColor(listViewRecepcionesRecord.status),
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -811,7 +801,7 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                                           8.0,
                                                                           4.0),
                                                               child: Text(
-                                                                'Recepción',
+                                                                listViewRecepcionesRecord.status,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
