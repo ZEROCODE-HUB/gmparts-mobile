@@ -26,6 +26,8 @@ class _ACuentaWidgetState extends State<ACuentaWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   @override
   void initState() {
     super.initState();
