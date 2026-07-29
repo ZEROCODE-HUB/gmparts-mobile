@@ -52,6 +52,7 @@ class _CrearCotizacionFuncionandoWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final _theme = _theme;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -59,7 +60,7 @@ class _CrearCotizacionFuncionandoWidgetState
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: _theme.primaryBackground,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -77,13 +78,13 @@ class _CrearCotizacionFuncionandoWidgetState
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 10.0, 38.0, 0.0),
                         child: FlutterFlowIconButton(
-                          borderColor: FlutterFlowTheme.of(context).primary,
+                          borderColor: _theme.primary,
                           borderRadius: 30.0,
                           borderWidth: 1.0,
                           buttonSize: 32.0,
                           icon: Icon(
                             Icons.chevron_left_rounded,
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: _theme.primary,
                             size: 16.0,
                           ),
                           onPressed: () async {
@@ -96,19 +97,19 @@ class _CrearCotizacionFuncionandoWidgetState
                             EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                         child: Text(
                           'Detalle',
-                          style: FlutterFlowTheme.of(context)
+                          style: _theme
                               .titleLarge
                               .override(
                                 font: GoogleFonts.montserrat(
                                   fontWeight: FontWeight.w500,
-                                  fontStyle: FlutterFlowTheme.of(context)
+                                  fontStyle: _theme
                                       .titleLarge
                                       .fontStyle,
                                 ),
-                                color: FlutterFlowTheme.of(context).primaryText,
+                                color: _theme.primaryText,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .titleLarge
                                     .fontStyle,
                               ),
@@ -151,24 +152,24 @@ class _CrearCotizacionFuncionandoWidgetState
                                     '-',
                                   ),
                                   textAlign: TextAlign.end,
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .labelSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .labelSmall
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .labelSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .labelSmall
                                             .fontStyle,
                                       ),
@@ -182,10 +183,10 @@ class _CrearCotizacionFuncionandoWidgetState
                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                                           child: Text(
                                             'Ver perfil',
-                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                            style: _theme.labelSmall.override(
                                               font: GoogleFonts.montserrat(fontSize: 10.0),
                                               fontSize: 10.0,
-                                              color: FlutterFlowTheme.of(context).primary,
+                                              color: _theme.primary,
                                             ),
                                           ),
                                         ),
@@ -202,7 +203,7 @@ class _CrearCotizacionFuncionandoWidgetState
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent2,
+                        color: _theme.accent2,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: InkWell(
@@ -240,26 +241,26 @@ class _CrearCotizacionFuncionandoWidgetState
                                   children: [
                                     Text(
                                       'Detalles de recepción',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: _theme
                                           .titleLarge
                                           .override(
                                             font: GoogleFonts.montserrat(
                                               fontWeight:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontWeight,
                                               fontStyle:
-                                                  FlutterFlowTheme.of(context)
+                                                  _theme
                                                       .titleLarge
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontWeight,
                                             fontStyle:
-                                                FlutterFlowTheme.of(context)
+                                                _theme
                                                     .titleLarge
                                                     .fontStyle,
                                           ),
@@ -267,7 +268,7 @@ class _CrearCotizacionFuncionandoWidgetState
                                     Icon(
                                       Icons.arrow_circle_right_outlined,
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
+                                          _theme.primary,
                                       size: 30.0,
                                     ),
                                   ],
@@ -297,7 +298,7 @@ class _CrearCotizacionFuncionandoWidgetState
                               height: 50.0,
                               child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
+                                  _theme.primary,
                                 ),
                               ),
                             ),
@@ -318,7 +319,7 @@ class _CrearCotizacionFuncionandoWidgetState
                                 listViewDiagnosticosRecordList[listViewIndex];
                             return Container(
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).accent2,
+                                color: _theme.accent2,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
@@ -416,7 +417,7 @@ class _CrearCotizacionFuncionandoWidgetState
                                               child: Icon(
                                                 Icons.edit,
                                                 color:
-                                                    FlutterFlowTheme.of(context)
+                                                    _theme
                                                         .primaryText,
                                                 size: 24.0,
                                               ),
@@ -845,14 +846,14 @@ class _CrearCotizacionFuncionandoWidgetState
                                                                                 repItem.nombre,
                                                                                 'repuesto',
                                                                               ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                              style: _theme.bodyMedium.override(
                                                                                     font: GoogleFonts.montserrat(
-                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      fontWeight: _theme.bodyMedium.fontWeight,
+                                                                                      fontStyle: _theme.bodyMedium.fontStyle,
                                                                                     ),
                                                                                     letterSpacing: 0.0,
-                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    fontWeight: _theme.bodyMedium.fontWeight,
+                                                                                    fontStyle: _theme.bodyMedium.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -860,14 +861,14 @@ class _CrearCotizacionFuncionandoWidgetState
                                                                             child:
                                                                                 Text(
                                                                               'Cant: ${repItem.cantidad.toString()}',
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                              style: _theme.bodyMedium.override(
                                                                                     font: GoogleFonts.montserrat(
-                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      fontWeight: _theme.bodyMedium.fontWeight,
+                                                                                      fontStyle: _theme.bodyMedium.fontStyle,
                                                                                     ),
                                                                                     letterSpacing: 0.0,
-                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    fontWeight: _theme.bodyMedium.fontWeight,
+                                                                                    fontStyle: _theme.bodyMedium.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -895,14 +896,14 @@ class _CrearCotizacionFuncionandoWidgetState
                                                                                 ),
                                                                                 'S/0',
                                                                               )}',
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                              style: _theme.bodyMedium.override(
                                                                                     font: GoogleFonts.montserrat(
-                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      fontWeight: _theme.bodyMedium.fontWeight,
+                                                                                      fontStyle: _theme.bodyMedium.fontStyle,
                                                                                     ),
                                                                                     letterSpacing: 0.0,
-                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    fontWeight: _theme.bodyMedium.fontWeight,
+                                                                                    fontStyle: _theme.bodyMedium.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -918,14 +919,14 @@ class _CrearCotizacionFuncionandoWidgetState
                                                                                 ),
                                                                                 'S/0',
                                                                               )}',
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                              style: _theme.bodyMedium.override(
                                                                                     font: GoogleFonts.montserrat(
-                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      fontWeight: _theme.bodyMedium.fontWeight,
+                                                                                      fontStyle: _theme.bodyMedium.fontStyle,
                                                                                     ),
                                                                                     letterSpacing: 0.0,
-                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    fontWeight: _theme.bodyMedium.fontWeight,
+                                                                                    fontStyle: _theme.bodyMedium.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1136,7 +1137,7 @@ class _CrearCotizacionFuncionandoWidgetState
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             border: Border.all(
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: _theme.primary,
                               width: 2.0,
                             ),
                           ),
@@ -1149,24 +1150,24 @@ class _CrearCotizacionFuncionandoWidgetState
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Agregar nueva falla',
-                                  style: FlutterFlowTheme.of(context)
+                                  style: _theme
                                       .headlineSmall
                                       .override(
                                         font: GoogleFonts.montserrat(
                                           fontWeight:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontWeight,
                                           fontStyle:
-                                              FlutterFlowTheme.of(context)
+                                              _theme
                                                   .headlineSmall
                                                   .fontStyle,
                                         ),
                                         letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
+                                        fontWeight: _theme
                                             .headlineSmall
                                             .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
+                                        fontStyle: _theme
                                             .headlineSmall
                                             .fontStyle,
                                       ),
@@ -1180,7 +1181,7 @@ class _CrearCotizacionFuncionandoWidgetState
                                         0.0, 0.0, 10.0, 0.0),
                                     child: Icon(
                                       Icons.add_to_photos_sharp,
-                                      color: FlutterFlowTheme.of(context)
+                                      color: _theme
                                           .primaryText,
                                       size: 24.0,
                                     ),
@@ -1238,12 +1239,12 @@ class _CrearCotizacionFuncionandoWidgetState
                                 'Agregar al menos una falla',
                                 style: TextStyle(
                                   color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                      _theme.primaryText,
                                 ),
                               ),
                               duration: Duration(milliseconds: 4000),
                               backgroundColor:
-                                  FlutterFlowTheme.of(context).primary,
+                                  _theme.primary,
                             ),
                           );
                           if (_shouldSetState) safeSetState(() {});
@@ -1256,7 +1257,7 @@ class _CrearCotizacionFuncionandoWidgetState
                         minimumSize: Size(double.infinity, 40.0),
                         padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
-                        backgroundColor: FlutterFlowTheme.of(context).primary,
+                        backgroundColor: _theme.primary,
                         elevation: 0.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
@@ -1264,21 +1265,21 @@ class _CrearCotizacionFuncionandoWidgetState
                       ),
                       child: Text(
                         'Crear cotización',
-                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                        style: _theme.titleSmall.override(
                               font: GoogleFonts.montserrat(
-                                fontWeight: FlutterFlowTheme.of(context)
+                                fontWeight: _theme
                                     .titleSmall
                                     .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
+                                fontStyle: _theme
                                     .titleSmall
                                     .fontStyle,
                               ),
                               color: Colors.white,
                               letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
+                              fontWeight: _theme
                                   .titleSmall
                                   .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
+                              fontStyle: _theme
                                   .titleSmall
                                   .fontStyle,
                             ),
