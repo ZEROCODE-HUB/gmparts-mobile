@@ -24,6 +24,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
   late DashboardModel _model;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  FlutterFlowTheme get _theme => FlutterFlowTheme.of(context);
+
   @override
   void initState() {
     super.initState();
