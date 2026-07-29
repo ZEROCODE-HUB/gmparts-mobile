@@ -5,7 +5,7 @@ import 'form_field_controller.dart';
 import 'package:flutter/material.dart';
 
 class FlutterFlowDropDown<T> extends StatefulWidget {
-  const FlutterFlowDropDown({
+  FlutterFlowDropDown({
     super.key,
     this.controller,
     this.multiSelectController,

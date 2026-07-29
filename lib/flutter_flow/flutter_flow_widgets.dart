@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class FFButtonOptions {
-  const FFButtonOptions({
+  FFButtonOptions({
     this.textAlign,
     this.textStyle,
     this.elevation,
@@ -51,7 +51,7 @@ class FFButtonOptions {
 }
 
 class FFButtonWidget extends StatefulWidget {
-  const FFButtonWidget({
+  FFButtonWidget({
     super.key,
     required this.text,
     required this.onPressed,
