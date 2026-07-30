@@ -4,6 +4,27 @@
 
 ---
 
+### 0. `Propietario` en Vehículos — Guardar también como DocumentReference
+
+**Archivo:** `src/pages/almacen/VehiculoForm.jsx`
+
+Al guardar un vehículo, además de `Propietario_name` y `Propietario_Document` (strings), **también guardar `Propietario` como Firestore DocumentReference** apuntando al documento del cliente en `users/{uid}`.
+
+Actualmente solo se guardan strings. Se necesita agregar:
+
+```jsx
+// En handleSubmit o en el onChange del selector de propietario:
+// 1. Obtener el id/reference del cliente seleccionado
+const clienteSel = clientesOpts.find(c => c.nombre === form.Propietario_name);
+if (clienteSel?.id) {
+  formData.Propietario = doc(db, "users", clienteSel.id);
+}
+```
+
+Esto asegura que los vehículos creados por el web-admin también sean encontrados por la app móvil cuando consulta por `Propietario` (DocumentReference).
+
+---
+
 ### 1. `tipo_de_persona` — Valores: "Persona"/"Empresa" → "Natural"/"Jurídica"
 
 **Buscar y reemplazar en TODOS los archivos de `src/`:**

@@ -2576,40 +2576,58 @@ class _CNuevaRecepcionCompletaFWidgetState
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
-                                            child: StreamBuilder<
-                                                List<VehiculosRecord>>(
-                                              stream: queryVehiculosRecord(
-                                                queryBuilder:
-                                                    (vehiculosRecord) =>
-                                                        vehiculosRecord.where(
-                                                  'Propietario_name',
-                                                  isEqualTo: _model
-                                                      .readUser?.displayName,
-                                                ),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        valueColor:
-                                                            AlwaysStoppedAnimation<
-                                                                Color>(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<VehiculosRecord>
-                                                    numeroPlacaVehiculosRecordList =
-                                                    snapshot.data!;
+                                             child: FutureBuilder<
+                                                 List<VehiculosRecord>>(
+                                             future: () async {
+                                               final refQuery =
+                                                   queryVehiculosRecordOnce(
+                                                 queryBuilder: (q) => q.where(
+                                                     'Propietario',
+                                                     isEqualTo: _model
+                                                         .readUser?.reference),
+                                               );
+                                               final nameQuery =
+                                                   queryVehiculosRecordOnce(
+                                                 queryBuilder: (q) => q.where(
+                                                     'Propietario_name',
+                                                     isEqualTo: _model
+                                                         .readUser?.displayName),
+                                               );
+                                               final results =
+                                                   await Future.wait(
+                                                       [refQuery, nameQuery]);
+                                               final seen = <String>{};
+                                               return [
+                                                 ...results[0],
+                                                 ...results[1]
+                                               ]
+                                                   .where((v) =>
+                                                       seen.add(
+                                                           v.reference.path))
+                                                   .toList();
+                                             }(),
+                                               builder: (context, snapshot) {
+                                                 if (!snapshot.hasData) {
+                                                   return Center(
+                                                     child: SizedBox(
+                                                       width: 50.0,
+                                                       height: 50.0,
+                                                       child:
+                                                           CircularProgressIndicator(
+                                                         valueColor:
+                                                             AlwaysStoppedAnimation<
+                                                                 Color>(
+                                                           FlutterFlowTheme.of(
+                                                                   context)
+                                                               .primary,
+                                                         ),
+                                                       ),
+                                                     ),
+                                                   );
+                                                 }
+                                                 List<VehiculosRecord>
+                                                     numeroPlacaVehiculosRecordList =
+                                                     snapshot.data!;
 
                                                 return FlutterFlowDropDown<
                                                     String>(
