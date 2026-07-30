@@ -13,7 +13,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Set up Flutter
-        uses: subosito/flutter-action@fd55f4d75e1e7f66a53f1bc2b44e6c9c99e1a8e1
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: 'stable'
       - name: Install dependencies
