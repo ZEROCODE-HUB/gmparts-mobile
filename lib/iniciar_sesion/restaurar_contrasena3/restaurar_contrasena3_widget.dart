@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,93 +54,75 @@ class _RestaurarContrasena3WidgetState
         backgroundColor: _theme.secondaryBackground,
         body: SafeArea(
           top: true,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              color: _theme.secondaryBackground,
-            ),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 80.0),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 24.0, 24.0, 0.0),
-                            child: Text(
-                              'Correo enviado',
-                              textAlign: TextAlign.center,
-                              style: _theme
-                                  .headlineMedium,
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 80.0),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 0.0),
+                          child: Text(
+                            'Correo enviado',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24.0,
+                              color: _theme.primaryText,
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 12.0, 24.0, 0.0),
-                            child: Text(
-                              'El correo de reinicio de contraseña fue enviado exitosamente a su bandeja.',
-                              textAlign: TextAlign.center,
-                              style: _theme
-                                  .bodyLarge,
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 12.0, 24.0, 0.0),
+                          child: Text(
+                            'El correo de reinicio de contraseña fue enviado exitosamente a su bandeja.',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14.0,
+                              color: _theme.secondaryText,
                             ),
                           ),
-                          SizedBox(height: 32.0),
-                        ],
-                      ),
+                        ),
+                        SizedBox(height: 32.0),
+                      ],
                     ),
                   ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      context.goNamed(
-                        IniciarSessionWidget.routeName,
-                      );
-                    },
-                    text: 'Volver al inicio de sesión',
-                    options: FFButtonOptions(
-                      width: double.infinity,
-                      height: 45.0,
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          24.0, 0.0, 24.0, 0.0),
-                      iconPadding: EdgeInsetsDirectional.fromSTEB(
-                          0.0, 0.0, 0.0, 0.0),
-                      color: _theme.primary,
-                      textStyle:
-                          _theme.titleLarge.override(
-                                font: GoogleFonts.montserrat(
-                                  fontWeight: _theme
-                                      .titleLarge
-                                      .fontWeight,
-                                  fontStyle: _theme
-                                      .titleLarge
-                                      .fontStyle,
-                                ),
-                                letterSpacing: 0.0,
-                                fontWeight: _theme
-                                    .titleLarge
-                                    .fontWeight,
-                                fontStyle: _theme
-                                    .titleLarge
-                                    .fontStyle,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    context.goNamed(
+                      IniciarSessionWidget.routeName,
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(double.infinity, 45.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(
+                        24.0, 0.0, 24.0, 0.0),
+                    backgroundColor: _theme.primary,
+                    elevation: 3.0,
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                ],
-              ),
+                  child: Text(
+                    'Volver al inicio de sesión',
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
