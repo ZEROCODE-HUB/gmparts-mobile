@@ -243,7 +243,10 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                 context.pushNamed(
                                                     ACuentaWidget.routeName);
                                               },
-                                                child: UserAvatarWidget(size: 32.0),),),),),
+                                                child: UserAvatarWidget(size: 32.0),
+                                              ),
+                                            ),
+                                          ),
                                          Align(
                                            alignment:
                                                AlignmentDirectional(1.0, 0.0),
