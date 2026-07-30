@@ -1734,6 +1734,130 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                             ),
                           ),
                         ),
+                        if (widget.datos != null &&
+                            (widget.datos!.hasClientecontrolcalidad1() ||
+                                widget.datos!.hasClientecontrolcalidad2() ||
+                                widget.datos!.hasClientecontrolcalidad3() ||
+                                widget.datos!.clientecontrolcalidad4.isNotEmpty))
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 25.0, 0.0, 25.0),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: _theme.accent2,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 16.0, 20.0, 16.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Feedback del cliente',
+                                      style: _theme.titleMedium.override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    if (widget.datos!
+                                        .hasClientecontrolcalidad1())
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 8.0, 0.0, 0.0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Experiencia general: ',
+                                              style: _theme.bodyMedium,
+                                            ),
+                                            Text(
+                                              widget.datos!
+                                                  .clientecontrolcalidad1,
+                                              style: _theme.bodyMedium.override(
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    if (widget.datos!
+                                        .hasClientecontrolcalidad2())
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 4.0, 0.0, 0.0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Facilidad de uso: ',
+                                              style: _theme.bodyMedium,
+                                            ),
+                                            Text(
+                                              widget.datos!
+                                                  .clientecontrolcalidad2,
+                                              style: _theme.bodyMedium.override(
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    if (widget.datos!
+                                        .hasClientecontrolcalidad3())
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 4.0, 0.0, 0.0),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Notificaciones: ',
+                                              style: _theme.bodyMedium,
+                                            ),
+                                            Text(
+                                              widget.datos!
+                                                  .clientecontrolcalidad3,
+                                              style: _theme.bodyMedium.override(
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    if (widget.datos!
+                                        .clientecontrolcalidad4.isNotEmpty)
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 4.0, 0.0, 0.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Comentario adicional:',
+                                              style: _theme.bodyMedium,
+                                            ),
+                                            Text(
+                                              widget.datos!
+                                                  .clientecontrolcalidad4,
+                                              style: _theme.bodyMedium.override(
+                                                fontStyle: FontStyle.italic,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                   ),
