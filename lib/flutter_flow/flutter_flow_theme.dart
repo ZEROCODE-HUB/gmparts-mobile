@@ -286,7 +286,7 @@ class ThemeTypography extends Typography {
   TextStyle get bodyLarge => GoogleFonts.montserrat(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
-        fontSize: 4174.0,
+        fontSize: 16.0,
       );
   String get bodyMediumFamily => 'Montserrat';
   bool get bodyMediumIsCustom => false;
