@@ -141,7 +141,7 @@ Future<void> generarCotizacionPDF(
         var tiempo = diagnosticoData['Tiempo_estimado'];
         if (tiempo is num)
           tiempoEstimado = tiempo;
-        else if (tiempo is String) tiempoEstimado = num.tryParse(tiempo) ?? 0;
+        else if (tiempo is String) tiempoEstimado = num.tryParse(tiempo.replaceAll(RegExp(r'[^0-9.]'), '')) ?? 0;
       }
 
       // Obtener el precio del servicio

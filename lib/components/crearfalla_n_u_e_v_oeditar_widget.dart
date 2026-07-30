@@ -11,6 +11,7 @@ import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'crearfalla_n_u_e_v_oeditar_model.dart';
@@ -528,7 +529,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Tiempo estimado',
+                                      'Tiempo estimado (días)',
                                       style: _theme
                                           .bodyMedium
                                           .override(
@@ -567,6 +568,8 @@ class _CrearfallaNUEVOeditarWidgetState
                                             _model.tiempoEstimadoFocusNode,
                                         autofocus: false,
                                         obscureText: false,
+                                        keyboardType: TextInputType.number,
+                                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                         decoration: InputDecoration(
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
