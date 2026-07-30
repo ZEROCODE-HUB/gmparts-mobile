@@ -567,7 +567,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                           } else {
                                             safeSetState(() {
                                               _model.dniNaturalTextController
-                                                  ?.text = _model.readUser!.dni;
+                                                  ?.text = _model.readUser!.identityDocument;
                                             });
                                             safeSetState(() {
                                               _model.telefonoNaturalTextController
@@ -2232,6 +2232,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             0.0, 10.0, 0.0, 0.0),
                                           child: FutureBuilder<
                                               List<VehiculosRecord>>(
+                                          key: ValueKey(_model.readUser?.reference.id),
                                           future: () async {
                                             final refQuery =
                                                 queryVehiculosRecordOnce(

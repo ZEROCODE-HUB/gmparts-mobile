@@ -88,7 +88,7 @@ class ServiceRecord extends FirestoreRecord {
   void _initializeFields() {
     _codigo = snapshotData['Codigo'] as String?;
     _descripcion = snapshotData['Descripcion'] as String?;
-    _precio = castToType<double>(snapshotData['Precio']);
+    _precio = double.tryParse(snapshotData['Precio']?.toString() ?? '') ?? castToType<double>(snapshotData['Precio']);
     _note = snapshotData['Note'] as String?;
     _currency = snapshotData['Currency'] as String?;
     _alertInDays = snapshotData['Alert_in_days'] as String?;

@@ -622,7 +622,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                         _model.dniNaturalTextController
                                                                 ?.text =
                                                             _model
-                                                                .readUser!.dni;
+                                                                .readUser!.identityDocument;
                                                       });
                                                       safeSetState(() {
                                                         _model.telefonoTextController
@@ -2578,6 +2578,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     0.0, 10.0, 0.0, 0.0),
                                              child: FutureBuilder<
                                                  List<VehiculosRecord>>(
+                                             key: ValueKey(_model.readUser?.reference.id),
                                              future: () async {
                                                final refQuery =
                                                    queryVehiculosRecordOnce(
@@ -5841,7 +5842,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   motivoIngreso: _model
                                                       .textFieldMotivoTextController
                                                       .text,
-                                                  dni: _model.readUser?.dni,
+                                                  dni: _model.readUser?.identityDocument,
                                                   rUCempresa:
                                                       _model.readUser?.ruc,
                                                   razonSocial: _model
@@ -5911,7 +5912,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   motivoIngreso: _model
                                                       .textFieldMotivoTextController
                                                       .text,
-                                                  dni: _model.readUser?.dni,
+                                                  dni: _model.readUser?.identityDocument,
                                                   rUCempresa:
                                                       _model.readUser?.ruc,
                                                   razonSocial: _model
