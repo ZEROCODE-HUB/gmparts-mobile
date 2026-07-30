@@ -494,7 +494,7 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                     true
                                     ? modelos
                                         .where((m) =>
-                                            m.brandname
+                                            m.marca
                                                 .trim()
                                                 .toLowerCase() ==
                                             _model

@@ -30,10 +30,16 @@ class VehicleModelModeloRecord extends FirestoreRecord {
   String get brandname => _brandname ?? '';
   bool hasBrandname() => _brandname != null;
 
+  // "marca" field (used by web-admin).
+  String? _marca;
+  String get marca => _marca ?? _brandname ?? '';
+  bool hasMarca() => _marca != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _brand = snapshotData['brand'] as DocumentReference?;
     _brandname = snapshotData['brandname'] as String?;
+    _marca = snapshotData['marca'] as String?;
   }
 
   static CollectionReference get collection =>

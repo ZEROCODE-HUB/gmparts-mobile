@@ -2749,7 +2749,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                     true
                                                 ? modelos
                                                     .where((m) =>
-                                                        m.brandname
+                                                        m.marca
                                                             .trim()
                                                             .toLowerCase() ==
                                                         _model
