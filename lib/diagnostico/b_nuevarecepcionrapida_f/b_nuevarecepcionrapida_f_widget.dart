@@ -567,7 +567,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                           } else {
                                             safeSetState(() {
                                               _model.dniNaturalTextController
-                                                  ?.text = _model.readUser!.identityDocument;
+                                                  ?.text = _model.readUser!.identityDocument.isNotEmpty ? _model.readUser!.identityDocument : _model.readUser!.dni;
                                             });
                                             safeSetState(() {
                                               _model.telefonoNaturalTextController
@@ -2898,13 +2898,16 @@ class _BNuevarecepcionrapidaFWidgetState
                                                             .instance
                                                             .collection(
                                                                 'vehicle_model_modelo')
-                                                            .add({
-                                                          'name':
-                                                              controller.text,
-                                                          'brandname':
-                                                              _model
-                                                                  .vehiculoMarca,
-                                                        });
+                                                         .add({
+                                                           'name':
+                                                               controller.text,
+                                                           'brandname':
+                                                               _model
+                                                                   .vehiculoMarca,
+                                                           'marca':
+                                                               _model
+                                                                   .vehiculoMarca,
+                                                         });
                                                         Navigator.pop(ctx);
                                                       }
                                                     },

@@ -57,6 +57,7 @@ Future<String> manageClienteJuridico(
         'display_name': displayname,
         'tipo_de_persona': tipodepersona,
         'RUC': ruc,
+        'IdentityDocument': ruc,
         'codigo': codigo,
         'phone_number': phonenumber,
         'user_role': userRole,

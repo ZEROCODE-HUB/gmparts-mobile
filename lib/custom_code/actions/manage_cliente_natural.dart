@@ -54,6 +54,7 @@ Future<String> manageClienteNatural(
         'display_name': displayname,
         'tipo_de_persona': tipodepersona,
         'DNI': dni,
+        'IdentityDocument': dni,
         'codigo': codigo,
         'phone_number': phonenumber,
         'user_role': userRole,

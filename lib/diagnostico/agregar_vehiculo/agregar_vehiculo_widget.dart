@@ -635,6 +635,9 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                               'brandname':
                                                   _model
                                                       .vehiculoMarca,
+                                              'marca':
+                                                  _model
+                                                      .vehiculoMarca,
                                             });
                                             Navigator.pop(
                                                 ctx);
@@ -984,6 +987,8 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                   anioDeFabricion:
                                       _model.anioFabricacionTextController.text,
                                   propietarioName: _model.username?.displayName,
+                                  propietarioDocument: _model.username?.identityDocument ?? '',
+                                  propietarioType: _model.username?.tipoDePersona ?? '',
                                 ));
                                 _model.vvref =
                                     VehiculosRecord.getDocumentFromData(
@@ -1003,6 +1008,8 @@ class _AgregarVehiculoWidgetState extends State<AgregarVehiculoWidget> {
                                               .text,
                                           propietarioName:
                                               _model.username?.displayName,
+                                          propietarioDocument: _model.username?.identityDocument ?? '',
+                                          propietarioType: _model.username?.tipoDePersona ?? '',
                                         ),
                                         vehiculosRecordReference);
                                 await Future.delayed(

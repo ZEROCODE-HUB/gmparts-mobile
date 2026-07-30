@@ -622,7 +622,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                         _model.dniNaturalTextController
                                                                 ?.text =
                                                             _model
-                                                                .readUser!.identityDocument;
+                                                                .readUser!.identityDocument.isNotEmpty ? _model.readUser!.identityDocument : _model.readUser!.dni;
                                                       });
                                                       safeSetState(() {
                                                         _model.telefonoTextController
@@ -3477,14 +3477,17 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                 .instance
                                                                 .collection(
                                                                     'vehicle_model_modelo')
-                                                                .add({
-                                                              'name':
-                                                                  controller
-                                                                      .text,
-                                                              'brandname':
-                                                                  _model
-                                                                      .vehiculoMarca,
-                                                            });
+                                                             .add({
+                                                               'name':
+                                                                   controller
+                                                                       .text,
+                                                               'brandname':
+                                                                   _model
+                                                                       .vehiculoMarca,
+                                                               'marca':
+                                                                   _model
+                                                                       .vehiculoMarca,
+                                                             });
                                                             Navigator.pop(
                                                                 ctx);
                                                           }
@@ -5842,7 +5845,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   motivoIngreso: _model
                                                       .textFieldMotivoTextController
                                                       .text,
-                                                  dni: _model.readUser?.identityDocument,
+                                                  dni: _model.readUser?.identityDocument?.isNotEmpty == true ? _model.readUser!.identityDocument : _model.readUser?.dni,
                                                   rUCempresa:
                                                       _model.readUser?.ruc,
                                                   razonSocial: _model
@@ -5912,7 +5915,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   motivoIngreso: _model
                                                       .textFieldMotivoTextController
                                                       .text,
-                                                  dni: _model.readUser?.identityDocument,
+                                                  dni: _model.readUser?.identityDocument?.isNotEmpty == true ? _model.readUser!.identityDocument : _model.readUser?.dni,
                                                   rUCempresa:
                                                       _model.readUser?.ruc,
                                                   razonSocial: _model
