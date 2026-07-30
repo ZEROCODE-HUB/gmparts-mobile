@@ -13,6 +13,9 @@ class RestaurarContrasena1Model
   String? Function(BuildContext, String?)? textControllerValidator;
 
   @override
+  void initState(BuildContext context) {}
+
+  @override
   void dispose() {
     textFieldFocusNode?.dispose();
     textController?.dispose();
