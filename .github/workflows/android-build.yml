@@ -25,7 +25,7 @@ jobs:
       - name: Build Android AAB
         run: flutter build appbundle --release
         env:
-          KEYSTORE_PATH: android/app/gmparts-keystore.jks
+          KEYSTORE_PATH: gmparts-keystore.jks
           STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
