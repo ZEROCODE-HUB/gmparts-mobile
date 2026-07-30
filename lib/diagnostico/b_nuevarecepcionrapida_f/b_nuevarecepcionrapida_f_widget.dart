@@ -2235,9 +2235,9 @@ class _BNuevarecepcionrapidaFWidgetState
                                           stream: queryVehiculosRecord(
                                             queryBuilder: (vehiculosRecord) =>
                                                 vehiculosRecord.where(
-                                              'Propietario',
+                                              'Propietario_name',
                                               isEqualTo:
-                                                  _model.readUser?.reference,
+                                                  _model.readUser?.displayName,
                                             ),
                                           ),
                                           builder: (context, snapshot) {

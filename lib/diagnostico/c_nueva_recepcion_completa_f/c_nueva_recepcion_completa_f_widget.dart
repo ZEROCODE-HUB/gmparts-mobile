@@ -2582,9 +2582,9 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 queryBuilder:
                                                     (vehiculosRecord) =>
                                                         vehiculosRecord.where(
-                                                  'Propietario',
+                                                  'Propietario_name',
                                                   isEqualTo: _model
-                                                      .readUser?.reference,
+                                                      .readUser?.displayName,
                                                 ),
                                               ),
                                               builder: (context, snapshot) {
