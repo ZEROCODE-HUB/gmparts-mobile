@@ -1,4 +1,4 @@
-name: Android Build & Sign
+﻿name: Android Build & Sign
 on:
   workflow_dispatch:
 
@@ -13,17 +13,21 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@fd55f4d75e1e7f66a53f1bc2b44e6c9c99e1a8e1
         with:
-          flutter-version: '3.44.8'
-          channel: 'stable'
+          flutter-version: 'stable'
       - name: Install dependencies
         run: flutter pub get
       - name: Decode Keystore
         run: |
           echo ${{ secrets.ANDROID_KEYSTORE_BASE64 }} | base64 -d > android/app/gmparts-keystore.jks
       - name: Build Android AAB
-        run: flutter build appbundle --release
+        run: |
+          flutter build appbundle --release \
+            --build-number=${{ github.run_number }} \
+            --dart-define=ANDROID_STORE_PASSWORD=${{ secrets.ANDROID_STORE_PASSWORD }} \
+            --dart-define=ANDROID_KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }} \
+            --dart-define=ANDROID_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}
         env:
           KEYSTORE_PATH: gmparts-keystore.jks
           STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
