@@ -118,13 +118,39 @@ Future<void> generarCotizacionPDF(
   String etiquetaIdentificacion = natural ? "DNI" : "RUC";
   String etiquetaNombre = natural ? "NOMBRE COMPLETO" : "RAZÓN SOCIAL";
 
+  // Obtener datos de la recepción desde Firestore
+  final recepcionDoc = await recepcionRef.get();
+  final recepcionData = recepcionDoc.data() as Map<String, dynamic>?;
+
+  // Usar datos de Firestore como fallback para datos de cliente/vehículo
+  final clientName = (razonSocial.isNotEmpty) ? razonSocial : (recepcionData?['Cliente_nombre'] ?? recepcionData?['display_name'] ?? '');
+  final clientDoc = (ruc != null && ruc!.isNotEmpty) ? ruc! : (recepcionData?['DNI'] ?? recepcionData?['RUC'] ?? '');
+  final clientPhone = (telefonoPersonaContacto.isNotEmpty) ? telefonoPersonaContacto : (recepcionData?['Celular'] ?? recepcionData?['phone_number'] ?? '');
+  final clientEmail = (email.isNotEmpty) ? email : (recepcionData?['Correo'] ?? recepcionData?['email'] ?? '');
+  final vehiclePlate = (placa.isNotEmpty) ? placa : (recepcionData?['Placa'] ?? '');
+  final vehicleBrand = (marca.isNotEmpty) ? marca : (recepcionData?['Marca'] ?? '');
+  final vehicleModel = (modelo.isNotEmpty) ? modelo : (recepcionData?['Modelo'] ?? '');
+  final vehicleKm = (kilometraje.isNotEmpty) ? kilometraje : (recepcionData?['kmIngreso'] ?? recepcionData?['Kilometraje'] ?? '');
+  final vehicleYear = (anioFabricacion.isNotEmpty) ? anioFabricacion : (recepcionData?['anio_de_fabricion'] ?? '');
+
+  // Obtener fotos de la recepción
+  final List<String> receptionPhotos = [];
+  if (recepcionData?['fotos'] != null) {
+    final fotosRaw = recepcionData!['fotos'];
+    if (fotosRaw is List) {
+      for (var f in fotosRaw) {
+        if (f is String) receptionPhotos.add(f);
+      }
+    }
+  }
+
   // Obtener los diagnósticos de la recepción
   final diagnosticosSnapshot =
       await recepcionRef.collection('diagnosticos').get();
 
   // Preparar listas para los items de la tabla
-  // Preparar listas para los items de la tabla
   List<Map<String, dynamic>> itemsTabla = [];
+  List<Map<String, dynamic>> fotosFallos = [];
   int itemCounter = 1;
 
 // Procesar cada diagnóstico
@@ -157,14 +183,27 @@ Future<void> generarCotizacionPDF(
       // Calcular el total
       num totalServicio = precioservicio * tiempoEstimado;
 
+      final fallaName = diagnosticoData['Nombre_falla'] ?? '';
       itemsTabla.add({
         'item': itemCounter++,
-        'descripcion': diagnosticoData['Nombre_falla'] ?? '',
-        'unidad': 'HRS', // Mantenemos 'HRS' porque estamos usando horas
+        'descripcion': fallaName,
+        'unidad': 'HRS',
         'cantidad': tiempoEstimado,
-        'precio': precioservicio, // Solo el precio del campo precioservicio
-        'total': totalServicio, // precioservicio × tiempoEstimado
+        'precio': precioservicio,
+        'total': totalServicio,
       });
+
+      // Colectar fotos de esta falla
+      if (diagnosticoData['Fotos'] != null) {
+        final fotosRaw = diagnosticoData['Fotos'];
+        if (fotosRaw is List) {
+          for (var f in fotosRaw) {
+            if (f is String) {
+              fotosFallos.add({'nombre': fallaName, 'url': f});
+            }
+          }
+        }
+      }
     }
 
     // Repuestos
@@ -294,7 +333,7 @@ Future<void> generarCotizacionPDF(
                                   fontWeight: pw.FontWeight.bold,
                                   fontSize: 10)),
                           pw.TextSpan(
-                              text: razonSocial,
+                              text: clientName,
                               style: pw.TextStyle(fontSize: 10)),
                         ],
                       ),
@@ -324,7 +363,7 @@ Future<void> generarCotizacionPDF(
               pw.Row(
                 mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                 children: [
-                  if (ruc != null && ruc.isNotEmpty)
+                  if (clientDoc.isNotEmpty)
                     pw.Expanded(
                       flex: 3,
                       child: pw.RichText(
@@ -336,7 +375,7 @@ Future<void> generarCotizacionPDF(
                                     fontWeight: pw.FontWeight.bold,
                                     fontSize: 10)),
                             pw.TextSpan(
-                                text: ruc, style: pw.TextStyle(fontSize: 10)),
+                                text: clientDoc, style: pw.TextStyle(fontSize: 10)),
                           ],
                         ),
                       ),
@@ -413,7 +452,7 @@ Future<void> generarCotizacionPDF(
                         style: pw.TextStyle(
                             fontWeight: pw.FontWeight.bold, fontSize: 10)),
                     pw.TextSpan(
-                        text: email.isNotEmpty ? email : "",
+                        text: clientEmail.isNotEmpty ? clientEmail : "",
                         style: pw.TextStyle(fontSize: 10)),
                   ],
                 ),
@@ -479,7 +518,7 @@ Future<void> generarCotizacionPDF(
                                         fontWeight: pw.FontWeight.bold,
                                         fontSize: 10)),
                                 pw.TextSpan(
-                                    text: placa,
+                                    text: vehiclePlate,
                                     style: pw.TextStyle(fontSize: 10)),
                               ],
                             ),
@@ -496,7 +535,7 @@ Future<void> generarCotizacionPDF(
                                         fontWeight: pw.FontWeight.bold,
                                         fontSize: 10)),
                                 pw.TextSpan(
-                                    text: marca,
+                                    text: vehicleBrand,
                                     style: pw.TextStyle(fontSize: 10)),
                               ],
                             ),
@@ -513,7 +552,7 @@ Future<void> generarCotizacionPDF(
                                         fontWeight: pw.FontWeight.bold,
                                         fontSize: 10)),
                                 pw.TextSpan(
-                                    text: modelo,
+                                    text: vehicleModel,
                                     style: pw.TextStyle(fontSize: 10)),
                               ],
                             ),
@@ -571,7 +610,7 @@ Future<void> generarCotizacionPDF(
                                         fontWeight: pw.FontWeight.bold,
                                         fontSize: 10)),
                                 pw.TextSpan(
-                                    text: kilometraje,
+                                    text: vehicleKm,
                                     style: pw.TextStyle(fontSize: 10)),
                               ],
                             ),
@@ -593,7 +632,7 @@ Future<void> generarCotizacionPDF(
                                         fontWeight: pw.FontWeight.bold,
                                         fontSize: 10)),
                                 pw.TextSpan(
-                                    text: anioFabricacion,
+                                    text: vehicleYear,
                                     style: pw.TextStyle(fontSize: 10)),
                               ],
                             ),
@@ -1041,6 +1080,91 @@ Future<void> generarCotizacionPDF(
             ),
           ],
         ),
+      ],
+    ),
+  );
+
+  // ── SECCIÓN DE FOTOS (RECEPCIÓN Y FALLAS) ──
+  // Fetch reception photos
+  final List<pw.ImageProvider> receptionPhotoImages = [];
+  for (var url in receptionPhotos) {
+    try {
+      final resp = await http.get(Uri.parse(url));
+      if (resp.statusCode == 200) {
+        receptionPhotoImages.add(pw.MemoryImage(resp.bodyBytes));
+      }
+    } catch (_) {}
+  }
+
+  // Fetch fault photos (grouped by falla)
+  final Map<String, List<pw.ImageProvider>> faultPhotoGroups = {};
+  for (var foto in fotosFallos) {
+    try {
+      final resp = await http.get(Uri.parse(foto['url']));
+      if (resp.statusCode == 200) {
+        final fallaName = foto['nombre'] ?? '';
+        faultPhotoGroups.putIfAbsent(fallaName, () => []);
+        faultPhotoGroups[fallaName]!.add(pw.MemoryImage(resp.bodyBytes));
+      }
+    } catch (_) {}
+  }
+
+  pdf.addPage(
+    pw.MultiPage(
+      pageFormat: PdfPageFormat.a4,
+      margin: pw.EdgeInsets.all(20),
+      build: (pw.Context context) => [
+        // ── FOTOS DE RECEPCIÓN ──
+        if (receptionPhotoImages.isNotEmpty) ...[
+          pw.SizedBox(height: 10),
+          pw.Text("FOTOS DE RECEPCIÓN",
+              style: pw.TextStyle(
+                  fontSize: 12, fontWeight: pw.FontWeight.bold)),
+          pw.SizedBox(height: 5),
+          pw.Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: receptionPhotoImages.map((img) {
+              return pw.Container(
+                width: 150,
+                height: 120,
+                child: pw.Image(img, fit: pw.BoxFit.cover),
+              );
+            }).toList(),
+          ),
+        ],
+
+        // ── FOTOS DE FALLAS ──
+        if (faultPhotoGroups.isNotEmpty) ...[
+          pw.SizedBox(height: 10),
+          pw.Text("FOTOS DE FALLAS / DIAGNÓSTICO",
+              style: pw.TextStyle(
+                  fontSize: 12, fontWeight: pw.FontWeight.bold)),
+          pw.SizedBox(height: 5),
+          ...faultPhotoGroups.entries.map((entry) {
+            return pw.Column(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              children: [
+                pw.Text(entry.key,
+                    style: pw.TextStyle(
+                        fontSize: 10, fontWeight: pw.FontWeight.bold)),
+                pw.SizedBox(height: 3),
+                pw.Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: entry.value.map((img) {
+                    return pw.Container(
+                      width: 150,
+                      height: 120,
+                      child: pw.Image(img, fit: pw.BoxFit.cover),
+                    );
+                  }).toList(),
+                ),
+                pw.SizedBox(height: 10),
+              ],
+            );
+          }),
+        ],
       ],
     ),
   );

@@ -529,7 +529,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Tiempo estimado (días)',
+                                      'Tiempo estimado (horas)',
                                       style: _theme
                                           .bodyMedium
                                           .override(

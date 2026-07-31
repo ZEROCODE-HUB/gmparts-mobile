@@ -468,7 +468,7 @@ class _CrearfallaNUEVOWidgetState extends State<CrearfallaNUEVOWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Tiempo estimado (días)',
+                                  'Tiempo estimado (horas)',
                                   style: _theme
                                       .bodyMedium
                                       .override(
@@ -1492,12 +1492,12 @@ class _CrearfallaNUEVOWidgetState extends State<CrearfallaNUEVOWidget> {
                                  var diagnosticosRecordReference =
                                      DiagnosticosRecord.createDoc(
                                          widget.recepcionRef!);
-                                 await diagnosticosRecordReference.set({
-                                   ...createDiagnosticosRecordData(
-                                     nombreFalla:
-                                         _model.ddTipodeServicioValue,
-                                     solucion:
-                                         _model.ddTipodeServicioValue,
+                                  await diagnosticosRecordReference.set({
+                                    ...createDiagnosticosRecordData(
+                                      nombreFalla:
+                                          _model.nombreFallaTextController.text,
+                                      solucion:
+                                          _model.ddTipodeServicioValue,
                                      tiempoEstimado: _model
                                          .tiempoEstimadoTextController.text,
                                      subtotal: subtotal,
@@ -1520,23 +1520,23 @@ class _CrearfallaNUEVOWidgetState extends State<CrearfallaNUEVOWidget> {
                                  });
                                  _model.diagnostico =
                                      DiagnosticosRecord.getDocumentFromData({
-                                   ...createDiagnosticosRecordData(
-                                     nombreFalla:
-                                         _model.ddTipodeServicioValue,
-                                     solucion:
-                                         _model.ddTipodeServicioValue,
-                                     tiempoEstimado: _model
-                                         .tiempoEstimadoTextController.text,
-                                     subtotal: subtotal,
-                                     igv: igv,
-                                     total: total,
-                                     fecha: getCurrentTimestamp,
-                                     manoDeObra: manoDeObra,
-                                     precioservicio: servicePrecio,
-                                   ),
-                                   ...mapToFirestore(
-                                     {
-                                       'Repuestos':
+                                    ...createDiagnosticosRecordData(
+                                      nombreFalla:
+                                          _model.nombreFallaTextController.text,
+                                      solucion:
+                                          _model.ddTipodeServicioValue,
+                                      tiempoEstimado: _model
+                                          .tiempoEstimadoTextController.text,
+                                      subtotal: subtotal,
+                                      igv: igv,
+                                      total: total,
+                                      fecha: getCurrentTimestamp,
+                                      manoDeObra: manoDeObra,
+                                      precioservicio: servicePrecio,
+                                    ),
+                                    ...mapToFirestore(
+                                      {
+                                        'Repuestos':
                                            getRepuestosListFirestoreData(
                                          _model.repuestos,
                                        ),
