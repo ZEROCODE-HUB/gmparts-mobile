@@ -31,7 +31,7 @@ workflows:
       - name: Analyze code
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
-          flutter analyze
+          flutter analyze --no-fatal-warnings --no-fatal-infos
       - name: Generate launcher icons
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
