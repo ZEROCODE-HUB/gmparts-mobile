@@ -21,7 +21,6 @@ class FinalizarfallaWidget extends StatefulWidget {
   final int? indexx;
   final DocumentReference? fallaref;
   final String? status;
-  final int? indexx;
 
   @override
   State<FinalizarfallaWidget> createState() => _FinalizarfallaWidgetState();
