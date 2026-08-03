@@ -56,12 +56,8 @@ class _CDashBoard2FinalizadoWidgetState
     return StreamBuilder<List<DiagnosticosRecord>>(
       stream: queryDiagnosticosRecord(
         parent: widget.recepcion?.reference,
-        queryBuilder: (diagnosticosRecord) => diagnosticosRecord
-            .where(
-              'Finalizado',
-              isEqualTo: true,
-            )
-            .orderBy('fecha'),
+        queryBuilder: (diagnosticosRecord) =>
+            diagnosticosRecord.orderBy('fecha'),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.

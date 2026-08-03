@@ -330,6 +330,126 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                         ),
                       ),
                     ),
+                    if (containerDiagnosticosRecord.repuestos.isNotEmpty)
+                      Align(
+                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Repuestos',
+                                style: _theme
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: _theme
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: _theme
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: _theme
+                                          .secondaryText,
+                                      fontSize: 12.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: _theme
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: _theme
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                              ...containerDiagnosticosRecord.repuestos.map(
+                                (rep) => Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 6.0, 0.0, 0.0),
+                                  child: Text(
+                                    '${rep.nombre}  ·  Cant: ${rep.cantidad}  ·  S/ ${rep.precio.toStringAsFixed(2)}',
+                                    style: _theme.bodyMedium.override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: _theme
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: _theme
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    if (containerDiagnosticosRecord.manoDeObra > 0)
+                      Align(
+                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Mano de obra',
+                                style: _theme
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: _theme
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: _theme
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: _theme
+                                          .secondaryText,
+                                      fontSize: 12.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: _theme
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: _theme
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 6.0, 0.0, 0.0),
+                                child: Text(
+                                  '${containerDiagnosticosRecord.nombreFalla}  ·  S/ ${containerDiagnosticosRecord.manoDeObra.toStringAsFixed(2)}',
+                                  style: _theme.bodyMedium.override(
+                                    font: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: _theme
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                    fontStyle: _theme
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     Align(
                       alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Column(

@@ -76,13 +76,15 @@ class _BNuevarecepcionrapidaFWidgetState
         });
         safeSetState(() {
           _model.nombrePersonaValueController?.value =
-              _model.recepcionDATOS!.nombreCliente;
-          _model.nombrePersonaValue = _model.recepcionDATOS!.nombreCliente;
+              _model.recepcionDATOS!.clienteRef?.id;
+          _model.nombrePersonaValue =
+              _model.recepcionDATOS!.clienteRef?.id;
         });
         safeSetState(() {
           _model.numeroPlacaValueController?.value =
-              _model.recepcionDATOS!.placa;
-          _model.numeroPlacaValue = _model.recepcionDATOS!.placa;
+              _model.recepcionDATOS!.vehiculoRef?.id;
+          _model.numeroPlacaValue =
+              _model.recepcionDATOS!.vehiculoRef?.id;
         });
         safeSetState(() {
           _model.kmIngresoTextController?.text =
@@ -99,10 +101,36 @@ class _BNuevarecepcionrapidaFWidgetState
         });
         safeSetState(() {
           _model.telefonoJuridicoTextController?.text =
-              _model.recepcionDATOS!.telefono;
+              _model.recepcionDATOS!.telefono
+                  .replaceFirst(RegExp('^\\+\\d{1,3}'), '');
+          final match =
+              RegExp('^(\\+\\d{1,3})').firstMatch(_model.recepcionDATOS!.telefono);
+          if (match != null) {
+            _model.codigoPais2ValueController?.value = match.group(1);
+            _model.codigoPais2Value = match.group(1);
+          }
         });
         safeSetState(() {
           _model.correoJuriidcoTextController?.text =
+              _model.recepcionDATOS!.correoElectronico;
+        });
+        safeSetState(() {
+          _model.dniNaturalTextController?.text =
+              _model.recepcionDATOS!.dni;
+        });
+        safeSetState(() {
+          _model.telefonoNaturalTextController?.text =
+              _model.recepcionDATOS!.telefono
+                  .replaceFirst(RegExp('^\\+\\d{1,3}'), '');
+          final match =
+              RegExp('^(\\+\\d{1,3})').firstMatch(_model.recepcionDATOS!.telefono);
+          if (match != null) {
+            _model.codigoPaisValueController?.value = match.group(1);
+            _model.codigoPaisValue = match.group(1);
+          }
+        });
+        safeSetState(() {
+          _model.correonaturalTextController?.text =
               _model.recepcionDATOS!.correoElectronico;
         });
         safeSetState(() {

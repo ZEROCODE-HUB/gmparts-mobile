@@ -36,6 +36,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateKey = void 0;
 const functions = __importStar(require("firebase-functions/v1"));
 const admin = __importStar(require("firebase-admin"));
+function toIso(value) {
+    if (value == null)
+        return undefined;
+    if (typeof value === 'string')
+        return value;
+    const v = value;
+    if (typeof v.toDate === 'function')
+        return v.toDate().toISOString();
+    return undefined;
+}
 exports.validateKey = functions.https.onCall(async (data) => {
     const { key, purpose } = data;
     if (!key || !purpose) {
@@ -73,21 +83,21 @@ exports.validateKey = functions.https.onCall(async (data) => {
             imagenesFinalizado: diagData.imagenes_finalizado ?? diagData.imagenesFinalizado ?? [],
             fotosfinalizar: diagData.Fotosfinalizar ?? diagData.fotosfinalizar ?? [],
             precioservicio: diagData.precioservicio ?? 0,
-            nombreServicio: diagData.nombre_servicio ?? diagData.nombreServicio ?? '',
+            nombreServicio: diagData.nombre_servicio ?? diagData.nombreServicio ?? diagData.Solucion ?? diagData.solucion ?? '',
             aprobacionCliente: diagData.aprobacionCliente ?? diagData.aprobacion_cliente ?? false,
         };
     });
     const recepcionData = {
         id: doc.id,
         numeroorden: docData.numeroorden,
-        nombreCliente: docData.nombreCliente || '',
+        nombreCliente: docData.nombreCliente ?? docData.nombre_cliente ?? '',
         telefono: docData.telefono || '',
-        correoElectronico: docData.correoElectronico || '',
+        correoElectronico: docData.correoElectronico ?? docData.Correo_electronico ?? '',
         placa: docData.placa || '',
         marca: docData.marca || '',
         modelo: docData.modelo || '',
-        anio: docData.anio || undefined,
-        nivelCombustible: docData.nivelCombustible || undefined,
+        anio: docData.anio ?? docData.Ano_fabricacion ?? undefined,
+        nivelCombustible: docData.nivelCombustible ?? docData.Nivel_combustible ?? undefined,
         inventario: docData.inventario ?? docData.Inventario ?? undefined,
         observaciones: docData.observaciones ?? docData.Observaciones_adicionales ?? undefined,
         status: docData.status || '',
@@ -95,12 +105,14 @@ exports.validateKey = functions.https.onCall(async (data) => {
         subtotal: docData.subtotal ?? docData.Subtotal ?? 0,
         igv: docData.igv ?? docData.IGV ?? 0,
         total: docData.total ?? docData.Total ?? 0,
-        fechaIngreso: docData.fechaIngreso || undefined,
-        fechaSalida: docData.fechaSalida || undefined,
-        tecnicoServicio: docData.tecnicoServicio || undefined,
-        tipoServicio: docData.tipoServicio || undefined,
-        motivoIngreso: docData.motivoIngreso || undefined,
-        fotos: docData.fotos || undefined,
+        fechaIngreso: toIso(docData.fechaIngreso) ?? toIso(docData.fecha_creacion),
+        fechaSalida: toIso(docData.fechaSalida) ?? toIso(docData.fecha_salida),
+        tecnicoServicio: docData.tecnicoServicio ?? docData.tecnico_servicio ?? undefined,
+        tipoServicio: docData.tipoServicio ?? docData.tipo_servicio ?? undefined,
+        motivoIngreso: docData.motivoIngreso ?? docData.motivo_ingreso ?? undefined,
+        fotos: docData.fotos ?? undefined,
+        fotosFinalizacion: docData.fotosFinalizacion ?? docData.fotos_finalizacion ?? undefined,
+        aprobacionCliente: docData.aprobacionCliente ?? docData.aprobacion_cliente ?? false,
         diagnosticos,
     };
     return { valid: true, data: recepcionData };

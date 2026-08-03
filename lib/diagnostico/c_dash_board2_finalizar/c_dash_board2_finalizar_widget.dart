@@ -60,12 +60,8 @@ class _CDashBoard2FinalizarWidgetState
     return StreamBuilder<List<DiagnosticosRecord>>(
       stream: queryDiagnosticosRecord(
         parent: widget.recepcion?.reference,
-        queryBuilder: (diagnosticosRecord) => diagnosticosRecord
-            .where(
-              'Aprobacion_cliente',
-              isEqualTo: true,
-            )
-            .orderBy('fecha'),
+        queryBuilder: (diagnosticosRecord) =>
+            diagnosticosRecord.orderBy('fecha'),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -373,6 +369,35 @@ class _CDashBoard2FinalizarWidgetState
                                             .map((e) => e)
                                             .toList();
 
+                                    if (fallas.isEmpty) {
+                                      return Container(
+                                        width: double.infinity,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 30.0, 20.0, 30.0),
+                                        decoration: BoxDecoration(
+                                          color: _theme.secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Icon(
+                                              Icons.checklist_rtl,
+                                              color: _theme.primary,
+                                              size: 36.0,
+                                            ),
+                                            SizedBox(height: 10.0),
+                                            Text(
+                                              'No hay fallas registradas en esta recepción.',
+                                              textAlign: TextAlign.center,
+                                              style: _theme.bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+
                                     return Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: List.generate(fallas.length,
@@ -435,6 +460,8 @@ class _CDashBoard2FinalizarWidgetState
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      if (_model.isDataUploadingFotosFin)
+                                        return;
                                       final selectedMedia =
                                           await selectMediaWithSourceBottomSheet(
                                         context: context,
@@ -509,41 +536,83 @@ class _CDashBoard2FinalizarWidgetState
                                           width: 2.0,
                                         ),
                                       ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Agregar foto de finalización',
-                                              style: _theme.bodyMedium.override(
-                                                font: GoogleFonts.montserrat(
-                                                  fontWeight: FontWeight.normal,
-                                                  fontStyle: _theme
-                                                      .bodyMedium.fontStyle,
+                                      child: _model.isDataUploadingFotosFin
+                                          ? Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SizedBox(
+                                                  width: 20.0,
+                                                  height: 20.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    strokeWidth: 2.0,
+                                                    color: _theme.primary,
+                                                  ),
                                                 ),
-                                                color: _theme.primary,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
+                                                SizedBox(width: 10.0),
+                                                Text(
+                                                  'Subiendo foto...',
+                                                  style: _theme.bodyMedium
+                                                      .override(
+                                                    font: GoogleFonts.montserrat(
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      fontStyle: _theme
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                    ),
+                                                    color: _theme.primary,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          : Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(12.0, 0.0,
+                                                              0.0, 0.0),
+                                                  child: Text(
+                                                    'Agregar foto de finalización',
+                                                    style: _theme.bodyMedium
+                                                        .override(
+                                                      font: GoogleFonts.montserrat(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        fontStyle: _theme
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                      ),
+                                                      color: _theme.primary,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                              0.0, 0.0, 12.0,
+                                                              0.0),
+                                                  child: Icon(
+                                                    Icons.add_a_photo_outlined,
+                                                    color: _theme.primary,
+                                                    size: 24.0,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 12.0, 0.0),
-                                            child: Icon(
-                                              Icons.add_a_photo_outlined,
-                                              color: _theme.primary,
-                                              size: 24.0,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
                                     ),
                                   ),
                                 ),
