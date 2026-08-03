@@ -36,6 +36,8 @@ class _CotizacionFuncionandoWidgetState
 
   late CotizacionFuncionandoModel _model;
 
+  bool _quotePressed = false;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -391,8 +393,13 @@ class _CotizacionFuncionandoWidgetState
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 20.0, 20.0, 50.0),
-                              child: FFButtonWidget(
+                              child: AnimatedScale(
+                                scale: _quotePressed ? 0.96 : 1.0,
+                                duration: Duration(milliseconds: 120),
+                                curve: Curves.easeOut,
+                                child: FFButtonWidget(
                                 onPressed: () async {
+                                  safeSetState(() => _quotePressed = true);
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -449,7 +456,9 @@ class _CotizacionFuncionandoWidgetState
                                         ),
                                       );
                                     },
-                                  ).then((value) => safeSetState(() {}));
+                                  ).then((value) => safeSetState(() {
+                                        _quotePressed = false;
+                                      }));
                                 },
                                 text: 'Crear Cotización',
                                 options: FFButtonOptions(
@@ -491,6 +500,7 @@ class _CotizacionFuncionandoWidgetState
                               ),
                             ),
                           ),
+                        ),
                         ],
                       ),
                     ],

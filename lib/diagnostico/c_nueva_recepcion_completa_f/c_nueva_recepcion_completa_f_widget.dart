@@ -4570,18 +4570,95 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                   .fontStyle,
                                                         ),
                                               ),
-                                              Container(
-                                                width: 32.0,
-                                                height: 32.0,
-                                                clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(0.0, 0.0,
+                                                                  0.0, 5.0),
+                                                      child: AuthUserStreamWidget(
+                                                        builder: (context) =>
+                                                            Container(
+                                                          width: 32.0,
+                                                          height: 32.0,
+                                                          clipBehavior:
+                                                              Clip.antiAlias,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child:
+                                                              UserAvatarWidget(
+                                                                  size: 32.0),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              1.0, 0.0),
+                                                      child: AuthUserStreamWidget(
+                                                        builder: (context) =>
+                                                            Text(
+                                                          valueOrDefault<String>(
+                                                            currentUserDisplayName,
+                                                            '-',
+                                                          ),
+                                                          textAlign:
+                                                              TextAlign.end,
+                                                          style: _theme
+                                                              .labelSmall
+                                                              .override(
+                                                            font: GoogleFonts.montserrat(
+                                                                fontWeight: _theme
+                                                                    .labelSmall
+                                                                    .fontWeight,
+                                                                fontStyle: _theme
+                                                                    .labelSmall
+                                                                    .fontStyle),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight: _theme
+                                                                .labelSmall
+                                                                .fontWeight,
+                                                            fontStyle: _theme
+                                                                .labelSmall
+                                                                .fontStyle,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              1.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0.0,
+                                                                    2.0, 0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          'Ver perfil',
+                                                          style: _theme
+                                                              .labelSmall
+                                                              .override(
+                                                            font: GoogleFonts.montserrat(
+                                                                fontSize: 10.0),
+                                                            fontSize: 10.0,
+                                                            color:
+                                                                _theme.primary,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                child: Image.network(
-                                                  'https://picsum.photos/seed/226/600',
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
                                             ],
                                           ),
                                         ),
