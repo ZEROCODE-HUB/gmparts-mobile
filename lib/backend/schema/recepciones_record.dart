@@ -165,6 +165,11 @@ class RecepcionesRecord extends FirestoreRecord {
   List<String> get fotosFinalizacion => _fotosFinalizacion ?? const [];
   bool hasFotosFinalizacion() => _fotosFinalizacion != null;
 
+  // "comentarios_finalizacion" field.
+  String? _comentariosFinalizacion;
+  String get comentariosFinalizacion => _comentariosFinalizacion ?? '';
+  bool hasComentariosFinalizacion() => _comentariosFinalizacion != null;
+
   // "Controlcalidad1" field.
   String? _controlcalidad1;
   String get controlcalidad1 => _controlcalidad1 ?? '';
@@ -317,6 +322,8 @@ class RecepcionesRecord extends FirestoreRecord {
     _aprobacionCotizacion = snapshotData['aprobacion_cotizacion'] as bool?;
     _inventario = getDataList(snapshotData['Inventario']);
     _fotosFinalizacion = getDataList(snapshotData['fotos_finalizacion']);
+    _comentariosFinalizacion =
+        snapshotData['comentarios_finalizacion'] as String?;
     _controlcalidad1 = snapshotData['Controlcalidad1'] as String?;
     _controlcalidad2 = snapshotData['Controlcalidad2'] as String?;
     _controlcalidad3 = snapshotData['Controlcalidad3'] as String?;
@@ -401,6 +408,7 @@ Map<String, dynamic> createRecepcionesRecordData({
   String? observacionesAdicionales,
   String? inventario,
   List<String>? fotosFinalizacion,
+  String? comentariosFinalizacion,
   String? status,
   bool? aprobacionCliente,
   DateTime? fechaCreacion,
@@ -461,6 +469,7 @@ Map<String, dynamic> createRecepcionesRecordData({
       'Inventario': inventario,
       'inventario': inventario,
       'fotos_finalizacion': fotosFinalizacion,
+      'comentarios_finalizacion': comentariosFinalizacion,
       'status': status,
       'aprobacion_cliente': aprobacionCliente,
       'fecha_creacion': fechaCreacion,
@@ -534,6 +543,7 @@ class RecepcionesRecordDocumentEquality implements Equality<RecepcionesRecord> {
         e1?.aprobacionCotizacion == e2?.aprobacionCotizacion &&
         listEquality.equals(e1?.inventario, e2?.inventario) &&
         listEquality.equals(e1?.fotosFinalizacion, e2?.fotosFinalizacion) &&
+        e1?.comentariosFinalizacion == e2?.comentariosFinalizacion &&
         e1?.controlcalidad1 == e2?.controlcalidad1 &&
         e1?.controlcalidad2 == e2?.controlcalidad2 &&
         e1?.controlcalidad3 == e2?.controlcalidad3 &&
@@ -592,6 +602,7 @@ class RecepcionesRecordDocumentEquality implements Equality<RecepcionesRecord> {
         e?.aprobacionCotizacion,
         e?.inventario,
         e?.fotosFinalizacion,
+        e?.comentariosFinalizacion,
         e?.controlcalidad1,
         e?.controlcalidad2,
         e?.controlcalidad3,

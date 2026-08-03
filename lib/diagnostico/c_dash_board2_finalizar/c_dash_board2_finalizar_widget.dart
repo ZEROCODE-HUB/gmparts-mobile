@@ -670,6 +670,88 @@ class _CDashBoard2FinalizarWidgetState
                               ],
                             ),
                           ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Comentarios de finalización',
+                                  style: _theme.bodyMedium.override(
+                                    font: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: _theme.bodyMedium.fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: TextFormField(
+                                    controller:
+                                        _model.comentariosFinController,
+                                    focusNode: _model.comentariosFinFocusNode,
+                                    autofocus: false,
+                                    obscureText: false,
+                                    maxLines: 4,
+                                    decoration: InputDecoration(
+                                      labelText: 'Escribe aquí',
+                                      labelStyle: _theme.labelMedium.override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: _theme.labelMedium.fontWeight,
+                                          fontStyle: _theme.labelMedium.fontStyle,
+                                        ),
+                                        color: _theme.accent1,
+                                        letterSpacing: 0.0,
+                                        fontWeight: _theme.labelMedium.fontWeight,
+                                      ),
+                                      hintStyle: _theme.labelMedium.override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: _theme.labelMedium.fontWeight,
+                                          fontStyle: _theme.labelMedium.fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: _theme.labelMedium.fontWeight,
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: _theme.primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: _theme.primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                    ),
+                                    style: _theme.bodyMedium.override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: _theme.bodyMedium.fontWeight,
+                                        fontStyle: _theme.bodyMedium.fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: _theme.bodyMedium.fontWeight,
+                                    ),
+                                    validator:
+                                        _model.comentariosFinControllerValidator
+                                            ?.asValidator(context),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                           if (cDashBoard2FinalizarDiagnosticosRecordList
                                   .lastOrNull?.finalizado ??
                               true)
@@ -705,6 +787,9 @@ class _CDashBoard2FinalizarWidgetState
                                       ),
                                       fotosFinalizacion:
                                           _model.fotosFinalizacion,
+                                      comentariosFinalizacion:
+                                          _model.comentariosFinController
+                                              ?.text,
                                     ));
 
                                     context.pushNamed(

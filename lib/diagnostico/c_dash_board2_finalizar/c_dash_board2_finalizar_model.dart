@@ -37,6 +37,11 @@ class CDashBoard2FinalizarModel
   String uploadedFileUrlFotosFin = '';
   bool isDataUploadingFotosFin = false;
 
+  // Comentarios de finalización a nivel de recepción.
+  FocusNode? comentariosFinFocusNode;
+  TextEditingController? comentariosFinController;
+  String? Function(BuildContext, String?)? comentariosFinControllerValidator;
+
   ///  State fields for stateful widgets in this page.
 
   // Models for Finalizarfalla dynamic component.
@@ -50,6 +55,8 @@ class CDashBoard2FinalizarModel
 
   @override
   void dispose() {
+    comentariosFinFocusNode?.dispose();
+    comentariosFinController?.dispose();
     finalizarfallaModels.dispose();
   }
 }
