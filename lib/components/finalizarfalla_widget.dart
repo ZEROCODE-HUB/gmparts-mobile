@@ -13,11 +13,14 @@ export 'finalizarfalla_model.dart';
 class FinalizarfallaWidget extends StatefulWidget {
   const FinalizarfallaWidget({
     super.key,
-    required this.fallaref,
     required this.indexx,
+    required this.fallaref,
+    this.status,
   });
 
+  final int? indexx;
   final DocumentReference? fallaref;
+  final String? status;
   final int? indexx;
 
   @override
@@ -214,6 +217,111 @@ class _FinalizarfallaWidgetState extends State<FinalizarfallaWidget> {
                                     ),
                               ),
                             ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 20.0, 0.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (containerDiagnosticosRecord.fotos.isNotEmpty)
+                              ...[
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: Text(
+                                    'Fotos de la falla',
+                                    style: _theme.bodyMedium.override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: _theme.bodyMedium.fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: containerDiagnosticosRecord.fotos
+                                        .map(
+                                          (foto) => Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 8.0, 8.0, 0.0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                foto,
+                                                width: 90.0,
+                                                height: 90.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                        .toList(),
+                                  ),
+                                ),
+                              ],
+                            if (containerDiagnosticosRecord
+                                .repuestos.isNotEmpty)
+                              ...[
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: Text(
+                                    'Repuestos',
+                                    style: _theme.bodyMedium.override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: _theme.bodyMedium.fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                ...containerDiagnosticosRecord.repuestos
+                                    .map(
+                                      (rep) => Padding(
+                                        padding: EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 6.0, 0.0, 0.0),
+                                        child: Text(
+                                          widget.status == 'Finalizado'
+                                              ? '${rep.nombre}  ·  Cant: ${rep.cantidad}  ·  S/ ${rep.precio.toStringAsFixed(2)}'
+                                              : '${rep.nombre}  ·  Cant: ${rep.cantidad}',
+                                          style: _theme.bodyMedium,
+                                        ),
+                                      ),
+                                    ),
+                              ],
+                            if (containerDiagnosticosRecord.manoDeObra > 0)
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Text(
+                                  widget.status == 'Finalizado'
+                                      ? '${containerDiagnosticosRecord.nombreFalla}  ·  S/ ${containerDiagnosticosRecord.manoDeObra.toStringAsFixed(2)}'
+                                      : containerDiagnosticosRecord.nombreFalla,
+                                  style: _theme.bodyMedium.override(
+                                    font: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: _theme.bodyMedium.fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                       ),

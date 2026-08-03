@@ -183,7 +183,34 @@ class _DControldecalidadenviarclienteWidgetState
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                         final url = await generateLink(widget.id!, 'report');
+                         final reportId = widget.id;
+                         if (reportId == null) {
+                           if (context.mounted) {
+                             ScaffoldMessenger.of(context).showSnackBar(
+                               const SnackBar(
+                                 content: Text(
+                                     'No se pudo obtener el número de orden. Vuelve a intentarlo.'),
+                                 duration: Duration(seconds: 3),
+                               ),
+                             );
+                           }
+                           return;
+                         }
+                         String url;
+                         try {
+                           url = await generateLink(reportId, 'report');
+                         } catch (e) {
+                           if (context.mounted) {
+                             ScaffoldMessenger.of(context).showSnackBar(
+                               SnackBar(
+                                 content: Text(
+                                     'No se pudo generar el enlace. Revisa tu conexión e inténtalo de nuevo.'),
+                                 duration: Duration(seconds: 3),
+                               ),
+                             );
+                           }
+                           return;
+                         }
                          if (!context.mounted) return;
                          await showModalBottomSheet(
                           isScrollControlled: true,

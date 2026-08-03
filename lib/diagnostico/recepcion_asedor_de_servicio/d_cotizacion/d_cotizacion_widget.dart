@@ -194,8 +194,34 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                         0.0, 0.0, 0.0, 50.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final url =
-                            await generateLink(widget.id!, 'quote');
+                        final quoteId = widget.id;
+                        if (quoteId == null) {
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                    'No se pudo obtener el número de orden. Vuelve a intentarlo.'),
+                                duration: Duration(seconds: 3),
+                              ),
+                            );
+                          }
+                          return;
+                        }
+                        String url;
+                        try {
+                          url = await generateLink(quoteId, 'quote');
+                        } catch (e) {
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    'No se pudo generar el enlace. Revisa tu conexión e inténtalo de nuevo.'),
+                                duration: Duration(seconds: 3),
+                              ),
+                            );
+                          }
+                          return;
+                        }
                         if (!context.mounted) return;
                         await showModalBottomSheet(
                           isScrollControlled: true,

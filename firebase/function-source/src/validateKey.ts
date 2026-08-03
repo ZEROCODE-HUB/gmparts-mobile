@@ -14,6 +14,10 @@ interface Diagnostico {
   fotos: string[]
   repuestos: Repuesto[]
   manoDeObra: number
+  imagenesFinalizado?: string[]
+  fotosfinalizar?: string[]
+  precioservicio?: number
+  nombreServicio?: string
   aprobacionCliente?: boolean
 }
 
@@ -90,6 +94,10 @@ export const validateKey = functions.https.onCall(async (data) => {
         total: r.total || 0,
       })),
       manoDeObra: diagData.manoDeObra ?? diagData.Mano_de_obra ?? 0,
+      imagenesFinalizado: diagData.imagenes_finalizado ?? diagData.imagenesFinalizado ?? [],
+      fotosfinalizar: diagData.Fotosfinalizar ?? diagData.fotosfinalizar ?? [],
+      precioservicio: diagData.precioservicio ?? 0,
+      nombreServicio: diagData.nombre_servicio ?? diagData.nombreServicio ?? '',
       aprobacionCliente: diagData.aprobacionCliente ?? diagData.aprobacion_cliente ?? false,
     }
   })

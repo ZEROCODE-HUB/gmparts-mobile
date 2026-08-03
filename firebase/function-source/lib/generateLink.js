@@ -36,6 +36,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateLink = void 0;
 const functions = __importStar(require("firebase-functions/v1"));
 const admin = __importStar(require("firebase-admin"));
+const crypto_1 = require("crypto");
 const WEB_CLIENT_URL = process.env.WEB_CLIENT_URL || 'https://gmparts-aprobaciones.vercel.app';
 exports.generateLink = functions.https.onCall(async (data) => {
     const { receptionId, purpose } = data;
@@ -47,15 +48,22 @@ exports.generateLink = functions.https.onCall(async (data) => {
     }
     const db = admin.firestore();
     const recepcionesRef = db.collection('recepciones');
-    const snapshot = await recepcionesRef
-        .where('numeroorden', '==', Number(receptionId))
-        .limit(1)
-        .get();
-    if (snapshot.empty) {
+    let doc;
+    for (let attempt = 0; attempt < 5; attempt++) {
+        const snapshot = await recepcionesRef
+            .where('numeroorden', '==', Number(receptionId))
+            .limit(1)
+            .get();
+        if (!snapshot.empty) {
+            doc = snapshot.docs[0];
+            break;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+    if (!doc) {
         throw new functions.https.HttpsError('not-found', `No se encontró recepción con numeroorden ${receptionId}`);
     }
-    const doc = snapshot.docs[0];
-    const key = crypto.randomUUID();
+    const key = (0, crypto_1.randomUUID)();
     const fieldName = `${purpose}_access_key`;
     await doc.ref.update({
         [fieldName]: key,

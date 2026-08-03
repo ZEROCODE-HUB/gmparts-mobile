@@ -273,8 +273,38 @@ class _BDashBoardDiagnosticoWidgetState
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                       final url = await generateLink(
-                                           widget.datos!.numeroorden, 'quote');
+                                       final numeroOrden =
+                                           widget.datos?.numeroorden;
+                                       if (numeroOrden == null) {
+                                         if (context.mounted) {
+                                           ScaffoldMessenger.of(context)
+                                               .showSnackBar(
+                                             const SnackBar(
+                                               content: Text(
+                                                   'No se pudo obtener el número de orden. Vuelve a intentarlo.'),
+                                               duration: Duration(seconds: 3),
+                                             ),
+                                           );
+                                         }
+                                         return;
+                                       }
+                                       String url;
+                                       try {
+                                         url = await generateLink(
+                                             numeroOrden, 'quote');
+                                       } catch (e) {
+                                         if (context.mounted) {
+                                           ScaffoldMessenger.of(context)
+                                               .showSnackBar(
+                                             SnackBar(
+                                               content: Text(
+                                                   'No se pudo generar el enlace. Revisa tu conexión e inténtalo de nuevo.'),
+                                               duration: Duration(seconds: 3),
+                                             ),
+                                           );
+                                         }
+                                         return;
+                                       }
                                        if (!context.mounted) return;
                                        await showModalBottomSheet(
                                          isScrollControlled: true,
@@ -488,8 +518,10 @@ class _BDashBoardDiagnosticoWidgetState
                                                     .fromSTEB(
                                                         0.0, 5.0, 10.0, 0.0),
                                                 child: Text(
-                                                  widget.datos!.fechaCreacion!
-                                                      .toString(),
+                                                  dateTimeFormat(
+                                                      'jm',
+                                                      widget.datos!
+                                                          .fechaCreacion),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall

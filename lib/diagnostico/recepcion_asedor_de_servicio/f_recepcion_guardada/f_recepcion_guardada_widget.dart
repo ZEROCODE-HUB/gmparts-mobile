@@ -173,7 +173,34 @@ class _FRecepcionGuardadaWidgetState extends State<FRecepcionGuardadaWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                       final url = await generateLink(widget.id!, 'reception');
+                       final receptionId = widget.id;
+                       if (receptionId == null) {
+                         if (context.mounted) {
+                           ScaffoldMessenger.of(context).showSnackBar(
+                             const SnackBar(
+                               content: Text(
+                                   'No se pudo obtener el número de recepción. Vuelve a intentarlo.'),
+                               duration: Duration(seconds: 3),
+                             ),
+                           );
+                         }
+                         return;
+                       }
+                       String url;
+                       try {
+                         url = await generateLink(receptionId, 'reception');
+                       } catch (e) {
+                         if (context.mounted) {
+                           ScaffoldMessenger.of(context).showSnackBar(
+                             SnackBar(
+                               content: Text(
+                                   'No se pudo generar el enlace. Revisa tu conexión e inténtalo de nuevo.'),
+                               duration: Duration(seconds: 3),
+                             ),
+                           );
+                         }
+                         return;
+                       }
                        if (!context.mounted) return;
                        await showModalBottomSheet(
                          isScrollControlled: true,

@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendEmail = exports.approveReport = exports.approveReception = exports.approveQuote = exports.validateKey = exports.generateLink = void 0;
+exports.sendEmail = exports.approveReception = exports.approveReport = exports.approveQuote = exports.validateKey = exports.generateLink = void 0;
 const admin = __importStar(require("firebase-admin"));
 admin.initializeApp();
 var generateLink_1 = require("./generateLink");

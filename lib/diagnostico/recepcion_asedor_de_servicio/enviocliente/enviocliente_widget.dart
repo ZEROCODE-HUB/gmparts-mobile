@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'enviocliente_model.dart';
 export 'enviocliente_model.dart';
 
@@ -48,6 +47,22 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
     _model.maybeDispose();
 
     super.dispose();
+  }
+
+  Future<void> _safeLaunch(String url) async {
+    try {
+      await launchURL(url);
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('No se pudo abrir la aplicación. Inténtalo de nuevo.'),
+            duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -142,7 +157,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await launchURL(
+                      await _safeLaunch(
                           'https://api.whatsapp.com/send?text=${Uri.encodeComponent(widget.link)}');
                     },
                     child: Container(
@@ -163,7 +178,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                               size: 24.0,
                             ),
                             onPressed: () async {
-                              await launchURL(
+                              await _safeLaunch(
                                   'https://api.whatsapp.com/send?text=${Uri.encodeComponent(widget.link)}');
                             },
                           ),
@@ -176,8 +191,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                await launchURL(
-                                    widget.link);
+                                await _safeLaunch(widget.link);
                               },
                               child: Text(
                                 'WhatsApp',
@@ -213,18 +227,8 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await launchUrl(Uri(
-                          scheme: 'mailto',
-                          path: ' ',
-                          query: {
-                            'subject': 'GM PARTS',
-                            'body':
-                                widget.link,
-                          }
-                              .entries
-                              .map((MapEntry<String, String> e) =>
-                                  '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                              .join('&')));
+                      await _safeLaunch(
+                          'mailto:?subject=${Uri.encodeComponent('GM PARTS')}&body=${Uri.encodeComponent(widget.link)}');
                     },
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -242,18 +246,8 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                             size: 24.0,
                           ),
                           onPressed: () async {
-                            await launchUrl(Uri(
-                                scheme: 'mailto',
-                                path: '',
-                                query: {
-                                  'subject': 'Detalles de tu recepción',
-                                  'body':
-                                      widget.link,
-                                }
-                                    .entries
-                                    .map((MapEntry<String, String> e) =>
-                                        '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                    .join('&')));
+                            await _safeLaunch(
+                                'mailto:?subject=${Uri.encodeComponent('Detalles de tu recepción')}&body=${Uri.encodeComponent(widget.link)}');
                           },
                         ),
                         Padding(
@@ -358,8 +352,7 @@ class _EnvioclienteWidgetState extends State<EnvioclienteWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              await launchURL(
-                                  'https://api.whatsapp.com/send?text=${Uri.encodeComponent(widget.link)}');
+                              await _safeLaunch(widget.link);
                             },
                             child: Text(
                               widget.link,

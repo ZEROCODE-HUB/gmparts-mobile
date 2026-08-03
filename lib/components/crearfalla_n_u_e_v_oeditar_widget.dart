@@ -1446,8 +1446,28 @@ class _CrearfallaNUEVOeditarWidgetState
                                                                 fotossItem,
                                                                 width: 100.0,
                                                                 height: 100.0,
-                                                                fit: BoxFit
-                                                                    .cover,
+                                                                fit: BoxFit.cover,
+                                                                loadingBuilder: (context,
+                                                                        child,
+                                                                        loadingProgress) =>
+                                                                    loadingProgress ==
+                                                                            null
+                                                                        ? child
+                                                                        : Container(
+                                                                            width:
+                                                                                100.0,
+                                                                            height:
+                                                                                100.0,
+                                                                            alignment:
+                                                                                Alignment
+                                                                                    .center,
+                                                                            child:
+                                                                                CircularProgressIndicator(
+                                                                              color:
+                                                                                  _theme
+                                                                                      .primary,
+                                                                            ),
+                                                                          ),
                                                               ),
                                                             ),
                                                             Align(

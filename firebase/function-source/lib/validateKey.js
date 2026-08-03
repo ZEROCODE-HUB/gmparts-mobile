@@ -60,17 +60,21 @@ exports.validateKey = functions.https.onCall(async (data) => {
     const diagnosticos = diagnosticosSnapshot.docs.map((d) => {
         const diagData = d.data();
         return {
-            nombreFalla: diagData.nombreFalla || diagData.Nombre_falla || '',
-            solucion: diagData.solucion || diagData.Solucion || '',
-            fotos: diagData.fotos || diagData.Fotos || [],
-            repuestos: ((diagData.repuestos || diagData.Repuestos) || []).map((r) => ({
+            nombreFalla: diagData.nombreFalla ?? diagData.Nombre_falla ?? '',
+            solucion: diagData.solucion ?? diagData.Solucion ?? '',
+            fotos: diagData.fotos ?? diagData.Fotos ?? [],
+            repuestos: ((diagData.repuestos ?? diagData.Repuestos) || []).map((r) => ({
                 nombre: r.nombre || '',
                 cantidad: r.cantidad || 0,
                 precio: r.precio || 0,
                 total: r.total || 0,
             })),
-            manoDeObra: diagData.manoDeObra || diagData.Mano_de_obra || 0,
-            aprobacionCliente: diagData.aprobacionCliente || diagData.aprobacion_cliente || false,
+            manoDeObra: diagData.manoDeObra ?? diagData.Mano_de_obra ?? 0,
+            imagenesFinalizado: diagData.imagenes_finalizado ?? diagData.imagenesFinalizado ?? [],
+            fotosfinalizar: diagData.Fotosfinalizar ?? diagData.fotosfinalizar ?? [],
+            precioservicio: diagData.precioservicio ?? 0,
+            nombreServicio: diagData.nombre_servicio ?? diagData.nombreServicio ?? '',
+            aprobacionCliente: diagData.aprobacionCliente ?? diagData.aprobacion_cliente ?? false,
         };
     });
     const recepcionData = {
@@ -84,13 +88,13 @@ exports.validateKey = functions.https.onCall(async (data) => {
         modelo: docData.modelo || '',
         anio: docData.anio || undefined,
         nivelCombustible: docData.nivelCombustible || undefined,
-        inventario: docData.inventario || docData.Inventario || undefined,
-        observaciones: docData.observaciones || docData.Observaciones_adicionales || undefined,
+        inventario: docData.inventario ?? docData.Inventario ?? undefined,
+        observaciones: docData.observaciones ?? docData.Observaciones_adicionales ?? undefined,
         status: docData.status || '',
-        aprobacionCotizacion: docData.aprobacionCotizacion || docData.aprobacion_cotizacion || false,
-        subtotal: docData.subtotal || docData.Subtotal || 0,
-        igv: docData.igv || docData.IGV || 0,
-        total: docData.total || docData.Total || 0,
+        aprobacionCotizacion: docData.aprobacionCotizacion ?? docData.aprobacion_cotizacion ?? false,
+        subtotal: docData.subtotal ?? docData.Subtotal ?? 0,
+        igv: docData.igv ?? docData.IGV ?? 0,
+        total: docData.total ?? docData.Total ?? 0,
         fechaIngreso: docData.fechaIngreso || undefined,
         fechaSalida: docData.fechaSalida || undefined,
         tecnicoServicio: docData.tecnicoServicio || undefined,

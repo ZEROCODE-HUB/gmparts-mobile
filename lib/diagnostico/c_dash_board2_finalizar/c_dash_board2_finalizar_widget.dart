@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -390,6 +391,7 @@ class _CDashBoard2FinalizarWidgetState
                                             ),
                                             indexx: fallasIndex,
                                             fallaref: fallasItem.reference,
+                                            status: widget.recepcion?.status,
                                           ),
                                         );
                                       }).divide(SizedBox(height: 20.0)),
@@ -404,6 +406,200 @@ class _CDashBoard2FinalizarWidgetState
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 10.0, 20.0, 10.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Fotos de finalización',
+                                  style: _theme.bodyMedium.override(
+                                    font: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: _theme
+                                          .bodyMedium.fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      final selectedMedia =
+                                          await selectMediaWithSourceBottomSheet(
+                                        context: context,
+                                        maxWidth: 1080.00,
+                                        maxHeight: 1080.00,
+                                        allowPhoto: true,
+                                      );
+                                      if (selectedMedia != null &&
+                                          selectedMedia.every((m) =>
+                                              validateFileFormat(
+                                                  m.storagePath, context))) {
+                                        safeSetState(() =>
+                                            _model.isDataUploadingFotosFin =
+                                                true);
+                                        var selectedUploadedFiles =
+                                            <FFUploadedFile>[];
+                                        var downloadUrls = <String>[];
+                                        try {
+                                          selectedUploadedFiles = selectedMedia
+                                              .map((m) => FFUploadedFile(
+                                                    name: m.storagePath
+                                                        .split('/')
+                                                        .last,
+                                                    bytes: m.bytes,
+                                                    height:
+                                                        m.dimensions?.height,
+                                                    width: m.dimensions?.width,
+                                                    blurHash: m.blurHash,
+                                                    originalFilename:
+                                                        m.originalFilename,
+                                                  ))
+                                              .toList();
+                                          downloadUrls = (await Future.wait(
+                                            selectedMedia.map(
+                                              (m) async => await uploadData(
+                                                  m.storagePath, m.bytes),
+                                            ),
+                                          ))
+                                              .where((u) => u != null)
+                                              .map((u) => u!)
+                                              .toList();
+                                        } finally {
+                                          _model.isDataUploadingFotosFin =
+                                              false;
+                                        }
+                                        if (selectedUploadedFiles.length ==
+                                                selectedMedia.length &&
+                                            downloadUrls.length ==
+                                                selectedMedia.length) {
+                                          safeSetState(() {
+                                            _model.uploadedFileUrlFotosFin =
+                                                downloadUrls.first;
+                                            downloadUrls.forEach(
+                                                (url) => _model
+                                                    .addToFotosFinalizacion(url));
+                                          });
+                                        } else {
+                                          safeSetState(() {});
+                                          return;
+                                        }
+                                      }
+                                      safeSetState(() {});
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 45.0,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        border: Border.all(
+                                          color: _theme.primary,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Agregar foto de finalización',
+                                              style: _theme.bodyMedium.override(
+                                                font: GoogleFonts.montserrat(
+                                                  fontWeight: FontWeight.normal,
+                                                  fontStyle: _theme
+                                                      .bodyMedium.fontStyle,
+                                                ),
+                                                color: _theme.primary,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 12.0, 0.0),
+                                            child: Icon(
+                                              Icons.add_a_photo_outlined,
+                                              color: _theme.primary,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                if (_model.fotosFinalizacion.isNotEmpty)
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Wrap(
+                                      spacing: 8.0,
+                                      runSpacing: 8.0,
+                                      children: List.generate(
+                                        _model.fotosFinalizacion.length,
+                                        (fidx) => Stack(
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                _model
+                                                    .fotosFinalizacion[fidx],
+                                                width: 80.0,
+                                                height: 80.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            Positioned(
+                                              top: -6.0,
+                                              right: -6.0,
+                                              child: InkWell(
+                                                onTap: () {
+                                                  _model
+                                                      .removeAtIndexFromFotosFinalizacion(
+                                                          fidx);
+                                                  safeSetState(() {});
+                                                },
+                                                child: Container(
+                                                  decoration:
+                                                      BoxDecoration(
+                                                    color: Colors.black54,
+                                                    shape: BoxShape.circle,
+                                                  ),
+                                                  child: Icon(
+                                                    Icons.close,
+                                                    color: Colors.white,
+                                                    size: 16.0,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
                           if (cDashBoard2FinalizarDiagnosticosRecordList
                                   .lastOrNull?.finalizado ??
                               true)
@@ -437,6 +633,8 @@ class _CDashBoard2FinalizarWidgetState
                                                 .toList()),
                                         0.0,
                                       ),
+                                      fotosFinalizacion:
+                                          _model.fotosFinalizacion,
                                     ));
 
                                     context.pushNamed(

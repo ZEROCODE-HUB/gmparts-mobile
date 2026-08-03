@@ -412,8 +412,10 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                                     .fromSTEB(
                                                         0.0, 5.0, 10.0, 0.0),
                                                 child: Text(
-                                                  widget.datos!.fechaCreacion!
-                                                      .toString(),
+                                                  dateTimeFormat(
+                                                      'jm',
+                                                      widget.datos!
+                                                          .fechaCreacion),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
