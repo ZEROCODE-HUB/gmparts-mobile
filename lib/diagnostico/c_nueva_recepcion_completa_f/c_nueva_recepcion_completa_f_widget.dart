@@ -5981,7 +5981,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 ParamType.int,
                                               ),
                                               'documentId': serializeParam(
-                                                recepcionesRecordReference.id,
+                                                _model.id?.reference.id,
                                                 ParamType.String,
                                               ),
                                             }.withoutNulls,
