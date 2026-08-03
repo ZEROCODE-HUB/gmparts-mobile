@@ -144,7 +144,8 @@ export const validateKey = functions.https.onCall(async (data) => {
     fotos: docData.fotos ?? undefined,
     fotosFinalizacion: docData.fotosFinalizacion ?? docData.fotos_finalizacion ?? undefined,
     comentariosFinalizacion:
-      docData.comentariosFinalizacion ?? docData.comentarios_finalizacion ?? '',
+      (docData.comentariosFinalizacion ?? docData.comentarios_finalizacion ?? '')
+        .trim(),
     aprobacionCliente: docData.aprobacionCliente ?? docData.aprobacion_cliente ?? false,
     diagnosticos,
   }
