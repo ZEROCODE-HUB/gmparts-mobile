@@ -2,7 +2,7 @@ import * as functions from 'firebase-functions/v1'
 import * as admin from 'firebase-admin'
 
 export const approveQuote = functions.https.onCall(async (data) => {
-  const { key } = data
+  const { key, documentId } = data
 
   if (!key) {
     throw new functions.https.HttpsError(
@@ -26,6 +26,14 @@ export const approveQuote = functions.https.onCall(async (data) => {
   }
 
   const doc = snapshot.docs[0]
+
+  if (documentId && doc.id !== String(documentId)) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'La clave no corresponde a esta cotización'
+    )
+  }
+
   const docData = doc.data()
 
   if (docData.aprobacionCotizacion === true) {

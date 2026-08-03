@@ -5,12 +5,12 @@ import { randomUUID } from 'crypto'
 const WEB_CLIENT_URL = process.env.WEB_CLIENT_URL || 'https://gmparts-aprobaciones.vercel.app'
 
 export const generateLink = functions.https.onCall(async (data) => {
-  const { receptionId, purpose } = data
+  const { receptionId, documentId, purpose } = data
 
-  if (!receptionId || !purpose) {
+  if ((!receptionId && !documentId) || !purpose) {
     throw new functions.https.HttpsError(
       'invalid-argument',
-      'Se requieren receptionId y purpose'
+      'Se requieren receptionId o documentId, y purpose'
     )
   }
 
@@ -25,16 +25,33 @@ export const generateLink = functions.https.onCall(async (data) => {
   const recepcionesRef = db.collection('recepciones')
 
   let doc: admin.firestore.DocumentSnapshot | undefined
-  for (let attempt = 0; attempt < 5; attempt++) {
-    const snapshot = await recepcionesRef
-      .where('numeroorden', '==', Number(receptionId))
-      .limit(1)
-      .get()
-    if (!snapshot.empty) {
-      doc = snapshot.docs[0]
-      break
+
+  if (documentId) {
+    doc = await recepcionesRef.doc(String(documentId)).get()
+    if (!doc.exists) {
+      throw new functions.https.HttpsError(
+        'not-found',
+        `No se encontró recepción con id ${documentId}`
+      )
     }
-    await new Promise((resolve) => setTimeout(resolve, 300))
+  } else {
+    for (let attempt = 0; attempt < 5; attempt++) {
+      const snapshot = await recepcionesRef
+        .where('numeroorden', '==', Number(receptionId))
+        .limit(2)
+        .get()
+      if (snapshot.size > 1) {
+        throw new functions.https.HttpsError(
+          'invalid-argument',
+          `Existen ${snapshot.size} recepciones con numeroorden ${receptionId}. Envía el documentId para identificar la recepción correcta.`
+        )
+      }
+      if (!snapshot.empty) {
+        doc = snapshot.docs[0]
+        break
+      }
+      await new Promise((resolve) => setTimeout(resolve, 300))
+    }
   }
 
   if (!doc) {

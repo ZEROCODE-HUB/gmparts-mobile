@@ -265,6 +265,10 @@ class _TotalWidgetState extends State<TotalWidget> {
                             widget.id,
                             ParamType.int,
                           ),
+                          'documentId': serializeParam(
+                            widget.refrecepcion?.id,
+                            ParamType.String,
+                          ),
                         }.withoutNulls,
                         extra: <String, dynamic>{
                           '__transition_info__': TransitionInfo(

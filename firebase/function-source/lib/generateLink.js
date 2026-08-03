@@ -39,9 +39,9 @@ const admin = __importStar(require("firebase-admin"));
 const crypto_1 = require("crypto");
 const WEB_CLIENT_URL = process.env.WEB_CLIENT_URL || 'https://gmparts-aprobaciones.vercel.app';
 exports.generateLink = functions.https.onCall(async (data) => {
-    const { receptionId, purpose } = data;
-    if (!receptionId || !purpose) {
-        throw new functions.https.HttpsError('invalid-argument', 'Se requieren receptionId y purpose');
+    const { receptionId, documentId, purpose } = data;
+    if ((!receptionId && !documentId) || !purpose) {
+        throw new functions.https.HttpsError('invalid-argument', 'Se requieren receptionId o documentId, y purpose');
     }
     if (purpose !== 'quote' && purpose !== 'report' && purpose !== 'reception') {
         throw new functions.https.HttpsError('invalid-argument', 'purpose debe ser "quote", "report" o "reception"');
@@ -49,16 +49,27 @@ exports.generateLink = functions.https.onCall(async (data) => {
     const db = admin.firestore();
     const recepcionesRef = db.collection('recepciones');
     let doc;
-    for (let attempt = 0; attempt < 5; attempt++) {
-        const snapshot = await recepcionesRef
-            .where('numeroorden', '==', Number(receptionId))
-            .limit(1)
-            .get();
-        if (!snapshot.empty) {
-            doc = snapshot.docs[0];
-            break;
+    if (documentId) {
+        doc = await recepcionesRef.doc(String(documentId)).get();
+        if (!doc.exists) {
+            throw new functions.https.HttpsError('not-found', `No se encontró recepción con id ${documentId}`);
         }
-        await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+    else {
+        for (let attempt = 0; attempt < 5; attempt++) {
+            const snapshot = await recepcionesRef
+                .where('numeroorden', '==', Number(receptionId))
+                .limit(2)
+                .get();
+            if (snapshot.size > 1) {
+                throw new functions.https.HttpsError('invalid-argument', `Existen ${snapshot.size} recepciones con numeroorden ${receptionId}. Envía el documentId para identificar la recepción correcta.`);
+            }
+            if (!snapshot.empty) {
+                doc = snapshot.docs[0];
+                break;
+            }
+            await new Promise((resolve) => setTimeout(resolve, 300));
+        }
     }
     if (!doc) {
         throw new functions.https.HttpsError('not-found', `No se encontró recepción con numeroorden ${receptionId}`);

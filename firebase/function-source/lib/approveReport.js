@@ -37,7 +37,7 @@ exports.approveReport = void 0;
 const functions = __importStar(require("firebase-functions/v1"));
 const admin = __importStar(require("firebase-admin"));
 exports.approveReport = functions.https.onCall(async (data) => {
-    const { key, survey } = data;
+    const { key, survey, documentId } = data;
     if (!key || !survey) {
         throw new functions.https.HttpsError('invalid-argument', 'Se requieren key y survey');
     }
@@ -55,6 +55,9 @@ exports.approveReport = functions.https.onCall(async (data) => {
         throw new functions.https.HttpsError('not-found', 'No se encontró informe con esta clave');
     }
     const doc = snapshot.docs[0];
+    if (documentId && doc.id !== String(documentId)) {
+        throw new functions.https.HttpsError('not-found', 'La clave no corresponde a este informe');
+    }
     await doc.ref.update({
         'Clientecontrolcalidad1': rating1.toString(),
         'Clientecontrolcalidad2': rating2.toString(),

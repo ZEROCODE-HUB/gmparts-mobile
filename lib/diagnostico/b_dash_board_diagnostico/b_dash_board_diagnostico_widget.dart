@@ -291,7 +291,11 @@ class _BDashBoardDiagnosticoWidgetState
                                        String url;
                                        try {
                                          url = await generateLink(
-                                             numeroOrden, 'quote');
+                                           numeroOrden,
+                                           'quote',
+                                           documentId:
+                                               widget.datos?.reference.id,
+                                         );
                                        } catch (e) {
                                          if (context.mounted) {
                                            ScaffoldMessenger.of(context)

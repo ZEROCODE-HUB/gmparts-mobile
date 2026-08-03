@@ -14,9 +14,11 @@ class FRecepcionGuardadaWidget extends StatefulWidget {
   const FRecepcionGuardadaWidget({
     super.key,
     this.id,
+    this.documentId,
   });
 
   final int? id;
+  final String? documentId;
 
   static String routeName = 'f-RecepcionGuardada';
   static String routePath = '/fRecepcionGuardada';
@@ -188,7 +190,11 @@ class _FRecepcionGuardadaWidgetState extends State<FRecepcionGuardadaWidget> {
                        }
                        String url;
                        try {
-                         url = await generateLink(receptionId, 'reception');
+                         url = await generateLink(
+                           receptionId,
+                           'reception',
+                           documentId: widget.documentId,
+                         );
                        } catch (e) {
                          if (context.mounted) {
                            ScaffoldMessenger.of(context).showSnackBar(

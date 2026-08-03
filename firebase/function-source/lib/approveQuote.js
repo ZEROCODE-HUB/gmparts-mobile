@@ -37,7 +37,7 @@ exports.approveQuote = void 0;
 const functions = __importStar(require("firebase-functions/v1"));
 const admin = __importStar(require("firebase-admin"));
 exports.approveQuote = functions.https.onCall(async (data) => {
-    const { key } = data;
+    const { key, documentId } = data;
     if (!key) {
         throw new functions.https.HttpsError('invalid-argument', 'Se requiere key');
     }
@@ -51,6 +51,9 @@ exports.approveQuote = functions.https.onCall(async (data) => {
         throw new functions.https.HttpsError('not-found', 'No se encontró cotización con esta clave');
     }
     const doc = snapshot.docs[0];
+    if (documentId && doc.id !== String(documentId)) {
+        throw new functions.https.HttpsError('not-found', 'La clave no corresponde a esta cotización');
+    }
     const docData = doc.data();
     if (docData.aprobacionCotizacion === true) {
         throw new functions.https.HttpsError('already-exists', 'Esta cotización ya fue aprobada anteriormente');

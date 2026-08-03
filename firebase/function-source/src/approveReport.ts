@@ -2,7 +2,7 @@ import * as functions from 'firebase-functions/v1'
 import * as admin from 'firebase-admin'
 
 export const approveReport = functions.https.onCall(async (data) => {
-  const { key, survey } = data
+  const { key, survey, documentId } = data
 
   if (!key || !survey) {
     throw new functions.https.HttpsError(
@@ -35,6 +35,13 @@ export const approveReport = functions.https.onCall(async (data) => {
   }
 
   const doc = snapshot.docs[0]
+
+  if (documentId && doc.id !== String(documentId)) {
+    throw new functions.https.HttpsError(
+      'not-found',
+      'La clave no corresponde a este informe'
+    )
+  }
 
   await doc.ref.update({
     'Clientecontrolcalidad1': rating1.toString(),

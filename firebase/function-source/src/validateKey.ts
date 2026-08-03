@@ -59,7 +59,7 @@ function toIso(value: unknown): string | undefined {
 }
 
 export const validateKey = functions.https.onCall(async (data) => {
-  const { key, purpose } = data
+  const { key, purpose, documentId } = data
 
   if (!key || !purpose) {
     throw new functions.https.HttpsError(
@@ -88,6 +88,11 @@ export const validateKey = functions.https.onCall(async (data) => {
   }
 
   const doc = snapshot.docs[0]
+
+  if (documentId && doc.id !== String(documentId)) {
+    return { valid: false }
+  }
+
   const docData = doc.data()
 
   const diagnosticosSnapshot = await doc.ref.collection('diagnosticos').get()

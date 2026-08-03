@@ -28,6 +28,10 @@ workflows:
         script: |
           export PATH="$PATH:$HOME/flutter/bin"
           flutter pub get
+      - name: Analyze code
+        script: |
+          export PATH="$PATH:$HOME/flutter/bin"
+          flutter analyze
       - name: Generate launcher icons
         script: |
           export PATH="$PATH:$HOME/flutter/bin"

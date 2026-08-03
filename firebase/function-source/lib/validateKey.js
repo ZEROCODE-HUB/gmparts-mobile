@@ -47,7 +47,7 @@ function toIso(value) {
     return undefined;
 }
 exports.validateKey = functions.https.onCall(async (data) => {
-    const { key, purpose } = data;
+    const { key, purpose, documentId } = data;
     if (!key || !purpose) {
         throw new functions.https.HttpsError('invalid-argument', 'Se requieren key y purpose');
     }
@@ -65,6 +65,9 @@ exports.validateKey = functions.https.onCall(async (data) => {
         return { valid: false };
     }
     const doc = snapshot.docs[0];
+    if (documentId && doc.id !== String(documentId)) {
+        return { valid: false };
+    }
     const docData = doc.data();
     const diagnosticosSnapshot = await doc.ref.collection('diagnosticos').get();
     const diagnosticos = diagnosticosSnapshot.docs.map((d) => {

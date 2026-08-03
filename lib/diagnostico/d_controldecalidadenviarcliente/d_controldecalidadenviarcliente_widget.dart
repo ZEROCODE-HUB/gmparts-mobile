@@ -14,9 +14,11 @@ class DControldecalidadenviarclienteWidget extends StatefulWidget {
   const DControldecalidadenviarclienteWidget({
     super.key,
     required this.id,
+    this.documentId,
   });
 
   final int? id;
+  final String? documentId;
 
   static String routeName = 'd-controldecalidadenviarcliente';
   static String routePath = '/dControldecalidadenviarcliente';
@@ -198,7 +200,11 @@ class _DControldecalidadenviarclienteWidgetState
                          }
                          String url;
                          try {
-                           url = await generateLink(reportId, 'report');
+                            url = await generateLink(
+                              reportId,
+                              'report',
+                              documentId: widget.documentId,
+                            );
                          } catch (e) {
                            if (context.mounted) {
                              ScaffoldMessenger.of(context).showSnackBar(

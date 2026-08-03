@@ -483,6 +483,10 @@ class _Controldecalidadtecnico2WidgetState
                           widget.id,
                           ParamType.int,
                         ),
+                        'documentId': serializeParam(
+                          widget.idrecep?.id,
+                          ParamType.String,
+                        ),
                       }.withoutNulls,
                     );
                   },

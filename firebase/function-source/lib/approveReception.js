@@ -37,7 +37,7 @@ exports.approveReception = void 0;
 const functions = __importStar(require("firebase-functions/v1"));
 const admin = __importStar(require("firebase-admin"));
 exports.approveReception = functions.https.onCall(async (data) => {
-    const { key } = data;
+    const { key, documentId } = data;
     if (!key) {
         throw new functions.https.HttpsError('invalid-argument', 'Se requiere key');
     }
@@ -51,6 +51,9 @@ exports.approveReception = functions.https.onCall(async (data) => {
         throw new functions.https.HttpsError('not-found', 'No se encontró recepción con esta clave');
     }
     const doc = snapshot.docs[0];
+    if (documentId && doc.id !== String(documentId)) {
+        throw new functions.https.HttpsError('not-found', 'La clave no corresponde a esta recepción');
+    }
     const docData = doc.data();
     if (docData.aprobacionCliente === true) {
         throw new functions.https.HttpsError('already-exists', 'Esta recepción ya fue aprobada anteriormente');

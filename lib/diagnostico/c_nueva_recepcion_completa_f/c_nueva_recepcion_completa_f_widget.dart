@@ -5980,6 +5980,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 _model.randomid,
                                                 ParamType.int,
                                               ),
+                                              'documentId': serializeParam(
+                                                recepcionesRecordReference.id,
+                                                ParamType.String,
+                                              ),
                                             }.withoutNulls,
                                             extra: <String, dynamic>{
                                               '__transition_info__':

@@ -4310,6 +4310,11 @@ class _BNuevarecepcionrapidaFWidgetState
                                                   .recepcionDATOS?.numeroorden,
                                               ParamType.int,
                                             ),
+                                            'documentId': serializeParam(
+                                              _model.recepcionDATOS?.reference
+                                                  .id,
+                                              ParamType.String,
+                                            ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
                                             '__transition_info__':
@@ -4467,6 +4472,10 @@ class _BNuevarecepcionrapidaFWidgetState
                                             'id': serializeParam(
                                               _model.randomid,
                                               ParamType.int,
+                                            ),
+                                            'documentId': serializeParam(
+                                              recepcionesRecordReference.id,
+                                              ParamType.String,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{

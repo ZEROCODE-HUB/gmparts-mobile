@@ -17,9 +17,11 @@ class DCotizacionWidget extends StatefulWidget {
   const DCotizacionWidget({
     super.key,
     required this.id,
+    this.documentId,
   });
 
   final int? id;
+  final String? documentId;
 
   static String routeName = 'd-cotizacion';
   static String routePath = '/dCotizacion';
@@ -209,7 +211,11 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                         }
                         String url;
                         try {
-                          url = await generateLink(quoteId, 'quote');
+                          url = await generateLink(
+                            quoteId,
+                            'quote',
+                            documentId: widget.documentId,
+                          );
                         } catch (e) {
                           if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(

@@ -162,6 +162,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'id',
               ParamType.int,
             ),
+            documentId: params.getParam(
+              'documentId',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -195,6 +199,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             id: params.getParam(
               'id',
               ParamType.int,
+            ),
+            documentId: params.getParam(
+              'documentId',
+              ParamType.String,
             ),
           ),
         ),
@@ -298,6 +306,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             id: params.getParam(
               'id',
               ParamType.int,
+            ),
+            documentId: params.getParam(
+              'documentId',
+              ParamType.String,
             ),
           ),
         ),
