@@ -672,7 +672,7 @@ class _CDashBoard2FinalizarWidgetState
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 0.0),
+                                20.0, 20.0, 20.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -752,16 +752,13 @@ class _CDashBoard2FinalizarWidgetState
                               ],
                             ),
                           ),
-                          if (cDashBoard2FinalizarDiagnosticosRecordList
-                                  .lastOrNull?.finalizado ??
-                              true)
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 20.0, 20.0, 50.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 1.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 20.0, 20.0, 50.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
                                     await widget.recepcion!.reference
                                         .update(createRecepcionesRecordData(
                                       subtotal: valueOrDefault<double>(
@@ -812,8 +809,7 @@ class _CDashBoard2FinalizarWidgetState
                                   },
                                   text: 'Finalizar todo',
                                   options: FFButtonOptions(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    width: double.infinity,
                                     height: 45.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
