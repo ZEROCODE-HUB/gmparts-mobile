@@ -198,11 +198,66 @@ class _FinalizadofallaWidgetState extends State<FinalizadofallaWidget> {
                                           .fontStyle,
                                     ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
+                    if (containerDiagnosticosRecord.fotos.isNotEmpty)
+                      Align(
+                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Fotos de la falla',
+                                style: _theme.bodyMedium.override(
+                                  font: GoogleFonts.montserrat(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: _theme.bodyMedium.fontStyle,
+                                  ),
+                                  color: _theme.secondaryText,
+                                  fontSize: 12.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: containerDiagnosticosRecord.fotos
+                                        .map(
+                                          (foto) => Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 8.0, 0.0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                foto,
+                                                width: 90.0,
+                                                height: 90.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                        .divide(SizedBox(width: 8.0)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     if (false)
                       Align(
                         alignment: AlignmentDirectional(-1.0, 0.0),
