@@ -43,6 +43,8 @@ class _CDashBoard2FinalizarWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CDashBoard2FinalizarModel());
+    _model.comentariosFinController ??= TextEditingController();
+    _model.comentariosFinFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
