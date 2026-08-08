@@ -117,10 +117,11 @@ class PushNotifications {
 
   Future<void> _saveTokenForUid(String uid, String token) async {
     try {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .update({'fcm_tokens': FieldValue.arrayUnion([token])});
+      final users = FirebaseFirestore.instance.collection('users');
+      final match = await users.where('auth_uid', isEqualTo: uid).limit(1).get();
+      final DocumentReference docRef =
+          match.docs.isNotEmpty ? match.docs.first.reference : users.doc(uid);
+      await docRef.update({'fcm_tokens': FieldValue.arrayUnion([token])});
     } catch (_) {
       // El documento puede no existir aún; se reintenta en el siguiente login.
     }
