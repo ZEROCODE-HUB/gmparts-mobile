@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendEmail = exports.approveReception = exports.approveReport = exports.approveQuote = exports.validateKey = exports.generateLink = void 0;
+exports.onRecepcionPush = exports.sendEmail = exports.approveReception = exports.approveReport = exports.approveQuote = exports.validateKey = exports.generateLink = void 0;
 const admin = __importStar(require("firebase-admin"));
 admin.initializeApp();
 var generateLink_1 = require("./generateLink");
@@ -48,3 +48,5 @@ var approveReception_1 = require("./approveReception");
 Object.defineProperty(exports, "approveReception", { enumerable: true, get: function () { return approveReception_1.approveReception; } });
 var sendEmail_1 = require("./sendEmail");
 Object.defineProperty(exports, "sendEmail", { enumerable: true, get: function () { return sendEmail_1.sendEmail; } });
+var notifications_1 = require("./notifications");
+Object.defineProperty(exports, "onRecepcionPush", { enumerable: true, get: function () { return notifications_1.onRecepcionPush; } });

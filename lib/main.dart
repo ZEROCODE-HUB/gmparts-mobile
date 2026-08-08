@@ -8,10 +8,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'auth/firebase_auth/firebase_user_provider.dart';
 import 'auth/firebase_auth/auth_util.dart';
+import 'services/push_notifications.dart';
 
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +31,19 @@ void main() async {
     create: (context) => appState,
     child: MyApp(),
   ));
+
+  // Configura FCM tras el primer frame para no pelear con el router.
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    PushNotifications.instance.init(
+      onForeground: (title, body) {
+        scaffoldMessengerKey.currentState
+          ?..clearSnackBars()
+          ..showSnackBar(
+            SnackBar(content: Text('$title\n$body', maxLines: 3)),
+          );
+      },
+    );
+  });
 }
 
 class MyApp extends StatefulWidget {
@@ -80,8 +97,14 @@ class _MyAppState extends State<MyApp> {
     userStream = gMPartsFirebaseUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
+        PushNotifications.instance.registerToken(user?.uid);
       });
     jwtTokenStream.listen((_) {});
+    PushNotifications.instance.setOpenHandler((data) {
+      if (_appStateNotifier.user != null) {
+        _router.go('/aRecepcionesInicio');
+      }
+    });
     Future.delayed(
       Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
@@ -121,6 +144,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'GMParts',
       scrollBehavior: MyAppScrollBehavior(),
+      scaffoldMessengerKey: scaffoldMessengerKey,
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
