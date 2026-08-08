@@ -94,16 +94,20 @@ class PushNotifications {
     final String? token;
     try {
       token = await _messaging.getToken();
-    } catch (_) {
+    } catch (e) {
+      await _logDiag(uidOverride, 'getToken_error', '$e');
       return;
     }
     if (token == null || token.isEmpty) {
+      await _logDiag(uidOverride, 'getToken_vacio', 'token nulo o vacío');
       return;
     }
     final String? uid = uidOverride ?? FirebaseAuth.instance.currentUser?.uid;
     if (uid == null) {
+      await _logDiag(uidOverride, 'uid_nulo', 'currentUser sin uid');
       return;
     }
+    await _logDiag(uid, 'token_obtenido', token);
     await _saveTokenForUid(uid, token);
   }
 
@@ -116,14 +120,33 @@ class PushNotifications {
   }
 
   Future<void> _saveTokenForUid(String uid, String token) async {
+    final users = FirebaseFirestore.instance.collection('users');
     try {
-      final users = FirebaseFirestore.instance.collection('users');
       final match = await users.where('auth_uid', isEqualTo: uid).limit(1).get();
       final DocumentReference docRef =
           match.docs.isNotEmpty ? match.docs.first.reference : users.doc(uid);
       await docRef.update({'fcm_tokens': FieldValue.arrayUnion([token])});
+      await _logDiag(uid, 'token_guardado', 'ok en ${docRef.path}');
+    } catch (e) {
+      await _logDiag(uid, 'token_save_error', '$e');
+      try {
+        await users.doc(uid).set({'fcm_tokens': FieldValue.arrayUnion([token])});
+        await _logDiag(uid, 'token_guardado_fallback', 'ok en users/${uid}');
+      } catch (e2) {
+        await _logDiag(uid, 'token_save_fallback_error', '$e2');
+      }
+    }
+  }
+
+  Future<void> _logDiag(String? uid, String key, String value) async {
+    try {
+      final docId = uid ?? 'anonimo';
+      await FirebaseFirestore.instance
+          .collection('fcm_diag')
+          .doc(docId)
+          .set({key: value}, SetOptions(merge: true));
     } catch (_) {
-      // El documento puede no existir aún; se reintenta en el siguiente login.
+      // La telemetría no debe romper el flujo.
     }
   }
 }
