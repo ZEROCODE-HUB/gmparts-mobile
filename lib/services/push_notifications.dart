@@ -98,13 +98,23 @@ class PushNotifications {
   }
 
   Future<void> _getCurrentToken([String? uidOverride]) async {
-    final String? token;
-    try {
-      token = await _messaging.getToken();
-    } catch (e) {
-      await _logDiag(uidOverride, 'getToken_error', '$e');
-      return;
+    if (!kIsWeb && defaultTargetPlatform == TargetPlatform.iOS) {
+      await _waitForApnsToken(uidOverride);
     }
+
+    String? token;
+    for (int attempt = 0; attempt < 5; attempt++) {
+      try {
+        token = await _messaging.getToken();
+        if (token != null && token.isNotEmpty) {
+          break;
+        }
+      } catch (e) {
+        await _logDiag(uidOverride, 'getToken_error', '$e');
+      }
+      await Future.delayed(const Duration(milliseconds: 500));
+    }
+
     if (token == null || token.isEmpty) {
       await _logDiag(uidOverride, 'getToken_vacio', 'token nulo o vacío');
       return;
@@ -116,6 +126,22 @@ class PushNotifications {
     }
     await _logDiag(uid, 'token_obtenido', token);
     await _saveTokenForUid(uid, token);
+  }
+
+  Future<void> _waitForApnsToken(String? uid) async {
+    for (int attempt = 0; attempt < 10; attempt++) {
+      try {
+        final apns = await _messaging.getAPNSToken();
+        if (apns != null && apns.isNotEmpty) {
+          return;
+        }
+      } catch (_) {
+        // getAPNSToken es iOS-only; ignorar en otras plataformas.
+      }
+      await Future.delayed(const Duration(milliseconds: 500));
+    }
+    await _logDiag(uid, 'apns_never_arrived',
+        'getAPNSToken() nunca devolvió un token APNs');
   }
 
   Future<void> _saveToken(String token) async {
