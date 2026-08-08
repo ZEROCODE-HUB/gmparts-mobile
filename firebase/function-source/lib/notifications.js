@@ -79,7 +79,14 @@ async function sendMulticast(tokens, payload) {
         try {
             const response = await admin
                 .messaging()
-                .sendEachForMulticast({ tokens: chunk, ...payload });
+                .sendEachForMulticast({
+                tokens: chunk,
+                notification: {
+                    title: payload.title,
+                    body: payload.body,
+                },
+                data: payload.data,
+            });
             response.responses.forEach((res, index) => {
                 if (res.success === false) {
                     failures.push(chunk[index]);

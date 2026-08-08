@@ -146,6 +146,25 @@ test('buildEventPayload: sin cliente siempre genera body no vacio', () => {
   assert.match(payload.body, /X-1/)
 })
 
+test('mensaje FCM: notification debe contener title/body y data al mismo nivel', () => {
+  const payload = buildEventPayload(
+    'cliente_aprueba_cotizacion',
+    createRecord,
+    'doc-123'
+  )
+  const message = {
+    tokens: ['tok-1'],
+    notification: { title: payload.title, body: payload.body },
+    data: payload.data,
+  }
+  assert.equal(typeof message.notification, 'object')
+  assert.ok(message.notification.title.length > 0)
+  assert.ok(message.notification.body.length > 0)
+  assert.equal(message.data.event, 'cliente_aprueba_cotizacion')
+  assert.ok(!('title' in message))
+  assert.ok(!('body' in message))
+})
+
 test('buildRoleVariants: genera variantes minuscula y mantiene la original', () => {
   const result = buildRoleVariants(['Gerente General', 'Admin'])
   assert.ok(result.includes('Gerente General'))
