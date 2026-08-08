@@ -26,23 +26,18 @@ class PushNotifications {
   /// Invocado cuando se recibe un mensaje con la app en primer plano.
   void Function(String title, String body)? onForegroundMessage;
 
-  /// Invocado con la telemetría del registro FCM, para depuración en pantalla.
-  void Function(String message)? onDiagMessage;
-
   final List<Map<String, dynamic>> _pendingOpens = [];
 
   /// Configura los listeners de FCM. Debe llamarse una sola vez tras initFirebase,
   /// y solo en dispositivos nativos (no web).
   Future<void> init({
     void Function(String title, String body)? onForeground,
-    void Function(String message)? onDiag,
   }) async {
     if (kIsWeb) {
       return;
     }
 
     onForegroundMessage = onForeground;
-    onDiagMessage = onDiag;
 
     await _messaging.requestPermission();
 
@@ -109,22 +104,19 @@ class PushNotifications {
         if (token != null && token.isNotEmpty) {
           break;
         }
-      } catch (e) {
-        await _logDiag(uidOverride, 'getToken_error', '$e');
+      } catch (_) {
+        // Reintenta: el APNs token puede tardar unos instantes en llegar.
       }
       await Future.delayed(const Duration(milliseconds: 500));
     }
 
     if (token == null || token.isEmpty) {
-      await _logDiag(uidOverride, 'getToken_vacio', 'token nulo o vacío');
       return;
     }
     final String? uid = uidOverride ?? FirebaseAuth.instance.currentUser?.uid;
     if (uid == null) {
-      await _logDiag(uidOverride, 'uid_nulo', 'currentUser sin uid');
       return;
     }
-    await _logDiag(uid, 'token_obtenido', token);
     await _saveTokenForUid(uid, token);
   }
 
@@ -140,8 +132,6 @@ class PushNotifications {
       }
       await Future.delayed(const Duration(milliseconds: 500));
     }
-    await _logDiag(uid, 'apns_never_arrived',
-        'getAPNSToken() nunca devolvió un token APNs');
   }
 
   Future<void> _saveToken(String token) async {
@@ -159,28 +149,12 @@ class PushNotifications {
       final DocumentReference docRef =
           match.docs.isNotEmpty ? match.docs.first.reference : users.doc(uid);
       await docRef.update({'fcm_tokens': FieldValue.arrayUnion([token])});
-      await _logDiag(uid, 'token_guardado', 'ok en ${docRef.path}');
-    } catch (e) {
-      await _logDiag(uid, 'token_save_error', '$e');
+    } catch (_) {
       try {
         await users.doc(uid).set({'fcm_tokens': FieldValue.arrayUnion([token])});
-        await _logDiag(uid, 'token_guardado_fallback', 'ok en users/${uid}');
-      } catch (e2) {
-        await _logDiag(uid, 'token_save_fallback_error', '$e2');
+      } catch (_) {
+        // El documento puede no existir aún; se reintenta en el siguiente login.
       }
-    }
-  }
-
-  Future<void> _logDiag(String? uid, String key, String value) async {
-    onDiagMessage?.call('[$key] $value');
-    try {
-      final docId = uid ?? 'anonimo';
-      await FirebaseFirestore.instance
-          .collection('fcm_diag')
-          .doc(docId)
-          .set({key: value}, SetOptions(merge: true));
-    } catch (_) {
-      // La telemetría no debe romper el flujo.
     }
   }
 }

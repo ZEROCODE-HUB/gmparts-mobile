@@ -15,10 +15,6 @@ service cloud.firestore {
       allow delete: if true;
     }
 
-    match /fcm_diag/{document} {
-      allow read, write: if true;
-    }
-
     match /recepciones/{parent}/diagnosticos/{document} {
       allow create: if true;
       allow read: if true;

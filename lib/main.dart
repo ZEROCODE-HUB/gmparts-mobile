@@ -42,16 +42,6 @@ void main() async {
             SnackBar(content: Text('$title\n$body', maxLines: 3)),
           );
       },
-      onDiag: (msg) {
-        scaffoldMessengerKey.currentState
-          ?..clearSnackBars()
-          ..showSnackBar(
-            SnackBar(
-              content: Text('FCM: $msg', maxLines: 3),
-              duration: const Duration(seconds: 4),
-            ),
-          );
-      },
     );
   });
 }
