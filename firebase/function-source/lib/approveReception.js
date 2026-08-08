@@ -55,11 +55,12 @@ exports.approveReception = functions.https.onCall(async (data) => {
         throw new functions.https.HttpsError('not-found', 'La clave no corresponde a esta recepción');
     }
     const docData = doc.data();
-    if (docData.aprobacionCliente === true) {
+    if (docData.aprobacionCliente === true || docData.aprobacion_cliente === true) {
         throw new functions.https.HttpsError('already-exists', 'Esta recepción ya fue aprobada anteriormente');
     }
     await doc.ref.update({
         aprobacionCliente: true,
+        aprobacion_cliente: true,
         status: 'Diagnóstico',
         reception_access_key: admin.firestore.FieldValue.delete(),
     });

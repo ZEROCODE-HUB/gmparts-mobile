@@ -36,7 +36,7 @@ export const approveReception = functions.https.onCall(async (data) => {
 
   const docData = doc.data()
 
-  if (docData.aprobacionCliente === true) {
+  if (docData.aprobacionCliente === true || docData.aprobacion_cliente === true) {
     throw new functions.https.HttpsError(
       'already-exists',
       'Esta recepción ya fue aprobada anteriormente'
@@ -45,6 +45,7 @@ export const approveReception = functions.https.onCall(async (data) => {
 
   await doc.ref.update({
     aprobacionCliente: true,
+    aprobacion_cliente: true,
     status: 'Diagnóstico',
     reception_access_key: admin.firestore.FieldValue.delete(),
   })

@@ -36,7 +36,10 @@ export const approveQuote = functions.https.onCall(async (data) => {
 
   const docData = doc.data()
 
-  if (docData.aprobacionCotizacion === true) {
+  if (
+    docData.aprobacionCotizacion === true ||
+    docData.aprobacion_cotizacion === true
+  ) {
     throw new functions.https.HttpsError(
       'already-exists',
       'Esta cotización ya fue aprobada anteriormente'
@@ -45,6 +48,7 @@ export const approveQuote = functions.https.onCall(async (data) => {
 
   await doc.ref.update({
     aprobacionCotizacion: true,
+    aprobacion_cotizacion: true,
     status: 'Reparación',
     quote_access_key: admin.firestore.FieldValue.delete(),
   })
