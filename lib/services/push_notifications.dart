@@ -26,16 +26,23 @@ class PushNotifications {
   /// Invocado cuando se recibe un mensaje con la app en primer plano.
   void Function(String title, String body)? onForegroundMessage;
 
+  /// Invocado con la telemetría del registro FCM, para depuración en pantalla.
+  void Function(String message)? onDiagMessage;
+
   final List<Map<String, dynamic>> _pendingOpens = [];
 
   /// Configura los listeners de FCM. Debe llamarse una sola vez tras initFirebase,
   /// y solo en dispositivos nativos (no web).
-  Future<void> init({void Function(String title, String body)? onForeground}) async {
+  Future<void> init({
+    void Function(String title, String body)? onForeground,
+    void Function(String message)? onDiag,
+  }) async {
     if (kIsWeb) {
       return;
     }
 
     onForegroundMessage = onForeground;
+    onDiagMessage = onDiag;
 
     await _messaging.requestPermission();
 
@@ -139,6 +146,7 @@ class PushNotifications {
   }
 
   Future<void> _logDiag(String? uid, String key, String value) async {
+    onDiagMessage?.call('[$key] $value');
     try {
       final docId = uid ?? 'anonimo';
       await FirebaseFirestore.instance
