@@ -28,6 +28,25 @@ function normalizeStatus(value: unknown): string {
 }
 
 /**
+ * Genera las variantes de escritura (case) de cada rol para consultar Firestore
+ * sin depender de en qué formato (mayúsculas/minúsculas) esté guardado el rol
+ * en `user_role`. El operador `in` de Firestore es exacto, así que se listan
+ * todas las variantes razonables de cada rol objetivo.
+ */
+export function buildRoleVariants(roles: string[]): string[] {
+  const variants = new Set<string>()
+  for (const role of roles) {
+    const trimmed = role.trim()
+    if (!trimmed) {
+      continue
+    }
+    variants.add(trimmed)
+    variants.add(trimmed.toLowerCase())
+  }
+  return Array.from(variants)
+}
+
+/**
  * Devuelve los eventos de push que se disparan en una operación de escritura
  * sobre `recepciones/{id}`. `before` es null en un create.
  */

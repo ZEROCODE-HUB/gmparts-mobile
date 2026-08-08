@@ -6,6 +6,7 @@ import {
   detectRecepcionEvents,
   EVENT_ROLES,
   buildEventPayload,
+  buildRoleVariants,
 } from './pushEvent'
 
 const MESSAGING_CHUNK_SIZE = 400
@@ -30,7 +31,7 @@ async function collectTokens(events: RecepcionEvent[]): Promise<string[]> {
   const db = admin.firestore()
   const snapshot = await db
     .collection('users')
-    .where('user_role', 'in', Array.from(roles))
+    .where('user_role', 'in', buildRoleVariants(Array.from(roles)))
     .select('fcm_tokens')
     .get()
 

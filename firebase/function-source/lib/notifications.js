@@ -56,7 +56,7 @@ async function collectTokens(events) {
     const db = admin.firestore();
     const snapshot = await db
         .collection('users')
-        .where('user_role', 'in', Array.from(roles))
+        .where('user_role', 'in', (0, pushEvent_1.buildRoleVariants)(Array.from(roles)))
         .select('fcm_tokens')
         .get();
     const tokens = new Set();

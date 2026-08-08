@@ -7,6 +7,7 @@ const {
   detectRecepcionEvents,
   EVENT_ROLES,
   buildEventPayload,
+  buildRoleVariants,
 } = require('../lib/pushEvent')
 
 const createRecord = {
@@ -143,4 +144,30 @@ test('buildEventPayload: sin cliente siempre genera body no vacio', () => {
   const payload = buildEventPayload('recepcion_creada', { placa: 'X-1' }, 'doc-1')
   assert.ok(payload.body.length > 0)
   assert.match(payload.body, /X-1/)
+})
+
+test('buildRoleVariants: genera variantes minuscula y mantiene la original', () => {
+  const result = buildRoleVariants(['Gerente General', 'Admin'])
+  assert.ok(result.includes('Gerente General'))
+  assert.ok(result.includes('gerente general'))
+  assert.ok(result.includes('Admin'))
+  assert.ok(result.includes('admin'))
+})
+
+test('buildRoleVariants: ignora roles vacios y no duplica', () => {
+  const result = buildRoleVariants(['Encargado', '  ', 'Encargado', ''])
+  assert.deepEqual(result.includes('  '), false)
+  assert.equal(result.length, 2)
+  assert.ok(result.includes('Encargado'))
+  assert.ok(result.includes('encargado'))
+})
+
+test('buildRoleVariants: variantes de cada evento respetan limite de 10 del in de Firestore', () => {
+  for (const event of Object.keys(EVENT_ROLES)) {
+    const variants = buildRoleVariants(EVENT_ROLES[event])
+    assert.ok(
+      variants.length <= 10,
+      `Evento ${event}: ${variants.length} variantes excede el limite de Firestore (10)`
+    )
+  }
 })
