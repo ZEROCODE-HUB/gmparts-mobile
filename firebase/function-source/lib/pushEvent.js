@@ -100,7 +100,7 @@ function textOf(record, field) {
  * Los nombres de campos aplanados de recepciones: nombre_cliente, placa, numeroorden.
  */
 function buildEventPayload(event, record, recepcionId) {
-    const cliente = textOf(record, 'nombre_cliente') || textOf(record, 'Nombre_encargado');
+    const cliente = textOf(record, 'nombre_cliente');
     const placa = textOf(record, 'placa');
     const numero = textOf(record, 'numeroorden');
     const numeroLabel = numero ? ` #${numero}` : '';
