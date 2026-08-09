@@ -140,7 +140,7 @@ export function buildEventPayload(
   record: SnapshotData,
   recepcionId: string
 ): NotificationPayload {
-  const cliente = textOf(record, 'nombre_cliente') || textOf(record, 'Nombre_encargado')
+  const cliente = textOf(record, 'nombre_cliente')
   const placa = textOf(record, 'placa')
   const numero = textOf(record, 'numeroorden')
 

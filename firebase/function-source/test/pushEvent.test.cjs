@@ -165,6 +165,20 @@ test('mensaje FCM: notification debe contener title/body y data al mismo nivel',
   assert.ok(!('body' in message))
 })
 
+test('buildEventPayload: nombre del cliente precisoe no usa fallback encargado', () => {
+  const payload = buildEventPayload(
+    'cliente_aprueba_cotizacion',
+    {
+      placa: 'X-1',
+      nombre_cliente: 'Carlos Lopez',
+      Nombre_encargado: 'Juan Perez',
+    },
+    'doc-1'
+  )
+  assert.match(payload.body, /Carlos Lopez/)
+  assert.ok(!payload.body.includes('Juan Perez'))
+})
+
 test('buildRoleVariants: genera variantes minuscula y mantiene la original', () => {
   const result = buildRoleVariants(['Gerente General', 'Admin'])
   assert.ok(result.includes('Gerente General'))
