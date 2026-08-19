@@ -46,6 +46,10 @@ web/build/
 # Firebase
 .firebase/
 firebase.json
+# ...salvo el de las Cloud Functions: declara el codebase `gmparts-functions`, y sin él
+# un `firebase deploy --only functions` no sabe qué desplegar ni a qué codebase, con el
+# riesgo de pisar las funciones del panel admin (que viven en el codebase `default`).
+!firebase/firebase.json
 
 # Carpetas de respaldo que no deben subirse
 guardados-en-caso-los-necesite-mobile/

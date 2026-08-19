@@ -36,6 +36,38 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateKey = void 0;
 const functions = __importStar(require("firebase-functions/v1"));
 const admin = __importStar(require("firebase-admin"));
+const IGV = 0.18;
+function redondear(n) {
+    return Math.round((Number(n) || 0) * 100) / 100;
+}
+/**
+ * Importes de la cotización que ve el cliente.
+ *
+ * Si el documento ya trae un total (viene de la app móvil o de un comprobante), se respeta
+ * tal cual: no es cosa de esta función recalcular lo que otro ya decidió. Solo cuando no hay
+ * total se suma lo que hay en los diagnósticos —repuestos, mano de obra y precio de
+ * servicio—, que es exactamente lo que se le está enseñando en pantalla.
+ *
+ * El IGV se desglosa como incluido, igual que hace el panel con «INCLUIDO IGV».
+ */
+function calcularImportes(docData, diagnosticos) {
+    const guardado = Number(docData.total ?? docData.Total ?? 0) || 0;
+    if (guardado > 0) {
+        const sub = Number(docData.subtotal ?? docData.Subtotal ?? 0) || redondear(guardado / (1 + IGV));
+        return {
+            subtotal: redondear(sub),
+            igv: Number(docData.igv ?? docData.IGV ?? 0) || redondear(guardado - sub),
+            total: redondear(guardado),
+        };
+    }
+    const suma = diagnosticos.reduce((acc, d) => {
+        const repuestos = (d.repuestos || []).reduce((s, r) => s + (Number(r.total) || 0), 0);
+        return acc + repuestos + (Number(d.manoDeObra) || 0) + (Number(d.precioservicio) || 0);
+    }, 0);
+    const total = redondear(suma);
+    const subtotal = redondear(total / (1 + IGV));
+    return { subtotal, igv: redondear(total - subtotal), total };
+}
 function toIso(value) {
     if (value == null)
         return undefined;
@@ -76,12 +108,19 @@ exports.validateKey = functions.https.onCall(async (data) => {
             nombreFalla: diagData.nombreFalla ?? diagData.Nombre_falla ?? '',
             solucion: diagData.solucion ?? diagData.Solucion ?? '',
             fotos: diagData.fotos ?? diagData.Fotos ?? [],
-            repuestos: ((diagData.repuestos ?? diagData.Repuestos) || []).map((r) => ({
-                nombre: r.nombre || '',
-                cantidad: r.cantidad || 0,
-                precio: r.precio || 0,
-                total: r.total || 0,
-            })),
+            // `descripcion` es el nombre que escribe el panel; `nombre`, el que escribe la app
+            // móvil. Leyendo solo uno de los dos, la mitad de los repuestos salían sin nombre en
+            // la pantalla del cliente. Y el total de la línea se calcula si no viene guardado.
+            repuestos: ((diagData.repuestos ?? diagData.Repuestos) || []).map((r) => {
+                const cantidad = Number(r.cantidad ?? r.cant ?? 0) || 0;
+                const precio = Number(r.precio ?? r.pu ?? r.precioVenta ?? 0) || 0;
+                return {
+                    nombre: r.nombre || r.descripcion || r.Nombre || '',
+                    cantidad,
+                    precio,
+                    total: Number(r.total ?? 0) || redondear(precio * cantidad),
+                };
+            }),
             manoDeObra: diagData.manoDeObra ?? diagData.Mano_de_obra ?? 0,
             imagenesFinalizado: diagData.imagenes_finalizado ?? diagData.imagenesFinalizado ?? [],
             fotosfinalizar: diagData.Fotosfinalizar ?? diagData.fotosfinalizar ?? [],
@@ -105,9 +144,13 @@ exports.validateKey = functions.https.onCall(async (data) => {
         observaciones: docData.observaciones ?? docData.Observaciones_adicionales ?? undefined,
         status: docData.status || '',
         aprobacionCotizacion: docData.aprobacionCotizacion ?? docData.aprobacion_cotizacion ?? false,
-        subtotal: docData.subtotal ?? docData.Subtotal ?? 0,
-        igv: docData.igv ?? docData.IGV ?? 0,
-        total: docData.total ?? docData.Total ?? 0,
+        // Los importes se calculan a partir de los diagnósticos cuando el documento no los trae.
+        //
+        // Una recepción NO guarda subtotal/igv/total: esos campos son de la colección de
+        // comprobantes. Leyéndolos a secas, la pantalla de aprobación mostraba «Total S/ 0.00»
+        // al cliente, con la mano de obra impresa justo encima, y le pedía aprobar eso.
+        // Comprobado sobre una orden real: repuestos y mano de obra a la vista, total cero.
+        ...calcularImportes(docData, diagnosticos),
         fechaIngreso: toIso(docData.fechaIngreso) ?? toIso(docData.fecha_creacion),
         fechaSalida: toIso(docData.fechaSalida) ?? toIso(docData.fecha_salida),
         tecnicoServicio: docData.tecnicoServicio ?? docData.tecnico_servicio ?? undefined,

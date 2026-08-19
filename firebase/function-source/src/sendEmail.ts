@@ -1,4 +1,5 @@
 import * as functions from 'firebase-functions/v1'
+import { exigirPersonal } from './rolLlamante'
 import { Resend } from 'resend'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
@@ -98,7 +99,21 @@ function buildEmailHtml({ subject, body, url }: Omit<SendEmailData, 'to'>): stri
 </html>`
 }
 
-export const sendEmail = functions.https.onCall(async (data: SendEmailData) => {
+export const sendEmail = functions.https.onCall(async (data: SendEmailData, context) => {
+  // Sin esta comprobación la función era un relé de correo abierto: cualquiera que
+  // conociera el ID del proyecto podía enviar correos con asunto, cuerpo y enlace
+  // arbitrarios desde notificaciones@gmparts.pe. Es decir, phishing firmado con el dominio
+  // y la reputación de GM Parts. Verificado llamándola sin credenciales: respondía
+  // «Se requieren to, subject y url», o sea que entraba al cuerpo de la función.
+  //
+  // No rompe nada: el único llamador previsto es la app móvil, que va autenticada. El
+  // micrositio de aprobaciones no usa esta función (sus enlaces son UUID sin login).
+  //
+  // Se exige además que sea personal del taller: con solo `context.auth` bastaba una de
+  // las 11 cuentas de cliente —o una sesión anónima— para seguir enviando correos
+  // arbitrarios desde el dominio.
+  await exigirPersonal(context)
+
   const { to, subject, body, url } = data
 
   if (!to || !subject || !url) {

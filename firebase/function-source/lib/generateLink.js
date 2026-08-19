@@ -37,8 +37,22 @@ exports.generateLink = void 0;
 const functions = __importStar(require("firebase-functions/v1"));
 const admin = __importStar(require("firebase-admin"));
 const crypto_1 = require("crypto");
+const rolLlamante_1 = require("./rolLlamante");
 const WEB_CLIENT_URL = process.env.WEB_CLIENT_URL || 'https://gmparts-aprobaciones.vercel.app';
-exports.generateLink = functions.https.onCall(async (data) => {
+exports.generateLink = functions.https.onCall(async (data, context) => {
+    // Sin esta comprobación la función entregaba las llaves del reino a cualquiera: es la
+    // que CREA los `*_access_key` con los que el micrositio de aprobaciones deja ver una
+    // recepción sin login. Al ser `numeroorden` un entero correlativo, bastaba recorrer
+    // 1, 2, 3... para obtener un enlace válido a cada expediente y leer por `validateKey`
+    // el nombre, teléfono, correo, placa y cotización completa de cada cliente. Y de paso
+    // reescribía la clave, invalidando el enlace ya enviado al cliente de verdad.
+    // Verificado llamándola sin credenciales: respondía «No se encontró recepción con id
+    // ...», es decir, llegaba a consultar Firestore.
+    //
+    // No rompe nada: el único llamador es la app móvil (lib/custom_code/actions/
+    // generate_link.dart), que va autenticada. El micrositio no la llama: solo consume
+    // validateKey y approve*, que ya exigen una clave válida.
+    await (0, rolLlamante_1.exigirPersonal)(context);
     const { receptionId, documentId, purpose } = data;
     if ((!receptionId && !documentId) || !purpose) {
         throw new functions.https.HttpsError('invalid-argument', 'Se requieren receptionId o documentId, y purpose');
