@@ -173,7 +173,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                           // así que esta consulta —escrita sin ella— devolvía siempre cero y
                           // el KPI «Pendientes» marcaba 0 aunque hubiera vehículos esperando.
                           // Comprobado contra la base: 4 recepciones en ese estado, contador a 0.
-                          queryBuilder: (q) => q.where('status', isEqualTo: 'Recepción'),
+                          queryBuilder: (q) => q.where('status', isEqualTo: FFAppConstants.Recepcion),
                         ),
                         Color(0xFFE53935),
                         Icons.pending_actions,
@@ -345,13 +345,33 @@ class _DashboardWidgetState extends State<DashboardWidget> {
       padding: EdgeInsets.only(bottom: 8.0),
       child: InkWell(
         onTap: () {
+          // Esta lista llevaba SIEMPRE a la pantalla de diagnostico, mirase la orden que
+          // mirase. Para una orden ya aprobada y en reparacion, esa pantalla solo ofrece
+          // «Crear diagnostico»: un callejon sin salida, porque el control de calidad y el
+          // cierre viven en otra. Comprobado con la orden #89351 recien creada.
+          // «Ver recepciones» (a_recepciones_inicio) si reparte por estado desde siempre;
+          // aqui se replica ese mismo reparto para que las dos listas lleven al mismo sitio.
+          final ruta = {
+                FFAppConstants.Recepcion: BDashBoardDiagnosticoWidget.routeName,
+                FFAppConstants.Diagnostico:
+                    CrearCotizacionFuncionandoWidget.routeName,
+                FFAppConstants.Cotizacion: CotizacionFuncionandoWidget.routeName,
+                FFAppConstants.Enreparacion: CDashBoard2FinalizarWidget.routeName,
+                FFAppConstants.Finalizado: CDashBoard2FinalizadoWidget.routeName,
+              }[r.status] ??
+              BDashBoardDiagnosticoWidget.routeName;
+
+          // Cada pantalla espera el documento con un nombre de parametro distinto.
+          final parametro =
+              ruta == BDashBoardDiagnosticoWidget.routeName ? 'datos' : 'recepcion';
+
           context.pushNamed(
-            BDashBoardDiagnosticoWidget.routeName,
+            ruta,
             queryParameters: {
-              'datos': serializeParam(r, ParamType.Document),
+              parametro: serializeParam(r, ParamType.Document),
             }.withoutNulls,
             extra: <String, dynamic>{
-              'datos': r,
+              parametro: r,
               '__transition_info__': TransitionInfo(
                 hasTransition: true,
                 transitionType: PageTransitionType.fade,
@@ -423,15 +443,15 @@ class _DashboardWidgetState extends State<DashboardWidget> {
     // Los estados llevan tilde en la base. Tres de los cinco casos estaban escritos sin
     // ella, así que no acertaban nunca y esos chips salían en gris.
     switch (status) {
-      case 'Recepción':
+      case FFAppConstants.Recepcion:
         return Color(0xFFE53935);
-      case 'Diagnóstico':
+      case FFAppConstants.Diagnostico:
         return Colors.orange;
-      case 'Cotización':
+      case FFAppConstants.Cotizacion:
         return Color(0xFF1E88E5);
-      case 'Reparación':
+      case FFAppConstants.Enreparacion:
         return Colors.deepPurple;
-      case 'Finalizado':
+      case FFAppConstants.Finalizado:
         return Color(0xFF43A047);
       default:
         return Colors.grey;

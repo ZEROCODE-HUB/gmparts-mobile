@@ -1057,7 +1057,19 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                                     _model
                                                         .textFieldEmailNaturalTextController
                                                         .text,
-                                                    '12345678',
+                                                    // Contrasena aleatoria, no '12345678'.
+                                                    // Cada cliente que se daba de alta desde aqui recibia una cuenta de Firebase Auth
+                                                    // con esa clave fija: sabiendo el correo de un cliente se entraba como el. Verificado
+                                                    // creando uno y entrando con 12345678 a la primera. El cliente NO usa esta cuenta para
+                                                    // nada -- accede a su expediente por el enlace de un solo uso que le envia el taller --,
+                                                    // asi que la clave puede ser irrecuperable sin perjudicar a nadie.
+                                                    random_data.randomString(
+                                                      24,
+                                                      24,
+                                                      true,
+                                                      true,
+                                                      true,
+                                                    ),
                                                     _model.nombreTextController
                                                         .text,
                                                     random_data.randomString(
@@ -2175,7 +2187,15 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                                       _model
                                                           .textFieldEmailJuridicoTextController
                                                           .text,
-                                                      '12345678',
+                                                      // Contrasena aleatoria, por el mismo motivo que en el alta de cliente natural:
+                                                      // la clave fija hacia entrable la cuenta de cualquier cliente conociendo su correo.
+                                                      random_data.randomString(
+                                                        24,
+                                                        24,
+                                                        true,
+                                                        true,
+                                                        true,
+                                                      ),
                                                       _model
                                                           .razonSocialTextController
                                                           .text,
