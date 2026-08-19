@@ -26,6 +26,18 @@ String get currentUserPhoto =>
 String get currentPhoneNumber =>
     currentUserDocument?.phoneNumber ?? currentUser?.phoneNumber ?? '';
 
+/// Rol del usuario que ha iniciado sesión, normalizado.
+///
+/// La app no distinguía roles en ninguna pantalla: un técnico veía exactamente lo mismo que
+/// un administrador. El rol ya viaja en el documento de usuario, solo faltaba exponerlo de
+/// forma cómoda para poder decidir qué se muestra.
+String get currentUserRole =>
+    (currentUserDocument?.userRole ?? '').trim().toLowerCase();
+
+/// El técnico ejecuta y reporta; recepcionar el vehículo es del asesor de servicios
+/// (pasos 02 y 08 del flujo del taller).
+bool get esTecnicoMecanico => currentUserRole == 'tecnico mecanico';
+
 String get currentJwtToken => _currentJwtToken ?? '';
 
 bool get currentUserEmailVerified => currentUser?.emailVerified ?? false;

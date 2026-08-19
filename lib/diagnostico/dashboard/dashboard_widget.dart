@@ -169,7 +169,11 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         context,
                         'Pendientes',
                         queryRecepcionesRecordCount(
-                          queryBuilder: (q) => q.where('status', isEqualTo: 'Recepcion'),
+                          // Con tilde. En Firestore el estado se guarda como «Recepción»,
+                          // así que esta consulta —escrita sin ella— devolvía siempre cero y
+                          // el KPI «Pendientes» marcaba 0 aunque hubiera vehículos esperando.
+                          // Comprobado contra la base: 4 recepciones en ese estado, contador a 0.
+                          queryBuilder: (q) => q.where('status', isEqualTo: 'Recepción'),
                         ),
                         Color(0xFFE53935),
                         Icons.pending_actions,
@@ -209,6 +213,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   SizedBox(height: 12.0),
                   Row(
                     children: [
+                      // Recepcionar un vehiculo es del asesor de servicios. Al tecnico se
+                      // le dejan las recepciones que ya existen, que es donde trabaja:
+                      // hasta ahora veia los mismos tres botones que un administrador.
+                      if (!esTecnicoMecanico) ...[
                       Expanded(
                         child: _buildQuickAction(
                           context,
@@ -227,6 +235,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         ),
                       ),
                       SizedBox(width: 12.0),
+                      ],
                       Expanded(
                         child: _buildQuickAction(
                           context,
@@ -411,12 +420,14 @@ class _DashboardWidgetState extends State<DashboardWidget> {
   }
 
   Color _statusColor(String? status) {
+    // Los estados llevan tilde en la base. Tres de los cinco casos estaban escritos sin
+    // ella, así que no acertaban nunca y esos chips salían en gris.
     switch (status) {
-      case 'Recepcion':
+      case 'Recepción':
         return Color(0xFFE53935);
-      case 'Diagnostico':
+      case 'Diagnóstico':
         return Colors.orange;
-      case 'Cotizacion':
+      case 'Cotización':
         return Color(0xFF1E88E5);
       case 'Reparación':
         return Colors.deepPurple;

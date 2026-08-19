@@ -57,52 +57,11 @@ class _SplashWidgetState extends State<SplashWidget> {
 
             return;
           } else if (role == 'tecnico mecanico') {
-            if (false) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    'Debe loguearse en la app móvil',
-                    style: _theme.labelLarge.override(
-                          font: GoogleFonts.montserrat(
-                            fontWeight: _theme
-                                .labelLarge
-                                .fontWeight,
-                            fontStyle: _theme
-                                .labelLarge
-                                .fontStyle,
-                          ),
-                          color: _theme.primaryText,
-                          letterSpacing: 0.0,
-                          fontWeight: _theme
-                              .labelLarge
-                              .fontWeight,
-                          fontStyle: _theme
-                              .labelLarge
-                              .fontStyle,
-                        ),
-                  ),
-                  duration: Duration(milliseconds: 4000),
-                  backgroundColor: _theme.primary,
-                ),
-              );
-              GoRouter.of(context).prepareAuthEvent();
-              await authManager.signOut();
-              GoRouter.of(context).clearRedirectLocation();
-
-              context.goNamedAuth(
-                IniciarSessionWidget.routeName,
-                context.mounted,
-                extra: <String, dynamic>{
-                  '__transition_info__': TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 0),
-                  ),
-                },
-              );
-
-              return;
-            } else {
+            // La rama que expulsaba al tecnico al login estaba desactivada con un
+            // `if (false)`: codigo muerto que ademas mostraba «Debe loguearse en la app
+            // movil» DENTRO de la propia app movil. El tecnico entra al panel del taller,
+            // que es su herramienta; lo que se recorta segun el rol son las acciones de
+            // dentro (ver dashboard_widget: recepcionar es del asesor).
               context.goNamedAuth(
                 DashboardWidget.routeName,
                 context.mounted,
@@ -116,7 +75,6 @@ class _SplashWidgetState extends State<SplashWidget> {
               );
 
               return;
-            }
           } else if (role == 'asesor repuesto') {
             context.goNamedAuth(
               DashboardWidget.routeName,
@@ -135,7 +93,12 @@ class _SplashWidgetState extends State<SplashWidget> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  'Debe loguearse en web Admin',
+                  // Este aviso lo ve, sobre todo, un CLIENTE. El texto anterior decía
+                  // «Debe loguearse en web Admin» y los empujaba al panel del taller, que
+                  // no tiene ninguna pantalla para ellos: al entrar veían el escritorio
+                  // interno con los datos del resto de clientes. El cliente no necesita
+                  // ninguna cuenta — accede con el enlace que le envía el taller.
+                  'Esta cuenta no es de personal del taller. Si eres cliente, abre el enlace que te enviamos para ver tu vehículo.',
                   style: _theme.labelLarge.override(
                         font: GoogleFonts.montserrat(
                           fontWeight: _theme
@@ -155,7 +118,9 @@ class _SplashWidgetState extends State<SplashWidget> {
                             .fontStyle,
                       ),
                 ),
-                duration: Duration(milliseconds: 4000),
+                // El mensaje es más largo que el anterior y tiene que dar tiempo a leerlo
+                // antes de que la sesión se cierre y vuelva a la pantalla de acceso.
+                duration: Duration(milliseconds: 7000),
                 backgroundColor: _theme.primary,
               ),
             );
