@@ -140,7 +140,7 @@ class _FRecepcionGuardadaWidgetState extends State<FRecepcionGuardadaWidget> {
                               ),
                             ),
                             Text(
-                              'Tu repeción se ha \nguardado correctamente',
+                              'Tu recepción se ha \nguardado correctamente',
                               textAlign: TextAlign.center,
                               style: _theme
                                   .headlineLarge

@@ -95,7 +95,7 @@ class _FinalizarfallaWidgetState extends State<FinalizarfallaWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Nueva Falla ${((widget.indexx!) + 1).toString()}',
+                              'Falla ${((widget.indexx!) + 1).toString()}',
                               style: _theme
                                   .bodyMedium
                                   .override(

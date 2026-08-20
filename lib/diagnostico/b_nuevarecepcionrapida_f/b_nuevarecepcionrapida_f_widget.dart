@@ -3200,7 +3200,12 @@ class _BNuevarecepcionrapidaFWidgetState
                                        dropDownTecnicoUsersRecordList =
                                            dropDownTecnicoUsersRecordList
                                                .where((u) =>
-                                                   u.userRole != 'Cliente')
+                                                   FFAppConstants
+                                                       .rolesDeTaller
+                                                       .contains(u.userRole) ||
+                                                   u.displayName ==
+                                                       _model
+                                                           .dropDownTecnicoValue)
                                                .toList();
                                        if (dropDownTecnicoUsersRecordList
                                            .isEmpty) {

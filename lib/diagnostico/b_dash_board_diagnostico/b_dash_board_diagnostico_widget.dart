@@ -1898,7 +1898,7 @@ class _BDashBoardDiagnosticoWidgetState
                           },
                         );
                       },
-                      text: 'Crear díagnostico',
+                      text: 'Crear diagnóstico',
                       options: FFButtonOptions(
                         width: 340.0,
                         height: 45.0,

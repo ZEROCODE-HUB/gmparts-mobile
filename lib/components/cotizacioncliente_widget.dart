@@ -92,7 +92,7 @@ class _CotizacionclienteWidgetState extends State<CotizacionclienteWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Nueva Falla ${((widget.indexx!) + 1).toString()}',
+                            'Falla ${((widget.indexx!) + 1).toString()}',
                             style: _theme
                                 .titleLarge
                                 .override(

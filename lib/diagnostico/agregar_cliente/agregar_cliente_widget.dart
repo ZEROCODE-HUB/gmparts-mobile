@@ -1114,7 +1114,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                                                         context)),
                                                         child: ErrorsWidget(
                                                           texto:
-                                                              'Ya existe un usaurio con el mismo correo',
+                                                              'Ya existe un usuario con el mismo correo',
                                                           titulo: 'Error',
                                                         ),
                                                       );
@@ -2246,7 +2246,7 @@ class _AgregarClienteWidgetState extends State<AgregarClienteWidget> {
                                                                         context)),
                                                         child: ErrorsWidget(
                                                           texto:
-                                                              'Ya existe un usaurio con el mismo correo',
+                                                              'Ya existe un usuario con el mismo correo',
                                                           titulo: 'Error',
                                                         ),
                                                       );

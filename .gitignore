@@ -24,6 +24,8 @@ ios/Pods/
 ios/.symlinks/
 ios/Flutter/Flutter.framework
 ios/Flutter/Flutter.podspec
+# Lo genera `flutter build`; no es codigo fuente.
+ios/Flutter/ephemeral/
 ios/Runner.xcworkspace
 ios/build/
 

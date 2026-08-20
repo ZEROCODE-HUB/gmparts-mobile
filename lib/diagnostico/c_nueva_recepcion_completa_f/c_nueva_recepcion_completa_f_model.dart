@@ -148,6 +148,20 @@ class CNuevaRecepcionCompletaFModel
       return 'El año de fabricación es obligatorio';
     }
 
+    // Antes solo se comprobaba que el campo no estuviera vacio: se acepto un vehiculo del
+    // año 3025 sin una sola queja, y ese año acaba en la ficha que ve el cliente en el
+    // micrositio. El teclado es numerico, pero eso no impide teclear cuatro digitos absurdos
+    // ni pegar texto.
+    final anio = int.tryParse(val.trim());
+    if (anio == null) {
+      return 'El año debe ser un número de 4 cifras';
+    }
+    // Un año mas que el actual porque los modelos se venden adelantados.
+    final maximo = DateTime.now().year + 1;
+    if (anio < 1900 || anio > maximo) {
+      return 'El año debe estar entre 1900 y $maximo';
+    }
+
     return null;
   }
 

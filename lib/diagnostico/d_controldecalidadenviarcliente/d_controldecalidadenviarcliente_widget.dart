@@ -1,4 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/custom_code/actions/generate_link.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '/diagnostico/recepcion_asedor_de_servicio/enviocliente/enviocliente_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -217,6 +219,38 @@ class _DControldecalidadenviarclienteWidgetState
                            }
                            return;
                          }
+                         // Este boton solo generaba el enlace del informe: no dejaba
+                         // ni rastro de que el taller hubiera terminado. Como `status`
+                         // solo pasa a «Finalizado» cuando el CLIENTE contesta la encuesta,
+                         // una orden acabada cuyo cliente no responde se queda en
+                         // «Reparacion» para siempre, y eso es justo lo que se ve en
+                         // produccion: hay ordenes con el control de calidad hecho que el
+                         // panel sigue mostrando como si el coche estuviera en el taller.
+                         //
+                         // No se toca `status` a proposito: anadir un estado nuevo obliga a
+                         // cambiar los tres repos a la vez y esa decision no esta tomada.
+                         // Lo que si se puede hacer sin romper nada es dejar constancia de
+                         // la fecha y de quien dio el trabajo por terminado, que es el dato
+                         // que hoy se pierde.
+                         final docId = widget.documentId;
+                         if (docId != null && docId.isNotEmpty) {
+                           try {
+                             await FirebaseFirestore.instance
+                                 .collection('recepciones')
+                                 .doc(docId)
+                                 .update({
+                               'listoParaEntrega': true,
+                               'listoParaEntregaAt':
+                                   FieldValue.serverTimestamp(),
+                               'listoParaEntregaPor': currentUserUid,
+                             });
+                           } catch (e) {
+                             // Que no se pueda anotar no debe impedir avisar al cliente:
+                             // el enlace ya esta generado y es lo que el cliente espera.
+                             debugPrint('No se pudo marcar listo para entrega: $e');
+                           }
+                         }
+
                          if (!context.mounted) return;
                          await showModalBottomSheet(
                           isScrollControlled: true,
@@ -239,7 +273,7 @@ class _DControldecalidadenviarclienteWidgetState
                           },
                         ).then((value) => safeSetState(() {}));
                       },
-                      text: 'Esta listo para entregar',
+                      text: 'Está listo para entregar',
                       options: FFButtonOptions(
                         width: 400.0,
                         height: 45.0,
