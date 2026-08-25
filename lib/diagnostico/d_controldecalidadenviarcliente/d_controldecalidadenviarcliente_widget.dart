@@ -1,3 +1,4 @@
+import '/app_constants.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/custom_code/actions/generate_link.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -219,19 +220,17 @@ class _DControldecalidadenviarclienteWidgetState
                            }
                            return;
                          }
-                         // Este boton solo generaba el enlace del informe: no dejaba
-                         // ni rastro de que el taller hubiera terminado. Como `status`
-                         // solo pasa a «Finalizado» cuando el CLIENTE contesta la encuesta,
-                         // una orden acabada cuyo cliente no responde se queda en
-                         // «Reparacion» para siempre, y eso es justo lo que se ve en
-                         // produccion: hay ordenes con el control de calidad hecho que el
-                         // panel sigue mostrando como si el coche estuviera en el taller.
+                         // Aqui es donde el taller da su parte por terminada.
                          //
-                         // No se toca `status` a proposito: anadir un estado nuevo obliga a
-                         // cambiar los tres repos a la vez y esa decision no esta tomada.
-                         // Lo que si se puede hacer sin romper nada es dejar constancia de
-                         // la fecha y de quien dio el trabajo por terminado, que es el dato
-                         // que hoy se pierde.
+                         // Este boton solo generaba el enlace del informe y no dejaba rastro
+                         // de nada. Como `Finalizado` solo lo escribia el CLIENTE al
+                         // contestar la encuesta, una orden acabada cuyo cliente no responde
+                         // se quedaba en «Reparacion» indefinidamente.
+                         //
+                         // Ahora pasa a «Listo para entrega»: el coche esta terminado y lo
+                         // que falta es entregarlo y cobrarlo. El cierre definitivo llega
+                         // por la conformidad del cliente (`approveReport`) o por facturar
+                         // la orden desde el panel, que ya la marca `Finalizado`.
                          final docId = widget.documentId;
                          if (docId != null && docId.isNotEmpty) {
                            try {
@@ -239,6 +238,7 @@ class _DControldecalidadenviarclienteWidgetState
                                  .collection('recepciones')
                                  .doc(docId)
                                  .update({
+                               'status': FFAppConstants.ListoParaEntrega,
                                'listoParaEntrega': true,
                                'listoParaEntregaAt':
                                    FieldValue.serverTimestamp(),

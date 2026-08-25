@@ -194,7 +194,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         'Completadas hoy',
                         queryRecepcionesRecordCount(
                           queryBuilder: (q) => q
-                              .where('status', isEqualTo: 'Finalizado')
+                              .where('status', isEqualTo: FFAppConstants.Finalizado)
                               .where('fecha_creacion', isGreaterThanOrEqualTo: todayStart)
                               .where('fecha_creacion', isLessThan: todayEnd),
                         ),
@@ -357,6 +357,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                     CrearCotizacionFuncionandoWidget.routeName,
                 FFAppConstants.Cotizacion: CotizacionFuncionandoWidget.routeName,
                 FFAppConstants.Enreparacion: CDashBoard2FinalizarWidget.routeName,
+        // Listo para entrega: el trabajo esta hecho pero la orden sigue abierta, asi
+        // que se entra a la pantalla de cierre, no a la de solo lectura.
+        FFAppConstants.ListoParaEntrega:
+            CDashBoard2FinalizarWidget.routeName,
                 FFAppConstants.Finalizado: CDashBoard2FinalizadoWidget.routeName,
               }[r.status] ??
               BDashBoardDiagnosticoWidget.routeName;
@@ -451,6 +455,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
         return Color(0xFF1E88E5);
       case FFAppConstants.Enreparacion:
         return Colors.deepPurple;
+      case FFAppConstants.ListoParaEntrega:
+        return Color(0xFF00897B);
       case FFAppConstants.Finalizado:
         return Color(0xFF43A047);
       default:

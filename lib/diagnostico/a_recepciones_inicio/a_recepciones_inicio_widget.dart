@@ -704,8 +704,13 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                   },
                                                 );
                                               } else if (listViewRecepcionesRecord
-                                                      .status ==
-                                                  FFAppConstants.Enreparacion) {
+                                                          .status ==
+                                                      FFAppConstants
+                                                          .Enreparacion ||
+                                                  listViewRecepcionesRecord
+                                                          .status ==
+                                                      FFAppConstants
+                                                          .ListoParaEntrega) {
                                                 context.pushNamed(
                                                   CDashBoard2FinalizarWidget
                                                       .routeName,

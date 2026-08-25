@@ -5,6 +5,20 @@ abstract class FFAppConstants {
   static const String Cotizacion = 'Cotización';
   static const String Finalizado = 'Finalizado';
   static const String Enreparacion = 'Reparación';
+
+  // Estado intermedio entre «Reparación» y «Finalizado».
+  //
+  // Antes no existia: `Finalizado` solo lo escribia el CLIENTE al contestar la encuesta de
+  // satisfaccion, asi que una orden acabada cuyo cliente no responde se quedaba en
+  // «Reparacion» para siempre. En produccion hay ordenes con el control de calidad hecho que
+  // el panel sigue mostrando como si el coche estuviera en el elevador, y al cliente se le
+  // dice «Estado: Reparación» en la misma pagina donde se le pide que confirme la entrega.
+  //
+  // Con este estado el taller cierra su parte sin depender de que el cliente conteste, y se
+  // distingue lo unico que importa operativamente: el coche esta listo y falta entregarlo
+  // o cobrarlo. El cierre definitivo (`Finalizado`) llega por la conformidad del cliente o
+  // por facturar la orden.
+  static const String ListoParaEntrega = 'Listo para entrega';
   static const String TipoPersonaNatural = 'Natural';
   static const String TipoPersonaJuridica = 'Jurídica';
   static const String UserRoleAdmin = 'Admin';
