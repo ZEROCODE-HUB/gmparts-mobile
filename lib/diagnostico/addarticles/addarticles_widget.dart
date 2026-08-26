@@ -497,7 +497,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                         .fontStyle,
                                               ),
                                           hintText: 'Selecciona',
-                                          searchHintText: 'Buscar departamento',
+                                          searchHintText: 'Buscar…',
                                           icon: Icon(
                                             Icons.arrow_circle_down,
                                             color: _theme
@@ -1334,7 +1334,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                             hintText: 'Selecciona',
                                             searchHintText:
-                                                'Buscar departamento',
+                                                'Buscar…',
                                             icon: Icon(
                                               Icons.arrow_circle_down,
                                               color:
@@ -1491,7 +1491,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                   ),
                                               hintText: 'Selecciona',
                                               searchHintText:
-                                                  'Buscar departamento',
+                                                  'Buscar…',
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
@@ -1777,7 +1777,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                             hintText: 'Selecciona',
                                             searchHintText:
-                                                'Buscar departamento',
+                                                'Buscar…',
                                             icon: Icon(
                                               Icons.arrow_circle_down,
                                               color:
@@ -2056,7 +2056,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                   ),
                                               hintText: 'Selecciona',
                                               searchHintText:
-                                                  'Buscar departamento',
+                                                  'Buscar…',
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
@@ -2387,7 +2387,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                 ),
                                             hintText: 'Selecciona',
                                             searchHintText:
-                                                'Buscar departamento',
+                                                'Buscar…',
                                             icon: Icon(
                                               Icons.arrow_circle_down,
                                               color:
@@ -2549,7 +2549,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                         .fontStyle,
                                               ),
                                           hintText: 'Selecciona',
-                                          searchHintText: 'Buscar departamento',
+                                          searchHintText: 'Buscar…',
                                           icon: Icon(
                                             Icons.arrow_circle_down,
                                             color: _theme
@@ -2702,7 +2702,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                       .fontStyle,
                                             ),
                                         hintText: 'Selecciona',
-                                        searchHintText: 'Buscar departamento',
+                                        searchHintText: 'Buscar…',
                                         icon: Icon(
                                           Icons.arrow_circle_down,
                                           color: _theme
@@ -3047,7 +3047,7 @@ class _AddarticlesWidgetState extends State<AddarticlesWidget> {
                                                       .fontStyle,
                                             ),
                                         hintText: 'Selecciona',
-                                        searchHintText: 'Buscar departamento',
+                                        searchHintText: 'Buscar…',
                                         icon: Icon(
                                           Icons.arrow_circle_down,
                                           color: _theme

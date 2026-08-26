@@ -470,6 +470,16 @@ class _Controldecalidadtecnico2WidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    // El control de calidad NO condiciona el avance, y es a proposito.
+                    //
+                    // Se puede responder «No» a las tres preguntas y la orden sigue adelante
+                    // igual. No es un descuido: es una decision de producto tomada por el
+                    // cliente el 2026-08-26. Estas respuestas son informacion para el taller,
+                    // no una barrera — quien decide si el coche sale es una persona, no el
+                    // formulario.
+                    //
+                    // Queda escrito aqui porque «el checklist no bloquea nada» tiene toda la
+                    // pinta de un fallo, y ya se propuso corregirlo una vez.
                     await widget.idrecep!.update(createRecepcionesRecordData(
                       controlcalidad1: _model.radioButtonValue1,
                       controlcalidad2: _model.radioButtonValue2,

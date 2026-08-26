@@ -494,7 +494,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                                       .fontStyle,
                                             ),
                                         hintText: 'Selecciona',
-                                        searchHintText: 'Buscar departamento',
+                                        searchHintText: 'Buscar…',
                                         icon: Icon(
                                           Icons.arrow_circle_down,
                                           color: _theme
@@ -1601,9 +1601,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                                 0.0,
                                               ) +
                                               valueOrDefault<double>(
-                                                double.parse(_model
-                                                        .tiempoEstimadoTextController
-                                                        .text) *
+                                                horasDeTrabajo(_model.tiempoEstimadoTextController.text) *
                                                     valueOrDefault<double>(
                                                       _model.servicioSlecetr
                                                           ?.precio,
@@ -1623,9 +1621,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                                       0.0,
                                                     ) +
                                                     valueOrDefault<double>(
-                                                      double.parse(_model
-                                                              .tiempoEstimadoTextController
-                                                              .text) *
+                                                      horasDeTrabajo(_model.tiempoEstimadoTextController.text) *
                                                           valueOrDefault<
                                                               double>(
                                                             _model
@@ -1650,9 +1646,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                                       0.0,
                                                     ) +
                                                     valueOrDefault<double>(
-                                                      double.parse(_model
-                                                              .tiempoEstimadoTextController
-                                                              .text) *
+                                                      horasDeTrabajo(_model.tiempoEstimadoTextController.text) *
                                                           valueOrDefault<
                                                               double>(
                                                             _model
@@ -1668,7 +1662,7 @@ class _CrearfallaNUEVOeditarWidgetState
                                           0.0,
                                         ),
                                         manoDeObra: valueOrDefault<double>(
-                                          double.parse(_model
+                                          horasDeTrabajo(_model
                                                   .tiempoEstimadoTextController
                                                   .text) *
                                               valueOrDefault<double>(
@@ -1817,3 +1811,13 @@ class _CrearfallaNUEVOeditarWidgetState
     );
   }
 }
+
+// Horas de trabajo tecleadas por el asesor.
+//
+// El campo dice «en horas» pero es texto libre, y las dos pantallas lo convertian de forma
+// distinta y las dos mal: `crearfalla` con `double.tryParse(...) ?? 0.0`, que ante «2 dias»
+// daba CERO y dejaba la cotizacion sin mano de obra; y esta con `double.parse(...)`, que
+// ante lo mismo lanza FormatException. Ahora el validador solo deja pasar numeros, y esto
+// admite ademas la coma decimal, que es como se teclea «1,5» en Peru.
+double horasDeTrabajo(String? texto) =>
+    double.tryParse((texto ?? '').trim().replaceAll(',', '.')) ?? 0.0;

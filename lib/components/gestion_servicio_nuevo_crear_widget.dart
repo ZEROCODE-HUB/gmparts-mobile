@@ -867,7 +867,7 @@ class _GestionServicioNuevoCrearWidgetState
                                             .fontStyle,
                                       ),
                                   hintText: 'Selecciona',
-                                  searchHintText: 'Buscar departamento',
+                                  searchHintText: 'Buscar…',
                                   icon: Icon(
                                     Icons.arrow_circle_down,
                                     color: _theme.primary,
@@ -1055,7 +1055,7 @@ class _GestionServicioNuevoCrearWidgetState
                                                   .fontStyle,
                                         ),
                                     hintText: 'Selecciona',
-                                    searchHintText: 'Buscar departamento',
+                                    searchHintText: 'Buscar…',
                                     icon: Icon(
                                       Icons.arrow_circle_down,
                                       color:
@@ -1229,7 +1229,7 @@ class _GestionServicioNuevoCrearWidgetState
                                                     .fontStyle,
                                           ),
                                       hintText: 'Selecciona',
-                                      searchHintText: 'Buscar departamento',
+                                      searchHintText: 'Buscar…',
                                       icon: Icon(
                                         Icons.arrow_circle_down,
                                         color: _theme
@@ -1551,7 +1551,7 @@ class _GestionServicioNuevoCrearWidgetState
                                                   .fontStyle,
                                         ),
                                     hintText: 'Selecciona',
-                                    searchHintText: 'Buscar departamento',
+                                    searchHintText: 'Buscar…',
                                     icon: Icon(
                                       Icons.arrow_circle_down,
                                       color:
@@ -1730,7 +1730,7 @@ class _GestionServicioNuevoCrearWidgetState
                                                     .fontStyle,
                                           ),
                                       hintText: 'Selecciona',
-                                      searchHintText: 'Buscar departamento',
+                                      searchHintText: 'Buscar…',
                                       icon: Icon(
                                         Icons.arrow_circle_down,
                                         color: _theme

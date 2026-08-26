@@ -562,7 +562,7 @@ class _EditarArticuloModalCopyWidgetState
                                                   ),
                                               hintText: 'Selecciona',
                                               searchHintText:
-                                                  'Buscar departamento',
+                                                  'Buscar…',
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
@@ -1529,7 +1529,7 @@ class _EditarArticuloModalCopyWidgetState
                                                       ),
                                                   hintText: 'Selecciona',
                                                   searchHintText:
-                                                      'Buscar departamento',
+                                                      'Buscar…',
                                                   icon: Icon(
                                                     Icons.arrow_circle_down,
                                                     color: FlutterFlowTheme.of(
@@ -1835,7 +1835,7 @@ class _EditarArticuloModalCopyWidgetState
                                                       ),
                                                   hintText: 'Selecciona',
                                                   searchHintText:
-                                                      'Buscar departamento',
+                                                      'Buscar…',
                                                   icon: Icon(
                                                     Icons.arrow_circle_down,
                                                     color: FlutterFlowTheme.of(
@@ -2127,7 +2127,7 @@ class _EditarArticuloModalCopyWidgetState
                                                       ),
                                                   hintText: 'Selecciona',
                                                   searchHintText:
-                                                      'Buscar departamento',
+                                                      'Buscar…',
                                                   icon: Icon(
                                                     Icons.arrow_circle_down,
                                                     color: FlutterFlowTheme.of(
@@ -2483,7 +2483,7 @@ class _EditarArticuloModalCopyWidgetState
                                                       ),
                                                   hintText: 'Selecciona',
                                                   searchHintText:
-                                                      'Buscar departamento',
+                                                      'Buscar…',
                                                   icon: Icon(
                                                     Icons.arrow_circle_down,
                                                     color: FlutterFlowTheme.of(
@@ -2667,7 +2667,7 @@ class _EditarArticuloModalCopyWidgetState
                                                   ),
                                               hintText: 'Selecciona',
                                               searchHintText:
-                                                  'Buscar departamento',
+                                                  'Buscar…',
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
@@ -2850,7 +2850,7 @@ class _EditarArticuloModalCopyWidgetState
                                                   ),
                                               hintText: 'Selecciona',
                                               searchHintText:
-                                                  'Buscar departamento',
+                                                  'Buscar…',
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:
@@ -3253,7 +3253,7 @@ class _EditarArticuloModalCopyWidgetState
                                                   ),
                                               hintText: 'Selecciona',
                                               searchHintText:
-                                                  'Buscar departamento',
+                                                  'Buscar…',
                                               icon: Icon(
                                                 Icons.arrow_circle_down,
                                                 color:

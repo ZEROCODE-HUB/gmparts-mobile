@@ -79,6 +79,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) =>
           appStateNotifier.loggedIn ? SplashWidget() : IniciarSessionWidget(),
       routes: [
+        // Rutas retiradas: pantallas de maqueta con datos inventados.
+        //
+        // HLinkGMParts2, FDiagnostico y DashBoard2CopyCopy son restos del prototipo de
+        // FlutterFlow: ensenan cosas como «Servicio #40456» escritas a mano, no leen nada de
+        // Firestore y ninguna pantalla de la app lleva a ellas. Solo estaban aqui, asi que se
+        // llegaba tecleando la URL — y lo que se veia parecia una orden de verdad.
+        //
+        // Los ficheros se dejan en su carpeta por si alguien quiere rematarlos; lo que se
+        // quita es la puerta.
         FFRoute(
           name: '_initialize',
           path: '/',
@@ -143,11 +152,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.int,
             ),
           ),
-        ),
-        FFRoute(
-          name: HLinkGMParts2Widget.routeName,
-          path: HLinkGMParts2Widget.routePath,
-          builder: (context, params) => HLinkGMParts2Widget(),
         ),
         FFRoute(
           name: INuevarecrapidaWidget.routeName,
@@ -217,11 +221,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: FDiagnosticoWidget.routeName,
-          path: FDiagnosticoWidget.routePath,
-          builder: (context, params) => FDiagnosticoWidget(),
-        ),
-        FFRoute(
           name: Controldecalidadtecnico2Widget.routeName,
           path: Controldecalidadtecnico2Widget.routePath,
           builder: (context, params) => Controldecalidadtecnico2Widget(
@@ -236,11 +235,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.int,
             ),
           ),
-        ),
-        FFRoute(
-          name: DashBoard2CopyCopyWidget.routeName,
-          path: DashBoard2CopyCopyWidget.routePath,
-          builder: (context, params) => DashBoard2CopyCopyWidget(),
         ),
         FFRoute(
           name: EncuestaclienteWidget.routeName,

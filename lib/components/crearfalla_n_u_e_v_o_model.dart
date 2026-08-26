@@ -55,6 +55,22 @@ class CrearfallaNUEVOModel extends FlutterFlowModel<CrearfallaNUEVOWidget> {
       return 'Ingresa el tiempo estimado en horas';
     }
 
+    // El campo dice «en horas» pero aceptaba cualquier texto, y el importe se calcula con
+    // `double.tryParse(...) ?? 0.0`. Escribir «2 dias» daba CERO horas, y con ello
+    // `Mano_de_obra = 0`: la cotizacion perdia entera la mano de obra y el cliente aprobaba
+    // solo los repuestos. Comprobado en la base: de 5 diagnosticos con tarifa de servicio,
+    // 3 tienen la mano de obra a 0.00 y los 3 llevan el tiempo escrito con palabras
+    // («10 dias », «5diaa», «2 dias »).
+    //
+    // Se acepta la coma decimal porque en Peru es lo natural al teclear «1,5».
+    final horas = double.tryParse(val.trim().replaceAll(',', '.'));
+    if (horas == null) {
+      return 'Escribe solo el numero de horas, sin texto (por ejemplo 2 o 1.5)';
+    }
+    if (horas <= 0) {
+      return 'El tiempo estimado tiene que ser mayor que cero';
+    }
+
     return null;
   }
 

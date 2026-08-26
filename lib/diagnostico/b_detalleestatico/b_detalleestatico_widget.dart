@@ -413,7 +413,14 @@ class _BDetalleestaticoWidgetState extends State<BDetalleestaticoWidget> {
                                                         0.0, 5.0, 10.0, 0.0),
                                                 child: Text(
                                                   dateTimeFormat(
-                                                      'jm',
+                                                      // Era 'jm', que es la HORA. La
+                                                      // etiqueta de al lado dice «Fecha:»
+                                                      // y debajo salia «12:13 AM»: la fecha
+                                                      // de ingreso del vehiculo no se veia
+                                                      // en ninguna de las dos pantallas de
+                                                      // detalle. El resto de la app ya usa
+                                                      // 'd/M/y' para este mismo campo.
+                                                      'd/M/y',
                                                       widget.datos!
                                                           .fechaCreacion),
                                                   style: FlutterFlowTheme.of(
