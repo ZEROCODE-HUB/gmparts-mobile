@@ -12,10 +12,20 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      # La version se FIJA, no se sigue el canal.
+      #
+      # Esto usaba `channel: stable` y se rompio solo el 2026-08-26 sin que nadie tocara el
+      # proyecto: stable paso a Flutter 3.47.1, cuyo `flutter_localizations` exige
+      # `intl ^0.20.3`, y el pubspec fija 0.20.2. `flutter pub get` fallo y no hubo build.
+      #
+      # Ademas iOS (codemagic.yaml) ya compila con 3.44.8 fijada. Tener cada tienda con un
+      # SDK distinto es pedir que una funcione y la otra no por motivos que nadie ve. Al
+      # cambiar esta version, cambiar tambien la de codemagic.yaml.
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: '3.44.8'
       - name: Install dependencies
         run: flutter pub get
       - name: Decode Keystore
