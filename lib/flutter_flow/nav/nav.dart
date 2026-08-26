@@ -183,6 +183,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           requireAuth: true,
           builder: (context, params) => ARecepcionesInicioWidget(),
         ),
+        // Etapa 08 del Excel: lo unico que el tecnico tiene suyo en la app.
+        FFRoute(
+          name: TecnicoMisOrdenesWidget.routeName,
+          path: TecnicoMisOrdenesWidget.routePath,
+          builder: (context, params) => TecnicoMisOrdenesWidget(),
+        ),
+        FFRoute(
+          name: TecnicoOrdenDetalleWidget.routeName,
+          path: TecnicoOrdenDetalleWidget.routePath,
+          asyncParams: {
+            'recepcion': getDoc(['recepciones'], RecepcionesRecord.fromSnapshot),
+          },
+          builder: (context, params) => TecnicoOrdenDetalleWidget(
+            recepcion: params.getParam(
+              'recepcion',
+              ParamType.Document,
+            ),
+          ),
+        ),
         FFRoute(
           name: BDashBoardDiagnosticoWidget.routeName,
           path: BDashBoardDiagnosticoWidget.routePath,

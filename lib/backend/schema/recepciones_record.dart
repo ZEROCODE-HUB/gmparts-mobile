@@ -255,6 +255,22 @@ class RecepcionesRecord extends FirestoreRecord {
   String get validoferta => _validoferta ?? '';
   bool hasValidoferta() => _validoferta != null;
 
+  // "bahia" field — etapa 07 del Excel: donde se hara el trabajo.
+  String? _bahia;
+  String get bahia => _bahia ?? '';
+  bool hasBahia() => _bahia != null;
+
+  // "fechaProgramada" field — etapa 07: cuando entra a taller, lo fija el jefe de taller.
+  DateTime? _fechaProgramada;
+  DateTime? get fechaProgramada => _fechaProgramada;
+  bool hasFechaProgramada() => _fechaProgramada != null;
+
+  // "fechaCita" field — etapa 01: dia y hora acordados con el cliente. Una cita es una
+  // recepcion que aun no ha ocurrido, por eso vive en este mismo documento.
+  DateTime? _fechaCita;
+  DateTime? get fechaCita => _fechaCita;
+  bool hasFechaCita() => _fechaCita != null;
+
   // "diaentrega" field.
   String? _diaentrega;
   String get diaentrega => _diaentrega ?? '';
@@ -341,6 +357,9 @@ class RecepcionesRecord extends FirestoreRecord {
     _codeCT = snapshotData['codeCT'] as String?;
     _moneda = snapshotData['moneda'] as String?;
     _validoferta = snapshotData['validoferta'] as String?;
+    _bahia = snapshotData['bahia'] as String?;
+    _fechaProgramada = snapshotData['fechaProgramada'] as DateTime?;
+    _fechaCita = snapshotData['fechaCita'] as DateTime?;
     _diaentrega = snapshotData['diaentrega'] as String?;
     _condpago = snapshotData['condpago'] as String?;
     _garantia = snapshotData['garantia'] as String?;
@@ -433,6 +452,9 @@ Map<String, dynamic> createRecepcionesRecordData({
   String? codeCT,
   String? moneda,
   String? validoferta,
+  String? bahia,
+  DateTime? fechaProgramada,
+  DateTime? fechaCita,
   String? diaentrega,
   String? condpago,
   String? garantia,
@@ -494,6 +516,9 @@ Map<String, dynamic> createRecepcionesRecordData({
       'codeCT': codeCT,
       'moneda': moneda,
       'validoferta': validoferta,
+      'bahia': bahia,
+      'fechaProgramada': fechaProgramada,
+      'fechaCita': fechaCita,
       'diaentrega': diaentrega,
       'condpago': condpago,
       'garantia': garantia,
@@ -561,6 +586,9 @@ class RecepcionesRecordDocumentEquality implements Equality<RecepcionesRecord> {
         e1?.codeCT == e2?.codeCT &&
         e1?.moneda == e2?.moneda &&
         e1?.validoferta == e2?.validoferta &&
+        e1?.bahia == e2?.bahia &&
+        e1?.fechaProgramada == e2?.fechaProgramada &&
+        e1?.fechaCita == e2?.fechaCita &&
         e1?.diaentrega == e2?.diaentrega &&
         e1?.condpago == e2?.condpago &&
         e1?.garantia == e2?.garantia &&

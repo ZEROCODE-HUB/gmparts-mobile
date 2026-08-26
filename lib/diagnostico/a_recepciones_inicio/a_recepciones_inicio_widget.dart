@@ -626,8 +626,12 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               if (listViewRecepcionesRecord
-                                                      .status ==
-                                                  FFAppConstants.Recepcion) {
+                                                          .status ==
+                                                      FFAppConstants.Recepcion ||
+                                                  listViewRecepcionesRecord
+                                                          .status ==
+                                                      FFAppConstants
+                                                          .CitaProgramada) {
                                                 context.pushNamed(
                                                   BDashBoardDiagnosticoWidget
                                                       .routeName,
@@ -678,8 +682,12 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                   },
                                                 );
                                               } else if (listViewRecepcionesRecord
-                                                      .status ==
-                                                  FFAppConstants.Cotizacion) {
+                                                          .status ==
+                                                      FFAppConstants.Cotizacion ||
+                                                  listViewRecepcionesRecord
+                                                          .status ==
+                                                      FFAppConstants
+                                                          .EsperandoAprobacion) {
                                                 context.pushNamed(
                                                   CotizacionFuncionandoWidget
                                                       .routeName,
@@ -710,7 +718,11 @@ class _ARecepcionesInicioWidgetState extends State<ARecepcionesInicioWidget> {
                                                   listViewRecepcionesRecord
                                                           .status ==
                                                       FFAppConstants
-                                                          .ListoParaEntrega) {
+                                                          .ListoParaEntrega ||
+                                                  listViewRecepcionesRecord
+                                                          .status ==
+                                                      FFAppConstants
+                                                          .Programado) {
                                                 context.pushNamed(
                                                   CDashBoard2FinalizarWidget
                                                       .routeName,

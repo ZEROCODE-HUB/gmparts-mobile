@@ -1772,7 +1772,11 @@ class _GLinkclienteWidgetState extends State<GLinkclienteWidget> {
                                 await gLinkclienteRecepcionesRecord.reference
                                     .update(createRecepcionesRecordData(
                                   aprobacionCliente: true,
-                                  status: FFAppConstants.Enreparacion,
+                                  // Etapa 06 -> 07 del Excel. Aprobada NO es lo mismo que
+                                  // en el elevador: falta asignarle tecnico, bahia y fecha.
+                                  // Antes saltaba directo a «Reparación» y una orden recien
+                                  // aprobada era indistinguible de otra ya en curso.
+                                  status: FFAppConstants.Programado,
                                 ));
 
                                 context.goNamed(

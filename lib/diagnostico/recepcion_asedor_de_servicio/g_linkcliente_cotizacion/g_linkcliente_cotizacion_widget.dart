@@ -2267,7 +2267,9 @@ class _GLinkclienteCotizacionWidgetState
                           await gLinkclienteCotizacionRecepcionesRecord
                               .reference
                               .update(createRecepcionesRecordData(
-                            status: FFAppConstants.Enreparacion,
+                            // Etapa 06 -> 07 del Excel. Aprobada NO es lo mismo que en el
+                            // elevador: falta asignarle tecnico, bahia y fecha.
+                            status: FFAppConstants.Programado,
                           ));
 
                           context.pushNamed(

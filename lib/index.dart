@@ -74,3 +74,7 @@ export '/diagnostico/crear_cotizacion_funcionando_copy/crear_cotizacion_funciona
     show CrearCotizacionFuncionandoCopyWidget;
 export '/diagnostico/dashboard/dashboard_widget.dart'
     show DashboardWidget;
+export '/diagnostico/tecnico_mis_ordenes/tecnico_mis_ordenes_widget.dart'
+    show TecnicoMisOrdenesWidget;
+export '/diagnostico/tecnico_orden_detalle/tecnico_orden_detalle_widget.dart'
+    show TecnicoOrdenDetalleWidget;

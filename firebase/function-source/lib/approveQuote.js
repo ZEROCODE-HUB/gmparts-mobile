@@ -62,7 +62,14 @@ exports.approveQuote = functions.https.onCall(async (data) => {
     await doc.ref.update({
         aprobacionCotizacion: true,
         aprobacion_cotizacion: true,
-        status: 'Reparación',
+        // Etapa 06 -> 07 del Excel, no 06 -> 08.
+        //
+        // Que el cliente apruebe no pone el coche en el elevador: falta que el jefe de taller le
+        // asigne tecnico, bahia y fecha. Antes esto escribia 'Reparación' directamente, con lo
+        // que una orden recien aprobada y otra ya en curso eran indistinguibles — y no habia
+        // ninguna lista de «esto esta aprobado y sin asignar», que es donde se pierden los dias.
+        status: 'Programado',
+        aprobadaAt: admin.firestore.FieldValue.serverTimestamp(),
         quote_access_key: admin.firestore.FieldValue.delete(),
     });
     return { success: true };

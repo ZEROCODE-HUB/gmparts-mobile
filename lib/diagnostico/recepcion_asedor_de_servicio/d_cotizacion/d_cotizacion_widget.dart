@@ -1,3 +1,5 @@
+import '/app_constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/backend.dart';
 import '/custom_code/actions/generate_link.dart';
 import '/custom_code/actions/index.dart';
@@ -228,6 +230,27 @@ class _DCotizacionWidgetState extends State<DCotizacionWidget> {
                           }
                           return;
                         }
+                        // Etapa 05 del Excel: la cotizacion esta ENVIADA y se espera
+                        // respuesta. Antes no habia forma de distinguir «acabo de calcularla»
+                        // de «se la mande al cliente hace cuatro dias y no contesta», que es
+                        // donde una orden se queda parada mas tiempo.
+                        final docId = widget.documentId;
+                        if (docId != null && docId.isNotEmpty) {
+                          try {
+                            await FirebaseFirestore.instance
+                                .collection('recepciones')
+                                .doc(docId)
+                                .update({
+                              'status': FFAppConstants.EsperandoAprobacion,
+                              'cotizacionEnviadaAt': FieldValue.serverTimestamp(),
+                            });
+                          } catch (e) {
+                            // El enlace ya esta generado y es lo que el cliente espera: que
+                            // no se pueda anotar el estado no debe impedir enviarselo.
+                            debugPrint('No se pudo marcar la cotizacion como enviada: $e');
+                          }
+                        }
+
                         if (!context.mounted) return;
                         await showModalBottomSheet(
                           isScrollControlled: true,

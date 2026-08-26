@@ -213,6 +213,21 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   SizedBox(height: 12.0),
                   Row(
                     children: [
+                      // «Mis ordenes» es del tecnico: las que tiene asignadas, y donde
+                      // reporta su avance. Es la etapa 08 del Excel, la unica pantalla
+                      // propia que tiene en la app.
+                      if (esTecnicoMecanico) ...[
+                        Expanded(
+                          child: _buildQuickAction(
+                            context,
+                            'Mis\nórdenes',
+                            Icons.build_circle_outlined,
+                            () => context
+                                .pushNamed(TecnicoMisOrdenesWidget.routeName),
+                          ),
+                        ),
+                        SizedBox(width: 12.0),
+                      ],
                       // Recepcionar un vehiculo es del asesor de servicios. Al tecnico se
                       // le dejan las recepciones que ya existen, que es donde trabaja:
                       // hasta ahora veia los mismos tres botones que un administrador.
@@ -352,15 +367,26 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           // «Ver recepciones» (a_recepciones_inicio) si reparte por estado desde siempre;
           // aqui se replica ese mismo reparto para que las dos listas lleven al mismo sitio.
           final ruta = {
+                // Una cita todavia no es una recepcion: lo que toca al abrirla es
+                // completarla cuando el vehiculo llega.
+                FFAppConstants.CitaProgramada:
+                    BDashBoardDiagnosticoWidget.routeName,
                 FFAppConstants.Recepcion: BDashBoardDiagnosticoWidget.routeName,
                 FFAppConstants.Diagnostico:
                     CrearCotizacionFuncionandoWidget.routeName,
                 FFAppConstants.Cotizacion: CotizacionFuncionandoWidget.routeName,
+                // Enviada y sin respuesta: se entra a la misma pantalla de cotizacion,
+                // desde donde se puede reenviar el enlace o registrar la aprobacion.
+                FFAppConstants.EsperandoAprobacion:
+                    CotizacionFuncionandoWidget.routeName,
+                // Aprobada y asignada: el trabajo empieza aqui, igual que en reparacion.
+                FFAppConstants.Programado:
+                    CDashBoard2FinalizarWidget.routeName,
                 FFAppConstants.Enreparacion: CDashBoard2FinalizarWidget.routeName,
-        // Listo para entrega: el trabajo esta hecho pero la orden sigue abierta, asi
-        // que se entra a la pantalla de cierre, no a la de solo lectura.
-        FFAppConstants.ListoParaEntrega:
-            CDashBoard2FinalizarWidget.routeName,
+                // Listo para entrega: el trabajo esta hecho pero la orden sigue abierta,
+                // asi que se entra a la pantalla de cierre, no a la de solo lectura.
+                FFAppConstants.ListoParaEntrega:
+                    CDashBoard2FinalizarWidget.routeName,
                 FFAppConstants.Finalizado: CDashBoard2FinalizadoWidget.routeName,
               }[r.status] ??
               BDashBoardDiagnosticoWidget.routeName;
@@ -453,6 +479,12 @@ class _DashboardWidgetState extends State<DashboardWidget> {
         return Colors.orange;
       case FFAppConstants.Cotizacion:
         return Color(0xFF1E88E5);
+      case FFAppConstants.CitaProgramada:
+        return Color(0xFF78909C);
+      case FFAppConstants.EsperandoAprobacion:
+        return Color(0xFF5E35B1);
+      case FFAppConstants.Programado:
+        return Color(0xFF00ACC1);
       case FFAppConstants.Enreparacion:
         return Colors.deepPurple;
       case FFAppConstants.ListoParaEntrega:
