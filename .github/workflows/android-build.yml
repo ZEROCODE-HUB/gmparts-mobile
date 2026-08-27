@@ -1,4 +1,4 @@
-﻿name: Android Build & Sign
+name: Android Build & Sign
 on:
   workflow_dispatch:
 
@@ -28,16 +28,25 @@ jobs:
           flutter-version: '3.44.8'
       - name: Install dependencies
         run: flutter pub get
+      # El valor va entre comillas y por `env`. Con `echo` sin comillas el shell parte el
+      # secreto por espacios y le anade un salto de linea: hoy funciona por suerte, no por
+      # diseno, y si el keystore se regenera puede dejar de decodificar sin avisar.
       - name: Decode Keystore
-        run: |
-          echo ${{ secrets.ANDROID_KEYSTORE_BASE64 }} | base64 -d > android/app/gmparts-keystore.jks
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: printf '%s' "$KEYSTORE_BASE64" | base64 -d > android/app/gmparts-keystore.jks
+      # Las credenciales del keystore van SOLO por `env`, que es de donde las lee
+      # `signingConfigs.release` en android/app/build.gradle.
+      #
+      # Antes viajaban ADEMAS como `--dart-define`, y eso es una fuga: un `--dart-define`
+      # se hornea dentro del binario de Dart y se puede recuperar del AAB publicado. Cada
+      # version subida a Play llevaba dentro la contrasena del keystore. Y encima no servian
+      # para nada: ninguna linea de `lib/` lee esos valores.
+      #
+      # Si alguna vez se subio a Play un AAB construido asi, la contrasena hay que darla por
+      # comprometida y rotarla.
       - name: Build Android AAB
-        run: |
-          flutter build appbundle --release \
-            --build-number=${{ github.run_number }} \
-            --dart-define=ANDROID_STORE_PASSWORD=${{ secrets.ANDROID_STORE_PASSWORD }} \
-            --dart-define=ANDROID_KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }} \
-            --dart-define=ANDROID_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: flutter build appbundle --release --build-number=${{ github.run_number }}
         env:
           KEYSTORE_PATH: gmparts-keystore.jks
           STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
