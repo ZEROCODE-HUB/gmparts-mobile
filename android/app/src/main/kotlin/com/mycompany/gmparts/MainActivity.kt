@@ -1,4 +1,4 @@
-package com.mycompany.gmparts2
+package com.mycompany.gmparts
 
 import io.flutter.embedding.android.FlutterActivity
 
