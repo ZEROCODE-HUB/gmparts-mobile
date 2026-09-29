@@ -4176,7 +4176,14 @@ class _BNuevarecepcionrapidaFWidgetState
                                         );
                                         return;
                                       }
-                                      if (_model.codigoPaisValue == null) {
+                                      // Se comprueba el prefijo de la rama que esta a la vista.
+                                      // Antes miraba siempre el de Natural, asi que en una recepcion
+                                      // a persona juridica pedia «seleccione el codigo de pais» de un
+                                      // campo que ni se ve en ese formulario.
+                                      if (_model.tipopersonaValue ==
+                                              FFAppConstants.TipoPersonaNatural
+                                          ? _model.codigoPaisValue == null
+                                          : _model.codigoPais2Value == null) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -4321,6 +4328,21 @@ class _BNuevarecepcionrapidaFWidgetState
                                         );
                                         return;
                                       }
+                                      // El prefijo sale de la rama correcta. Al guardar se usaba
+                                      // `codigoPaisValue` (el de Natural) tambien para las juridicas,
+                                      // de modo que `codigoPais2Value` no se leia nunca: elegir +52 en
+                                      // el formulario juridico no tenia ningun efecto.
+                                      final prefijoPais = _model
+                                                  .tipopersonaValue ==
+                                              FFAppConstants.TipoPersonaNatural
+                                          ? (_model.codigoPaisValue ?? '+51')
+                                          : (_model.codigoPais2Value ?? '+51');
+                                      // Todo el guardado va dentro de un try. Sin esto, cualquier
+                                      // excepcion —permisos, red, un campo nulo— muere dentro del
+                                      // onPressed asincrono: Flutter la escribe en la consola y el
+                                      // boton se queda sin hacer nada. Al asesor le parece que la app
+                                      // esta rota y no tiene ni un mensaje que reportar.
+                                      try {
                                       if (widget.recepcionid != null) {
                                         await widget.recepcionid!.update({
                                           ...createRecepcionesRecordData(
@@ -4329,7 +4351,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             nombreCliente:
                                                 _model.readUser?.displayName,
                                             telefono:
-                                                '${_model.codigoPaisValue}${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
+                                                '$prefijoPais${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
                                             placa: _model.readVehicle?.placa,
                                             marca:
                                                 _model.marcaTextController.text,
@@ -4402,10 +4424,30 @@ class _BNuevarecepcionrapidaFWidgetState
                                         _model.randomid = random_data
                                             .randomInteger(10000, 99999);
                                         safeSetState(() {});
+                                        // Se lee el contador CONCRETO. Antes se cogia «el primer documento de
+                                        // LastCode» por orden de id: funcionaba de milagro mientras solo
+                                        // hubiera uno. En cuanto el panel cree una serie fiscal (B001,
+                                        // F001, PRUEBA-*), esas ordenan ANTES que `codeCT` en minuscula,
+                                        // la app cogeria la equivocada, no tendria campo `lastCode` y
+                                        // `''.substring(6)` reventaria con RangeError.
                                         _model.lastcode =
                                             await queryLastCodeRecordOnce(
+                                          queryBuilder: (q) => q.where(
+                                              FieldPath.documentId,
+                                              isEqualTo: 'codeCT'),
                                           singleRecord: true,
                                         ).then((s) => s.firstOrNull);
+                                        // El codigo se calcula UNA vez y sin `!`. Con la coleccion
+                                        // LastCode vacia, `lastcode` era null y `lastcode!` lanzaba
+                                        // «Null check operator used on a null value» dentro de un
+                                        // onPressed asincrono: Flutter se traga la excepcion y el boton
+                                        // se queda mudo. El valor por defecto de al lado nunca llegaba a
+                                        // usarse, porque el crash ocurre al evaluar el argumento.
+                                        final ultimoCodeCT =
+                                            _model.lastcode?.lastCode ?? '';
+                                        final nuevoCodeCT = ultimoCodeCT.length > 6
+                                            ? functions.codigomoreone(ultimoCodeCT)
+                                            : 'CT001-0000001';
 
                                         var recepcionesRecordReference =
                                             RecepcionesRecord.collection.doc();
@@ -4417,7 +4459,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             nombreCliente:
                                                 _model.readUser?.displayName,
                                             telefono:
-                                                '${_model.codigoPaisValue}${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
+                                                '$prefijoPais${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
                                             modelo: _model
                                                 .modeloTextController.text,
                                             kmIngreso: _model
@@ -4446,11 +4488,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                     : _model
                                                         .correoJuriidcoTextController
                                                         .text,
-                                            codeCT: valueOrDefault<String>(
-                                              functions.codigomoreone(
-                                                  _model.lastcode!.lastCode),
-                                              'CT001-0000000',
-                                            ),
+                                            codeCT: nuevoCodeCT,
                                             placa: _model.readVehicle?.placa,
                                             marca: _model.readVehicle?.marca,
                                             dni: _model
@@ -4477,7 +4515,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             nombreCliente:
                                                 _model.readUser?.displayName,
                                             telefono:
-                                                '${_model.codigoPaisValue}${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
+                                                '$prefijoPais${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
                                             modelo: _model
                                                 .modeloTextController.text,
                                             kmIngreso: _model
@@ -4506,11 +4544,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                     : _model
                                                         .correoJuriidcoTextController
                                                         .text,
-                                            codeCT: valueOrDefault<String>(
-                                              functions.codigomoreone(
-                                                  _model.lastcode!.lastCode),
-                                              'CT001-0000000',
-                                            ),
+                                            codeCT: nuevoCodeCT,
                                             placa: _model.readVehicle?.placa,
                                             marca: _model.readVehicle?.marca,
                                             dni: _model
@@ -4528,14 +4562,13 @@ class _BNuevarecepcionrapidaFWidgetState
                                           ),
                                         }, recepcionesRecordReference);
 
-                                        await _model.lastcode!.reference
-                                            .update(createLastCodeRecordData(
-                                          lastCode: valueOrDefault<String>(
-                                            functions.codigomoreone(
-                                                _model.lastcode!.lastCode),
-                                            'CT001-0000000',
-                                          ),
-                                        ));
+                                        // Si el contador no existia, se crea en vez de reventar.
+                                        await LastCodeRecord.collection
+                                            .doc('codeCT')
+                                            .set(
+                                                createLastCodeRecordData(
+                                                    lastCode: nuevoCodeCT),
+                                                SetOptions(merge: true));
 
                                         context.pushNamed(
                                           FRecepcionGuardadaWidget.routeName,
@@ -4560,6 +4593,25 @@ class _BNuevarecepcionrapidaFWidgetState
                                             ),
                                           },
                                         );
+                                      }
+                                      } catch (e) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'No se pudo guardar la recepcion: $e',
+                                              style: _theme.labelLarge.override(
+                                                font: GoogleFonts.montserrat(),
+                                                color: _theme.primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 8000),
+                                            backgroundColor: _theme.primary,
+                                          ),
+                                        );
+                                        return;
                                       }
 
                                       safeSetState(() {});

@@ -5900,13 +5900,37 @@ class _CNuevaRecepcionCompletaFWidgetState
                                             );
                                             return;
                                           }
+                                          // Todo el guardado va dentro de un try: sin esto una
+                                          // excepcion muere dentro del onPressed asincrono, Flutter la
+                                          // manda a la consola y el boton se queda mudo.
+                                          try {
                                           _model.randomid = random_data
                                               .randomInteger(10000, 99999);
                                           safeSetState(() {});
+                                          // Se lee el contador CONCRETO. Antes se cogia «el primer
+                                          // documento de LastCode» por orden de id: en cuanto el panel
+                                          // cree una serie fiscal (B001, F001, PRUEBA-*) esa ordena
+                                          // ANTES que `codeCT` en minuscula, la app cogeria la
+                                          // equivocada, no tendria campo `lastCode`, y
+                                          // `''.substring(6)` reventaria con RangeError.
                                           _model.lasttCode =
                                               await queryLastCodeRecordOnce(
+                                            queryBuilder: (q) => q.where(
+                                                FieldPath.documentId,
+                                                isEqualTo: 'codeCT'),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
+                                          // Calculado UNA vez y sin `!`. Con LastCode vacia,
+                                          // `lasttCode!` lanzaba «Null check operator used on a null
+                                          // value» dentro de un onPressed asincrono: Flutter se traga
+                                          // la excepcion y el boton se queda mudo.
+                                          final ultimoCodeCT =
+                                              _model.lasttCode?.lastCode ?? '';
+                                          final nuevoCodeCT =
+                                              ultimoCodeCT.length > 6
+                                                  ? functions
+                                                      .codigomoreone(ultimoCodeCT)
+                                                  : 'CT001-0000001';
                                           await Future.wait([
                                             Future(() async {
                                               var recepcionesRecordReference =
@@ -5965,12 +5989,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   clienteRef:
                                                       _model.userSelected,
                                                   codeCT:
-                                                      valueOrDefault<String>(
-                                                    functions.codigomoreone(
-                                                        _model.lasttCode!
-                                                            .lastCode),
-                                                    'CT001-0000000',
-                                                  ),
+                                                      nuevoCodeCT,
                                                 ),
                                                 ...mapToFirestore(
                                                   {
@@ -6035,12 +6054,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   clienteRef:
                                                       _model.userSelected,
                                                   codeCT:
-                                                      valueOrDefault<String>(
-                                                    functions.codigomoreone(
-                                                        _model.lasttCode!
-                                                            .lastCode),
-                                                    'CT001-0000000',
-                                                  ),
+                                                      nuevoCodeCT,
                                                 ),
                                                 ...mapToFirestore(
                                                   {
@@ -6054,16 +6068,13 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               }, recepcionesRecordReference);
                                             }),
                                             Future(() async {
-                                              await _model.lasttCode!.reference
-                                                  .update(
+                                              // Si el contador no existia, se crea en vez de reventar.
+                                              await LastCodeRecord.collection
+                                                  .doc('codeCT')
+                                                  .set(
                                                       createLastCodeRecordData(
-                                                lastCode:
-                                                    valueOrDefault<String>(
-                                                  functions.codigomoreone(_model
-                                                      .lasttCode!.lastCode),
-                                                  'CT001-0000000',
-                                                ),
-                                              ));
+                                                          lastCode: nuevoCodeCT),
+                                                      SetOptions(merge: true));
                                             }),
                                           ]);
 
@@ -6090,6 +6101,25 @@ class _CNuevaRecepcionCompletaFWidgetState
                                               ),
                                             },
                                           );
+                                          } catch (e) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'No se pudo guardar la recepcion: $e',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelLarge,
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 8000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                            );
+                                            return;
+                                          }
 
                                           safeSetState(() {});
                                         },
