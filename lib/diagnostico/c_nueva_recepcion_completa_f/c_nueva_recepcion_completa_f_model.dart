@@ -167,9 +167,9 @@ class CNuevaRecepcionCompletaFModel
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
-  TextEditingController? textController10;
-  String? Function(BuildContext, String?)? textController10Validator;
-  String? _textController10Validator(BuildContext context, String? val) {
+  TextEditingController? kilometrajeTextController;
+  String? Function(BuildContext, String?)? kilometrajeTextControllerValidator;
+  String? _kilometrajeTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El kilometraje es obligatorio';
     }
@@ -179,9 +179,9 @@ class CNuevaRecepcionCompletaFModel
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
-  TextEditingController? textController11;
-  String? Function(BuildContext, String?)? textController11Validator;
-  String? _textController11Validator(BuildContext context, String? val) {
+  TextEditingController? nivelCombustibleTextController;
+  String? Function(BuildContext, String?)? nivelCombustibleTextControllerValidator;
+  String? _nivelCombustibleTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El nivel de combustible es obligatorio';
     }
@@ -194,8 +194,8 @@ class CNuevaRecepcionCompletaFModel
   FormFieldController<List<String>>? dropDownValueController;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode3;
-  TextEditingController? textController12;
-  String? Function(BuildContext, String?)? textController12Validator;
+  TextEditingController? observacionesTextController;
+  String? Function(BuildContext, String?)? observacionesTextControllerValidator;
   // State field(s) for sc3 widget.
   ScrollController? sc3ScrollController;
   // State field(s) for Marca dropdown.
@@ -235,7 +235,6 @@ class CNuevaRecepcionCompletaFModel
   String uploadedFileUrl_imgautomovil1 = '';
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  LastCodeRecord? lasttCode;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   RecepcionesRecord? id;
 
@@ -251,8 +250,8 @@ class CNuevaRecepcionCompletaFModel
         _textFieldModeloTextControllerValidator;
     textFieldAnioFabricacionTextControllerValidator =
         _textFieldAnioFabricacionTextControllerValidator;
-    textController10Validator = _textController10Validator;
-    textController11Validator = _textController11Validator;
+    kilometrajeTextControllerValidator = _kilometrajeTextControllerValidator;
+    nivelCombustibleTextControllerValidator = _nivelCombustibleTextControllerValidator;
     sc3ScrollController = ScrollController();
     textFieldMotivoTextControllerValidator =
         _textFieldMotivoTextControllerValidator;
@@ -292,13 +291,13 @@ class CNuevaRecepcionCompletaFModel
     textFieldAnioFabricacionTextController?.dispose();
 
     textFieldFocusNode1?.dispose();
-    textController10?.dispose();
+    kilometrajeTextController?.dispose();
 
     textFieldFocusNode2?.dispose();
-    textController11?.dispose();
+    nivelCombustibleTextController?.dispose();
 
     textFieldFocusNode3?.dispose();
-    textController12?.dispose();
+    observacionesTextController?.dispose();
 
     sc3ScrollController?.dispose();
     textFieldMotivoFocusNode?.dispose();

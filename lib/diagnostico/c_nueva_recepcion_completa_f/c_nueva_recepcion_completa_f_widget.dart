@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -76,13 +77,13 @@ class _CNuevaRecepcionCompletaFWidgetState
     _model.textFieldAnioFabricacionTextController ??= TextEditingController();
     _model.textFieldAnioFabricacionFocusNode ??= FocusNode();
 
-    _model.textController10 ??= TextEditingController();
+    _model.kilometrajeTextController ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.textController11 ??= TextEditingController();
+    _model.nivelCombustibleTextController ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 
-    _model.textController12 ??= TextEditingController();
+    _model.observacionesTextController ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
 
     _model.textFieldMotivoTextController ??= TextEditingController();
@@ -3733,7 +3734,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: TextFormField(
-                                        controller: _model.textController10,
+                                        controller: _model.kilometrajeTextController,
                                         focusNode: _model.textFieldFocusNode1,
                                         autofocus: false,
                                         obscureText: false,
@@ -3863,7 +3864,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                       .fontStyle,
                                             ),
                                         validator: _model
-                                            .textController10Validator
+                                            .kilometrajeTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -3911,7 +3912,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: TextFormField(
-                                        controller: _model.textController11,
+                                        controller: _model.nivelCombustibleTextController,
                                         focusNode: _model.textFieldFocusNode2,
                                         autofocus: false,
                                         obscureText: false,
@@ -4041,7 +4042,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                       .fontStyle,
                                             ),
                                         validator: _model
-                                            .textController11Validator
+                                            .nivelCombustibleTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -4234,7 +4235,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: TextFormField(
-                                        controller: _model.textController12,
+                                        controller: _model.observacionesTextController,
                                         focusNode: _model.textFieldFocusNode3,
                                         autofocus: false,
                                         obscureText: false,
@@ -4365,7 +4366,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                             ),
                                         maxLines: 6,
                                         validator: _model
-                                            .textController12Validator
+                                            .observacionesTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -5907,30 +5908,9 @@ class _CNuevaRecepcionCompletaFWidgetState
                                           _model.randomid = random_data
                                               .randomInteger(10000, 99999);
                                           safeSetState(() {});
-                                          // Se lee el contador CONCRETO. Antes se cogia «el primer
-                                          // documento de LastCode» por orden de id: en cuanto el panel
-                                          // cree una serie fiscal (B001, F001, PRUEBA-*) esa ordena
-                                          // ANTES que `codeCT` en minuscula, la app cogeria la
-                                          // equivocada, no tendria campo `lastCode`, y
-                                          // `''.substring(6)` reventaria con RangeError.
-                                          _model.lasttCode =
-                                              await queryLastCodeRecordOnce(
-                                            queryBuilder: (q) => q.where(
-                                                FieldPath.documentId,
-                                                isEqualTo: 'codeCT'),
-                                            singleRecord: true,
-                                          ).then((s) => s.firstOrNull);
-                                          // Calculado UNA vez y sin `!`. Con LastCode vacia,
-                                          // `lasttCode!` lanzaba «Null check operator used on a null
-                                          // value» dentro de un onPressed asincrono: Flutter se traga
-                                          // la excepcion y el boton se queda mudo.
-                                          final ultimoCodeCT =
-                                              _model.lasttCode?.lastCode ?? '';
+                                          // Un unico contador, compartido con el panel y atomico.
                                           final nuevoCodeCT =
-                                              ultimoCodeCT.length > 6
-                                                  ? functions
-                                                      .codigomoreone(ultimoCodeCT)
-                                                  : 'CT001-0000001';
+                                              await actions.siguienteCodeCT();
                                           await Future.wait([
                                             Future(() async {
                                               var recepcionesRecordReference =
@@ -5955,7 +5935,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                       .textFieldModeloTextController
                                                       .text,
                                                   kmIngreso: _model
-                                                      .textController10.text,
+                                                      .kilometrajeTextController.text,
                                                   tecnicoServicio: _model
                                                       .dropDownTecnicoValue,
                                                   tipoServicio: _model
@@ -5977,9 +5957,9 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                       .textFieldAnioFabricacionTextController
                                                       .text,
                                                   nivelCombustible: _model
-                                                      .textController11.text,
+                                                      .nivelCombustibleTextController.text,
                                                   observacionesAdicionales:
-                                                      _model.textController12
+                                                      _model.observacionesTextController
                                                           .text,
                                                   status:
                                                       FFAppConstants.Recepcion,
@@ -6020,7 +6000,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                       .textFieldModeloTextController
                                                       .text,
                                                   kmIngreso: _model
-                                                      .textController10.text,
+                                                      .kilometrajeTextController.text,
                                                   tecnicoServicio: _model
                                                       .dropDownTecnicoValue,
                                                   tipoServicio: _model
@@ -6042,9 +6022,9 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                       .textFieldAnioFabricacionTextController
                                                       .text,
                                                   nivelCombustible: _model
-                                                      .textController11.text,
+                                                      .nivelCombustibleTextController.text,
                                                   observacionesAdicionales:
-                                                      _model.textController12
+                                                      _model.observacionesTextController
                                                           .text,
                                                   status:
                                                       FFAppConstants.Recepcion,
@@ -6066,15 +6046,6 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   },
                                                 ),
                                               }, recepcionesRecordReference);
-                                            }),
-                                            Future(() async {
-                                              // Si el contador no existia, se crea en vez de reventar.
-                                              await LastCodeRecord.collection
-                                                  .doc('codeCT')
-                                                  .set(
-                                                      createLastCodeRecordData(
-                                                          lastCode: nuevoCodeCT),
-                                                      SetOptions(merge: true));
                                             }),
                                           ]);
 

@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -111,7 +112,7 @@ class _BNuevarecepcionrapidaFWidgetState
           }
         });
         safeSetState(() {
-          _model.correoJuriidcoTextController?.text =
+          _model.correoJuridicoTextController?.text =
               _model.recepcionDATOS!.correoElectronico;
         });
         safeSetState(() {
@@ -157,8 +158,8 @@ class _BNuevarecepcionrapidaFWidgetState
     _model.telefonoJuridicoTextController ??= TextEditingController();
     _model.telefonoJuridicoFocusNode ??= FocusNode();
 
-    _model.correoJuriidcoTextController ??= TextEditingController();
-    _model.correoJuriidcoFocusNode ??= FocusNode();
+    _model.correoJuridicoTextController ??= TextEditingController();
+    _model.correoJuridicoFocusNode ??= FocusNode();
 
     _model.marcaTextController ??= TextEditingController(
         text: widget.recepcionid != null ? _model.recepcionDATOS?.marca : '');
@@ -572,7 +573,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                               FFAppConstants
                                                   .TipoPersonaJuridica) {
                                             safeSetState(() {
-                                              _model.correoJuriidcoTextController
+                                              _model.correoJuridicoTextController
                                                       ?.text =
                                                   _model.readUser!.email;
                                             });
@@ -2050,12 +2051,12 @@ class _BNuevarecepcionrapidaFWidgetState
                                             0.0, 10.0, 0.0, 0.0),
                                         child: TextFormField(
                                           controller: _model
-                                              .correoJuriidcoTextController,
+                                              .correoJuridicoTextController,
                                           focusNode:
-                                              _model.correoJuriidcoFocusNode,
+                                              _model.correoJuridicoFocusNode,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.correoJuriidcoTextController',
+                                            '_model.correoJuridicoTextController',
                                             Duration(milliseconds: 100),
                                             () => safeSetState(() {}),
                                           ),
@@ -2193,13 +2194,13 @@ class _BNuevarecepcionrapidaFWidgetState
                                                         .fontStyle,
                                               ),
                                           validator: _model
-                                              .correoJuriidcoTextControllerValidator
+                                              .correoJuridicoTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
                                     ],
                                   ),
-                                  if ((_model.correoJuriidcoTextController
+                                  if ((_model.correoJuridicoTextController
                                                   .text !=
                                               '') &&
                                       (_model.userSelected == null) &&
@@ -4371,7 +4372,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                 .textFieldRucTextController
                                                 .text,
                                             razonSocial: _model
-                                                .correoJuriidcoTextController
+                                                .correoJuridicoTextController
                                                 .text,
                                             numeroVIN:
                                                 _model.readVehicle?.vINSerie,
@@ -4385,7 +4386,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                         .correonaturalTextController
                                                         .text
                                                     : _model
-                                                        .correoJuriidcoTextController
+                                                        .correoJuridicoTextController
                                                         .text,
                                           ),
                                           ...mapToFirestore(
@@ -4424,30 +4425,11 @@ class _BNuevarecepcionrapidaFWidgetState
                                         _model.randomid = random_data
                                             .randomInteger(10000, 99999);
                                         safeSetState(() {});
-                                        // Se lee el contador CONCRETO. Antes se cogia «el primer documento de
-                                        // LastCode» por orden de id: funcionaba de milagro mientras solo
-                                        // hubiera uno. En cuanto el panel cree una serie fiscal (B001,
-                                        // F001, PRUEBA-*), esas ordenan ANTES que `codeCT` en minuscula,
-                                        // la app cogeria la equivocada, no tendria campo `lastCode` y
-                                        // `''.substring(6)` reventaria con RangeError.
-                                        _model.lastcode =
-                                            await queryLastCodeRecordOnce(
-                                          queryBuilder: (q) => q.where(
-                                              FieldPath.documentId,
-                                              isEqualTo: 'codeCT'),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        // El codigo se calcula UNA vez y sin `!`. Con la coleccion
-                                        // LastCode vacia, `lastcode` era null y `lastcode!` lanzaba
-                                        // «Null check operator used on a null value» dentro de un
-                                        // onPressed asincrono: Flutter se traga la excepcion y el boton
-                                        // se queda mudo. El valor por defecto de al lado nunca llegaba a
-                                        // usarse, porque el crash ocurre al evaluar el argumento.
-                                        final ultimoCodeCT =
-                                            _model.lastcode?.lastCode ?? '';
-                                        final nuevoCodeCT = ultimoCodeCT.length > 6
-                                            ? functions.codigomoreone(ultimoCodeCT)
-                                            : 'CT001-0000001';
+                                        // Un unico contador, compartido con el panel y atomico.
+                                        // Antes se leia, se sumaba uno y se escribia en tres pasos
+                                        // sueltos: dos asesores recepcionando a la vez se llevaban el
+                                        // mismo numero.
+                                        final nuevoCodeCT = await actions.siguienteCodeCT();
 
                                         var recepcionesRecordReference =
                                             RecepcionesRecord.collection.doc();
@@ -4474,7 +4456,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                 .textFieldRucTextController
                                                 .text,
                                             razonSocial: _model
-                                                .correoJuriidcoTextController
+                                                .correoJuridicoTextController
                                                 .text,
                                             status: FFAppConstants.Recepcion,
                                             clienteRef: _model.userSelected,
@@ -4486,7 +4468,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                         .correonaturalTextController
                                                         .text
                                                     : _model
-                                                        .correoJuriidcoTextController
+                                                        .correoJuridicoTextController
                                                         .text,
                                             codeCT: nuevoCodeCT,
                                             placa: _model.readVehicle?.placa,
@@ -4530,7 +4512,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                 .textFieldRucTextController
                                                 .text,
                                             razonSocial: _model
-                                                .correoJuriidcoTextController
+                                                .correoJuridicoTextController
                                                 .text,
                                             status: FFAppConstants.Recepcion,
                                             clienteRef: _model.userSelected,
@@ -4542,7 +4524,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                         .correonaturalTextController
                                                         .text
                                                     : _model
-                                                        .correoJuriidcoTextController
+                                                        .correoJuridicoTextController
                                                         .text,
                                             codeCT: nuevoCodeCT,
                                             placa: _model.readVehicle?.placa,
@@ -4561,14 +4543,6 @@ class _BNuevarecepcionrapidaFWidgetState
                                             },
                                           ),
                                         }, recepcionesRecordReference);
-
-                                        // Si el contador no existia, se crea en vez de reventar.
-                                        await LastCodeRecord.collection
-                                            .doc('codeCT')
-                                            .set(
-                                                createLastCodeRecordData(
-                                                    lastCode: nuevoCodeCT),
-                                                SetOptions(merge: true));
 
                                         context.pushNamed(
                                           FRecepcionGuardadaWidget.routeName,

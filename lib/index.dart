@@ -16,8 +16,6 @@ export '/diagnostico/g_linkcliente/g_linkcliente_widget.dart'
     show GLinkclienteWidget;
 export '/diagnostico/recepcion_asedor_de_servicio/h_link_g_m_parts2/h_link_g_m_parts2_widget.dart'
     show HLinkGMParts2Widget;
-export '/diagnostico/recepcion_asedor_de_servicio/i_nuevarecrapida/i_nuevarecrapida_widget.dart'
-    show INuevarecrapidaWidget;
 export '/diagnostico/recepcion_asedor_de_servicio/f_recepcion_guardada/f_recepcion_guardada_widget.dart'
     show FRecepcionGuardadaWidget;
 export '/diagnostico/a_recepciones_inicio/a_recepciones_inicio_widget.dart'
