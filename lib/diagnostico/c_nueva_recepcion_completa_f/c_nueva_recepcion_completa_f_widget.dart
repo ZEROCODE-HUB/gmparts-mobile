@@ -929,8 +929,8 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                 focusNode:
                                                     _model.dniNaturalFocusNode,
                                                 autofocus: true,
-                                                readOnly: true,
                                                 obscureText: false,
+                                                keyboardType: TextInputType.number,
                                                 decoration: InputDecoration(
                                                   labelText: 'Ingrese DNI',
                                                   labelStyle: FlutterFlowTheme
@@ -1246,9 +1246,10 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                               focusNode: _model
                                                                   .telefonoFocusNode,
                                                               autofocus: true,
-                                                              readOnly: true,
                                                               obscureText:
                                                                   false,
+                                                              keyboardType:
+                                                                  TextInputType.phone,
                                                               decoration:
                                                                   InputDecoration(
                                                                 labelText:
@@ -1467,6 +1468,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     _model.rUCempresaFocusNode,
                                                 autofocus: true,
                                                 obscureText: false,
+                                                keyboardType: TextInputType.number,
                                                 decoration: InputDecoration(
                                                   labelText: 'Ingrese RUC',
                                                   labelStyle: FlutterFlowTheme
@@ -1758,6 +1760,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .telefonoJuridicoFocusNode,
                                                       autofocus: true,
                                                       obscureText: false,
+                                                      keyboardType: TextInputType.phone,
                                                       decoration:
                                                           InputDecoration(
                                                         labelText: 'Teléfono',
@@ -1967,6 +1970,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     .emailEmpresaFocusNode,
                                                 autofocus: true,
                                                 obscureText: false,
+                                                keyboardType: TextInputType.emailAddress,
                                                 decoration: InputDecoration(
                                                   labelText: 'Ingrese correo',
                                                   labelStyle: FlutterFlowTheme
@@ -2949,7 +2953,6 @@ class _CNuevaRecepcionCompletaFWidgetState
                                             _model.textFieldVINTextController,
                                         focusNode: _model.textFieldVINFocusNode,
                                         autofocus: false,
-                                        readOnly: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Ingrese número de VIN',
@@ -3554,8 +3557,8 @@ class _CNuevaRecepcionCompletaFWidgetState
                                         focusNode: _model
                                             .textFieldAnioFabricacionFocusNode,
                                         autofocus: false,
-                                        readOnly: true,
                                         obscureText: false,
+                                        keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
                                           labelText:
                                               'Ingrese año de fabricación',
@@ -3734,6 +3737,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                         focusNode: _model.textFieldFocusNode1,
                                         autofocus: false,
                                         obscureText: false,
+                                        keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
                                           labelText: 'Ingrese kilometraje',
                                           labelStyle: FlutterFlowTheme.of(
@@ -4806,7 +4810,14 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   0.0, 10.0, 0.0, 0.0),
                                           child:
                                                 FutureBuilder<List<UsersRecord>>(
-                                              future: queryUsersRecordOnce(),
+                                              future: queryUsersRecordOnce(
+                                        // Antes bajaba la coleccion `users` ENTERA para
+                                        // quedarse con los 9 de taller. Con 19 usuarios no
+                                        // se notaba; tras cargar los 1290 clientes son 1310
+                                        // documentos por cada apertura de la pantalla.
+                                        queryBuilder: (q) => q.where('user_role',
+                                            whereIn: FFAppConstants.rolesDeTaller),
+                                      ),
                                               builder: (context, snapshot) {
                                                 if (!snapshot.hasData) {
                                                   return Center(

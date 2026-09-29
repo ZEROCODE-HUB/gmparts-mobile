@@ -44,3 +44,14 @@ En `firebase/function-source/package.json`:
 ---
 
 _Registrado: 2026-08-08_
+## Eliminar pantalla muerta `i_nuevarecrapida`
+
+`lib/diagnostico/recepcion_asedor_de_servicio/i_nuevarecrapida/` está declarada en
+`nav.dart` y exportada en `index.dart`, pero **nada navega hasta ella**: el Dashboard solo
+abre `BNuevarecepcionrapidaF` y `CNuevaRecepcionCompletaF`. Es una recepción rápida vieja,
+con los controladores sin nombrar (`textController1..11`) y una etiqueta de relleno
+(«#58954»).
+
+Al borrarla hay que quitar también su ruta en `nav.dart` y el `show INuevarecrapidaWidget`
+de `index.dart`. Se dejó en pie al arreglar el teclado (28/09/2026) para no mezclar un
+borrado con una corrección urgente.

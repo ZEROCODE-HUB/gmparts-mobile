@@ -832,8 +832,8 @@ class _BNuevarecepcionrapidaFWidgetState
                                           _model.dniNaturalTextController,
                                       focusNode: _model.dniNaturalFocusNode,
                                       autofocus: false,
-                                      readOnly: true,
                                       obscureText: false,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         labelText: 'Ingrese DNI',
                                         labelStyle: _theme
@@ -1196,8 +1196,8 @@ class _BNuevarecepcionrapidaFWidgetState
                                                             safeSetState(() {}),
                                                       ),
                                                       autofocus: false,
-                                                      readOnly: true,
                                                       obscureText: false,
+                                                      keyboardType: TextInputType.phone,
                                                       decoration:
                                                           InputDecoration(
                                                         labelText: 'Teléfono',
@@ -1419,6 +1419,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                           ),
                                           autofocus: false,
                                           obscureText: false,
+                                          keyboardType: TextInputType.emailAddress,
                                           decoration: InputDecoration(
                                             labelText: 'Ingrese correo',
                                             labelStyle: FlutterFlowTheme.of(
@@ -1612,6 +1613,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                       focusNode: _model.textFieldRucFocusNode,
                                       autofocus: false,
                                       obscureText: false,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         labelText: 'Ingrese RUC',
                                         labelStyle: _theme
@@ -1853,6 +1855,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             ),
                                             autofocus: false,
                                             obscureText: false,
+                                            keyboardType: TextInputType.phone,
                                             decoration: InputDecoration(
                                               labelText: 'Teléfono',
                                               labelStyle: FlutterFlowTheme.of(
@@ -2058,6 +2061,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                           ),
                                           autofocus: true,
                                           obscureText: false,
+                                          keyboardType: TextInputType.emailAddress,
                                           decoration: InputDecoration(
                                             labelText: 'Ingrese correo',
                                             labelStyle: FlutterFlowTheme.of(
@@ -2995,6 +2999,7 @@ class _BNuevarecepcionrapidaFWidgetState
                               focusNode: _model.kmIngresoFocusNode,
                               autofocus: true,
                               obscureText: false,
+                              keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 labelText: 'Km de ingreso',
                                 labelStyle: _theme
@@ -3170,7 +3175,14 @@ class _BNuevarecepcionrapidaFWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                     child: FutureBuilder<List<UsersRecord>>(
-                                      future: queryUsersRecordOnce(),
+                                      future: queryUsersRecordOnce(
+                                        // Antes bajaba la coleccion `users` ENTERA para
+                                        // quedarse con los 9 de taller. Con 19 usuarios no
+                                        // se notaba; tras cargar los 1290 clientes son 1310
+                                        // documentos por cada apertura de la pantalla.
+                                        queryBuilder: (q) => q.where('user_role',
+                                            whereIn: FFAppConstants.rolesDeTaller),
+                                      ),
                                       builder: (context, snapshot) {
                                         if (!snapshot.hasData) {
                                           return Center(
@@ -4060,6 +4072,60 @@ class _BNuevarecepcionrapidaFWidgetState
                                       if (_model.formKey.currentState == null ||
                                           !_model.formKey.currentState!
                                               .validate()) {
+                                        // `validate()` pinta el error debajo de cada campo,
+                                        // pero este boton esta al final de un formulario
+                                        // largo: el asesor lo pulsa, no ve nada y no tiene
+                                        // forma de saber que le falta. El `return` mudo era
+                                        // la excepcion; desde la carga masiva es la norma,
+                                        // porque 1178 de los 1290 clientes llegaron sin
+                                        // telefono y el telefono es obligatorio.
+                                        final faltan = <String>[
+                                          if (_model.tipopersonaValue ==
+                                                  FFAppConstants
+                                                      .TipoPersonaNatural &&
+                                              (_model.telefonoNaturalTextController
+                                                          ?.text ??
+                                                      '')
+                                                  .trim()
+                                                  .isEmpty)
+                                            'telefono',
+                                          if ((_model.modeloTextController
+                                                      ?.text ??
+                                                  '')
+                                              .trim()
+                                              .isEmpty)
+                                            'modelo',
+                                          if ((_model.kmIngresoTextController
+                                                      ?.text ??
+                                                  '')
+                                              .trim()
+                                              .isEmpty)
+                                            'kilometraje de ingreso',
+                                          if ((_model.motivoTextController
+                                                      ?.text ??
+                                                  '')
+                                              .trim()
+                                              .isEmpty)
+                                            'motivo',
+                                        ];
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              faltan.isEmpty
+                                                  ? 'Revise los campos marcados en rojo.'
+                                                  : 'Faltan datos obligatorios: ${faltan.join(', ')}.',
+                                              style: _theme.labelLarge.override(
+                                                font: GoogleFonts.montserrat(),
+                                                color: _theme.primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 5000),
+                                            backgroundColor: _theme.primary,
+                                          ),
+                                        );
                                         return;
                                       }
                                       if (_model.tipopersonaValue == null) {
