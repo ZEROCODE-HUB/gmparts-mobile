@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/components/selector_modal.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -581,26 +582,59 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     nombrePersonaUsersRecordList =
                                                     snapshot.data!;
 
-                                                return FlutterFlowDropDown<
-                                                    String>(
-                                                  controller: _model
-                                                          .nombrePersonaValueController ??=
-                                                      FormFieldController<
-                                                          String>(
-                                                    _model.nombrePersonaValue ??=
-                                                        '',
-                                                  ),
-                                                  options: List<String>.from(
+                                                return CampoSelector(
+                                                  // El cliente se busca por tipo de persona,
+                                                  // asi que sin tipo la lista viene vacia y
+                                                  // el documento no se autorrellena. Antes
+                                                  // el campo se dejaba tocar igual y parecia
+                                                  // averiado; ahora dice que falta el paso.
+                                                  habilitado:
+                                                      _model.tipoPersonaValue !=
+                                                          null,
+                                                  pista: _model
+                                                              .tipoPersonaValue ==
+                                                          null
+                                                      ? 'Elija primero el tipo de persona'
+                                                      : 'Seleccione el cliente',
+                                                  texto:
                                                       nombrePersonaUsersRecordList
-                                                          .map((e) =>
-                                                              e.reference.id)
-                                                          .toList()),
-                                                  optionLabels:
-                                                      nombrePersonaUsersRecordList
-                                                          .map((e) =>
-                                                              e.displayName)
-                                                          .toList(),
-                                                  onChanged: (val) async {
+                                                              .where((e) =>
+                                                                  e.reference
+                                                                      .id ==
+                                                                  _model
+                                                                      .nombrePersonaValue)
+                                                              .map((e) => e
+                                                                  .displayName)
+                                                              .firstOrNull ??
+                                                          '',
+                                                  onTap: () async {
+                                                    final val =
+                                                        await abrirSelectorUnico(
+                                                      context,
+                                                      titulo: 'Cliente',
+                                                      pista:
+                                                          'Nombre o documento...',
+                                                      vacio:
+                                                          'Ningun cliente coincide',
+                                                      seleccionado: _model
+                                                          .nombrePersonaValue,
+                                                      opciones:
+                                                          nombrePersonaUsersRecordList
+                                                              .map((e) =>
+                                                                  OpcionSelector(
+                                                                    valor: e
+                                                                        .reference
+                                                                        .id,
+                                                                    etiqueta: e
+                                                                        .displayName,
+                                                                    detalle: e.identityDocument
+                                                                            .isNotEmpty
+                                                                        ? e.identityDocument
+                                                                        : e.dni,
+                                                                  ))
+                                                              .toList(),
+                                                    );
+                                                    if (val == null) return;
                                                     safeSetState(() => _model
                                                             .nombrePersonaValue =
                                                         val);
@@ -666,127 +700,6 @@ class _CNuevaRecepcionCompletaFWidgetState
 
                                                     safeSetState(() {});
                                                   },
-                                                  height: 50.0,
-                                                  searchHintTextStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .montserrat(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                  searchTextStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .montserrat(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        font: GoogleFonts
-                                                            .montserrat(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent1,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .fontStyle,
-                                                      ),
-                                                  hintText: 'Seleccione',
-                                                  searchHintText:
-                                                      'Search for an item...',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .expand_circle_down_outlined,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    size: 25.0,
-                                                  ),
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .accent2,
-                                                  elevation: 2.0,
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderWidth: 2.0,
-                                                  borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 4.0, 16.0, 4.0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: true,
-                                                  isMultiSelect: false,
                                                 );
                                               },
                                             ),
@@ -929,7 +842,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     .dniNaturalTextController,
                                                 focusNode:
                                                     _model.dniNaturalFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 obscureText: false,
                                                 keyboardType: TextInputType.number,
                                                 decoration: InputDecoration(
@@ -1246,7 +1159,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                                   .telefonoTextController,
                                                               focusNode: _model
                                                                   .telefonoFocusNode,
-                                                              autofocus: true,
+                                                              autofocus: false,
                                                               obscureText:
                                                                   false,
                                                               keyboardType:
@@ -1467,7 +1380,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     .rUCempresaTextController,
                                                 focusNode:
                                                     _model.rUCempresaFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 obscureText: false,
                                                 keyboardType: TextInputType.number,
                                                 decoration: InputDecoration(
@@ -1759,7 +1672,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                           .telefonoJuridicoTextController,
                                                       focusNode: _model
                                                           .telefonoJuridicoFocusNode,
-                                                      autofocus: true,
+                                                      autofocus: false,
                                                       obscureText: false,
                                                       keyboardType: TextInputType.phone,
                                                       decoration:
@@ -1969,7 +1882,7 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                     .emailEmpresaTextController,
                                                 focusNode: _model
                                                     .emailEmpresaFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 obscureText: false,
                                                 keyboardType: TextInputType.emailAddress,
                                                 decoration: InputDecoration(
@@ -4089,106 +4002,73 @@ class _CNuevaRecepcionCompletaFWidgetState
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
-                                      child: FlutterFlowDropDown<String>(
-                                        multiSelectController:
-                                            _model.dropDownValueController ??=
-                                                FormListFieldController<String>(
-                                                    null),
-                                        options: [
-                                          'Extintor',
-                                          'Llanta de repuesto',
-                                          'Llave mecánica',
-                                          'Kit de Carretera',
-                                          'Botiquín',
-                                          'Herramientas',
-                                          'Otros',
-                                          ' Tarjeta de propiedad',
-                                          ' SOAT',
-                                          'Cert. Revisión Técnica',
-                                          'Llaves',
-                                          'Control de alarma',
-                                          'Cigarrera/Encendedor',
-                                          'Mascarilla/radio',
-                                          'Parlantes',
-                                          'Botones A/C',
-                                          'Tapasol',
-                                          'Espejo Retrovisor',
-                                          'Faro de salón',
-                                          'Cabeceras',
-                                          'Pisos',
-                                          'Manijas',
-                                          'Manual de Vehículo',
-                                          'Llave de ruedas',
-                                          'Llave de repuesto',
-                                          'Triángulo/Cono',
-                                          'Faros delantero',
-                                          'Faros Posterior',
-                                          'Faros Laterales',
-                                          'Faros Adicionales',
-                                          'Plumillas',
-                                          'Espejos Laterales',
-                                          ' Antena',
-                                          'Tapa de Combustible',
-                                          'Vasos/Copas',
-                                          'Escarpines',
-                                          'Emblema',
-                                          'Tapa de Radiador',
-                                          ' Tapa de Aceite',
-                                          'Medidor de aceite',
-                                          'Tapa de lig. Freno',
-                                          'Batería',
-                                          'Gata'
-                                        ],
-                                        width: double.infinity,
-                                        height: 50.0,
-                                        textStyle: _theme
-                                            .titleSmall
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    _theme
-                                                        .titleSmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    _theme
-                                                        .titleSmall
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  _theme
-                                                      .accent1,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  _theme
-                                                      .titleSmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  _theme
-                                                      .titleSmall
-                                                      .fontStyle,
-                                            ),
-                                        hintText: 'Seleccione',
-                                        icon: Icon(
-                                          Icons.arrow_drop_down_circle_outlined,
-                                          color: _theme
-                                              .primary,
-                                          size: 24.0,
-                                        ),
-                                        fillColor: _theme
-                                            .accent2,
-                                        elevation: 2.0,
-                                        borderColor: Colors.transparent,
-                                        borderWidth: 2.0,
-                                        borderRadius: 8.0,
-                                        margin: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 4.0, 16.0, 4.0),
-                                        hidesUnderline: true,
-                                        isOverButton: true,
-                                        isSearchable: false,
-                                        isMultiSelect: true,
-                                        onMultiSelectChanged: (val) =>
-                                            safeSetState(() =>
-                                                _model.dropDownValue = val),
+                                      // Multiple en hoja inferior. El desplegable nativo se
+                                      // abria a pantalla completa, sin boton de cerrar, y
+                                      // pintaba las casillas con el color por defecto: sobre
+                                      // fondo oscuro no se veia lo que estaba marcado.
+                                      child: CampoSelector(
+                                        pista: 'Seleccione',
+                                        texto: (_model.dropDownValue ?? [])
+                                            .map((e) => e.trim())
+                                            .join(', '),
+                                        onTap: () async {
+                                          final sel =
+                                              await abrirSelectorMultiple(
+                                            context,
+                                            titulo: 'Inventario del vehiculo',
+                                            pista: 'Buscar articulo...',
+                                            seleccionados:
+                                                _model.dropDownValue ?? [],
+                                            opciones: const [
+                                              OpcionSelector(valor: 'Extintor', etiqueta: 'Extintor'),
+                                              OpcionSelector(valor: 'Llanta de repuesto', etiqueta: 'Llanta de repuesto'),
+                                              OpcionSelector(valor: 'Llave mecánica', etiqueta: 'Llave mecánica'),
+                                              OpcionSelector(valor: 'Kit de Carretera', etiqueta: 'Kit de Carretera'),
+                                              OpcionSelector(valor: 'Botiquín', etiqueta: 'Botiquín'),
+                                              OpcionSelector(valor: 'Herramientas', etiqueta: 'Herramientas'),
+                                              OpcionSelector(valor: 'Otros', etiqueta: 'Otros'),
+                                              OpcionSelector(valor: ' Tarjeta de propiedad', etiqueta: ' Tarjeta de propiedad'),
+                                              OpcionSelector(valor: ' SOAT', etiqueta: ' SOAT'),
+                                              OpcionSelector(valor: 'Cert. Revisión Técnica', etiqueta: 'Cert. Revisión Técnica'),
+                                              OpcionSelector(valor: 'Llaves', etiqueta: 'Llaves'),
+                                              OpcionSelector(valor: 'Control de alarma', etiqueta: 'Control de alarma'),
+                                              OpcionSelector(valor: 'Cigarrera/Encendedor', etiqueta: 'Cigarrera/Encendedor'),
+                                              OpcionSelector(valor: 'Mascarilla/radio', etiqueta: 'Mascarilla/radio'),
+                                              OpcionSelector(valor: 'Parlantes', etiqueta: 'Parlantes'),
+                                              OpcionSelector(valor: 'Botones A/C', etiqueta: 'Botones A/C'),
+                                              OpcionSelector(valor: 'Tapasol', etiqueta: 'Tapasol'),
+                                              OpcionSelector(valor: 'Espejo Retrovisor', etiqueta: 'Espejo Retrovisor'),
+                                              OpcionSelector(valor: 'Faro de salón', etiqueta: 'Faro de salón'),
+                                              OpcionSelector(valor: 'Cabeceras', etiqueta: 'Cabeceras'),
+                                              OpcionSelector(valor: 'Pisos', etiqueta: 'Pisos'),
+                                              OpcionSelector(valor: 'Manijas', etiqueta: 'Manijas'),
+                                              OpcionSelector(valor: 'Manual de Vehículo', etiqueta: 'Manual de Vehículo'),
+                                              OpcionSelector(valor: 'Llave de ruedas', etiqueta: 'Llave de ruedas'),
+                                              OpcionSelector(valor: 'Llave de repuesto', etiqueta: 'Llave de repuesto'),
+                                              OpcionSelector(valor: 'Triángulo/Cono', etiqueta: 'Triángulo/Cono'),
+                                              OpcionSelector(valor: 'Faros delantero', etiqueta: 'Faros delantero'),
+                                              OpcionSelector(valor: 'Faros Posterior', etiqueta: 'Faros Posterior'),
+                                              OpcionSelector(valor: 'Faros Laterales', etiqueta: 'Faros Laterales'),
+                                              OpcionSelector(valor: 'Faros Adicionales', etiqueta: 'Faros Adicionales'),
+                                              OpcionSelector(valor: 'Plumillas', etiqueta: 'Plumillas'),
+                                              OpcionSelector(valor: 'Espejos Laterales', etiqueta: 'Espejos Laterales'),
+                                              OpcionSelector(valor: ' Antena', etiqueta: ' Antena'),
+                                              OpcionSelector(valor: 'Tapa de Combustible', etiqueta: 'Tapa de Combustible'),
+                                              OpcionSelector(valor: 'Vasos/Copas', etiqueta: 'Vasos/Copas'),
+                                              OpcionSelector(valor: 'Escarpines', etiqueta: 'Escarpines'),
+                                              OpcionSelector(valor: 'Emblema', etiqueta: 'Emblema'),
+                                              OpcionSelector(valor: 'Tapa de Radiador', etiqueta: 'Tapa de Radiador'),
+                                              OpcionSelector(valor: ' Tapa de Aceite', etiqueta: ' Tapa de Aceite'),
+                                              OpcionSelector(valor: 'Medidor de aceite', etiqueta: 'Medidor de aceite'),
+                                              OpcionSelector(valor: 'Tapa de lig. Freno', etiqueta: 'Tapa de lig. Freno'),
+                                              OpcionSelector(valor: 'Batería', etiqueta: 'Batería'),
+                                            ],
+                                          );
+                                          if (sel == null) return;
+                                          safeSetState(() => _model
+                                              .dropDownValueController
+                                              ?.value = sel);
+                                        },
                                       ),
                                     ),
                                     Row(
@@ -4870,80 +4750,46 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                  );
                                                }
 
-                                              return FlutterFlowDropDown<
-                                                  String>(
-                                                controller: _model
-                                                        .dropDownTecnicoValueController ??=
-                                                    FormFieldController<String>(
-                                                        null),
-                                                 options:
-                                                     dropDownTecnicoUsersRecordList
-                                                         .map((e) =>
-                                                             valueOrDefault<String>(
-                                                                 e.displayName,
-                                                                 'nom'))
-                                                         .toList(),
-                                                onChanged: (val) =>
-                                                    safeSetState(() => _model
-                                                            .dropDownTecnicoValue =
-                                                        val),
-                                                width: double.infinity,
-                                                height: 50.0,
-                                                textStyle:
-                                                    _theme
-                                                        .titleSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .montserrat(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent1,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                hintText: 'Seleccionar técnico',
-                                                icon: Icon(
-                                                  Icons
-                                                      .arrow_drop_down_circle_outlined,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: 24.0,
-                                                ),
-                                                fillColor:
-                                                    _theme
-                                                        .accent2,
-                                                elevation: 2.0,
-                                                borderColor: Colors.transparent,
-                                                borderWidth: 2.0,
-                                                borderRadius: 8.0,
-                                                margin: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 4.0, 16.0, 4.0),
-                                                hidesUnderline: true,
-                                                isOverButton: true,
-                                                isSearchable: false,
-                                                isMultiSelect: false,
+                                              return CampoSelector(
+                                                pista: 'Seleccionar tecnico',
+                                                texto:
+                                                    _model.dropDownTecnicoValue ??
+                                                        '',
+                                                onTap: () async {
+                                                  final val =
+                                                      await abrirSelectorUnico(
+                                                    context,
+                                                    titulo:
+                                                        'Tecnico de servicio',
+                                                    pista:
+                                                        'Nombre del tecnico...',
+                                                    vacio:
+                                                        'Ningun tecnico coincide',
+                                                    seleccionado: _model
+                                                        .dropDownTecnicoValue,
+                                                    opciones:
+                                                        dropDownTecnicoUsersRecordList
+                                                            .map((e) =>
+                                                                OpcionSelector(
+                                                                  valor: valueOrDefault<
+                                                                      String>(
+                                                                    e.displayName,
+                                                                    'nom',
+                                                                  ),
+                                                                  etiqueta: valueOrDefault<
+                                                                      String>(
+                                                                    e.displayName,
+                                                                    'nom',
+                                                                  ),
+                                                                  detalle:
+                                                                      e.userRole,
+                                                                ))
+                                                            .toList(),
+                                                  );
+                                                  if (val == null) return;
+                                                  safeSetState(() => _model
+                                                      .dropDownTecnicoValue = val);
+                                                },
                                               );
                                             },
                                           ),
