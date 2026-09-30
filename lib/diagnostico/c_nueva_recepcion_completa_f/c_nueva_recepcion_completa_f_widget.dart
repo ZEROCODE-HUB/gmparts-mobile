@@ -437,7 +437,14 @@ class _CNuevaRecepcionCompletaFWidgetState
                                       child: FlutterFlowDropDown<String>(
                                         controller: _model
                                                 .tipoPersonaValueController ??=
-                                            FormFieldController<String>(null),
+                                            FormFieldController<String>(
+                                          // Arranca en Natural, igual que la rapida. La
+                                          // lista de clientes se consulta filtrando por
+                                          // este campo: en null venia vacia y parecia que
+                                          // la pantalla estaba rota.
+                                          _model.tipoPersonaValue ??=
+                                              FFAppConstants.TipoPersonaNatural,
+                                        ),
                                         options: [
                                           FFAppConstants.TipoPersonaNatural,
                                           FFAppConstants.TipoPersonaJuridica
@@ -4065,9 +4072,14 @@ class _CNuevaRecepcionCompletaFWidgetState
                                             ],
                                           );
                                           if (sel == null) return;
-                                          safeSetState(() => _model
-                                              .dropDownValueController
-                                              ?.value = sel);
+                                          // `dropDownValue` es un campo suelto del modelo,
+                                          // NO lo respalda `dropDownValueController`: el
+                                          // desplegable original lo asignaba a mano desde
+                                          // `onMultiSelectChanged`. Escribiendo solo en el
+                                          // controlador, lo elegido no se veia y el guardado
+                                          // seguia diciendo «Seleccione el inventario».
+                                          safeSetState(
+                                              () => _model.dropDownValue = sel);
                                         },
                                       ),
                                     ),
@@ -4261,7 +4273,11 @@ class _CNuevaRecepcionCompletaFWidgetState
                                                   .validate()) {
                                             return;
                                           }
-                                          if (_model.dropDownValue == null) {
+                                          // Vacio cuenta como no elegido: al confirmar la
+                                          // hoja sin marcar nada llega una lista vacia, que
+                                          // no es null y se habria colado.
+                                          if (_model.dropDownValue == null ||
+                                              _model.dropDownValue!.isEmpty) {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
                                               SnackBar(

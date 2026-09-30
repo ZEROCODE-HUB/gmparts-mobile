@@ -50,7 +50,15 @@ class CampoSelector extends StatelessWidget {
     final t = FlutterFlowTheme.of(context);
     final vacio = texto.trim().isEmpty;
     return InkWell(
-      onTap: habilitado ? onTap : null,
+      // Se suelta el foco ANTES de abrir la hoja. Si no, al cerrarla Flutter se lo
+      // devuelve al campo de texto que estaba activo antes y vuelve a levantar el
+      // teclado, tapando lo que se acaba de elegir.
+      onTap: habilitado
+          ? () {
+              FocusScope.of(context).unfocus();
+              onTap();
+            }
+          : null,
       borderRadius: BorderRadius.circular(8),
       child: Container(
         height: 50,
