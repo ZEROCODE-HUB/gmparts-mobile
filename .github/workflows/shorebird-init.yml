@@ -46,7 +46,16 @@ jobs:
         run: |
           flutter --version
           flutter pub get
-          ls -la android/gradlew android/local.properties
+          cat android/local.properties
+
+      # `pub get` escribe local.properties pero NO copia el wrapper: eso Flutter lo hace al
+      # compilar. Con local.properties ya presente, Gradle puede resolver el plugin loader y
+      # generar el wrapper por su cuenta.
+      - name: Generar el Gradle wrapper
+        run: |
+          cd android
+          gradle wrapper --gradle-version 8.12 --distribution-type all
+          ls -la gradlew gradle/wrapper/
 
       - uses: shorebirdtech/setup-shorebird@v1
 
