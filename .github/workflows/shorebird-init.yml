@@ -1,12 +1,17 @@
-# Workflow de un solo uso: ejecuta `shorebird init` para obtener el app_id.
+# Workflow de un solo uso: genera el Gradle wrapper y obtiene el app_id de Shorebird.
 #
-# `init` sondea gradlew para detectar los flavors de la app, y eso necesita el SDK de
-# Android. El equipo de desarrollo no lo tiene instalado, pero el runner de GitHub si.
+# Dos cosas que no se pueden hacer en el equipo de desarrollo: no tiene SDK de Android ni
+# Gradle. Y el repo NO versiona el wrapper —solo `gradle-wrapper.properties`—, asi que
+# `android/gradlew` no existe: Flutter lo genera al vuelo al compilar, pero `shorebird init`
+# lo invoca antes de cualquier build y falla con «Unable to initialize gradlew».
 #
-# Se borra en cuanto el app_id este commiteado.
+# Commitea de vuelta el wrapper y el shorebird.yaml. Se borra despues.
 name: Shorebird Init (un solo uso)
 on:
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   init:
@@ -19,12 +24,30 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Generar el Gradle wrapper
+        run: |
+          cd android
+          gradle wrapper --gradle-version 8.12 --distribution-type all
+          ls -la gradlew gradlew.bat gradle/wrapper/
       - uses: shorebirdtech/setup-shorebird@v1
       - name: shorebird init
         run: shorebird init --display-name "GMParts" --force
-      - name: Mostrar lo que genero
+      - name: Mostrar lo generado
         run: |
           echo "=== shorebird.yaml ==="
           cat shorebird.yaml
-          echo "=== diff de pubspec.yaml ==="
+          echo "=== diff pubspec.yaml ==="
           git diff -- pubspec.yaml
+      - name: Commitear wrapper y shorebird.yaml
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add android/gradlew android/gradlew.bat android/gradle/wrapper/ shorebird.yaml pubspec.yaml
+          git commit -m "chore(shorebird): wrapper de Gradle y app_id
+
+El repo no versionaba el Gradle wrapper: solo estaba gradle-wrapper.properties, sin
+gradlew ni el jar. Flutter lo genera al vuelo al compilar, por eso nadie lo noto, pero
+shorebird init lo invoca antes de cualquier build y fallaba.
+
+Generado desde este runner junto con el app_id de Shorebird."
+          git push
