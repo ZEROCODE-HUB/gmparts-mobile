@@ -109,7 +109,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                           MainAxisAlignment.center,
                                       children: [
                                         AutoSizeText(
-                                          'Iniciar Sesión ',
+                                          'Iniciar Sesión · OTA 1',
                                           minFontSize: 12.0,
                                           style: _theme
                                               .headlineLarge
@@ -744,7 +744,7 @@ class _IniciarSessionWidgetState extends State<IniciarSessionWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 20.0, 0.0, 0.0),
                                           child: Text(
-                                            'Iniciar  Sesión',
+                                            'Iniciar Sesión · OTA 1',
                                             style: _theme
                                                 .headlineLarge
                                                 .override(
