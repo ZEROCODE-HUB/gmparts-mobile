@@ -69,12 +69,25 @@ jobs:
       #
       # Nada de `--obfuscate`, `--split-debug-info` ni `--split-per-abi`: son el bloqueador
       # de parches mas habitual de Shorebird.
+      # El versionCode se desplaza 100 a proposito.
+      #
+      # Antes salia de `github.run_number` a secas, y ese contador es POR WORKFLOW: al
+      # renombrar `android-build.yml` a `android-release.yml` volvio a empezar en 1, con un
+      # versionCode 36 ya publicado. Un versionCode menor lo rechaza Play, y Android tampoco
+      # deja instalar el APK encima.
+      #
+      # Con el desplazamiento esta build sale como 101 y sigue siendo monotono. Si el
+      # workflow se vuelve a renombrar, hay que subir el desplazamiento por encima del
+      # ultimo versionCode publicado.
+      - name: Calcular el versionCode
+        run: echo "VERSION_CODE=$(( ${{ github.run_number }} + 100 ))" >> $GITHUB_ENV
+
       - name: Shorebird release
         run: |
           shorebird release android \
             --artifact apk \
             --flutter-version 3.44.8 \
-            -- --build-number=${{ github.run_number }}
+            -- --build-number=$VERSION_CODE
 
       - name: Ver que artefactos salieron
         run: ls -R build/app/outputs
@@ -82,14 +95,14 @@ jobs:
       - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
-          name: gmparts-1.0.9+${{ github.run_number }}-aab
+          name: gmparts-1.0.9+${{ env.VERSION_CODE }}-aab
           path: build/app/outputs/bundle/release/app-release.aab
           if-no-files-found: error
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: gmparts-1.0.9+${{ github.run_number }}-apk
+          name: gmparts-1.0.9+${{ env.VERSION_CODE }}-apk
           path: build/app/outputs/**/*.apk
           if-no-files-found: error
 
@@ -98,8 +111,8 @@ jobs:
       # a que release apuntar.
       - name: Resumen
         run: |
-          echo "## Release Shorebird: \`1.0.9+${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "## Release Shorebird: \`1.0.9+${{ env.VERSION_CODE }}\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Para parchearla, lanza **Android Patch** con ese valor en \`release_version\`." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Al publicarla, etiqueta el commit: \`git tag release/1.0.9+${{ github.run_number }} && git push --tags\`" >> $GITHUB_STEP_SUMMARY
+          echo "Al publicarla, etiqueta el commit: \`git tag release/1.0.9+${{ env.VERSION_CODE }} && git push --tags\`" >> $GITHUB_STEP_SUMMARY
