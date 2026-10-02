@@ -1,0 +1,30 @@
+# Workflow de un solo uso: ejecuta `shorebird init` para obtener el app_id.
+#
+# `init` sondea gradlew para detectar los flavors de la app, y eso necesita el SDK de
+# Android. El equipo de desarrollo no lo tiene instalado, pero el runner de GitHub si.
+#
+# Se borra en cuanto el app_id este commiteado.
+name: Shorebird Init (un solo uso)
+on:
+  workflow_dispatch:
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    env:
+      SHOREBIRD_TOKEN: ${{ secrets.SHOREBIRD_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: shorebirdtech/setup-shorebird@v1
+      - name: shorebird init
+        run: shorebird init --display-name "GMParts" --force
+      - name: Mostrar lo que genero
+        run: |
+          echo "=== shorebird.yaml ==="
+          cat shorebird.yaml
+          echo "=== diff de pubspec.yaml ==="
+          git diff -- pubspec.yaml
