@@ -1,17 +1,12 @@
-# Workflow de un solo uso: genera el Gradle wrapper y obtiene el app_id de Shorebird.
+# Workflow de un solo uso: obtiene el app_id de Shorebird.
 #
-# Dos cosas faltan en el repo y nadie lo habia notado porque Flutter las fabrica al vuelo
-# en cada build:
+# `shorebird init` invoca gradlew para detectar los flavors de la app, y el repo no versiona
+# ni `android/gradlew` ni `android/local.properties` (el segundo esta en .gitignore). Nadie
+# lo habia notado porque `flutter pub get` fabrica los dos al preparar el proyecto para
+# Android — asi que basta con ejecutarlo antes.
 #
-#   · `android/gradlew` y `gradle-wrapper.jar` — solo esta versionado
-#     `gradle-wrapper.properties`.
-#   · `android/local.properties` — esta en .gitignore; `settings.gradle:4` lo lee.
-#
-# `shorebird init` invoca gradlew ANTES de cualquier build, asi que se topa con las dos
-# ausencias. Aqui se crea `local.properties` a mano y se genera el wrapper, que ademas
-# conviene versionar: deja de depender de que Flutter lo regenere igual cada vez.
-#
-# Se borra este workflow en cuanto el app_id este commiteado.
+# Se hace aqui y no en local porque el equipo de desarrollo no tiene SDK de Android.
+# Este workflow se borra en cuanto el app_id este commiteado.
 name: Shorebird Init (un solo uso)
 on:
   workflow_dispatch:
@@ -32,27 +27,16 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Primero Shorebird: deja SU Flutter en el PATH, que es el que debe apuntar
-      # `flutter.sdk` para que el wrapper y el init usen el mismo SDK que luego compila.
+      # Shorebird trae su propio Flutter y lo deja en el PATH. Se usa ese a proposito: es el
+      # mismo que compilara las releases, asi que el proyecto queda preparado con el SDK que
+      # toca.
       - uses: shorebirdtech/setup-shorebird@v1
 
-      - name: Crear android/local.properties
+      - name: Preparar el proyecto (genera local.properties y gradlew)
         run: |
-          FLUTTER_ROOT="$(dirname "$(dirname "$(readlink -f "$(which flutter)")")")"
-          echo "flutter.sdk=$FLUTTER_ROOT"
-          {
-            echo "sdk.dir=$ANDROID_HOME"
-            echo "flutter.sdk=$FLUTTER_ROOT"
-            echo "flutter.versionName=1.0.9"
-            echo "flutter.versionCode=1"
-          } > android/local.properties
-          cat android/local.properties
-
-      - name: Generar el Gradle wrapper
-        run: |
-          cd android
-          gradle wrapper --gradle-version 8.12 --distribution-type all
-          ls -la gradlew gradle/wrapper/
+          flutter --version
+          flutter pub get
+          ls -la android/gradlew android/local.properties
 
       - name: shorebird init
         run: shorebird init --display-name "GMParts" --force
@@ -64,10 +48,10 @@ jobs:
           echo "=== diff pubspec.yaml ==="
           git diff -- pubspec.yaml
 
-      - name: Commitear wrapper y shorebird.yaml
+      - name: Commitear shorebird.yaml
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add android/gradlew android/gradlew.bat android/gradle/wrapper/ shorebird.yaml pubspec.yaml
-          git commit -m "chore(shorebird): Gradle wrapper versionado y app_id de Shorebird"
+          git add shorebird.yaml pubspec.yaml
+          git commit -m "chore(shorebird): app_id y shorebird.yaml como asset"
           git push
