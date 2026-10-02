@@ -5,6 +5,10 @@
 # lo habia notado porque `flutter pub get` fabrica los dos al preparar el proyecto para
 # Android — asi que basta con ejecutarlo antes.
 #
+# `setup-shorebird` deja `shorebird` en el PATH pero NO `flutter`, asi que hay que buscar el
+# binario dentro de su cache. Se usa ESE Flutter a proposito: es el mismo que compilara las
+# releases.
+#
 # Se hace aqui y no en local porque el equipo de desarrollo no tiene SDK de Android.
 # Este workflow se borra en cuanto el app_id este commiteado.
 name: Shorebird Init (un solo uso)
@@ -27,10 +31,19 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Shorebird trae su propio Flutter y lo deja en el PATH. Se usa ese a proposito: es el
-      # mismo que compilara las releases, asi que el proyecto queda preparado con el SDK que
-      # toca.
       - uses: shorebirdtech/setup-shorebird@v1
+
+      - name: Localizar el Flutter de Shorebird
+        run: |
+          echo "which shorebird: $(which shorebird)"
+          FLUTTER_BIN="$(find "$HOME/.config/shorebird" -type f -name flutter -path '*/bin/flutter' 2>/dev/null | head -1)"
+          if [ -z "$FLUTTER_BIN" ]; then
+            echo "No se encontro el Flutter de Shorebird. Arbol:"
+            find "$HOME/.config/shorebird" -maxdepth 4 -type d | head -40
+            exit 1
+          fi
+          echo "flutter: $FLUTTER_BIN"
+          echo "$(dirname "$FLUTTER_BIN")" >> "$GITHUB_PATH"
 
       - name: Preparar el proyecto (genera local.properties y gradlew)
         run: |
