@@ -1,4 +1,3 @@
-// PRUEBA NEGATIVA OTA: cambio nativo a proposito. Se revierte en el commit siguiente.
 plugins {
    id "com.android.application"
    id "kotlin-android"
