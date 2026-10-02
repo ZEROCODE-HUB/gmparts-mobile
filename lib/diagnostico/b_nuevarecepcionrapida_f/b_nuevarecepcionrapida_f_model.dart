@@ -89,11 +89,11 @@ class BNuevarecepcionrapidaFModel
   TextEditingController? telefonoJuridicoTextController;
   String? Function(BuildContext, String?)?
       telefonoJuridicoTextControllerValidator;
-  // State field(s) for correoJuriidco widget.
-  FocusNode? correoJuriidcoFocusNode;
-  TextEditingController? correoJuriidcoTextController;
+  // State field(s) for correoJuridico widget.
+  FocusNode? correoJuridicoFocusNode;
+  TextEditingController? correoJuridicoTextController;
   String? Function(BuildContext, String?)?
-      correoJuriidcoTextControllerValidator;
+      correoJuridicoTextControllerValidator;
   // State field(s) for numeroPlaca widget.
   String? numeroPlacaValue;
   FormFieldController<String>? numeroPlacaValueController;
@@ -160,7 +160,6 @@ class BNuevarecepcionrapidaFModel
   String uploadedFileUrl_imgauto = '';
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  LastCodeRecord? lastcode;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   RecepcionesRecord? id2;
 
@@ -190,8 +189,8 @@ class BNuevarecepcionrapidaFModel
     telefonoJuridicoFocusNode?.dispose();
     telefonoJuridicoTextController?.dispose();
 
-    correoJuriidcoFocusNode?.dispose();
-    correoJuriidcoTextController?.dispose();
+    correoJuridicoFocusNode?.dispose();
+    correoJuridicoTextController?.dispose();
 
     marcaFocusNode?.dispose();
     marcaTextController?.dispose();

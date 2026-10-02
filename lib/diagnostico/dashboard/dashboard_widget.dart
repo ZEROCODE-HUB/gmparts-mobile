@@ -53,6 +53,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(icon, color: Colors.white, size: 28.0),
                 SizedBox(height: 8.0),
@@ -70,6 +71,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         color: Colors.white70,
                       ),
                   textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
@@ -163,7 +166,12 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         ),
                   ),
                   SizedBox(height: 16.0),
-                  Row(
+                  // `Expanded` reparte el ANCHO, no el alto: cada tarjeta se quedaba con el
+                  // suyo y «Completadas hoy», que ocupa dos lineas, salia mas alta que las
+                  // otras dos. `IntrinsicHeight` + `stretch` las iguala a la mas alta.
+                  IntrinsicHeight(
+                    child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       _buildKpiCard(
                         context,
@@ -202,6 +210,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         Icons.check_circle_outline,
                       ),
                     ],
+                  ),
                   ),
                   SizedBox(height: 28.0),
                   Text(

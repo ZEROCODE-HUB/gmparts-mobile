@@ -587,16 +587,24 @@ class _CrearcuentacobrarWidgetState extends State<CrearcuentacobrarWidget> {
                         EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                     hidesUnderline: true,
                     isOverButton: false,
-                    isSearchable: false,
+                    isSearchable: true,
                     isMultiSelect: false,
                   ),
                 ],
               ),
               FFButtonWidget(
                 onPressed: () async {
+                  // El desplegable de arriba usa como valor el ID DEL DOCUMENTO
+                  // (`e.reference.id`), pero aqui se buscaba por el campo `uid`. Coincidian
+                  // solo en los usuarios creados desde la app, que escribe los dos iguales.
+                  // Los 1290 clientes cargados del sistema anterior no tienen `uid` —no
+                  // tienen cuenta de Auth—, asi que la busqueda no devolvia nada y la cuenta
+                  // por cobrar se guardaba con `clienteid` y `clientenombre` en blanco, sin
+                  // avisar de nada. Se busca por el id del documento, que es lo que el
+                  // desplegable entrega.
                   _model.user = await queryUsersRecordOnce(
                     queryBuilder: (usersRecord) => usersRecord.where(
-                      'uid',
+                      FieldPath.documentId,
                       isEqualTo: _model.usuarioValue,
                     ),
                     singleRecord: true,

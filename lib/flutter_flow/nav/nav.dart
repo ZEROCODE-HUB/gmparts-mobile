@@ -154,11 +154,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: INuevarecrapidaWidget.routeName,
-          path: INuevarecrapidaWidget.routePath,
-          builder: (context, params) => INuevarecrapidaWidget(),
-        ),
-        FFRoute(
           name: FRecepcionGuardadaWidget.routeName,
           path: FRecepcionGuardadaWidget.routePath,
           builder: (context, params) => FRecepcionGuardadaWidget(

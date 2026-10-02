@@ -10,6 +10,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/components/selector_modal.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -111,7 +113,7 @@ class _BNuevarecepcionrapidaFWidgetState
           }
         });
         safeSetState(() {
-          _model.correoJuriidcoTextController?.text =
+          _model.correoJuridicoTextController?.text =
               _model.recepcionDATOS!.correoElectronico;
         });
         safeSetState(() {
@@ -157,8 +159,8 @@ class _BNuevarecepcionrapidaFWidgetState
     _model.telefonoJuridicoTextController ??= TextEditingController();
     _model.telefonoJuridicoFocusNode ??= FocusNode();
 
-    _model.correoJuriidcoTextController ??= TextEditingController();
-    _model.correoJuriidcoFocusNode ??= FocusNode();
+    _model.correoJuridicoTextController ??= TextEditingController();
+    _model.correoJuridicoFocusNode ??= FocusNode();
 
     _model.marcaTextController ??= TextEditingController(
         text: widget.recepcionid != null ? _model.recepcionDATOS?.marca : '');
@@ -541,21 +543,45 @@ class _BNuevarecepcionrapidaFWidgetState
                                           nombrePersonaUsersRecordList =
                                           snapshot.data!;
 
-                                      return FlutterFlowDropDown<String>(
-                                        controller: _model
-                                                .nombrePersonaValueController ??=
-                                            FormFieldController<String>(
-                                          _model.nombrePersonaValue ??= '',
-                                        ),
-                                        options: List<String>.from(
-                                            nombrePersonaUsersRecordList
-                                                .map((e) => e.reference.id)
-                                                .toList()),
-                                        optionLabels:
-                                            nombrePersonaUsersRecordList
+                                      // Hoja inferior con buscador en vez del desplegable
+                                      // nativo: con 1028 clientes aquel ocupaba la pantalla
+                                      // entera y no habia forma clara de cerrarlo. El valor
+                                      // sigue siendo el ID DEL DOCUMENTO —hay 19 clientes
+                                      // con el nombre exactamente repetido—, y el documento
+                                      // sale como detalle para poder separarlos.
+                                      return CampoSelector(
+                                        pista: 'Seleccione el cliente',
+                                        texto: nombrePersonaUsersRecordList
+                                                .where((e) =>
+                                                    e.reference.id ==
+                                                    _model.nombrePersonaValue)
                                                 .map((e) => e.displayName)
-                                                .toList(),
-                                        onChanged: (val) async {
+                                                .firstOrNull ??
+                                            '',
+                                        onTap: () async {
+                                          final val = await abrirSelectorUnico(
+                                            context,
+                                            titulo: 'Cliente',
+                                            pista: 'Nombre o documento...',
+                                            vacio: 'Ningun cliente coincide',
+                                            seleccionado:
+                                                _model.nombrePersonaValue,
+                                            opciones:
+                                                nombrePersonaUsersRecordList
+                                                    .map((e) => OpcionSelector(
+                                                          valor:
+                                                              e.reference.id,
+                                                          etiqueta:
+                                                              e.displayName,
+                                                          detalle: e
+                                                                  .identityDocument
+                                                                  .isNotEmpty
+                                                              ? e.identityDocument
+                                                              : e.dni,
+                                                        ))
+                                                    .toList(),
+                                          );
+                                          if (val == null) return;
                                           safeSetState(() =>
                                               _model.nombrePersonaValue = val);
                                           _model.readUser =
@@ -572,7 +598,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                               FFAppConstants
                                                   .TipoPersonaJuridica) {
                                             safeSetState(() {
-                                              _model.correoJuriidcoTextController
+                                              _model.correoJuridicoTextController
                                                       ?.text =
                                                   _model.readUser!.email;
                                             });
@@ -618,101 +644,6 @@ class _BNuevarecepcionrapidaFWidgetState
 
                                           safeSetState(() {});
                                         },
-                                        height: 50.0,
-                                        searchHintTextStyle: FlutterFlowTheme
-                                                .of(context)
-                                            .labelMedium
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    _theme
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    _theme
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  _theme
-                                                      .labelMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  _theme
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                        searchTextStyle: FlutterFlowTheme.of(
-                                                context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    _theme
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    _theme
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  _theme
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  _theme
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                        textStyle: _theme
-                                            .titleSmall
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    _theme
-                                                        .titleSmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    _theme
-                                                        .titleSmall
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  _theme
-                                                      .accent1,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  _theme
-                                                      .titleSmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  _theme
-                                                      .titleSmall
-                                                      .fontStyle,
-                                            ),
-                                        hintText: 'Seleccione',
-                                        searchHintText: 'Search for an item...',
-                                        icon: Icon(
-                                          Icons.expand_circle_down_outlined,
-                                          color: _theme
-                                              .primary,
-                                          size: 25.0,
-                                        ),
-                                        fillColor: _theme
-                                            .accent2,
-                                        elevation: 2.0,
-                                        borderColor: Colors.transparent,
-                                        borderWidth: 2.0,
-                                        borderRadius: 8.0,
-                                        margin: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 4.0, 16.0, 4.0),
-                                        hidesUnderline: true,
-                                        isOverButton: false,
-                                        isSearchable: true,
-                                        isMultiSelect: false,
                                       );
                                     },
                                   ),
@@ -832,8 +763,8 @@ class _BNuevarecepcionrapidaFWidgetState
                                           _model.dniNaturalTextController,
                                       focusNode: _model.dniNaturalFocusNode,
                                       autofocus: false,
-                                      readOnly: true,
                                       obscureText: false,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         labelText: 'Ingrese DNI',
                                         labelStyle: _theme
@@ -1196,8 +1127,8 @@ class _BNuevarecepcionrapidaFWidgetState
                                                             safeSetState(() {}),
                                                       ),
                                                       autofocus: false,
-                                                      readOnly: true,
                                                       obscureText: false,
+                                                      keyboardType: TextInputType.phone,
                                                       decoration:
                                                           InputDecoration(
                                                         labelText: 'Teléfono',
@@ -1419,6 +1350,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                           ),
                                           autofocus: false,
                                           obscureText: false,
+                                          keyboardType: TextInputType.emailAddress,
                                           decoration: InputDecoration(
                                             labelText: 'Ingrese correo',
                                             labelStyle: FlutterFlowTheme.of(
@@ -1612,6 +1544,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                       focusNode: _model.textFieldRucFocusNode,
                                       autofocus: false,
                                       obscureText: false,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         labelText: 'Ingrese RUC',
                                         labelStyle: _theme
@@ -1853,6 +1786,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             ),
                                             autofocus: false,
                                             obscureText: false,
+                                            keyboardType: TextInputType.phone,
                                             decoration: InputDecoration(
                                               labelText: 'Teléfono',
                                               labelStyle: FlutterFlowTheme.of(
@@ -2047,17 +1981,18 @@ class _BNuevarecepcionrapidaFWidgetState
                                             0.0, 10.0, 0.0, 0.0),
                                         child: TextFormField(
                                           controller: _model
-                                              .correoJuriidcoTextController,
+                                              .correoJuridicoTextController,
                                           focusNode:
-                                              _model.correoJuriidcoFocusNode,
+                                              _model.correoJuridicoFocusNode,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.correoJuriidcoTextController',
+                                            '_model.correoJuridicoTextController',
                                             Duration(milliseconds: 100),
                                             () => safeSetState(() {}),
                                           ),
-                                          autofocus: true,
+                                          autofocus: false,
                                           obscureText: false,
+                                          keyboardType: TextInputType.emailAddress,
                                           decoration: InputDecoration(
                                             labelText: 'Ingrese correo',
                                             labelStyle: FlutterFlowTheme.of(
@@ -2189,13 +2124,13 @@ class _BNuevarecepcionrapidaFWidgetState
                                                         .fontStyle,
                                               ),
                                           validator: _model
-                                              .correoJuriidcoTextControllerValidator
+                                              .correoJuridicoTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
                                     ],
                                   ),
-                                  if ((_model.correoJuriidcoTextController
+                                  if ((_model.correoJuridicoTextController
                                                   .text !=
                                               '') &&
                                       (_model.userSelected == null) &&
@@ -2993,8 +2928,9 @@ class _BNuevarecepcionrapidaFWidgetState
                             child: TextFormField(
                               controller: _model.kmIngresoTextController,
                               focusNode: _model.kmIngresoFocusNode,
-                              autofocus: true,
+                              autofocus: false,
                               obscureText: false,
+                              keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 labelText: 'Km de ingreso',
                                 labelStyle: _theme
@@ -3170,7 +3106,14 @@ class _BNuevarecepcionrapidaFWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                     child: FutureBuilder<List<UsersRecord>>(
-                                      future: queryUsersRecordOnce(),
+                                      future: queryUsersRecordOnce(
+                                        // Antes bajaba la coleccion `users` ENTERA para
+                                        // quedarse con los 9 de taller. Con 19 usuarios no
+                                        // se notaba; tras cargar los 1290 clientes son 1310
+                                        // documentos por cada apertura de la pantalla.
+                                        queryBuilder: (q) => q.where('user_role',
+                                            whereIn: FFAppConstants.rolesDeTaller),
+                                      ),
                                       builder: (context, snapshot) {
                                         if (!snapshot.hasData) {
                                           return Center(
@@ -3216,66 +3159,45 @@ class _BNuevarecepcionrapidaFWidgetState
                                          );
                                        }
 
-                                      return FlutterFlowDropDown<String>(
-                                        controller: _model
-                                                .dropDownTecnicoValueController ??=
-                                            FormFieldController<String>(null),
-                                        options: dropDownTecnicoUsersRecordList
-                                            .map((e) => valueOrDefault<String>(
-                                                  e.displayName,
-                                                  'nom',
-                                                ))
-                                            .toList(),
-                                        onChanged: (val) => safeSetState(() =>
-                                            _model.dropDownTecnicoValue = val),
-                                        width: double.infinity,
-                                        height: 50.0,
-                                        textStyle: _theme
-                                            .titleSmall
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    _theme
-                                                        .titleSmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    _theme
-                                                        .titleSmall
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  _theme
-                                                      .accent1,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  _theme
-                                                      .titleSmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  _theme
-                                                      .titleSmall
-                                                      .fontStyle,
-                                            ),
-                                        hintText: 'Seleccionar técnico',
-                                        icon: Icon(
-                                          Icons.arrow_drop_down_circle_outlined,
-                                          color: _theme
-                                              .primary,
-                                          size: 24.0,
-                                        ),
-                                        fillColor: _theme
-                                            .accent2,
-                                        elevation: 2.0,
-                                        borderColor: Colors.transparent,
-                                        borderWidth: 2.0,
-                                        borderRadius: 8.0,
-                                        margin: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 4.0, 16.0, 4.0),
-                                        hidesUnderline: true,
-                                         isOverButton: true,
-                                         isSearchable: false,
-                                         isMultiSelect: false,
-                                       );
+                                      // Mismo selector que el de Cliente. El valor sigue
+                                      // siendo el NOMBRE porque es lo que se guarda en
+                                      // `tecnico_servicio` y lo que leen el panel y las
+                                      // listas; cambiarlo aqui roeria el contrato de datos.
+                                      return CampoSelector(
+                                        pista: 'Seleccionar tecnico',
+                                        texto: _model.dropDownTecnicoValue ?? '',
+                                        onTap: () async {
+                                          final val = await abrirSelectorUnico(
+                                            context,
+                                            titulo: 'Tecnico de servicio',
+                                            pista: 'Nombre del tecnico...',
+                                            vacio: 'Ningun tecnico coincide',
+                                            seleccionado:
+                                                _model.dropDownTecnicoValue,
+                                            opciones:
+                                                dropDownTecnicoUsersRecordList
+                                                    .map((e) => OpcionSelector(
+                                                          valor:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            e.displayName,
+                                                            'nom',
+                                                          ),
+                                                          etiqueta:
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            e.displayName,
+                                                            'nom',
+                                                          ),
+                                                          detalle: e.userRole,
+                                                        ))
+                                                    .toList(),
+                                          );
+                                          if (val == null) return;
+                                          safeSetState(() =>
+                                              _model.dropDownTecnicoValue = val);
+                                        },
+                                      );
                                      },
                                    ),
                                  ),
@@ -4060,6 +3982,60 @@ class _BNuevarecepcionrapidaFWidgetState
                                       if (_model.formKey.currentState == null ||
                                           !_model.formKey.currentState!
                                               .validate()) {
+                                        // `validate()` pinta el error debajo de cada campo,
+                                        // pero este boton esta al final de un formulario
+                                        // largo: el asesor lo pulsa, no ve nada y no tiene
+                                        // forma de saber que le falta. El `return` mudo era
+                                        // la excepcion; desde la carga masiva es la norma,
+                                        // porque 1178 de los 1290 clientes llegaron sin
+                                        // telefono y el telefono es obligatorio.
+                                        final faltan = <String>[
+                                          if (_model.tipopersonaValue ==
+                                                  FFAppConstants
+                                                      .TipoPersonaNatural &&
+                                              (_model.telefonoNaturalTextController
+                                                          ?.text ??
+                                                      '')
+                                                  .trim()
+                                                  .isEmpty)
+                                            'telefono',
+                                          if ((_model.modeloTextController
+                                                      ?.text ??
+                                                  '')
+                                              .trim()
+                                              .isEmpty)
+                                            'modelo',
+                                          if ((_model.kmIngresoTextController
+                                                      ?.text ??
+                                                  '')
+                                              .trim()
+                                              .isEmpty)
+                                            'kilometraje de ingreso',
+                                          if ((_model.motivoTextController
+                                                      ?.text ??
+                                                  '')
+                                              .trim()
+                                              .isEmpty)
+                                            'motivo',
+                                        ];
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              faltan.isEmpty
+                                                  ? 'Revise los campos marcados en rojo.'
+                                                  : 'Faltan datos obligatorios: ${faltan.join(', ')}.',
+                                              style: _theme.labelLarge.override(
+                                                font: GoogleFonts.montserrat(),
+                                                color: _theme.primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 5000),
+                                            backgroundColor: _theme.primary,
+                                          ),
+                                        );
                                         return;
                                       }
                                       if (_model.tipopersonaValue == null) {
@@ -4110,7 +4086,14 @@ class _BNuevarecepcionrapidaFWidgetState
                                         );
                                         return;
                                       }
-                                      if (_model.codigoPaisValue == null) {
+                                      // Se comprueba el prefijo de la rama que esta a la vista.
+                                      // Antes miraba siempre el de Natural, asi que en una recepcion
+                                      // a persona juridica pedia «seleccione el codigo de pais» de un
+                                      // campo que ni se ve en ese formulario.
+                                      if (_model.tipopersonaValue ==
+                                              FFAppConstants.TipoPersonaNatural
+                                          ? _model.codigoPaisValue == null
+                                          : _model.codigoPais2Value == null) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -4255,6 +4238,21 @@ class _BNuevarecepcionrapidaFWidgetState
                                         );
                                         return;
                                       }
+                                      // El prefijo sale de la rama correcta. Al guardar se usaba
+                                      // `codigoPaisValue` (el de Natural) tambien para las juridicas,
+                                      // de modo que `codigoPais2Value` no se leia nunca: elegir +52 en
+                                      // el formulario juridico no tenia ningun efecto.
+                                      final prefijoPais = _model
+                                                  .tipopersonaValue ==
+                                              FFAppConstants.TipoPersonaNatural
+                                          ? (_model.codigoPaisValue ?? '+51')
+                                          : (_model.codigoPais2Value ?? '+51');
+                                      // Todo el guardado va dentro de un try. Sin esto, cualquier
+                                      // excepcion —permisos, red, un campo nulo— muere dentro del
+                                      // onPressed asincrono: Flutter la escribe en la consola y el
+                                      // boton se queda sin hacer nada. Al asesor le parece que la app
+                                      // esta rota y no tiene ni un mensaje que reportar.
+                                      try {
                                       if (widget.recepcionid != null) {
                                         await widget.recepcionid!.update({
                                           ...createRecepcionesRecordData(
@@ -4263,7 +4261,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             nombreCliente:
                                                 _model.readUser?.displayName,
                                             telefono:
-                                                '${_model.codigoPaisValue}${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
+                                                '$prefijoPais${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
                                             placa: _model.readVehicle?.placa,
                                             marca:
                                                 _model.marcaTextController.text,
@@ -4283,7 +4281,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                 .textFieldRucTextController
                                                 .text,
                                             razonSocial: _model
-                                                .correoJuriidcoTextController
+                                                .correoJuridicoTextController
                                                 .text,
                                             numeroVIN:
                                                 _model.readVehicle?.vINSerie,
@@ -4297,7 +4295,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                         .correonaturalTextController
                                                         .text
                                                     : _model
-                                                        .correoJuriidcoTextController
+                                                        .correoJuridicoTextController
                                                         .text,
                                           ),
                                           ...mapToFirestore(
@@ -4336,10 +4334,11 @@ class _BNuevarecepcionrapidaFWidgetState
                                         _model.randomid = random_data
                                             .randomInteger(10000, 99999);
                                         safeSetState(() {});
-                                        _model.lastcode =
-                                            await queryLastCodeRecordOnce(
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
+                                        // Un unico contador, compartido con el panel y atomico.
+                                        // Antes se leia, se sumaba uno y se escribia en tres pasos
+                                        // sueltos: dos asesores recepcionando a la vez se llevaban el
+                                        // mismo numero.
+                                        final nuevoCodeCT = await actions.siguienteCodeCT();
 
                                         var recepcionesRecordReference =
                                             RecepcionesRecord.collection.doc();
@@ -4351,7 +4350,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             nombreCliente:
                                                 _model.readUser?.displayName,
                                             telefono:
-                                                '${_model.codigoPaisValue}${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
+                                                '$prefijoPais${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
                                             modelo: _model
                                                 .modeloTextController.text,
                                             kmIngreso: _model
@@ -4366,7 +4365,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                 .textFieldRucTextController
                                                 .text,
                                             razonSocial: _model
-                                                .correoJuriidcoTextController
+                                                .correoJuridicoTextController
                                                 .text,
                                             status: FFAppConstants.Recepcion,
                                             clienteRef: _model.userSelected,
@@ -4378,13 +4377,9 @@ class _BNuevarecepcionrapidaFWidgetState
                                                         .correonaturalTextController
                                                         .text
                                                     : _model
-                                                        .correoJuriidcoTextController
+                                                        .correoJuridicoTextController
                                                         .text,
-                                            codeCT: valueOrDefault<String>(
-                                              functions.codigomoreone(
-                                                  _model.lastcode!.lastCode),
-                                              'CT001-0000000',
-                                            ),
+                                            codeCT: nuevoCodeCT,
                                             placa: _model.readVehicle?.placa,
                                             marca: _model.readVehicle?.marca,
                                             dni: _model
@@ -4411,7 +4406,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                             nombreCliente:
                                                 _model.readUser?.displayName,
                                             telefono:
-                                                '${_model.codigoPaisValue}${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
+                                                '$prefijoPais${_model.tipopersonaValue == FFAppConstants.TipoPersonaNatural ? _model.telefonoNaturalTextController.text : _model.telefonoJuridicoTextController.text}',
                                             modelo: _model
                                                 .modeloTextController.text,
                                             kmIngreso: _model
@@ -4426,7 +4421,7 @@ class _BNuevarecepcionrapidaFWidgetState
                                                 .textFieldRucTextController
                                                 .text,
                                             razonSocial: _model
-                                                .correoJuriidcoTextController
+                                                .correoJuridicoTextController
                                                 .text,
                                             status: FFAppConstants.Recepcion,
                                             clienteRef: _model.userSelected,
@@ -4438,13 +4433,9 @@ class _BNuevarecepcionrapidaFWidgetState
                                                         .correonaturalTextController
                                                         .text
                                                     : _model
-                                                        .correoJuriidcoTextController
+                                                        .correoJuridicoTextController
                                                         .text,
-                                            codeCT: valueOrDefault<String>(
-                                              functions.codigomoreone(
-                                                  _model.lastcode!.lastCode),
-                                              'CT001-0000000',
-                                            ),
+                                            codeCT: nuevoCodeCT,
                                             placa: _model.readVehicle?.placa,
                                             marca: _model.readVehicle?.marca,
                                             dni: _model
@@ -4461,15 +4452,6 @@ class _BNuevarecepcionrapidaFWidgetState
                                             },
                                           ),
                                         }, recepcionesRecordReference);
-
-                                        await _model.lastcode!.reference
-                                            .update(createLastCodeRecordData(
-                                          lastCode: valueOrDefault<String>(
-                                            functions.codigomoreone(
-                                                _model.lastcode!.lastCode),
-                                            'CT001-0000000',
-                                          ),
-                                        ));
 
                                         context.pushNamed(
                                           FRecepcionGuardadaWidget.routeName,
@@ -4494,6 +4476,25 @@ class _BNuevarecepcionrapidaFWidgetState
                                             ),
                                           },
                                         );
+                                      }
+                                      } catch (e) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'No se pudo guardar la recepcion: $e',
+                                              style: _theme.labelLarge.override(
+                                                font: GoogleFonts.montserrat(),
+                                                color: _theme.primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 8000),
+                                            backgroundColor: _theme.primary,
+                                          ),
+                                        );
+                                        return;
                                       }
 
                                       safeSetState(() {});
