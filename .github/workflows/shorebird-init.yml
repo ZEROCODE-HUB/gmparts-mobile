@@ -1,15 +1,21 @@
 # Workflow de un solo uso: obtiene el app_id de Shorebird.
 #
-# `shorebird init` invoca gradlew para detectar los flavors de la app, y el repo no versiona
-# ni `android/gradlew` ni `android/local.properties` (el segundo esta en .gitignore). Nadie
-# lo habia notado porque `flutter pub get` fabrica los dos al preparar el proyecto para
-# Android — asi que basta con ejecutarlo antes.
+# Tres cosas aprendidas peleandose con esto, anotadas para no repetirlas:
 #
-# `setup-shorebird` deja `shorebird` en el PATH pero NO `flutter`, asi que hay que buscar el
-# binario dentro de su cache. Se usa ESE Flutter a proposito: es el mismo que compilara las
-# releases.
+#  1. `shorebird init` invoca gradlew para detectar flavors, y el repo no versiona
+#     `android/gradlew` ni `android/local.properties` (el segundo esta en .gitignore).
+#     Nadie lo habia notado porque `flutter pub get` fabrica los dos al preparar el
+#     proyecto para Android.
+#  2. `setup-shorebird` NO deja `flutter` en el PATH, y su input `flutter-version` no
+#     cambia el SDK que instala: siempre trae el mas reciente de Shorebird (3.47.5). La
+#     version se fija al compilar, con `shorebird release --flutter-version`.
+#  3. Ese 3.47.5 exige `intl ^0.20.3` contra el `intl: 0.20.2` del pubspec y revienta en
+#     `pub get` — el mismo fallo que tumbo la build el 2026-08-26.
 #
-# Se hace aqui y no en local porque el equipo de desarrollo no tiene SDK de Android.
+# Por eso aqui el `pub get` se hace con el Flutter normal fijado en 3.44.8, y Shorebird
+# solo se usa para el `init`, que no compila nada.
+#
+# Se hace en CI y no en local porque el equipo de desarrollo no tiene SDK de Android.
 # Este workflow se borra en cuanto el app_id este commiteado.
 name: Shorebird Init (un solo uso)
 on:
@@ -31,30 +37,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Flutter FIJADO a 3.44.8. Sin esto la action instala el Flutter mas reciente de
-      # Shorebird (3.47.5), que exige `intl ^0.20.3` contra el `intl: 0.20.2` del pubspec:
-      # exactamente el fallo que tumbo la build el 2026-08-26. Shorebird si vende 3.44.8.
-      - uses: shorebirdtech/setup-shorebird@v1
+      - uses: subosito/flutter-action@v2
         with:
-          flutter-version: 3.44.8
-
-      - name: Localizar el Flutter de Shorebird
-        run: |
-          echo "which shorebird: $(which shorebird)"
-          FLUTTER_BIN="$(find "$HOME/.config/shorebird" -type f -name flutter -path '*/bin/flutter' 2>/dev/null | head -1)"
-          if [ -z "$FLUTTER_BIN" ]; then
-            echo "No se encontro el Flutter de Shorebird. Arbol:"
-            find "$HOME/.config/shorebird" -maxdepth 4 -type d | head -40
-            exit 1
-          fi
-          echo "flutter: $FLUTTER_BIN"
-          echo "$(dirname "$FLUTTER_BIN")" >> "$GITHUB_PATH"
+          channel: 'stable'
+          flutter-version: '3.44.8'
 
       - name: Preparar el proyecto (genera local.properties y gradlew)
         run: |
           flutter --version
           flutter pub get
           ls -la android/gradlew android/local.properties
+
+      - uses: shorebirdtech/setup-shorebird@v1
 
       - name: shorebird init
         run: shorebird init --display-name "GMParts" --force
