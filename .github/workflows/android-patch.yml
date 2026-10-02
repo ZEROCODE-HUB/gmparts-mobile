@@ -1,0 +1,87 @@
+# Parche de codigo Dart sobre una release ya publicada.
+#
+# Esto es el dia a dia: llega a los telefonos sin pasar por Play y sin reinstalar nada. El
+# usuario lo recibe al abrir la app (descarga) y lo ve en la SEGUNDA apertura (aplica).
+#
+# Un parche solo puede cambiar codigo Dart. Si toca `android/`, assets, `pubspec.yaml` o un
+# plugin, Shorebird lo BLOQUEA y hay que hacer release. Ver RELEASE.md.
+name: Android Patch (Shorebird)
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Release a parchear, p. ej. 1.0.9+37. Sale del resumen del workflow de release.'
+        required: true
+        type: string
+      dry_run:
+        description: 'Solo validar, sin publicar (dejalo marcado la primera vez)'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    env:
+      SHOREBIRD_TOKEN: ${{ secrets.SHOREBIRD_TOKEN }}
+      KEYSTORE_PATH: gmparts-keystore.jks
+      STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+    steps:
+      # Siempre desde master. Un parche que salga de una rama suelta mete en los telefonos
+      # codigo que no esta en la linea principal, y la siguiente release de tienda lo
+      # perderia sin que nadie se entere.
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.44.8'
+
+      - name: Preparar el proyecto
+        run: |
+          flutter pub get
+          cd android
+          gradle wrapper --gradle-version 8.12 --distribution-type all
+
+      - uses: shorebirdtech/setup-shorebird@v1
+
+      # El parche se construye compilando la app, asi que la firma tambien hace falta aqui.
+      - name: Decode Keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: printf '%s' "$KEYSTORE_BASE64" | base64 -d > android/app/gmparts-keystore.jks
+
+      # `--release-version` es obligatorio y sin valor por defecto a proposito.
+      # `--release-version=latest` es comodo y peligroso: publica contra la ultima release
+      # CREADA, que no tiene por que ser la que la gente lleva instalada.
+      #
+      # No se usan NUNCA `--allow-native-diffs` ni `--allow-asset-diffs`: producen apps que
+      # crashean en campo sin ningun aviso previo. Si Shorebird bloquea, es que el cambio
+      # necesita release de tienda.
+      - name: Shorebird patch
+        run: |
+          shorebird patch android \
+            --release-version '${{ inputs.release_version }}' \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Resumen
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "## Validacion (dry run) de \`${{ inputs.release_version }}\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "No se ha publicado nada. Si ha pasado, relanza con \`dry_run\` desmarcado." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "## Parche publicado sobre \`${{ inputs.release_version }}\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "En el telefono: abrir la app con red, **cerrarla desde apps recientes** y volver a abrirla." >> $GITHUB_STEP_SUMMARY
+            echo "El cambio se ve en la SEGUNDA apertura: la primera solo descarga." >> $GITHUB_STEP_SUMMARY
+          fi
