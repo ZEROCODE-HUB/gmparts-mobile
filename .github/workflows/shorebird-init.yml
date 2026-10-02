@@ -31,7 +31,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      # Flutter FIJADO a 3.44.8. Sin esto la action instala el Flutter mas reciente de
+      # Shorebird (3.47.5), que exige `intl ^0.20.3` contra el `intl: 0.20.2` del pubspec:
+      # exactamente el fallo que tumbo la build el 2026-08-26. Shorebird si vende 3.44.8.
       - uses: shorebirdtech/setup-shorebird@v1
+        with:
+          flutter-version: 3.44.8
 
       - name: Localizar el Flutter de Shorebird
         run: |
